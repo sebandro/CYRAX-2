@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYRAX | Detalle de Producto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="product-page-body">
+
+<header class="navbar">
+    <a href="index.html" class="logo">CYRAX</a>
+    <nav class="nav-links">
+        <a href="index.html">inicio</a>
+        <a href="calzas.html">Calzas</a>
+        <a href="tops.html">Tops</a>
+        <a href="sets.html">Sets</a>
+        <a href="shorts.html">shorts</a>
+    </nav>
+    <div class="cart-icon" onclick="toggleCart()">
+        CARRITO 🛒 (<span id="cart-count">0</span>)
+    </div>
+</header>
+
+
+
+
+<main class="product-container">
+    <div class="product-layout">
+        <div class="product-gallery">
+            <div id="thumbnails-container" class="thumbnails-container"></div>
+            
+            <div class="product-image-card">
+                <img id="product-img" src="" alt="Producto">
+            </div>
+        </div>
+
+        <div class="product-info-card">
+            <span class="category-tag" id="product-category">CATEGORÍA</span>
+            <h1 id="product-name">Nombre del Producto</h1>
+            <p class="product-price" id="product-price">$0</p>
+            
+            <div class="product-description">
+                <p>Diseño ergonómico y tela de alta tecnología que se adapta a cada movimiento. Ideal para entrenamientos de alta intensidad o uso diario con el máximo confort.</p>
+            </div>
+
+            <div class="action-buttons">
+                <button id="add-cart" class="btn-primary">
+                    <i class="fas fa-shopping-cart"></i> AGREGAR AL CARRITO
+                </button>
+                <button id="buy-now" class="btn-secondary">COMPRAR AHORA</button>
+            </div>
+
+            <div class="product-features">
+                <span><i class="fas fa-truck"></i> Envío rápido a todo el país</span>
+                <span><i class="fas fa-undo"></i> Cambios sin cargo por 30 días</span>
+                <span><i class="fas fa-shield-alt"></i>Pago 100% seguro</span>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+
+
+<div id="side-cart" class="side-cart">
+    <div class="cart-header">
+        <h3>Tu carrito</h3>
+        <span onclick="toggleCart()" class="close-cart">✕</span>
+    </div>
+    <div id="cart-items-side"></div>
+    <div class="cart-footer">
+        <p>Total: <span id="cart-total-side">$0</span></p>
+        <button onclick="goToCheckout()" class="btn-black">Finalizar compra</button>
+    </div>
+</div>
+
+
+
+
+
+<section class="related-products">
+    <div class="container">
+        <h2 class="section-title">TAMBIÉN TE PUEDE GUSTAR</h2>
+        <div id="related-container" class="related-grid">
+            </div>
+    </div>
+</section>
+
+
+
+
+<script src="js/products.js"></script>
+<script src="js/main.js"></script>
+<script>
+  function inicializarDetalle() {
+    const params = new URLSearchParams(window.location.search);
+    const idURL = params.get("id");
+
+    if (typeof products !== 'undefined' && idURL) {
+        const p = products.find(item => item.id == idURL);
+
+        if (p) {
+            console.log("Producto cargado:", p.name);
+            
+            // 1. Cargar Imágenes y Miniaturas
+            const mainImg = document.getElementById("product-img");
+            if (mainImg) mainImg.src = p.images[0];
+            
+            const thumbContainer = document.getElementById("thumbnails-container");
+            if (thumbContainer) {
+                thumbContainer.innerHTML = p.images.map((imgSrc, index) => `
+                    <div class="thumb-wrapper ${index === 0 ? 'active' : ''}" onclick="changeMainImage(this, '${imgSrc}')">
+                        <img src="${imgSrc}" alt="Vista ${index + 1}">
+                    </div>
+                `).join('');
+            }
+
+            // 2. Cargar Textos
+            document.getElementById("product-name").innerText = p.name;
+            document.getElementById("product-price").innerText = "$" + p.price.toLocaleString("es-AR");
+
+            // 3. Configurar botones
+            document.getElementById("add-cart").onclick = () => addToCart(p.name, p.price, p.images[0]);
+            document.getElementById("buy-now").onclick = () => {
+                addToCart(p.name, p.price, p.images[0]);
+                window.location.href = "checkout.html";
+            };
+
+            // 4. ESTO ES LO QUE FALTABA: Definir y ejecutar los relacionados aquí mismo
+            renderRelated(p.category, p.id);
+        }
+    } else {
+        setTimeout(inicializarDetalle, 100);
+    }
+}
+
+// DEFINIMOS LA FUNCIÓN AQUÍ PARA QUE NO FALLE
+function renderRelated(category, currentId) {
+    const container = document.getElementById("related-container");
+    if (!container) return;
+
+    // Filtramos por categoría
+    const related = products.filter(p => p.category === category && p.id != currentId);
+    // Si hay pocos, agarramos cualquiera que no sea el actual
+    const selection = related.length >= 3 ? related : products.filter(p => p.id != currentId).slice(0, 3);
+
+    container.innerHTML = selection.map(p => `
+        <div class="related-item">
+            <a href="producto.html?id=${p.id}" style="text-decoration: none; color: black;">
+                <img src="${p.images[0]}" alt="${p.name}">
+                <h3>${p.name}</h3>
+                <p>$${p.price.toLocaleString("es-AR")}</p>
+            </a>
+        </div>
+    `).join('');
+}
+
+function changeMainImage(element, newSrc) {
+    const mainImg = document.getElementById("product-img");
+    if (mainImg) mainImg.src = newSrc;
+    document.querySelectorAll('.thumb-wrapper').forEach(t => t.classList.remove('active'));
+    element.classList.add('active');
+}
+
+// Iniciar proceso
+inicializarDetalle();
+</script>
+</body>
+</html>
