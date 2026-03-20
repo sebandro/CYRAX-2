@@ -889,7 +889,7 @@ input, select {
 /* --- AJUSTES EXCLUSIVOS PARA CELULAR (Mobile) --- */
 
 @media screen and (max-width: 768px) {
-    /* 1. HEADER: Logo, Menú y Carrito en una línea */
+    /* 1. HEADER: Alineamos Logo - Menú - Carrito */
     header {
         display: flex !important;
         flex-direction: row !important;
@@ -899,14 +899,15 @@ input, select {
         width: 100% !important;
     }
 
-    /* Dibujamos las 3 líneas del menú */
+    /* Restauramos las 3 líneas del menú */
     .menu-hamburguesa {
         display: flex !important;
         flex-direction: column !important;
         justify-content: space-between !important;
         width: 25px !important;
         height: 18px !important;
-        order: 2; /* Lo centra */
+        cursor: pointer;
+        order: 2; /* Centrado */
     }
 
     .menu-hamburguesa span, .bar {
@@ -916,43 +917,41 @@ input, select {
         display: block !important;
     }
 
-    /* 2. PRODUCTOS: Una sola columna gigante */
-    /* Matamos el Grid de escritorio */
+    /* 2. PRODUCTOS: EL RESET DEFINITIVO */
     .productos-grid, .productos-container, main {
-        display: block !important; 
+        display: block !important; /* MATA EL FLEX QUE AMONTONA LAS FOTOS */
         width: 100% !important;
         padding: 0 !important;
     }
 
     .product-card {
         display: block !important;
-        width: 100% !important;
-        margin-bottom: 50px !important;
+        width: 100% !important; /* Ocupa todo el ancho del celu */
+        margin-bottom: 60px !important; /* Espacio para que no se peguen */
         border: none !important;
     }
 
-    /* 3. IMAGEN: Ancho total y altura fija para que no se estire */
+    /* 3. IMAGEN: Grande y nítida */
     .product-card img {
         width: 100% !important;
-        height: 500px !important; /* Altura de catálogo profesional */
-        object-fit: cover !important; /* Mantiene la proporción */
-        border-radius: 20px;
+        height: 550px !important; /* Altura de catálogo */
+        object-fit: cover !important; /* No se estira la modelo */
+        border-radius: 0; /* Opcional: bordes rectos para que ocupe todo el ancho */
         display: block !important;
     }
 
-    /* 4. BOTONES: Uno al lado del otro */
+    /* 4. TEXTOS Y BOTONES */
+    .product-card h3, .product-card p {
+        padding-left: 15px;
+        text-align: left;
+    }
+
     .btn-container {
         display: flex !important;
-        gap: 10px !important;
+        gap: 10px;
         padding: 15px !important;
     }
-
-    .btn-container button {
-        flex: 1 !important;
-        padding: 12px !important;
-    }
 }
-
 
 
 
