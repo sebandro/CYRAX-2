@@ -888,7 +888,7 @@ input, select {
 
 /* --- AJUSTES EXCLUSIVOS PARA CELULAR (Mobile) --- */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     /* 1. HEADER: Logo - Hamburguesa - Carrito en una fila */
     header {
         display: flex !important;
