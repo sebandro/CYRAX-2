@@ -913,7 +913,7 @@ input, select {
     }
 
     .product-card img {
-        width: 100% !important;
+        width: 150% !important;
         height: 650px !important; 
         object-fit: cover !important;
     }
@@ -963,7 +963,7 @@ input, select {
     }
 
     .product-card img {
-        width: 100% !important;
+        width: 150% !important;
         height: 650px !important; 
         object-fit: cover !important;
     }
