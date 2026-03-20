@@ -889,67 +889,53 @@ input, select {
 /* --- AJUSTES EXCLUSIVOS PARA CELULAR (Mobile) --- */
 
 @media screen and (max-width: 768px) {
-    /* 1. EL HEADER: Logo, Menú y Carrito alineados */
-    header, header * {
+    /* 1. HEADER: Logo - Hamburguesa - Carrito en una fila */
+    header {
         display: flex !important;
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
+        padding: 10px 15px !important;
+        background: white;
+        position: relative;
     }
 
-    /* Forzamos que el icono del menú sea negro y visible */
-    .menu-hamburguesa, .menu-hamburguesa * {
+    /* 2. PRODUCTOS: Una sola columna (lo que ya funcionaba) */
+    .productos-grid, .productos-container, main, section, div[class*="grid"] {
         display: flex !important;
         flex-direction: column !important;
-        width: 30px !important;
-        height: 20px !important;
-        background-color: transparent !important;
-    }
-
-    .menu-hamburguesa span, .bar {
-        background-color: #000 !important;
-        height: 3px !important;
         width: 100% !important;
-        margin-bottom: 3px !important;
+        padding: 10px !important;
     }
 
-    /* 2. PRODUCTOS: MATAMOS EL GRID Y EL FLEX AMONTONADO */
-    /* Este selector (.) busca cualquier cosa que contenga los productos */
-    main, section, .productos-grid, .productos-container {
-        display: block !important; /* Obliga a que sea una sola columna */
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    /* 3. LA TARJETA: Ancho total */
     .product-card {
-        display: block !important;
         width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 0 50px 0 !important; /* Espacio abajo para que no se peguen */
-        padding: 0 !important;
+        margin-bottom: 20px !important;
     }
 
-    /* 4. LA IMAGEN: Grande como en tu referencia */
     .product-card img {
-        width: 100% !important;
-        height: 550px !important; /* Altura profesional de catálogo */
-        min-height: 550px !important;
-        object-fit: cover !important; /* No se deforma la imagen */
-        display: block !important;
-        border-radius: 0px !important;
+        width: 150% !important;
+        height: 650px !important; 
+        object-fit: cover !important;
     }
 
-    /* 5. BOTONES: Uno al lado del otro */
-    .btn-container {
+    /* 3. MENÚ HAMBURGUESA: El icono de las 3 líneas */
+    .menu-hamburguesa {
         display: flex !important;
-        flex-direction: row !important;
-        gap: 10px !important;
-        padding: 15px !important;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 30px;
+        height: 25px;
+        cursor: pointer;
     }
-}
 
+    .menu-hamburguesa span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background: black;
+        border-radius: 2px;
+    }
 
 
     /* 4. EL MENÚ DESPLEGABLE: Ahora en lista vertical */
