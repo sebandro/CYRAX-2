@@ -889,70 +889,66 @@ input, select {
 /* --- AJUSTES EXCLUSIVOS PARA CELULAR (Mobile) --- */
 
 @media screen and (max-width: 768px) {
-    /* 1. HEADER: Alineamos Logo - Menú - Carrito */
-    header {
+    /* 1. EL HEADER: Logo, Menú y Carrito alineados */
+    header, header * {
         display: flex !important;
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 10px 15px !important;
-        width: 100% !important;
     }
 
-    /* Restauramos las 3 líneas del menú */
-    .menu-hamburguesa {
+    /* Forzamos que el icono del menú sea negro y visible */
+    .menu-hamburguesa, .menu-hamburguesa * {
         display: flex !important;
         flex-direction: column !important;
-        justify-content: space-between !important;
-        width: 25px !important;
-        height: 18px !important;
-        cursor: pointer;
-        order: 2; /* Centrado */
+        width: 30px !important;
+        height: 20px !important;
+        background-color: transparent !important;
     }
 
     .menu-hamburguesa span, .bar {
-        width: 100% !important;
+        background-color: #000 !important;
         height: 3px !important;
-        background-color: black !important;
-        display: block !important;
+        width: 100% !important;
+        margin-bottom: 3px !important;
     }
 
-    /* 2. PRODUCTOS: EL RESET DEFINITIVO */
-    .productos-grid, .productos-container, main {
-        display: block !important; /* MATA EL FLEX QUE AMONTONA LAS FOTOS */
+    /* 2. PRODUCTOS: MATAMOS EL GRID Y EL FLEX AMONTONADO */
+    /* Este selector (.) busca cualquier cosa que contenga los productos */
+    main, section, .productos-grid, .productos-container {
+        display: block !important; /* Obliga a que sea una sola columna */
         width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 3. LA TARJETA: Ancho total */
+    .product-card {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 50px 0 !important; /* Espacio abajo para que no se peguen */
         padding: 0 !important;
     }
 
-    .product-card {
-        display: block !important;
-        width: 100% !important; /* Ocupa todo el ancho del celu */
-        margin-bottom: 60px !important; /* Espacio para que no se peguen */
-        border: none !important;
-    }
-
-    /* 3. IMAGEN: Grande y nítida */
+    /* 4. LA IMAGEN: Grande como en tu referencia */
     .product-card img {
         width: 100% !important;
-        height: 550px !important; /* Altura de catálogo */
-        object-fit: cover !important; /* No se estira la modelo */
-        border-radius: 0; /* Opcional: bordes rectos para que ocupe todo el ancho */
+        height: 550px !important; /* Altura profesional de catálogo */
+        min-height: 550px !important;
+        object-fit: cover !important; /* No se deforma la imagen */
         display: block !important;
+        border-radius: 0px !important;
     }
 
-    /* 4. TEXTOS Y BOTONES */
-    .product-card h3, .product-card p {
-        padding-left: 15px;
-        text-align: left;
-    }
-
+    /* 5. BOTONES: Uno al lado del otro */
     .btn-container {
         display: flex !important;
-        gap: 10px;
+        flex-direction: row !important;
+        gap: 10px !important;
         padding: 15px !important;
     }
 }
-
 
 
 
