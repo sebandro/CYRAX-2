@@ -915,7 +915,7 @@ input, select {
 
     .product-card img {
         width: 150% !important;
-        height: 650px !important; 
+        height: 800px !important; 
         object-fit: cover !important;
     }
 
