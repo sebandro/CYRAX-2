@@ -694,7 +694,7 @@ background:#e63e5c;
 }
 
 /* Ajuste para celulares */
-@media (max-width: 480px) {
+@media (max-width: 800px) {
     .related-grid {
         grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 15px;
