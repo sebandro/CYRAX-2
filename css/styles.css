@@ -1,0 +1,3114 @@
+html {
+    scroll-behavior: smooth;
+}
+/*==========================================*/
+ /*    DESCRIPCION Y BTN DE PRODUCTO        */
+ /*==========================================*/
+.product-description-full {
+    display: block;
+    clear: both;
+    width: 100%;
+    max-width: 550px; /* Ajustalo para que coincida exacto con el ancho de tu foto */
+    margin-top: 30px;
+    padding: 20px 0;
+    border-top: 1px solid #eee; /* Una línea sutil para separar */
+}
+
+#product-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    text-align: left;
+    font-family: inherit;
+}
+
+/* Espacio extra para los botones a la derecha */
+.action-buttons {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-agregar {
+    margin-top: 30px !important;
+}
+    /*==========================================*/
+    /*     TERMINA DESCRIPCION Y BTN            */
+    /*==========================================*/
+
+
+
+/*==============================================================*/
+/* --- SELECTOR DE TALLE Y COLOR (Versión Corta y con Hover) --- */
+/*===============================================================*/
+
+select.custom-select {
+    display: block !important;
+    width: 100% !important;
+    max-width: 200px !important; /* Lo acortamos de 300px a 200px */
+    height: 45px !important;
+    padding: 0 35px 0 15px !important;
+    font-size: 14px !important;
+    font-family: 'Montserrat', sans-serif;
+    border: 1px solid #ddd !important;
+    border-radius: 25px !important;
+    background-color: #fff !important;
+    cursor: pointer !important;
+    outline: none !important;
+    margin-bottom: 15px !important;
+    transition: all 0.3s ease !important; /* Suaviza el efecto hover */
+    
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 12px center !important;
+    background-size: 14px !important;
+}
+
+/* EFECTO HOVER: Cuando pasás el mouse por el selector */
+select.custom-select:hover {
+    border-color: #000 !important; /* El borde se pone negro */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; /* Una sombra suave */
+    transform: translateY(-1px); /* Sube apenas un poquito */
+
+    
+    /* Quita la flecha del sistema */
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+
+    /* Flecha corregida sin caracteres especiales que den error */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 15px center !important;
+    background-size: 16px !important;
+}
+
+    /*==========================================*/
+    /*  TERMINA SELECTOR DE TALLES Y COLOR      */
+    /*==========================================*/
+
+
+
+
+
+/*===========================================*/
+/* --- 2. CONTENEDOR DE CANTIDAD (+ / -) --- */
+/*===========================================*/
+
+.quantity-controls {
+    display: flex !important;
+    align-items: center !important;
+    border: 1px solid #000 !important; /* Borde más fino para que sea elegante */
+    width: fit-content !important;
+    background: #fff !important;
+    border-radius: 25px !important;   /* REDONDEADO como el talle */
+    overflow: hidden !important;       /* CLAVE: Corta lo que se salga del redondeo */
+    height: 45px !important;
+}
+
+/* Estilo base para los botones + y - */
+
+.quantity-controls button {
+    width: 40px !important;
+    height: 100% !important;
+    background: transparent !important;
+    border: none !important;
+    color: #000 !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* --- EL NUEVO HOVER (Sin que se rompa) --- */
+
+.quantity-controls button:hover {
+    background-color: #000 !important; /* Fondo negro */
+    color: #fff !important;           /* Signo blanco */
+}
+
+/* 3. EL NÚMERO (Input) */
+#product-qty {
+    width: 40px !important;
+    height: 100% !important;
+    border: none !important;
+    text-align: center !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    color: #000 !important;
+    background: transparent !important;
+    pointer-events: none; /* Para que no puedan escribir letras, solo usar + y - */
+}
+
+/* 4. Etiquetas (Talle:, Color:) */
+.variant-item label {
+    display: block !important;
+    font-weight: 800 !important;
+    font-size: 12px !important;
+    margin-bottom: 8px !important;
+    text-transform: uppercase;
+    }
+
+
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Montserrat', sans-serif; background: #fff; overflow-x: hidden; }
+
+    /*==========================================*/
+    /*         TERMINA MAS Y MENOS              */
+    /*==========================================*/
+
+
+
+
+
+
+
+/* ============================================================
+   HEADER GLOBAL - CYRAX (Logo, Menú y Carrito)
+   ============================================================ */
+
+.navbar {
+    display: flex !important; 
+    justify-content: space-between !important; 
+    align-items: center !important;
+    padding: 0 50px !important; 
+    height: 70px !important; 
+    background: #fff !important; 
+    border-bottom: 1px solid #eee !important;
+    position: fixed !important; 
+    width: 100% !important; 
+    top: 0 !important; 
+    z-index: 1000 !important;
+    box-sizing: border-box !important;
+}
+
+/* --- LOGO (Izquierda) --- */
+
+.logo { 
+    font-weight: 900 !important; 
+    font-size: 28px !important; 
+    text-decoration: none !important; 
+    color: #000 !important; 
+    letter-spacing: -1.5px !important;
+    flex-shrink: 0 !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
+    display: inline-block !important;
+}
+
+.logo:hover {
+    transform: scale(1.05) !important;
+    color: #333 !important;
+}
+
+/* --- MENÚ DE CATEGORÍAS (Centro) --- */
+
+.nav-links {
+    flex-grow: 1 !important; 
+    display: flex !important;
+    justify-content: center !important; 
+}
+
+#menu-categorias {
+    display: flex !important;
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 10px !important;
+}
+
+.nav-links a { 
+    text-decoration: none !important; 
+    color: #000 !important; 
+    margin: 0 15px !important; 
+    font-size: 13px !important; 
+    font-weight: 600 !important; 
+    text-transform: uppercase !important;
+    transition: transform 0.2s ease, color 0.2s ease !important;
+    display: inline-block !important;
+}
+
+.nav-links a:hover {
+    transform: scale(1.1) !important;
+    color: #666 !important;
+}
+
+
+/* --- CARRITO (Derecha) --- */
+
+.cart-container {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+    min-width: 120px !important; /* Mantiene el equilibrio con el logo */
+    justify-content: flex-end !important;
+    transition: transform 0.2s ease !important;
+}
+
+.cart-container:hover {
+    transform: scale(1.05) !important;
+}
+
+.cart-label {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.cart-wrapper {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.cart-wrapper i {
+    font-size: 22px !important;
+    color: #000 !important;
+}
+
+/* BURBUJA DEL CARRITO (Badge) */
+
+.cart-badge {
+    position: absolute !important;
+    top: -8px !important;
+    right: -10px !important;
+    background-color: #000 !important;
+    color: #fff !important;
+    font-size: 10px !important;
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 2px solid #fff !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+}
+/*termina la burbuja*/    
+
+    /*==========================================*/
+    /*             TERMINA HEADER               */
+    /*==========================================*/
+
+
+
+
+
+
+ /*==========================================*/
+/* HERO SLIDER PRINCIPAL          */
+/*==========================================*/
+/* EL CONTENEDOR PADRE */
+.hero-carousel {
+    width: 100%;
+    height: 500px; /* Podés subirlo a 600px si lo querés más imponente */
+    margin-top: 5px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.hero-slider {
+    width: 100%;
+    height: 100%;
+}
+
+/* --- CADA SLIDE INDIVIDUAL --- */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Oculto por defecto */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    visibility: hidden; /* Esto mata la interacción y el render del texto fantasma */
+    transition: opacity 0.8s ease-in-out, visibility 0.8s; 
+}
+
+/* --- ESTADO ACTIVO --- */
+.slide.active {
+    display: flex !important;
+    opacity: 1;
+    visibility: visible;
+    z-index: 5; /* Asegura que el nuevo slide siempre esté arriba */
+}
+
+.slide img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; 
+    filter: brightness(0.7); /* Oscurece la foto para que el texto resalte */
+}
+
+/* AQUÍ EL CAMBIO CLAVE PARA EL TEXTO */
+.hero-text {
+    position: relative; /* Obligatorio para que el z-index responda */
+    z-index: 10;
+    width: 90%;
+    max-width: 800px;
+}
+
+.hero-text h2 {
+    color: #fff !important;
+    font-size: clamp(2rem, 5vw, 3.5rem); /* Tamaño adaptable */
+    font-weight: 900;
+    text-shadow: 0px 4px 10px rgba(0,0,0,0.5);
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* BOTÓN UNIFICADO */
+.btn-hero {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 15px 40px;
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+    border-radius: 4px;
+    border: 2px solid #fff;
+}
+
+.btn-hero:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
+
+    /*====================*/
+    /* termina carrusel   */
+    /*====================*/
+
+    /*=============================*/
+    /*FLECHAS DEL SLIDER PRINCIPAL*/
+    /*=============================*/
+
+
+    .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 20; /* Por encima de todo */
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.slider-arrow:hover {
+    background: rgba(212, 175, 55, 0.8); /* El dorado de Syrax */
+}
+
+.slider-arrow.prev { left: 20px; }
+.slider-arrow.next { right: 20px; }
+
+
+    /*=============*/
+    /*    FIN   */
+    /*===========*/
+
+
+
+
+
+
+/*==================================================*/
+/* --- DISEÑO FINAL DE TARJETA SYRAX (LIMPIO) ---   */
+/*==================================================*/
+
+
+/* --- GRILLA Y TARJETAS --- */
+.product-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(200px, 1fr)) !important;
+    gap: 20px !important;
+    padding: 20px !important;
+}
+
+
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: visible !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+
+
+
+
+/* Estilos para la tarjeta de producto con animación EXAGERADA 🔥 */
+.product-grid .product-card {
+    opacity: 0; /* Empieza invisible */
+    transform: translateY(40px); /* Empieza BASTANTE más abajo */
+    /* Animación más lenta y con curva cubic-bezier para efecto elástico y suave */
+    animation: slideInUpPronunciado 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes slideInUpPronunciado {
+    from {
+        opacity: 0;
+        transform: translateY(40px); /* Recorrido más largo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* --- SLIDER DENTRO DE LA TARJETA --- */
+.product-slider {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important; /* QUITAMOS EL 600PX */
+    aspect-ratio: 2 / 3 !important; /* Mantiene proporción de catálogo */
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.product-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: none;
+}
+
+.product-img.active {
+    display: block;
+}
+
+/* --- BOTONES DEL SLIDER --- */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #333;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
+
+.prev { left: 8px; }
+.next { right: 8px; }
+
+.prev:hover, .next:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* --- ETIQUETA DE LIQUIDACIÓN (BADGE) --- */
+.badge-off {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #e74c3c !important; /* Rojo intenso */
+    color: white !important;
+    padding: 8px 15px !important; /* Más amplia */
+    font-size: 1.1rem !important; /* Fuente más grande */
+    font-weight: 800 !important;
+    border-radius: 5px; /* Un toque más cuadrado queda más pro */
+    z-index: 10;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+}
+
+/* --- INFO DEL PRODUCTO (NUEVO PRECIO Y TACHADO) --- */
+.product-info {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-end !important;
+    padding: 15px 10px !important;
+}
+
+.product-text-group {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: left !important;
+    flex: 1 !important;
+}
+
+.price-container {
+    display: flex;
+    flex-direction: column; /* Apilados para que el grande destaque */
+    gap: 2px;
+    margin: 10px 0;
+}
+
+/* El precio viejo (tachado) */
+.old-price {
+    font-size: 0.95rem !important;
+    color: #485863!important; 
+    text-decoration: line-through;
+    font-weight: 400;
+}
+
+/* El precio actual (grande y llamativo) */
+.price {
+    font-size: 1.5rem !important; /* Bastante más grande */
+    color: #000000 !important; /* Un verde éxito, o usá #000 si preferís negro */
+    font-weight: 800 !important;
+    margin: 0;
+}
+
+.product-card h3 { 
+    font-size: 14px !important; 
+    font-weight: 800 !important; 
+    margin: 0 !important;
+    text-transform: uppercase;
+    color: #222;
+}
+
+.buy-btn {
+    width: 100% !important;
+    padding: 10px 15px !important; /* Reducido de 15px a 10px para que no sea tan alto */
+    font-size: 0.7rem !important;   /* Letra un poco más chica y elegante */
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;          /* Espaciado de letras más sutil */
+    background-color: #1a1a1a !important; /* Negro Syrax */
+    color: white !important;
+    border: none;
+    border-radius: 6px;             /* Bordes un poquito más finos */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;               /* Espacio respecto al precio */
+}
+
+.buy-btn:hover {
+    background-color: #d4af37 !important; /* Dorado al pasar el mouse */
+    transform: translateY(-2px);          /* Efecto de levante sutil */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+/*====================*/
+/* TENGO MIEDO LCDTRPM*/
+/*====================*/    
+
+   
+
+
+
+
+/* ============================================================
+   CARRITO ACTUALIZADO - CYRAX
+   ============================================================ */
+
+/* Panel Lateral */
+
+.side-cart { 
+    position: fixed; 
+    right: -450px; 
+    top: 0; 
+    width: 400px; 
+    height: 100vh; 
+    background: #fff;
+    z-index: 2000; 
+    transition: 0.4s; 
+    padding: 40px; 
+    box-shadow: -10px 0 20px rgba(0,0,0,0.1);
+    display: flex; 
+    flex-direction: column; 
+}
+
+.side-cart.active { right: 0; }
+
+/* Título Centrado */
+
+.side-cart h2 {
+    text-align: center !important;
+    width: 100% !important;
+    margin-top: 10px !important;
+    margin-bottom: 30px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    font-size: 20px !important;
+    color: #000000;
+}
+
+/* La "X" de cierre (Arriba a la derecha) */
+
+.side-cart .close-cart {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    font-size: 28px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    transition: color 0.3s ease !important;
+}
+
+.side-cart .close-cart:hover {
+    color: #ff0000 !important;
+}
+
+/* El Total (En negrita y separado) */
+
+.cart-total {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 20px 0 !important;
+    border-top: 1px solid #eee !important;
+    margin-top: auto !important; /* Lo empuja hacia abajo */
+    font-weight: 900 !important; /* Negrita fuerte */
+    font-size: 19px !important;
+    color: #000 !important;
+}
+
+/* Botón Iniciar Compra (Fino y Centrado) */
+
+.side-cart .checkout-btn {
+    width: 85% !important; /* Más elegante, no llega a los bordes */
+    background-color: #000 !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 14px !important;
+    border-radius: 8px !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    margin: 10px auto 20px auto !important; /* Centrado horizontal */
+    display: block !important;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+.side-cart .checkout-btn:hover {
+    background-color: #333 !important;
+    transform: scale(1.02) !important;
+}
+
+/* Botón Eliminar Producto (La X gris minimalista) */
+
+.remove-item {
+    background: none !important;
+    color: #bbb !important;
+    border: none !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    padding: 5px !important;
+    transition: color 0.2s !important;
+}
+
+.remove-item:hover {
+    color: #ff0000 !important;
+    transform: scale(1.1) !important;
+}
+
+/* Overlay de fondo */
+
+.overlay { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.5); 
+    z-index: 1500; 
+    display: none; 
+}
+.overlay.active { display: block; }
+
+    /*==========================================*/
+    /*       TERMINA CSS DE CARRITO              */
+    /*==========================================*/
+
+
+
+
+    /*==========================================*/
+    /*       MODAL CHECKOUT                     */
+    /*==========================================*/
+
+.checkout-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 3000; display: none; align-items: center; justify-content: center; }
+.checkout-content { background: #fff; padding: 40px; width: 90%; max-width: 500px; border-radius: 5px; position: relative; }
+.checkout-content input { width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; }
+.form-row { display: flex; gap: 10px; }
+.btn-final-wa { width: 100%; background: #25d366; color: #fff; border: none; padding: 15px; font-weight: bold; cursor: pointer; }
+
+    /*==========================================*/
+    /*       WHATSAPP FLOTANTE                  */
+    /*==========================================*/
+.wa-float { 
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    width: 60px; 
+    height: 60px; 
+    background-color: #25d366; /* El verde de WhatsApp */
+    color: #FFF; 
+    border-radius: 50px; 
+    text-align: center; 
+    font-size: 30px; 
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3); 
+    z-index: 1000; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-decoration: none; 
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.wa-float:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+    color: white;
+}
+
+
+/* Efecto de hundido al hacer clic */
+.wa-float:active {
+    transform: scale(0.9); /* Se achica un poquito */
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.3); /* Sombra interna para dar profundidad */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*================================================*/
+/* Estilos adicionales para la página de producto */
+/*================================================*/
+
+.product-page-body {
+    padding-top: 100px;
+}
+
+.product-detail-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    gap: 60px;
+}
+
+.product-image-section {
+    flex: 1.2;
+}
+
+.product-image-section img {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.product-info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category-tag {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+#product-name {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.product-price {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.btn-black {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #000;
+    border: 2px solid #000;
+    padding: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.extra-info {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #555;
+    line-height: 2;
+}
+
+
+    /*==================================================*/
+    /*TERMINA ESTILOS ADICIONALES DE PAGINA DE PRODUCTO */
+    /*==================================================*/
+
+
+
+
+
+
+
+    /*==========================================*/
+    /*       TODO EL FOOTER                     */
+    /*==========================================*/
+
+.main-footer {
+    background-color: #000;
+    color: #fff;
+    padding: 60px 0 20px 0;
+    margin-top: 0 !important; /* Cambiamos el 50px que tenías por 0 */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 30px;
+}
+
+
+/* LOGO EN EL FOOTER */
+
+.footer-logo {
+    font-size: 32px; /* Más grande para que se note */
+    font-weight: 900; /* Extra negrita */
+    letter-spacing: -1.5px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #fff;
+    display: inline-block;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+
+/* EL TEXTO QUE QUERÍAS: BLANCO, NEGRITA Y SEPARADO */
+
+.footer-section p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #fff !important;      /* Blanco puro */
+    font-weight: 700 !important; /* Negrita */
+    margin-bottom: 35px !important; /* MÁS APARTADO de las redes */
+    max-width: 300px;            /* Para que no se estire tanto */
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+
+
+/* LINKS DE LAS LISTAS (Soporte, etc.) */
+
+.footer-section ul li a {
+    color: #fff !important;          /* Blanco puro */
+    text-decoration: none !important; 
+    font-size: 15px !important;      /* Un toque más grandes */
+    font-weight: 500 !important;     /* Peso medio para que se lean bien */
+    transition: all 0.3s ease !important;
+    display: inline-block;           /* Para que el efecto de hover funcione mejor */
+}
+
+/* EFECTO DE HOVER ANIMADO */
+
+.footer-section ul li a:hover {
+    color: #ccc !important;          /* Cambia a gris claro al pasar el mouse */
+    transform: translateX(5px);      /* Se desplaza sutilmente a la derecha */
+    font-weight: 700 !important;     /* Se pone en negrita al seleccionarlo */
+}
+
+
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+/* REDES SOCIALES MÁS GRANDES Y SEPARADAS */
+.social-links a {
+    color: #fff;
+    font-size: 26px; /* Íconos un poco más grandes */
+    margin-right: 20px;
+    transition: transform 0.3s, color 0.3s;
+    display: inline-block;
+}
+
+.social-links a:hover {
+    transform: translateY(-5px) scale(1.1);
+    color: #ccc;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    padding-top: 20px;
+    font-size: 12px;
+    color: #777;
+}
+
+    /*==========================================*/
+    /*            TERMIN FOOTER                 */
+    /*==========================================*/
+
+
+
+
+
+    /*==========================================*/
+    /*     CREO QUE PAGINA DE PRODUCTO          */
+    /*==========================================*/
+
+
+/* Contenedor Principal */
+
+.product-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.product-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+/* Tarjeta de Imagen */
+
+.product-image-card {
+    background: #f9f9f9;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.product-image-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.product-image-card:hover img {
+    transform: scale(1.05); /* Efecto zoom suave */
+}
+
+/* Info del Producto */
+
+.category-tag {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #888;
+    font-weight: bold;
+}
+
+#product-name {
+    font-size: 32px;
+    margin: 10px 0;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.product-price {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 25px;
+}
+
+.product-description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+/* Botones con Estilo */
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background-color: #000;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #000;
+    border: 2px solid #000;
+}
+
+.btn-secondary:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Iconos de Beneficios */
+
+.product-features {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.product-features span {
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.product-features i {
+    color: #111;
+}
+
+
+
+    /*==========================================*/
+    /*             TERMINA EL CREO              */
+    /*==========================================*/
+
+
+
+
+
+
+ 
+/* ================================================= */
+/* SECCIÓN: PRODUCTOS RELACIONADOS (DETALLE)         */
+/* ================================================= */
+
+.related-products {
+    padding: 60px 20px;
+    background-color: #fafafa; /* Un fondo apenas gris para diferenciar */
+    border-top: 1px solid #eee;
+    width: 100%;
+}
+
+
+/* 1. Título de la sección centrado */
+.related-products .section-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #111;
+}
+
+
+/* 2. Grilla centrada y con tamaño máximo */
+.related-grid {
+    display: grid;
+    /* Evita que las tarjetas se estiren: min 200px, max 280px */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 280px)); 
+    gap: 30px;
+    
+    /* Centra las tarjetas dentro del contenedor */
+    justify-content: center; 
+    
+    /* Centra el contenedor mismo en la pantalla */
+    max-width: 1100px;
+    margin: 0 auto; 
+}
+
+
+/* 3. Estilo de cada tarjeta de recomendados */
+.related-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center; /* Centra los textos debajo de la foto */
+}
+
+.related-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+/* 4. Control de la imagen (Proporción 2:3 deportiva) */
+.related-item img {
+    width: 100%;
+    height: 450px; /* Altura fija para que todas midan igual */
+    object-fit: cover; /* Corta la imagen sin deformarla */
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* 5. Textos de la tarjeta */
+.related-item a {
+    text-decoration: none; /* Quita el subrayado del link */
+    color: #111;
+    display: block;
+}
+
+.related-item h3 {
+    font-size: 14px;
+    margin: 10px 0 5px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.related-item p {
+    font-weight: 800;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 10px;
+}
+    /*===================================*/
+    /*  TERMINA PRODUCTOS RELACIONADOS*   /
+    /*===================================*/
+
+
+
+    /*==========================================*/
+    /* MINIATURA DE COLOR DE PAGINA DE PRODUCTO */
+    /*==========================================*/
+
+.product-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.product-gallery {
+    display: flex; /* Miniaturas al lado de la foto grande */
+    gap: 15px;
+    flex: 1.2;
+}
+
+.product-info-card {
+    flex: 1;
+    text-align: left;
+    position: relative;
+}
+
+/* Estilo de miniaturas corregido */
+.thumbnails-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.thumb-wrapper {
+    width: 60px;
+    height: 80px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.thumb-wrapper.active { border-color: #000; }
+.thumb-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+
+/*==========================================*/
+/*          TERMINA MINIATURA               */
+/*==========================================*/
+
+
+
+    /*==========================================*/
+    /*       FORMULARIO DE CHECKOUT             */ 
+    /*==========================================*/
+
+
+/* 1. CONTENEDOR PRINCIPAL */
+.checkout-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif; /* Usamos la misma de la tienda */
+}
+
+/* 2. AVISO WHATSAPP (Con separación del header) */
+.aviso-whatsapp {
+    background-color: #fdfaf0 !important; 
+    color: #856404;
+    padding: 25px !important; 
+    border-radius: 15px !important; 
+    border: 1px solid #f9eeb1 !important;
+    font-weight: 600;
+    text-align: center;
+    
+    /* SEPARACIÓN */
+    margin-top: 40px !important;    /* Esto lo separa del header */
+    margin-bottom: 40px !important; /* Esto lo separa del formulario */
+    
+    font-size: 1.05em;
+    display: block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+}
+
+/* 3. TÍTULOS DE SECCIÓN */
+.checkout-form h3 {
+    margin-top: 40px;
+    border-bottom: 1px solid #eee; /* Línea más fina para que sea minimalista */
+    padding-bottom: 10px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #000;
+    font-weight: 800;
+}
+
+/* FILAS DE INPUTS (Mantiene tu estructura de 2 por fila) */
+.input-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+/* 4. ESTILO PREMIUM DE LOS INPUTS */
+.checkout-form input {
+    width: 100%;
+    height: 50px !important; /* Altura cómoda para celulares */
+    padding: 0 15px !important;
+    margin-bottom: 15px;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 12px !important; /* Estilo píldora suave */
+    font-size: 15px;
+    box-sizing: border-box;
+    background-color: #fcfcfc;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    outline: none !important;
+}
+
+/* HOVER: Cuando el usuario pasa el mouse */
+.checkout-form input:hover {
+    border-color: #d4af37 !important; /* El dorado de tu botón */
+    background-color: #fff !important;
+    transform: translateY(-1px); /* Efecto sutil de elevación */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* FOCUS: Cuando están escribiendo (Sensación de "Todo OK") */
+.checkout-form input:focus {
+    border-color: #28a745 !important; /* Verde éxito */
+    background-color: #fff !important;
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.1) !important;
+}
+
+/* --- EFECTO DE VALIDACION VISUAL --- */
+.checkout-form input:not(:placeholder-shown):valid {
+    border-color: #28a745 !important; /* Verde éxito si hay texto */
+    background-color: #f8fff9 !important; /* Fondo verde muy sutil */
+}
+/* TERMINA ESTILO UNIFICADO*/
+
+
+
+
+/*========================================================*/
+/* 4.       BOTÓN WHATSAPP                                */
+/*========================================================*/
+
+.btn-whatsapp {
+    position: relative; /* Necesario para que el brillo se mueva dentro */
+    overflow: hidden;    /* Corta el brillo para que no se salga del botón */
+    
+    /* Fondo con degradado metálico premium */
+    background: linear-gradient(135deg, #D4AF37 0%, #F2D472 50%, #B8860B 100%);
+    
+    /* Tipografía y Estilo de Texto */
+    color: #000; 
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+    text-decoration: none; /* Útil si usas una etiqueta <a> */
+    
+    /* Estructura y Bordes */
+    padding: 18px;
+    border: 1px solid #B8860B;
+    border-radius: 8px;
+    width: 100%;
+    display: block;
+    cursor: pointer;
+    
+    /* Espaciado */
+    margin-top: 20px;
+    margin-bottom: 50px !important;
+    
+    /* Transiciones suaves */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* --- ANIMACIÓN DE BRILLO LENTA Y PREMIUM --- */
+.btn-whatsapp::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%; /* Empieza bien afuera a la izquierda */
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-30deg); /* Inclinación elegante */
+    animation: brillo-lento 6s infinite; /* Ciclo de 6 segundos */
+}
+
+@keyframes brillo-lento {
+    0% { left: -150%; }
+    20% { left: 150%; } /* El brillo cruza rápido al principio */
+    100% { left: 150%; } /* Luego espera el resto del tiempo (pausa elegante) */
+}
+
+/* --- TU HOVER FAVORITO --- */
+.btn-whatsapp:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.5);
+    filter: brightness(1.1); /* Sutil aumento de brillo al tocarlo */
+}
+
+.btn-whatsapp:active {
+    transform: scale(0.98); /* Efecto de presión al hacer clic */
+}
+
+    /*======================================*/
+    /*TERMINA BOTON DE WHATSAPP DEL CHECKOUT*/
+    /*======================================*/
+
+
+
+/*==========================================*/
+/* 5. RESUMEN DE PRODUCTOS DEL CHECKOUT     */
+/*==========================================*/
+
+
+/* --- LISTA DE PRODUCTOS EN EL CHECKOUT (VERSION FINAL) --- */
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.checkout-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.checkout-item-name {
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #000;
+}
+
+/* Las pastillitas de Talle y Color que pediste */
+.checkout-item-details {
+    display: flex;
+    gap: 8px;
+}
+
+.checkout-item-details span {
+    background: #f4f4f4; /* Gris suave de fondo */
+    color: #666;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px; /* Forma de etiqueta redondeada */
+    text-transform: uppercase;
+}
+
+.checkout-item-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.checkout-item-price {
+    font-weight: 800;
+    font-size: 16px;
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Botón de eliminar (la X) */
+.btn-remove-item {
+    background: #f8f8f8;
+    border: none;
+    color: #ff5a80;
+    cursor: pointer;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-remove-item:hover {
+    background: #ffeef2;
+    transform: scale(1.1);
+}
+
+.total-checkout {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 2px solid #000;
+}
+/*==========================================*/
+/*   TERMINA RESUMEN DE PRODUCTOS           */
+/*==========================================*/
+
+
+
+/*========================================================*/
+/* --- ESTILO PARA EL BOTÓN DE ELIMINAR EN EL RESUMEN --- */
+/*========================================================*/
+
+
+#lista-checkout button {
+    transition: all 0.3s ease; /* Hace que el cambio de color sea suave */
+    font-family: Arial, sans-serif;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#lista-checkout button:hover {
+    color: #ff0000 !important; /* Cambia a rojo fuerte al pasar el mouse */
+    transform: scale(1.3);     /* Se agranda un poquito */
+    background-color: #fff0f0; /* Aparece un fondito rosa muy suave */
+    border-radius: 50%;        /* El fondo es circular */
+}
+
+
+    /*==================================*/
+    /*TERMINA ESTILO DE BOTON DE RESUMEN*/
+    /*==================================*/
+
+
+
+
+
+/*==================================*/
+/* Estilo para el selector de envío */
+/*==================================*/
+
+.checkout-input-envio {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: 2px solid #d4af37; /* El dorado de tu marca */
+    border-radius: 8px;
+    background-color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px; /* Un pelín más chico para que entre el texto largo */
+    font-weight: 600;
+    text-transform: uppercase; /* Le da el toque profesional */
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.checkout-input-envio:focus {
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    border-color: #b8962d;
+}
+
+/* Estilo para el cuadrito de información de tiempo que aparece abajo */
+#info-tiempo-envio {
+    background: #fefcf5; /* Un amarillito muy suave de fondo */
+    padding: 12px;
+    border-left: 4px solid #d4af37;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.5;
+}
+
+/*===============*/
+/* TERMINA ACA   */
+/*===============*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- ESTILOS GENERALES (PC y Base) --- */
+.nav-links ul {
+    display: flex;
+    list-style: none; /* Quita puntos negros */
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links ul li a {
+    text-decoration: none; /* Quita subrayado */
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+    /*TERMINA ESTILOS GENERALES*/
+
+
+    
+
+
+
+/*===========================================*/
+/* --- ESTILOS PARA LA PÁGINA DE SOPORTE --- */
+/*===========================================*/
+
+/* --- CORRECCIÓN FINAL SOPORTE --- */
+
+.soporte-main {
+    background-color: #000 !important;
+    color: #fff !important;
+    padding-top: 140px !important; /* Espacio para que el header no tape nada */
+    padding-bottom: 80px !important;
+    min-height: 60vh;
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+}
+
+.container-soporte {
+    width: 90%;
+    max-width: 800px; /* Evita que el texto se estire de punta a punta */
+    margin: 0 auto;
+    text-align: left; /* El texto queda alineado a la izquierda pero centrado en pantalla */
+}
+
+.soporte-section {
+    margin-bottom: 80px;
+}
+
+.soporte-section h1 {
+    font-size: 32px;
+    font-weight: 900;
+    text-transform: uppercase;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    color: #fff !important;
+}
+
+.soporte-item {
+    margin-bottom: 25px;
+}
+
+.soporte-item h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.soporte-item p, .soporte-section p {
+    color: #ccc;
+    line-height: 1.6; /* Le damos aire al texto para que se lea bien */
+    margin-bottom: 15px; /* Espacio entre párrafos */
+}
+
+
+
+
+
+
+.thumb-wrapper {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.2s;
+    opacity: 0.6;
+}
+
+.thumb-wrapper:hover {
+    opacity: 1;
+}
+
+.thumb-wrapper.active {
+    border-color: #000; /* O el color de SYRAX */
+    opacity: 1;
+}
+
+
+
+
+            /*======================+/
+           /* PAGINA DE PRODUCTO    */
+            /*======================*/
+
+/* PRUEBA DE FUEGO - PEGAR ARRIBA DE TODO */
+
+
+#product-desc {
+    font-size: 1rem;
+    text-align: justify; /* Opcional, para que quede prolijo el bloque de texto */
+}
+
+
+       /* --- ESTILO BASE DE LAS MINIATURAS (Círculos) --- */
+.color-variant-thumb {
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: cover !important;
+    border-radius: 50% !important; /* Siempre circulares */
+    cursor: pointer !important;
+    border: 2px solid transparent !important; /* Espacio para el borde del hover */
+    transition: all 0.3s ease !important;
+    padding: 2px !important; /* Un pequeño aire para que el borde no toque la foto */
+}
+
+/* --- HOVER INDIVIDUAL (Cuando pasás el mouse) --- */
+.color-variant-thumb:hover {
+    transform: scale(1.15); /* Crece un poquito */
+    border-color: #000 !important; /* Aparece el borde negro */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15); /* Sombra para que "flote" */
+}
+    /*TERMINA HOVER*/
+
+
+/* --- ESTADO SELECCIONADO --- */
+/* Si tu JS agrega la clase 'selected' a la imagen elegida */
+.color-variant-thumb.selected {
+    border-color: #000 !important;
+    transform: scale(1.1);
+}
+    /* TERMINA*/
+
+
+
+
+        /*texto de cantidad,talle y color*/
+
+
+/* Separamos cada bloque (Talle, Color, Cantidad) */
+.variant-item {
+    margin-top: 10px; /* Esto les da aire arriba */
+    display: flex;
+    flex-direction: column;
+    gap: 1px; /* Esto separa el texto (label) de su selector/botones */
+}
+
+/* Ponemos los títulos en negrita y un poquito más grandes si querés */
+.variant-item label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: #333;
+}
+
+/* Ajuste específico para que el nombre del color no esté pegado al título */
+#color-name-display {
+    margin-left: 5px;
+    font-weight: 400; /* Menos negrita para el nombre del color elegido */
+    color: #666;
+}
+
+.quantity-controls {
+    margin-bottom: 5px; /* Separa la cantidad del botón negro de abajo */
+}
+    /*TERMINAN TEXTOS*/
+
+
+
+
+        /*ESTILO DE GUIA DE TALLES*/
+
+.simple-size-link {
+    font-size: 0.75rem; /* Bien chiquito */
+    color: #888; /* Gris suave */
+    text-decoration: underline;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+
+.simple-size-link:hover {
+    color: #000; /* Se oscurece al pasar el mouse */
+}
+
+
+
+
+    /*===================================*/
+    /*ZOOM DE IMAGEN DE PAGINA DE PRODUCTO*/
+    /*====================================*/
+
+.product-image-card {
+    position: relative;
+    overflow: hidden; /* Corta la imagen cuando se agranda */
+    cursor: zoom-in;
+}
+
+#product-img {
+    width: 100%;
+    transition: transform 0.1s ease-out; /* Movimiento fluido */
+}
+    /*TERMINA ZOOM*/
+
+
+
+
+/*============================*/    
+/* --- SECCIÓN DE RESEÑAS --- */
+/*============================*/
+
+.reviews-section {
+    font-family: 'Helvetica', Arial, sans-serif;
+    background-color: #fff;
+}
+
+/* --- BOTÓN DE OPINIONES --- */
+#show-form-btn {
+    display: block;
+    margin: 20px 0;
+    background: #000;
+    color: #fff;
+    padding: 12px 25px; /* Un pelín más de aire */
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 8px; /* Para que siga la línea del checkout */
+    transition: all 0.2s ease; /* Para que los cambios sean suaves */
+}
+
+/* Hover en PC: Crece un poquito y brilla sutilmente */
+#show-form-btn:hover {
+    background: #222; /* Un gris muy oscuro para que se note el cambio */
+    transform: scale(1.02);
+}
+
+/* EL EFECTO DE HUNDIDO (Cuando lo tocan o hacen click) */
+#show-form-btn:active {
+    transform: scale(0.95) !important; /* Se encoge el 5% */
+    background: #000 !important;
+    box-shadow: inset 0 4px 8px rgba(0,0,0,0.3) !important; /* Sombra interna de presión */
+}
+    
+
+
+/* Tarjetas de cada reseña */
+
+.review-card {
+    background: #ffffff;
+    border: 1px solid #eaeaea;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    transition: shadow 0.3s;
+}
+
+.review-card:hover {
+    border-color: #000; /* Se marca cuando la mirás */
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.review-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #222;
+}
+
+.verified-tag {
+    color: #28a745;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.stars {
+    color: #ffc107; /* Dorado para las estrellas */
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.review-text {
+    color: #555;
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+}
+
+/* Formulario */
+#review-form-container {
+    border: 1px solid #000;
+    box-shadow: 10px 10px 0px #eee; /* Estilo retro/moderno */
+}
+    /*TERMINA TARJETA DE RESEÑA*/
+
+
+/* BOTÓN DEJAR MI OPINIÓN */
+
+#show-form-btn {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #000;
+    padding: 12px 30px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 25px; /* AHORA ES REDONDEADO */
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    outline: none;
+}
+
+#show-form-btn:hover {
+    background-color: #fff;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+    /*TERMINA CSS DE BOTON*/
+
+
+
+/* FORMULARIO DE RESEÑA */
+#review-form-container {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 15px; /* Bordes suaves para el cuadro */
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+}
+
+#new-review-form input, 
+#new-review-form select, 
+#new-review-form textarea {
+    border-radius: 10px; /* Campos más modernos */
+    border: 1px solid #ddd;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-family: inherit;
+}
+
+/* BOTÓN PUBLICAR (DENTRO DEL FORM) */
+
+#new-review-form button[type="submit"] {
+    border-radius: 25px;
+    padding: 12px;
+    background: #28a745;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#new-review-form button[type="submit"]:hover {
+    background: #218838;
+}
+
+    /*==========================*/
+    /*TERMINA SECCION DE RESEÑAS*/
+    /*==========================*/
+
+
+
+
+
+    /*=============================*/
+    /*   efecto hundir para botones*/
+    /*=============================*/
+
+    /* Lista de todos tus botones y elementos clickeables */
+.btn-whatsapp:active,
+.quantity-controls button:active,
+.color-variant-thumb:active,
+.btn-remove-item:active,
+.btn-primary:active,
+.btn-secondary:active,
+.selector-talle:active {
+    transform: scale(0.95) !important;
+    transition: transform 0.1s ease !important;
+}
+
+    /*====================================*/
+    /*termiina efecto hundir para botones=*/
+    /*====================================*/
+
+
+
+    /*=================================*/
+    /*esetilo de banner de liquidacion*/
+    /*================================*/
+
+/* El banner ocupa toda la fila de arriba */
+/* Banner con colores de alto impacto */
+
+
+
+#banner-ofertas {
+    /* Quitamos el height fijo para que el padding mande */
+    height: auto !important; 
+    min-height: 50px !important; /* Le damos una base más sólida */
+    background-color: #1a1a1a !important; 
+    display: flex !important;
+    align-items: center !important;
+    overflow: hidden !important;
+    width: 100% !important;
+    padding: 12px 0 !important; /* Esto le da el grosor (arriba y abajo) */
+    cursor: pointer;
+}
+
+#link-banner {
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    padding: 16px 0;
+}
+
+#texto-banner-ofertas {
+    color: white !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    display: inline-block !important;
+    transition: color 0.3s ease !important;
+    /* En lugar de un número, usamos la variable que enviaremos desde JS */
+    animation: marquee var(--velocidad-slider, 25s) linear infinite; 
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+
+
+
+
+
+/* 1. Transición suave para el texto (estado normal) */
+#texto-banner-ofertas {
+    transition: color 0.3s ease !important;
+}
+
+/* 2. Hover sobre el contenedor principal */
+#texto-banner-ofertas:hover {
+    filter: brightness(1.2) !important;
+}
+
+/* 3. CAMBIO DE COLOR: Cuando pasás el mouse por el banner, pintamos el texto */
+#banner-ofertas:hover #texto-banner-ofertas {
+    color: #D4AF37 !important; /* El dorado de Syrax */
+}
+
+/* 4. Aseguramos que el link ocupe todo el banner para que el hover sea total */
+#banner-ofertas a {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    text-decoration: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*=======================*/
+    /*   MENU SUBCATEGORIA   */
+    /*=======================*/
+
+
+    /* Estilos para el Menú Desplegable */
+/* --- SOLO PARA PC (DESKTOP) --- */
+@media (min-width: 1025px) {
+    /* 1. Permitimos que el LI sea el contenedor relativo */
+    #menu-categorias li.dropdown {
+        position: relative;
+        display: block; /* Cambiamos de inline-block a block para el contenedor */
+    }
+
+    /* 2. El Dropdown (La caja negra) */
+    #menu-categorias .dropdown-content {
+        display: none !important; /* Oculto por defecto */
+        position: absolute;
+        background-color: #111 !important; 
+        min-width: 200px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+        z-index: 9999; /* Por encima de todo */
+        padding: 5px 0;
+        border: 3px solid #333;
+        left: 0;
+        top: 100%;
+        list-style: none !important;
+        border-radius: 12px;
+    }
+
+    /* 3. Mostrar al pasar el mouse */
+    #menu-categorias li.dropdown:hover .dropdown-content {
+        display: block !important;
+    }
+
+    /* 4. LOS LINKS DE LAS SUBCATEGORÍAS (Aquí estaba el error) */
+    #menu-categorias .dropdown-content li a {
+        color: #ffffff !important; 
+        padding: 12px 20px !important; /* Espacio para el clic */
+        text-decoration: none !important;
+        display: block !important; /* ¡FUNDAMENTAL! Para que vayan uno abajo del otro */
+        font-size: 13px !important;
+        text-align: left !important;
+        text-transform: uppercase !important;
+        margin: 0 !important; /* Quitamos el margen de 15px que los separaba */
+        width: 100%;
+        transform: none !important; /* Quitamos el scale que pusiste arriba */
+        background: transparent !important;
+    }
+
+    /* 5. Hover de la subcategoría */
+    #menu-categorias .dropdown-content li a:hover {
+        background-color: #ff4d4d!important; 
+        transform: none !important;
+    }
+
+    /* 6. Flechita */
+    .dropdown i {
+        font-size: 10px;
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+    }
+    .dropdown:hover i {
+        transform: rotate(180deg);
+    }
+}
+
+/*==============*/
+/*   FIN   */
+/*============*/
+
+
+/* NOSE LA VERDAD*/
+
+/* Oculta todas las pestañas por defecto */
+.tab-content {
+    display: none;
+}
+
+/* Solo muestra la que tiene la clase 'active' */
+.tab-content.active {
+    display: block;
+}
+
+
+
+
+/*===================================*/
+/* PAGINA DE PRODUCTO (LIQUIDACION)*/
+/*==================================*/
+
+
+/* Para que el precio tachado se vea gris y con línea */
+.precio-tachado {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 0.9em;
+    margin-right: 8px;
+}
+
+/* El precio de liquidación en negro fuerte */
+.precio-actual {
+    color: #000;
+    font-weight: bold;
+}
+
+/* Estilo del tag rojo (si no lo tenías) */
+.badge-descuento {
+    background: linear-gradient(135.61deg, #FF0000 0%, #D40000 100%); /* Un degradado sutil para que sea pro */
+    color: white;
+    padding: 8px 10px; /* Más grande como pediste */
+    border-radius: 8px;
+    font-weight: 900; /* Super negrita */
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    
+    /* POSICIÓN FLOTANTE */
+    position: absolute;
+    top: -3px;
+    right: 15px;
+    
+    /* ALINEACIÓN INTERNA */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    /* EFECTOS VISUALES */
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+    z-index: 10;
+}
+
+/*===========*/
+/*   FIN    */
+/*===========*/
+
+
+
+/*=========================*/
+/*PAGINA DE PRODUCTO RESEÑA*/
+/*==========================*/
+
+/* Tarjeta de reseña del cliente */
+.review-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.review-name {
+    font-weight: 900;
+    font-size: 1.1rem;
+    color: #111;
+}
+
+.stars {
+    margin: 8px 0;
+    letter-spacing: 2px;
+}
+
+/* Contenedor de la Respuesta de Syrax */
+.admin-reply-container {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #ff0000; /* Rojo Syrax */
+    border-radius: 0 8px 8px 0;
+    animation: slideIn 0.5s ease-out;
+}
+
+.admin-label {
+    color: #ff0000;
+    font-weight: 700;
+    font-size: 0.3rem;
+    display: block;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Animación sutil para que la respuesta "aparezca" con estilo */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+
+
+
+
+
+
+/*====================*/
+/*    LOGIN SYRAX     */
+/*=====================*/
+
+/* Overlay (Fondo oscuro) */
+.modal-overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+}
+
+/* Caja del Login */
+.modal-box {
+    background-color: #0a0a0a;
+    margin: 10% auto;
+    padding: 30px;
+    border: 1px solid #222;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    color: #888;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.close-modal:hover { color: #ff4d4d; }
+
+/* Reutilizá los estilos que ya tenías para .input-group, .btn-primary, etc. */
+
+
+.login-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    padding: 20px;
+}
+
+.login-box {
+    background: #0a0a0a;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid #1a1a1a;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
+
+#auth-subtitle { 
+    color: #ffffff; 
+    margin-bottom: 10px; 
+    font-size: 0.8rem; 
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff4d4d;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 45px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus { border-color: #ff4d4d; }
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-primary:hover { background: #cc0000; transform: translateY(-2px); }
+
+.auth-options { margin-top: 25px; }
+#toggle-auth { color: #ccc; font-size: 0.9rem; cursor: pointer; }
+#toggle-auth span { color: #ff4d4d; font-weight: bold; }
+
+.beneficios-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    text-align: left;
+    display: inline-block;
+}
+
+.beneficios-lista li {
+    color: #ffffff;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    display: block; /* Esto hace que queden uno abajo del otro */
+}
+
+
+
+
+
+
+
+/* Botón Moderno de Google para Syrax */
+.btn-google-modern {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    background-color: #1a1a1a; /* Fondo oscuro que combina con el modal */
+    color: #ffffff;
+    border: 1px solid #333; /* Borde sutil */
+    border-radius: 8px;
+    padding: 1px; /* Espacio para el wrapper del icono */
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+/* El cuadro blanco del icono (estilo oficial pero moderno) */
+.google-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2px;
+}
+
+.google-icon-wrapper img {
+    width: 18px;
+}
+
+/* El texto del botón */
+.btn-text {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 14px;
+    margin-right: 42px; /* Compensación para que el texto quede centrado real */
+}
+
+/* Efectos al pasar el mouse */
+.btn-google-modern:hover {
+    background-color: #222;
+    border-color: #f3c300; /* Resalte en dorado Syrax al pasar el mouse */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-google-modern:active {
+    transform: scale(0.98);
+}
+
+
+
+
+/*===================*/
+/*  BOTON FAVORITOS  */
+/*==================*/
+
+
+/* Contenedor de botones en la tarjeta */
+.product-buttons {
+    display: flex;
+    gap: 10px; /* Espacio entre el corazón y el botón negro */
+    align-items: center;
+    margin-top: 15px;
+}
+
+/* Botón de favoritos al lado del botón de compra */
+.fav-btn-inline {
+    background: #f5f5f5; /* Fondo gris muy suave */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 45px; /* Misma altura que el botón de Ver Producto */
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.fav-btn-inline i {
+    color: #333;
+    font-size: 1.2rem;
+}
+
+/* Cuando está activo (Rojo Syrax) */
+.fav-btn-inline.active {
+    background: #fff;
+    border-color: #e74c3c;
+}
+
+.fav-btn-inline.active i {
+    color: #e74c3c;
+    font-weight: 900; /* Corazón relleno */
+}
+
+.fav-btn-inline:hover {
+    background: #eeeeee;
+    transform: translateY(-2px);
+}
+
+/* Aseguramos que el botón de "Ver Producto" use el espacio restante */
+.buy-btn {
+    width: 100%;
+    height: 42px;
+    /* Tu estilo actual de buy-btn se mantiene aquí */
+}
+
+
+
+/*================================*/
+/*  FAVRITOS PAGINA DE PRODUCTO  */
+/*===============================*/
+
+
+.p-det-actions-row {
+    display: flex;
+    align-items: flex-end; /* Alinea los botones con la base de la caja de cantidad */
+    gap: 200px;            /* Espacio horizontal entre cantidad y los iconos */
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.p-det-social-icons {
+    display: flex;
+    gap: 10px; /* Espacio entre el corazón y el WhatsApp */
+    padding-bottom: 0; /* Asegura que queden al ras */
+}   
+
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 1.5px solid #000;
+    border-radius: 25px;
+    height: 45px; /* Misma altura que tus botones para que sea simétrico */
+    padding: 0 10px;
+}
+
+
+/* Botón Favorito cuadrado y minimalista */
+.p-det-fav-btn {
+    width: 45px;
+    height: 45px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.p-det-fav-btn:hover {
+    border-color: #ff4757;
+}
+
+.p-det-fav-btn.active {
+    background: #fff1f2;
+    border-color: #ff4757;
+    color: #ff4757;
+}
+
+/* Botón WhatsApp compacto a la derecha */
+.p-det-ws-btn {
+    width: 45px; /* Igual al de favoritos */
+    height: 45px; /* Igual al de favoritos */
+    background: #25d366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Quitamos el flex-grow para que no sea largo */
+    flex: none; 
+    font-size: 1.3rem; /* Un poco más grande el icono ya que no hay texto */
+    transition: background 0.3s ease;
+}
+
+.p-det-ws-btn:hover {
+    background: #128c7e;
+    transform: scale(1.05);
+}
+
+/* Ajuste para el icono si quedó con margen por el gap anterior */
+.p-det-ws-btn i {
+    margin: 0;
+}
+
+
+/*================*/
+/*      FIN       */
+/*===============*/
+
+/*==================================================*/
+/* --- BOTÓN DE WHATSAPP DE TARJETA DE PRODUCTTO--- */
+/*==================================================*/
+
+.share-ws-btn {
+    background-color: #25d366; /* Verde oficial de WhatsApp */
+    color: white !important;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Evita que el botón se deforme en móviles */
+    border: none;
+}
+
+.share-ws-btn i {
+    font-size: 1.4rem; /* Tamaño ideal para el logo de WA */
+}
+
+.share-ws-btn:hover {
+    background-color: #128c7e; /* Un verde más oscuro al pasar el mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+/*========*/
+/*  FIN  */
+/*=======*/
+
+
+
+
+
+
+
+/*================================*/
+/* Contenedor del menú de usuario */
+/*================================*/
+/*======================================================================== */
+/* mantiene el logo, el menu, el inicio de sesion y el carrito en el lugar*/
+/*=======================================================================*/
+
+.navbar-container {
+    display: grid;
+    grid-template-areas: 
+        "banner banner banner"
+        "logo menu acciones";
+    grid-template-columns: 1fr auto 1fr; 
+    align-items: center;
+    width: 100%;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+    /* --- LOS CAMBIOS ESTÁN AQUÍ --- */
+    padding: 10px 2%; /* Aumentamos 20px arriba/abajo para que sea más ancho */
+    max-width: 100%;  /* Nos aseguramos que ocupe todo el ancho */
+    box-sizing: border-box;
+}
+
+
+
+.navbar-main {
+    grid-area: logo;
+}
+
+.nav-links {
+    grid-area: menu;
+    display: flex;
+    justify-content: center;
+}
+
+/* El carrito a la derecha */
+.cart-container {
+    grid-area: carrito;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 5%;
+}
+
+
+/* Ajustes finos de estilo */
+.logo {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #000;
+    text-decoration: none;
+}
+
+#menu-categorias {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+#menu-categorias li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+#menu-categorias li a:hover {
+    color: #000;
+}
+
+/* 6. Carrito */
+.cart-container {
+    cursor: pointer;
+    gap: 8px;
+}
+
+.cart-label {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+
+
+
+#user-link {
+    text-decoration: none;
+    color: #000; /* O el color de tu fuente */
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.navbar-actions {
+    grid-area: acciones;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Lo empuja al final de su celda */
+    gap: 20px;                /* Un poquito más de espacio entre ellos para que respire */
+}
+
+
+.user-menu-container {
+
+    position: relative;
+    display: inline-block;
+    
+}
+
+/* La caja del menú desplegable */
+.user-dropdown-list {
+    display: none;
+    position: absolute;
+    background-color: #0a0a0a;
+    min-width: 180px;
+    right: 0;
+    top: 100%;
+    border: 1px solid #333;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+    z-index: 1000;
+    overflow: visible; /* CAMBIAMOS de hidden a visible para que el puente funcione */
+    margin-top: 10px;
+
+}
+
+.user-dropdown-list::before {
+    content: "";
+    position: absolute;
+    top: -15px; /* Cubre el hueco del margin-top */
+    left: 0;
+    width: 100%;
+    height: 15px;
+    background: transparent; /* Es invisible, pero detecta el mouse */
+}
+
+
+/* Los enlaces (Mi Perfil / Cerrar Sesión) */
+.user-dropdown-list a {
+
+    color: #ffffff !important; /* FORZAMOS el color blanco para las letras */
+    padding: 14px 18px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase; /* Queda más fachero en mayúsculas */
+    letter-spacing: 1px;
+    transition: 0.3s all ease;
+}
+
+
+/* El ícono al lado del texto */
+
+.user-dropdown-list a i {
+
+    color: #ff4d4d; /* El rojo de Syrax para los íconos */
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+
+}
+
+
+#user-link:hover {
+    color: #ff4d4d !important; /* El rojo de Syrax */
+    transform: translateY(-2px); /* Un pequeño saltito hacia arriba */
+}
+
+/* Cuando pasás el mouse por arriba de una opción */
+.user-dropdown-list a:hover {
+    background-color: #ff4d4d; /* Fondo rojo al hacer hover */
+    color: #ffffff !important; /* El texto sigue blanco */
+}
+
+
+/* Cuando hacés hover en la opción, el ícono se pone blanco también */
+
+.user-dropdown-list a:hover i {
+
+    color: #ffffff;
+}
+
+
+/* Mostrar el menú */
+
+.user-menu-container:hover .user-dropdown-list {
+    display: block;
+
+}
+/*===========*/
+ /*   FIN  */
+ /*=========*/
+
+
+
+
+ /*==================================*/
+ /*boton volver a la tienda flotante*/
+ /*================================*/
+
+.btn-volver-flotante {
+    /* CAMBIO CLAVE: De fixed a sticky */
+    position: -webkit-sticky; 
+    position: sticky;
+    top: 10px;        /* Se queda pegado a 10px del tope al bajar */
+    left: 20px;       /* Alineado a la izquierda */
+    z-index: 9999; 
+    
+    /* Mantenemos tu estilo que está bárbaro */
+    display: inline-flex; /* Para que no ocupe todo el ancho */
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0 10px 20px; /* Margen inicial para que nazca debajo del logo */
+    
+    padding: 10px 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px); /* Toque pro para que no tape feo */
+    color: #000000;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px; 
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-volver-flotante:hover {
+    background-color: #000000;
+    color: #ffffff;
+    transform: translateX(-3px); /* Efecto hacia la izquierda */
+}
+
+
+
+/*=============*/
+/*     fin    */
+/*===========*/
+
+/* Escondemos el botón de menú en PC */
+@media (min-width: 769px) {
+    .menu-mobile-btn {
+        display: none;
+    }
+}
+
+
+/* ============================================================
+   ESTILOS MOBILE - EMPEZANDO DE 0
+   ============================================================ */
+
+@media (max-width: 768px) {
+    /*==============================*/
+    /* 1. Ajustes del Header y Logo */
+    /*==============================*/
+
+    /* Reacomodamos el Header en 3 columnas */
+    .navbar-container {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr; /* Izq (Menu), Centro (Logo), Der (Acciones) */
+        align-items: center;
+        padding: 10px 15px;
+        height: 70px;
+        position: sticky;
+        top: 0;
+        background: #fff;
+        z-index: 10000;
+    }
+
+    /* Botón Hamburguesa */
+    .menu-mobile-btn {
+        display: block; /* Lo mostramos solo aquí */
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    /* Logo Centrado */
+    .navbar-main {
+        justify-self: center;
+    }
+    .logo {
+        font-size: 22px !important;
+        letter-spacing: 2px;
+    }
+
+    /* Acciones a la derecha */
+    .navbar-actions {
+        justify-self: end;
+        gap: 15px;
+    }
+    .cart-label, #user-text {
+        display: none; /* Escondemos textos para que no se amontone */
+    }
+
+    /* CONVERTIR EL NAV EN MENÚ LATERAL */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Escondido */
+        width: 80%;
+        height: 100vh;
+        background: #fff;
+        flex-direction: column;
+        transition: 0.4s ease all;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+        padding-top: 80px;
+        z-index: 10001;
+    }
+
+    .nav-links.active {
+        left: 0; /* Aparece al clickear */
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 15px 0;
+        font-size: 16px;
+    }
+
+    /* Ajuste para que los dropdowns se vean bien en móvil */
+    .dropdown-content {
+        position: relative;
+        display: none; /* Se abrirán con un click si querés, o podés dejarlos visibles */
+        box-shadow: none;
+        padding-left: 20px;
+        background: #f9f9f9;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block; /* En móvil el hover es el touch */
+    }
+
+
+
+
+    /* 2. El Banner/Slider Principal */
+
+    /* 3. La Grilla de Productos (Clave: poner de a 2) */
+
+    /* 4. El Menú de Navegación (Hacerlo tipo hamburguesa o scroll horizontal) */
+
+    /* 5. Carrito Lateral (Side Cart) */
+
+    /* 6. Página de Producto Individual */
+
+}

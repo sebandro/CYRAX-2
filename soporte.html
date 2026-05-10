@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte - CYRAX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+<header class="navbar-container">
+    <div class="navbar-main">
+        <a href="index.html" class="logo">SYRAX</a>
+    </div>
+
+    <nav class="nav-links">
+        <ul id="menu-categorias">
+            <li><a href="index.html" class="btn-bounce">inicio</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle">Calzas <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="productos.html?cat=calzas&sub=con-frunce">Con Frunce</a></li>
+                    <li><a href="productos.html?cat=calzas&sub=sin-frunce">Sin Frunce</a></li>
+                    <li><a href="productos.html?cat=calzas">Ver Todas</a></li>
+                </ul>
+            </li>
+            <li><a href="productos.html?cat=tops" class="btn-bounce">Tops</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle">Sets <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="productos.html?cat=sets&sub=cortos">Sets Cortos</a></li>
+                    <li><a href="productos.html?cat=sets&sub=largos">Sets Largos</a></li>
+                    <li><a href="productos.html?cat=sets">Ver Todos</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle">Shorts <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="productos.html?cat=shorts&sub=con-frunce">Con Frunce</a></li>
+                    <li><a href="productos.html?cat=shorts&sub=sin-frunce">Sin Frunce</a></li>
+                    <li><a href="productos.html?cat=shorts">Ver Todos</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="navbar-actions">
+        <div class="user-menu-container">
+            <a href="javascript:void(0)" id="user-link" class="btn-bounce">
+                <i class="fas fa-user"></i> <span id="user-text">Ingresar</span>
+            </a>
+            <div id="user-dropdown" class="user-dropdown-list">
+                <a href="perfil.html"><i class="fas fa-id-card"></i> Mi Perfil</a>
+                <a href="javascript:void(0)" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+            </div>
+        </div>
+
+        <div class="cart-container" onclick="toggleCart()">
+            <span class="cart-label">CARRITO</span>
+            <div class="cart-wrapper">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" class="cart-badge">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="soporte-main">
+    <div class="container-soporte">
+        <section id="faq" class="soporte-section">
+            <h1>Preguntas Frecuentes</h1>
+            <div class="soporte-item">
+                <h3>¿Cuánto tarda el envío?</h3>
+                <p>Realizamos envíos a todo el país. El tiempo estimado de entrega es de 3 a 7 días hábiles.</p>
+            </div>
+            <div class="soporte-item">
+                <h3>¿Cómo puedo pagar?</h3>
+                <p>Aceptamos tarjetas de crédito, débito, transferencia bancaria y Mercado Pago.</p>
+            </div>
+        </section>
+
+        <section id="cambios" class="soporte-section">
+            <h1>Políticas de Cambio</h1>
+            <p>Tenés 30 días para realizar el cambio de tu prenda. La ropa deportiva de CYRAX debe estar con su etiqueta original y sin uso.</p>
+        </section>
+
+        <section id="talles" class="soporte-section">
+            <h1>Guía de Talles</h1>
+            <p>Nuestras calzas y tops están diseñados con tela premium elastizada. Si estás entre dos talles, te recomendamos elegir el más chico para mayor soporte o el más grande para más comodidad.</p>
+        </section>
+    </div>
+</main>
+
+
+
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<div class="side-cart" id="side-cart">
+    <div class="cart-header">
+        <h2>TU CARRITO</h2>
+        <span class="close-cart" onclick="toggleCart()">✕</span>
+    </div>
+    <div id="cart-items-side" class="cart-body"></div>
+    <div class="cart-footer">
+        <div class="total-row">
+            <span></span>
+            <span id="cart-total-side">$0</span>
+        </div>
+        <a href="checkout.html">
+        <button class="checkout-btn">Finalizar Compra</button>
+        </a>
+    </div>
+</div>
+
+
+
+
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h2 class="footer-logo">SYRAX</h2>
+            <p>Ropa deportiva premium diseñada para potenciar tu rendimiento. Supera tus límites con estilo.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3>Soporte</h3>
+            <ul>
+                <li><a href="soporte.html#faq">Preguntas Frecuentes</a></li>
+                <li><a href="soporte.html#cambios">Políticas de Cambio</a></li>
+                <li><a href="soporte.html#talles">Guía de Talles</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contacto</h3>
+            <ul class="contact-list">
+                <li><a href="mailto:info@cyrax.com"><i class="fas fa-envelope"></i> info@cyrax.com</a></li>
+                <li><a href="#"><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</a></li>
+                <li><a href="https://wa.me/5491112345678"><i class="fab fa-whatsapp"></i> +54 9 11 1234-5678</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 SYRAX - Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script src="js/config.js"></script>
+
+<script src="js/main.js"></script>
+</body>
+</html>

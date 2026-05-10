@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYRAX | Detalle de Producto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1504209424649289');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1504209424649289&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+<!-- Etiquetas para que WhatsApp muestre la imagen -->
+<meta property="og:title" content="Nombre del Producto - Syrax">
+<meta property="og:description" content="Comprá esta prenda en Syrax Express.">
+<meta property="og:image" content="URL_DE_LA_IMAGEN_DEL_PRODUCTO">
+<meta property="og:url" content="URL_DE_TU_PAGINA">
+<meta property="og:type" content="website">
+
+
+
+
+</head>
+<body>
+
+
+<div id="banner-ofertas" class="banner-inline">
+       <a href="#" id="oferta_banner_link"></a>
+
+        <p id="texto-banner-ofertas">
+        </p>
+   </a>
+</div>
+
+
+<header class="navbar-container">
+    <div class="navbar-main">
+        <a href="index.html" class="logo">SYRAX</a>
+    </div>
+
+    <nav class="nav-links">
+        <ul id="menu-categorias">
+            <li><a href="index.html" class="btn-bounce">inicio</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle">Calzas <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="productos.html?cat=calzas&sub=con-frunce">Con Frunce</a></li>
+                    <li><a href="productos.html?cat=calzas&sub=sin-frunce">Sin Frunce</a></li>
+                    <li><a href="productos.html?cat=calzas">Ver Todas</a></li>
+                </ul>
+            </li>
+            <li><a href="productos.html?cat=tops" class="btn-bounce">Tops</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle">Sets <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="productos.html?cat=sets&sub=cortos">Sets Cortos</a></li>
+                    <li><a href="productos.html?cat=sets&sub=largos">Sets Largos</a></li>
+                    <li><a href="productos.html?cat=sets">Ver Todos</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle">Shorts <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="productos.html?cat=shorts&sub=con-frunce">Con Frunce</a></li>
+                    <li><a href="productos.html?cat=shorts&sub=sin-frunce">Sin Frunce</a></li>
+                    <li><a href="productos.html?cat=shorts">Ver Todos</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="navbar-actions">
+        <div class="user-menu-container">
+            <a href="javascript:void(0)" id="user-link" class="btn-bounce">
+                <i class="fas fa-user"></i> <span id="user-text">Ingresar</span>
+            </a>
+            <div id="user-dropdown" class="user-dropdown-list">
+                <a href="perfil.html"><i class="fas fa-id-card"></i> Mi Perfil</a>
+                <a href="javascript:void(0)" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+            </div>
+        </div>
+
+        <div class="cart-container" onclick="toggleCart()">
+            <span class="cart-label">CARRITO</span>
+            <div class="cart-wrapper">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" class="cart-badge">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<main class="product-container">
+    <div class="product-layout">
+        <div class="product-gallery">
+            <div id="thumbnails-container" class="thumbnails-container"></div>
+            
+            <div class="product-image-card">
+                <img id="product-img" src="" alt="Producto">
+            </div>
+        </div>
+
+        <div class="product-info-card">
+            <span class="category-tag" id="product-category">CATEGORÍA</span>
+            <span id="descuento-tag-producto" class="badge-descuento" style="display: none;"></span>      
+              <h1 id="product-name">Nombre del Producto</h1>
+            <p class="product-price" id="product-price">$0</p>
+            
+            <div class="product-variants">
+                <div class="variant-item">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <label for="talle-selector">TALLE:</label>
+                    <a href="soporte.html#guia-talles" target="_blank" class="simple-size-link">
+                            ¿Cuál es mi talle?
+                    </a>
+                </div>
+                    <select id="talle-selector" class="custom-select">
+                    </select>
+           </div>
+
+                <div class="variant-item">
+                    <label>COLOR: <span id="color-name-display" style="font-weight: bold; color: #555;">Seleccioná</span></label>
+                    <div id="color-options" class="color-options-grid">
+                        </div>
+                </div>
+
+                <div class="p-det-actions-row">
+                <div class="variant-item">
+                    <label>CANTIDAD:</label>
+                    <div class="quantity-controls">
+                        <button type="button" onclick="changeQty(-1)">-</button>
+                        <input type="number" id="product-qty" value="1" readonly>
+                        <button type="button" onclick="changeQty(1)">+</button>
+                    </div>
+                </div>
+           
+  <div class="p-det-social-icons">
+        <!-- Botón Favoritos -->
+        <button id="btn-favorito-detalle" class="p-det-fav-btn" title="Agregar a favoritos">
+            <i class="far fa-heart"></i>
+        </button>
+
+        <!-- Botón WhatsApp -->
+        <a id="btn-whatsapp-detalle" href="#" target="_blank" class="p-det-ws-btn">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+</div>
+</div>
+
+
+
+            <div class="action-buttons">
+                <button id="add-cart" class="btn-primary">
+                    <i class="fas fa-shopping-cart"></i> AGREGAR AL CARRITO
+                </button>
+
+                <button id="buy-now" class="btn-secondary">
+                    COMPRAR AHORA
+                </button>
+            </div>
+
+            <div class="product-features">
+                <span><i class="fas fa-truck"></i> Envío rápido a todo el país</span>
+                <span><i class="fas fa-undo"></i> Cambios sin cargo por 30 días</span>
+                <span><i class="fas fa-shield-alt"></i> Pago 100% seguro</span>
+            </div>
+        </div>
+    </div>
+    <div class="product-description-full">
+                <p id="product-desc">Cargando descripción...</p>
+            </div>
+
+
+
+            <section class="reviews-section" style="padding: 40px 20px; max-width: 800px; margin: 0 auto; border-top: 1px solid #eee;">
+    <h3>Opiniones de nuestras clientas</h3>
+    
+            <button id="show-form-btn">DEJAR MI OPINIÓN</button>
+    <div id="review-form-container" style="display: none; background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+        <form id="new-review-form">
+            
+            <select id="rev-rating" style="width: 100%; margin-bottom: 10px; padding: 10px; border: 1px solid #ddd;">
+                <option value="5">⭐⭐⭐⭐⭐ (Excelente)</option>
+                <option value="4">⭐⭐⭐⭐ (Muy buena)</option>
+                <option value="3">⭐⭐⭐ (Buena)</option>
+                <option value="3">⭐⭐ (Normal)</option>
+                <option value="3">⭐ (Mala)</option>
+            </select>
+
+            <textarea id="rev-text" placeholder="¿Qué te pareció este Producto?" rows="3" required style="width: 100%; margin-bottom: 10px; padding: 10px; border: 1px solid #ddd;"></textarea>
+            
+            <button type="submit" style="width: 100%; padding: 12px; background: #28a745; color: #fff; border: none; font-weight: bold; cursor: pointer;">PUBLICAR RESEÑA</button>
+        </form>
+    </div>
+
+    <div id="reviews-list">
+        </div>
+</section>
+</main>
+
+
+
+
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<div class="side-cart" id="side-cart">
+    <div class="cart-header">
+        <h2>TU CARRITO</h2>
+        <span class="close-cart" onclick="toggleCart()">✕</span>
+    </div>
+    <div id="cart-items-side" class="cart-body"></div>
+    <div class="cart-footer">
+        <div class="total-row">
+            <span></span>
+            <span id="cart-total-side">$0</span>
+        </div>
+        <a href="checkout.html">
+        <button class="checkout-btn">Finalizar Compra</button>
+        </a>
+    </div>
+</div>
+
+
+
+
+
+<section class="related-products">
+    <div class="container">
+        <h2 class="section-title">TAMBIÉN TE PUEDE GUSTAR</h2>
+        <div id="related-container" class="related-grid">
+            </div>
+    </div>
+</section>
+
+
+
+
+
+<div id="login-modal" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-modal">&times;</span>
+        
+        <h2 id="auth-title">INICIAR SESIÓN</h2>
+        <!-- Nuevo subtítulo y lista de beneficios -->
+        <p id="auth-subtitle">BENEFICIOS DE LA CUENTA:</p>
+        <ul class="beneficios-lista">
+            <li>🔥 Accedé a Ofertas Exclusivas</li>
+            <li>♥️ Guardá tus favoritos</li>
+            <li>🚚 Guardá tus datos de envío</li>
+            <li>✔️ Opiniones verificadas</li>
+        </ul>
+
+        <form id="auth-form">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Contraseña" required>
+            </div>
+            <button type="submit" id="btn-auth" class="btn-primary">ENTRAR</button>
+        </form>
+
+        <div class="auth-options">
+            <p id="toggle-auth">¿No tenés cuenta? <span>Registrate aquí</span></p>
+            <hr>
+            <!-- Botón de Google con imagen optimizada -->
+            <button id="btn-google" class="btn-google-modern">
+    <div class="google-icon-wrapper">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
+    </div>
+    <span class="btn-text">Continuar con Google</span>
+</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h2 class="footer-logo">SYRAX</h2>
+            <p>Ropa deportiva premium diseñada para potenciar tu rendimiento. Supera tus límites con estilo.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/syrax.indumentariafitt/?__pwa=1"  target="_blank"  rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+               
+                
+            </div>
+        </div>
+
+        <div class="footer-section">
+            <h3>Soporte</h3>
+            <ul>
+                <li><a href="soporte.html#faq" target="_blank"  rel="noopener noreferrer">Preguntas Frecuentes</a></li>
+                <li><a href="soporte.html#cambios" target="_blank"  rel="noopener noreferrer">Políticas de Cambio</a></li>
+                 <li><a href="soporte.html#talles" target="_blank"  rel="noopener noreferrer">Guía de Talles</a></li>
+            </ul>
+        </div>
+
+    <div class="footer-section">
+    <h3>Contacto</h3>
+    <ul class="contact-list">
+        <li><a href="mailto:syraxindumentaria@outlook.com" target="_blank"  rel="noopener noreferrer"><i  class="fas fa-envelope" ></i> syraxindumentaria@outlook.com</a></li>
+        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Villa Luzuriaga , Buenos Aires, Argentina</a></li>
+        <li><a href="https://wa.me/5491112345678" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +54 9 11 1234-5678</a></li>
+    </ul>
+</div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2026 SYRAX - Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+
+
+
+
+
+
+<a href="https://wa.me/5491112345678" class="wa-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

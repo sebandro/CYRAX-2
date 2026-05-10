@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra | CYRAX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1504209424649289');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1504209424649289&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+
+
+
+</head>
+<body>
+
+
+<div id="banner-ofertas" class="banner-inline">
+         <a href="#" id="oferta_banner_link">
+
+        <p id="texto-banner-ofertas">
+        </p>
+   </a>
+</div>
+
+    
+<header class="navbar-container">
+    <div class="navbar-main">
+        <a href="index.html" class="logo">SYRAX</a>
+    </div>
+
+    <nav class="nav-links">
+        <ul id="menu-categorias">
+            <li><a href="index.html" class="btn-bounce">inicio</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle">Calzas <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="productos.html?cat=calzas&sub=con-frunce">Con Frunce</a></li>
+                    <li><a href="productos.html?cat=calzas&sub=sin-frunce">Sin Frunce</a></li>
+                    <li><a href="productos.html?cat=calzas">Ver Todas</a></li>
+                </ul>
+            </li>
+            <li><a href="productos.html?cat=tops" class="btn-bounce">Tops</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle">Sets <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="productos.html?cat=sets&sub=cortos">Sets Cortos</a></li>
+                    <li><a href="productos.html?cat=sets&sub=largos">Sets Largos</a></li>
+                    <li><a href="productos.html?cat=sets">Ver Todos</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle">Shorts <i class="fas fa-chevron-down"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="productos.html?cat=shorts&sub=con-frunce">Con Frunce</a></li>
+                    <li><a href="productos.html?cat=shorts&sub=sin-frunce">Sin Frunce</a></li>
+                    <li><a href="productos.html?cat=shorts">Ver Todos</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="navbar-actions">
+        <div class="user-menu-container">
+            <a href="javascript:void(0)" id="user-link" class="btn-bounce">
+                <i class="fas fa-user"></i> <span id="user-text">Ingresar</span>
+            </a>
+            <div id="user-dropdown" class="user-dropdown-list">
+                <a href="perfil.html"><i class="fas fa-id-card"></i> Mi Perfil</a>
+                <a href="javascript:void(0)" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+            </div>
+        </div>
+
+        <div class="cart-container" onclick="toggleCart()">
+            <span class="cart-label">CARRITO</span>
+            <div class="cart-wrapper">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-count" class="cart-badge">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+
+
+<div class="overlay" id="overlay" onclick="toggleCart()"></div>
+<div class="side-cart" id="side-cart">
+    <div class="cart-header">
+        <h2>TU CARRITO</h2>
+        <span class="close-cart" onclick="toggleCart()">✕</span>
+    </div>
+    <div id="cart-items-side" class="cart-body"></div>
+    <div class="cart-footer">
+        <div class="total-row">
+            <span></span>
+            <span id="cart-total-side">$0</span>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<main>
+   <div class="checkout-container">
+    <div class="checkout-header-info">
+        <p class="aviso-whatsapp"> La compra se finaliza por WhatsApp y se abona al recibir el pedido</p>
+        <p class="aviso-whatsapp">Tus datos y resumen de compra se copian automaticamente, solo tenes que enviar el msj </p>
+    </div>
+
+    <div class="checkout-grid">
+        <form id="checkout-form" class="checkout-form">
+            <h3>Tus Datos de Contacto</h3>
+            <div class="input-row">
+                <input type="text" id="nombre" placeholder="Nombre completo" required>
+                <input type="tel" id="telefono" placeholder="Número de teléfono" required>
+            </div>
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+
+           <h3>Dirección de Entrega</h3>
+            <div class="input-row">
+            <input type="text" id="calle" placeholder="Nombre de la calle" style="flex: 2;" required>
+            <input type="number" id="altura" placeholder="Altura" style="flex: 1;" required>
+                </div>
+
+            <input type="text" id="entre_calles" placeholder="Entre calles (opcional)">
+            <div class="input-row">
+            <input type="text" id="ciudad" placeholder="Ciudad / Distrito" required>
+                <input 
+             type="text" 
+            id="codigo_postal" 
+            placeholder="Ej: B1755" 
+             maxlength="5" 
+             required 
+            oninput="this.value = this.value.toUpperCase(); calcularEnvioInteligente();"
+            style="text-transform: uppercase;"
+>
+            
+        </div>
+        <div id="aviso-cobertura" style="font-size: 12px; font-weight: bold; margin-top: 5px; min-height: 15px;"></div>
+            
+            <div id="selector-servicio-envio" style="display: none; margin-top: 15px;">
+    <label style="font-size: 13px; font-weight: bold; margin-bottom: 5px; display: block;">TIPO DE SERVICIO:</label>
+    
+    <select id="tipo-servicio" class="checkout-input-envio" onchange="calcularEnvioInteligente()">
+    </select>
+    
+    <div id="info-tiempo-envio" style="font-size: 12px; color: #333; margin-top: 5px;"></div>
+</div>
+
+            <button type="button" onclick="enviarWhatsApp()" class="btn-whatsapp">
+                PEDIR POR WHATSAPP
+            </button>
+        </form>
+
+        <div class="resumen-compra">
+            <h3>Resumen</h3>
+            <div id="lista-checkout"></div>
+            <div class="total-checkout">
+                <span>Total:</span>
+                <span id="total-monto">$0</span>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+
+
+<a href="https://wa.me/5491112345678" class="wa-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+
+
+<script src="js/config.js"></script>
+<script src="js/main.js"></script>
+<script>
+
+
+</script>
+</body>
+</html>

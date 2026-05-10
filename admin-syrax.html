@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cerebro Syrax Express 🧠 - Panel Pro</title>
+    <style>
+        :root { --gold: #d4af37; --dark: #1a1a1a; --bg: #f4f4f4; --red: #e74c3c; --green: #27ae60; --blue: #3498db; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; color: var(--dark); }
+        .admin-container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        h1 { text-align: center; margin-bottom: 30px; }
+        
+        /* Sistema de Pestañas */
+        .tabs { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; border-bottom: 2px solid #ddd; padding-bottom: 10px; flex-wrap: wrap; }
+        .tab-btn { padding: 12px 25px; cursor: pointer; border: none; background: #eee; border-radius: 8px; font-weight: bold; transition: 0.3s; }
+        .tab-btn.active { background: var(--gold); color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* Formularios y Secciones */
+        .section-title { border-bottom: 2px solid var(--gold); padding-bottom: 10px; margin-top: 30px; margin-bottom: 20px; font-weight: bold; text-transform: uppercase; }
+        .form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+        .form-group label { font-weight: bold; margin-bottom: 5px; color: #444; font-size: 0.9em; }
+        input, select, textarea { padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+        
+        /* Variantes y Stock */
+        .variante-block { background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 10px; margin-bottom: 15px; position: relative; border-left: 5px solid var(--gold); }
+        .stock-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 10px; }
+        .stock-item { text-align: center; }
+        .stock-item input { width: 100%; text-align: center; padding: 5px; }
+
+        /* Tablas */
+        .table-container { overflow-x: auto; margin-top: 20px; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { padding: 12px; border: 1px solid #eee; text-align: left; font-size: 13px; vertical-align: top; }
+        th { background: #f8f8f8; text-transform: uppercase; font-size: 11px; }
+        
+        /* Pedidos Card */
+        .pedido-card { border: 1px solid #eee; padding: 15px; border-radius: 10px; margin-bottom: 15px; background: #fff; border-left: 5px solid var(--blue); }
+        .pedido-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .badge-pago { background: #2ecc71; color: white; padding: 4px 8px; border-radius: 4px; font-size: 10px; font-weight: bold; }
+        .item-pedido { font-size: 12px; padding: 5px; border-bottom: 1px dashed #eee; }
+
+        /* Botones Acciones */
+        .btn-accion { padding: 8px 12px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 11px; transition: 0.3s; color: white; }
+        .btn-edit { background: var(--blue); }
+        .btn-del { background: var(--red); }
+        .btn-stock { background: var(--green); }
+        .btn-guardar { background: var(--gold); color: white; border: none; padding: 15px; cursor: pointer; font-weight: bold; width: 100%; border-radius: 8px; margin-top: 10px; }
+        
+        /* Grid Logística */
+        .grid-logistica { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; background: #fff8e7; padding: 20px; border-radius: 10px; border: 1px solid var(--gold); }
+    
+    
+        /* Esto es lo que hace que el texto se mueva de derecha a izquierda */
+@keyframes marquee-syrax {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+#texto-preview {
+    display: inline-block;
+    white-space: pre !important;
+    will-change: transform; /* Ayuda a que sea más fluido */
+}
+
+    /*=====================================*/
+    /* Contenedor de la tabla de opiniones */
+    /*=====================================*/
+
+#lista-opiniones table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+}
+
+#lista-opiniones th, #lista-opiniones td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+/* Estilo del cuadro de texto para responder */
+.admin-textarea-resena {
+    width: 100%;
+    min-width: 250px;
+    height: 70px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    margin-bottom: 5px;
+    transition: border-color 0.3s;
+}
+
+.admin-textarea-resena:focus {
+    border-color: #ff0000;
+    outline: none;
+}
+
+/* Botón de guardar respuesta */
+.btn-save {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.btn-save:hover {
+    background-color: #ff0000;
+}
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+<!-- Formulario de Login (Se muestra si no hay sesión) -->
+<div id="login-admin" style="display: none; max-width: 400px; margin: 100px auto; padding: 20px; background: #000; border: 1px solid #ff5a80; border-radius: 8px; text-align: center; color: white;">
+    <h2 style="color: #ff5a80;">SYRAX ADMIN</h2>
+    <p>Iniciá sesión para gestionar productos</p>
+    <input type="email" id="admin-email" placeholder="Correo" style="width: 90%; padding: 10px; margin: 10px 0; border-radius: 4px; border: none;">
+    <input type="password" id="admin-pass" placeholder="Contraseña" style="width: 90%; padding: 10px; margin: 10px 0; border-radius: 4px; border: none;">
+    <button onclick="loginAdmin()" style="width: 95%; padding: 10px; background: #ff5a80; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 10px;">ENTRAR</button>
+</div>
+
+
+
+
+<div id="panel-admin" style="display: none;">
+<div class="admin-container">
+    <h1>Cerebro Syrax Express 🧠</h1>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="verTab('tab-pedidos')">🛒 Pedidos</button>
+        <button class="tab-btn" onclick="verTab('tab-inventario')">📦 Inventario</button>
+        <button class="tab-btn" onclick="verTab('tab-config')">🚚 Logística & Web</button>
+        <button class="tab-btn" onclick="verTab('tab-opiniones')">⭐ Opiniones</button>
+        <button class="tab-btn" onclick="verTab('tab-slider')">🖼️ Slider Hero</button>
+    </div>
+
+    <div id="tab-pedidos" class="tab-content active">
+        <h2 class="section-title">Órdenes Recientes</h2>
+        <div id="lista-pedidos">Cargando pedidos de Firestore...</div>
+    </div>
+
+<div id="tab-inventario" class="tab-content">
+    <h2 class="section-title">Subir / Editar Producto</h2>
+    
+    <form id="form-producto">
+        <input type="hidden" id="edit-id">
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-group">
+                <label>Nombre del Producto:</label>
+                <input type="text" id="prod-nombre" required placeholder="Ej: Calza Syrax Gold">
+            </div>
+            <div class="form-group">
+                <label>Precio ($):</label>
+                <input type="number" id="prod_precio" required placeholder="0.00">
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-group">
+                <label>Categoría Principal:</label>
+                <select id="prod-categoria">
+                    <option value="calzas">Calzas</option>
+                    <option value="tops">Tops</option>
+                    <option value="sets">Sets</option>
+                    <option value="shorts">Shorts</option>
+
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Subcategoría:</label>
+                <select id="prod-subcategoria">
+                    <option value="">Ninguna / Ver Todo</option>
+                    <optgroup label="Calzas / Shorts">
+                        <option value="con-frunce">Con Frunce</option>
+                        <option value="sin-frunce">Sin Frunce</option>
+                    </optgroup>
+                    <optgroup label="Sets">
+                        <option value="cortos">Sets Cortos</option>
+                        <option value="largos">Sets Largos</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-group">
+                <label>Foto Tarjeta (Lista):</label>
+                <input type="text" id="prod-img-tarjeta" placeholder="assets/img/producto.jpg">
+            </div>
+            <div class="form-group">
+                <label>Foto Principal (Interior):</label>
+                <input type="text" id="prod-img-principal" placeholder="assets/img/producto-zoom.jpg">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Descripción:</label>
+            <textarea id="prod-descripcion" rows="2"></textarea>
+        </div>
+
+        <h3 style="font-size: 16px;">Variantes y Stock</h3>
+        <div id="contenedor-variantes"></div>
+
+        <button type="button" style="background:var(--dark); color:white; padding:10px; border-radius:5px; border:none; cursor:pointer;" onclick="agregarBloqueColor()">+ AGREGAR COLOR</button>
+
+
+
+            <div class="form-group" style="background: #fff5f5; padding: 15px; border-radius: 8px; border: 1px solid var(--red); margin-top: 10px;">
+    <label style="color: var(--red); display: flex; align-items: center; cursor: pointer; font-weight: bold;">
+        <input type="checkbox" id="prod_Liquidacion" style="width: 20px; height: 20px; margin-right: 10px;" onchange="togglePreciosOferta()">
+        ¿ESTE PRODUCTO ES DE LIQUIDACIÓN? 🔥
+    </label>
+    
+    <div id="precios-oferta" style="display: none; margin-top: 10px; gap: 10px;">
+        <div>
+            <label style="font-size: 12px;">Precio Original (Tachado):</label>
+            <input type="number" id="prod_precio_original" placeholder="Ej: 20000" style="width: 100%;">
+        </div>
+        <p style="font-size: 11px; color: #666; margin-top: 5px;">* El precio que cargaste arriba será el precio final (con descuento).</p>
+    </div>
+</div>
+
+<script>
+// Función para mostrar/ocultar los campos extra
+function togglePreciosOferta() {
+    const check = document.getElementById('prod_Liquidacion').checked;
+    document.getElementById('precios-oferta').style.display = check ? 'block' : 'none';
+}
+</script>
+
+
+
+        <button type="button" class="btn-guardar" id="btn-subir" onclick="subirProducto()">GUARDAR PRODUCTO</button>
+        <button type="button" id="btn-cancelar" style="display:none; background:#888;" class="btn-guardar" onclick="cancelarEdicion()">CANCELAR EDICIÓN</button>
+    </form>
+
+    <h2 class="section-title">Lista de Productos</h2>
+    <div class="table-container" id="lista-productos"></div>
+</div>
+
+    <div id="tab-config" class="tab-content">
+        <h2 class="section-title">Precios de Envío (Tarifario)</h2>
+        <div class="grid-logistica" id="inputs-logistica">
+            <div class="form-group"><label>Moto Morón ($):</label><input type="number" id="env-moto_moron"></div>
+            <div class="form-group"><label>Moto Zona 1 ($):</label><input type="number" id="env-moto_zona1"></div>
+            <div class="form-group"><label>Moto Zona 2 ($):</label><input type="number" id="env-moto_zona2"></div>
+            <div class="form-group"><label>Moto Zona 3 ($):</label><input type="number" id="env-moto_zona3"></div>
+            <div class="form-group"><label>Correo Clásico ($):</label><input type="number" id="env-nacional_clasica"></div>
+            <div class="form-group"><label>Correo Prioritario ($):</label><input type="number" id="env-nacional_prioritaria"></div>
+            <div class="form-group" style="grid-column: span 2;"><label>Tiempos de Entrega (clasica):</label><input type="text" id="env-tiempo_clasica"></div>
+            <div class="form-group" style="grid-column: span 2;"><label>Tiempos de Entrega (moto):</label><input type="text" id="env-tiempo_moto"></div>
+            <div class="form-group" style="grid-column: span 2;"><label>Tiempos de Entrega (prioritaria):</label><input type="text" id="env-tiempo_prioritaria"></div>
+            <div class="form-group" style="grid-column: span 2;"><label>Tiempos de Entrega (retiro):</label><input type="text" id="env-tiempo_retiro"></div>
+
+            <button class="btn-guardar" style="grid-column: 1 / -1;" onclick="guardarLogisticaFull()">ACTUALIZAR PRECIOS EN TODA LA WEB</button>
+        </div>
+
+        <h2 class="section-title">Apariencia Web</h2>
+        <div class="form-group">
+            <label>Texto Banner Ofertas:</label>
+            <input type="text" id="banner-text-input">
+
+            <label>Link del Banner Oferta:</label>
+            <input type="text" id="oferta_banner_link" placeholder="Ej: liquidacion.html o categoria.html?cat=calzas">
+
+            <button class="btn-guardar" style="width: auto;" onclick="actualizarBannerSyrax()">Actualizar Banner</button>
+        </div>
+
+
+
+             <div style="display: flex; gap: 20px; margin-top: 10px;">
+    <div>
+        <label>Velocidad (segundos):</label>
+        <input type="number" id="banner-velocidad" value="25" style="width: 60px;">
+    </div>
+    <div>
+        <label>Espacios entre textos:</label>
+        <input type="number" id="banner-espacios" value="40" style="width: 60px;">
+    </div>
+</div>
+<p>TIP: cada 100 espacios le agregas 20s aprox</p>
+<button onclick="previsualizarBanner()" style="background: var(--blue); margin-top: 15px;">
+    👁️ Ver Previa
+</button>
+
+<div id="preview-container" style="display:none; margin-top: 20px; background: black; overflow: hidden; padding: 10px 0;">
+    <p id="texto-preview" style="color: white; white-space: pre; margin: 0; display: inline-block;"></p>
+</div>
+
+
+
+    </div>
+
+
+
+
+
+    <div id="tab-slider" class="tab-content">
+    <h2 class="section-title">Control de Banner Principal (Slider)</h2>
+    <p style="font-size: 0.8em; color: #666; margin-bottom: 15px;">Pega los links de las imágenes y los títulos que aparecerán en la pantalla principal.</p>
+    
+    <div class="banner-edit-group" style="margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
+    <div style="background: #333; color: #fff; padding: 5px 10px; border-radius: 5px; font-weight: bold;">BANNER #1</div>
+    <div class="form-group"><label>URL Imagen:</label><input type="text" id="slide1_img"></div>
+    <div class="form-group"><label>Título:</label><input type="text" id="slide1_titulo"></div>
+    <div class="form-group"><label>Texto Botón:</label><input type="text" id="slide1_btn" placeholder="Ej: Comprar ahora"></div>
+    <div class="form-group"><label>Link del Botón:</label><input type="text" id="slide1_link" placeholder="Ej: /productos.html o link externo"></div>
+
+    <div style="background: #333; color: #fff; padding: 5px 10px; border-radius: 5px; font-weight: bold;">BANNER #2</div>
+    <div class="form-group"><label>URL Imagen:</label><input type="text" id="slide2_img"></div>
+    <div class="form-group"><label>Título:</label><input type="text" id="slide2_titulo"></div>
+    <div class="form-group"><label>Texto Botón:</label><input type="text" id="slide2_btn" placeholder="Ej: Comprar ahora"></div>
+    <div class="form-group"><label>Link del Botón:</label><input type="text" id="slide2_link" placeholder="Ej: /productos.html o link externo"></div>
+
+    <div style="background: #333; color: #fff; padding: 5px 10px; border-radius: 5px; font-weight: bold;">BANNER #3</div>
+    <div class="form-group"><label>URL Imagen:</label><input type="text" id="slide3_img"></div>
+    <div class="form-group"><label>Título:</label><input type="text" id="slide3_titulo"></div>
+    <div class="form-group"><label>Texto Botón:</label><input type="text" id="slide3_btn" placeholder="Ej: Comprar ahora"></div>
+    <div class="form-group"><label>Link del Botón:</label><input type="text" id="slide3_link" placeholder="Ej: /productos.html o link externo"></div>
+
+
+    <div style="background: #333; color: #fff; padding: 5px 10px; border-radius: 5px; font-weight: bold;">BANNER #4</div>
+    <div class="form-group"><label>URL Imagen:</label><input type="text" id="slide4_img"></div>
+    <div class="form-group"><label>Título:</label><input type="text" id="slide4_titulo"></div>
+    <div class="form-group"><label>Texto Botón:</label><input type="text" id="slide4_btn" placeholder="Ej: Comprar ahora"></div>
+    <div class="form-group"><label>Link del Botón:</label><input type="text" id="slide4_link" placeholder="Ej: /productos.html o link externo"></div>
+
+    <div style="background: #333; color: #fff; padding: 5px 10px; border-radius: 5px; font-weight: bold;">BANNER #5</div>
+    <div class="form-group"><label>URL Imagen:</label><input type="text" id="slide5_img"></div>
+    <div class="form-group"><label>Título:</label><input type="text" id="slide5_titulo"></div>
+    <div class="form-group"><label>Texto Botón:</label><input type="text" id="slide5_btn" placeholder="Ej: Comprar ahora"></div>
+    <div class="form-group"><label>Link del Botón:</label><input type="text" id="slide5_link" placeholder="Ej: /productos.html o link externo"></div>
+
+</div>
+
+
+
+
+
+        <button class="btn-guardar" style="grid-column: 1 / -1; margin-top: 20px;" onclick="guardarSlider()">
+            ACTUALIZAR BANNERS DEL SITIO
+        </button>
+    </div>
+</div>
+
+
+
+    <div id="tab-opiniones" class="tab-content">
+        <h2 class="section-title">Moderación de Opiniones</h2>
+        <div class="table-container" id="lista-opiniones"></div>
+    </div>
+</div>
+</div>
+
+
+</div>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+
+
+<script src="js/config.js"></script>
+
+
+
+
+<script>
+
+
+// 1. EL GUARDIÁN: Controla qué se ve en pantalla
+firebase.auth().onAuthStateChanged((user) => {
+    const loginDiv = document.getElementById('login-admin');
+    const panelDiv = document.getElementById('panel-admin');
+
+    if (user && user.uid === "sipKngAnySRJ4BVtuGkVDte0twz1") {
+        // SOS VOS: Mostramos el panel y ocultamos el login
+        loginDiv.style.display = 'none';
+        panelDiv.style.display = 'block';
+        console.log("Acceso autorizado: Alejandro");
+    } else {
+        // NO HAY NADIE O NO ES EL ADMIN: Mostramos el login y ocultamos el panel
+        loginDiv.style.display = 'block';
+        panelDiv.style.display = 'none';
+    }
+});
+
+// 2. FUNCIÓN DE LOGIN
+async function loginAdmin() {
+    const email = document.getElementById('admin-email').value;
+    const pass = document.getElementById('admin-pass').value;
+
+    try {
+        await firebase.auth().signInWithEmailAndPassword(email, pass);
+        // El observador de arriba se encargará de mostrar el panel automáticamente
+    } catch (error) {
+        console.error("Error:", error.message);
+        alert("Credenciales incorrectas o acceso denegado.");
+    }
+}
+
+// 3. FUNCIÓN DE CIERRE (Opcional, para tu seguridad)
+function cerrarSesionAdmin() {
+    firebase.auth().signOut().then(() => {
+        location.reload();
+    });
+}
+
+
+
+
+
+
+
+
+    function verTab(id) {
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        if (window.event) event.currentTarget.classList.add('active');
+        
+        if(id === 'tab-inventario') cargarListaProductos();
+        if(id === 'tab-pedidos') cargarListaPedidos();
+        if(id === 'tab-config') cargarConfigLogistica();
+        if(id === 'tab-opiniones') cargarListaOpiniones();
+        if(id === 'tab-slider') cargarSlider();
+    }
+
+    // --- LÓGICA DE VARIANTES ---
+    function agregarBloqueColor(datos = null) {
+        const div = document.createElement('div');
+        div.className = 'variante-block';
+        div.innerHTML = `
+            <button type="button" class="remove-btn" onclick="this.parentElement.remove()" style="position:absolute; right:10px; top:10px; color:red; border:none; background:none; cursor:pointer; font-weight:bold;">X</button>
+            <div class="form-group"><label>Color:</label><input type="text" class="v-color" value="${datos ? datos.colorNombre : ''}" placeholder="Ej: Negro" required></div>
+            <div class="form-group"><label>Fotos (URLs x coma):</label><input type="text" class="v-fotos" value="${datos ? datos.fotos.join(',') : ''}" required></div>
+            <div class="stock-grid">
+                <div class="stock-item"><label>S</label><input type="number" class="s-s" value="${datos ? datos.stock.talles.S : 0}"></div>
+                <div class="stock-item"><label>M</label><input type="number" class="s-m" value="${datos ? datos.stock.talles.M : 0}"></div>
+                <div class="stock-item"><label>L</label><input type="number" class="s-l" value="${datos ? datos.stock.talles.L : 0}"></div>
+                <div class="stock-item"><label>XL</label><input type="number" class="s-xl" value="${datos ? datos.stock.talles.XL : 0}"></div>
+            </div>`;
+        document.getElementById('contenedor-variantes').appendChild(div);
+    }
+
+
+
+    // --- LÓGICA DE PRODUCTOS ---
+async function subirProducto() {
+    const id = document.getElementById('edit-id').value;
+    const nombre = document.getElementById('prod-nombre').value;
+    const precio = parseFloat(document.getElementById('prod_precio').value);
+    const categoria = document.getElementById('prod-categoria').value;
+    const subcategoria = document.getElementById('prod-subcategoria').value;
+    const imagenPrincipal = document.getElementById('prod-img-principal').value;
+    const descripcion = document.getElementById('prod-descripcion').value;
+    const imagenTarjetaRaw = document.getElementById('prod-img-tarjeta').value;
+
+    // 1. CAPTURAMOS EL PRECIO ORIGINAL (El que va a aparecer tachado)
+    const precioOriginalInput = document.getElementById('prod_precio_original');
+    const precioOriginal = precioOriginalInput ? parseFloat(precioOriginalInput.value) : 0;
+
+    const inputLiquidacion = document.getElementById('prod_Liquidacion');
+    const liquidacion = inputLiquidacion ? inputLiquidacion.checked : false; 
+
+    const imagenTarjetaArray = imagenTarjetaRaw.split(',')
+                                               .map(u => u.trim())
+                                               .filter(u => u !== "");
+
+    const variantes = {};
+    const bloques = document.querySelectorAll('.variante-block');
+
+    if (bloques.length === 0) {
+        alert("⚠️ Por favor, agregá al menos un color/variante.");
+        return;
+    }
+
+    bloques.forEach(b => {
+        const colorInput = b.querySelector('.v-color');
+        if (!colorInput || !colorInput.value.trim()) return;
+
+        const color = colorInput.value;
+        const key = color.toLowerCase().trim().replace(/\s+/g, '');
+        
+        const fotosRaw = b.querySelector('.v-fotos').value;
+        const fotosArray = fotosRaw.split(',')
+                                   .map(u => u.trim())
+                                   .filter(u => u !== "");
+
+        variantes[key] = {
+            colorNombre: color,
+            fotos: fotosArray,
+            stock: { talles: {
+                S: parseInt(b.querySelector('.s-s').value) || 0,
+                M: parseInt(b.querySelector('.s-m').value) || 0,
+                L: parseInt(b.querySelector('.s-l').value) || 0,
+                XL: parseInt(b.querySelector('.s-xl').value) || 0
+            }}
+        };
+    });
+
+    const data = { 
+        nombre, 
+        precio, // Este es el precio final con descuento
+        precioOriginal, // Este es el precio tachado
+        categoria, 
+        subcategoria,
+        liquidacion: liquidacion,
+        imagenPrincipal, 
+        imagenTarjeta: imagenTarjetaArray, 
+        descripcion, 
+        variantes, 
+        fecha: firebase.firestore.FieldValue.serverTimestamp() 
+    };
+
+    try {
+        if(id) { 
+            await db.collection("inventario").doc(id).update(data); 
+            alert("✅ Producto actualizado correctamente"); 
+        } else { 
+            await db.collection("inventario").add(data); 
+            alert("✅ Producto creado con éxito en Syrax"); 
+        }
+        cancelarEdicion(); 
+        cargarListaProductos();
+    } catch(e) { 
+        console.error("Error al subir el producto:", e);
+        alert("❌ Error: " + e.message); 
+    }
+}
+
+
+
+async function cargarListaProductos() {
+    const snap = await db.collection("inventario").orderBy("fecha", "desc").get();
+    
+    // Agregamos la columna "Estado"
+    let html = `<table><tr><th>Producto</th><th>Categoría</th><th>Estado</th><th>Variantes / Stock</th><th>Acciones</th></tr>`;
+    
+    snap.forEach(doc => {
+        const p = doc.data();
+        let stockInfo = "";
+        
+        for(let key in p.variantes) {
+            const v = p.variantes[key];
+            stockInfo += `<div style="font-size:11px; background:#f9f9f9; padding:4px; margin-bottom:2px; border-left:3px solid var(--gold)"><b>${v.colorNombre}:</b> S:${v.stock.talles.S} M:${v.stock.talles.M} L:${v.stock.talles.L} XL:${v.stock.talles.XL}</div>`;
+        }
+
+        // Etiqueta de Subcategoría
+        const subMostrada = p.subcategoria ? `<br><span style="color:var(--gold); font-size:10px; text-transform:uppercase;">● ${p.subcategoria}</span>` : "";
+
+        // --- LÓGICA DE PRECIOS Y DESCUENTO ---
+        const precioActual = p.precio || 0;
+        const precioOriginal = p.precioOriginal || 0;
+        let infoPrecio = `<b>$${precioActual.toLocaleString('es-AR')}</b>`;
+        let etiquetaLiquidacion = `<span style="color:#aaa; font-size:10px;">Normal</span>`;
+
+        if (p.liquidacion) {
+            // Si hay precio original, calculamos el %
+            let textoDescuento = "";
+            if (precioOriginal > precioActual) {
+                const porcentaje = Math.round(((precioOriginal - precioActual) / precioOriginal) * 100);
+                textoDescuento = `<br><span style="color:#e74c3c; font-size:11px;">(${porcentaje}% OFF)</span>`;
+                // Agregamos el precio tachado al nombre del producto
+                infoPrecio = `<span style="text-decoration:line-through; color:#999; font-size:11px;">$${precioOriginal.toLocaleString('es-AR')}</span><br><b>$${precioActual.toLocaleString('es-AR')}</b>`;
+            }
+            
+            etiquetaLiquidacion = `
+                <div style="background:#fff5f5; color:#e74c3c; border:1px solid #e74c3c; padding:4px; border-radius:4px; font-size:10px; font-weight:bold; line-height:1.2;">
+                    🔥 LIQUIDACIÓN ${textoDescuento}
+                </div>`;
+        }
+
+        html += `<tr>
+                <td>
+                    <div style="line-height:1.4;">
+                        <span style="font-size:14px;">${p.nombre || 'Sin nombre'}</span><br>
+                        ${infoPrecio}
+                    </div>
+                </td>
+                <td>
+                    <span style="text-transform:capitalize;">${p.categoria}</span>
+                    ${subMostrada}
+                </td>
+                <td style="text-align:center; min-width:100px;">${etiquetaLiquidacion}</td>
+                <td>${stockInfo}</td>
+                <td>
+                    <button class="btn-accion btn-edit" onclick="editarProducto('${doc.id}')">Editar</button>
+                    <button class="btn-accion btn-del" onclick="borrarDoc('inventario','${doc.id}')">Borrar</button>
+                </td>
+            </tr>`;
+    });
+    document.getElementById('lista-productos').innerHTML = html + "</table>";
+}
+  
+
+
+
+    function cancelarEdicion() {
+        document.getElementById('form-producto').reset();
+        document.getElementById('edit-id').value = "";
+        document.getElementById('contenedor-variantes').innerHTML = "";
+        document.getElementById('btn-subir').innerText = "GUARDAR PRODUCTO";
+        document.getElementById('btn-cancelar').style.display = "none";
+        agregarBloqueColor();
+    }
+
+
+
+async function editarProducto(id) {
+    const doc = await db.collection("inventario").doc(id).get();
+    const p = doc.data(); 
+    
+    // IDs básicos
+    document.getElementById('edit-id').value = id;
+    document.getElementById('prod-nombre').value = p.nombre || "";
+    document.getElementById('prod_precio').value = p.precio || 0; 
+    document.getElementById('prod-categoria').value = p.categoria || "calzas";
+    
+    // 1. CARGAR PRECIO ORIGINAL (Tachado)
+    // Usamos precioOriginal con mayúscula para que coincida con tu Firebase corregido
+    const inputPrecioOriginal = document.getElementById('prod-precio-original');
+    if (inputPrecioOriginal) {
+        inputPrecioOriginal.value = p.precioOriginal || "";
+    }
+
+    // 2. CARGAR LIQUIDACIÓN (Flexible con Mayúsculas/Minúsculas)
+    const checkLiq = document.getElementById('prod-liquidacion');
+    if (checkLiq) {
+        // Buscamos p.Liquidacion (como estaba en tu captura) o p.liquidacion
+        const esLiq = String(p.Liquidacion || p.liquidacion) === "true";
+        checkLiq.checked = esLiq;
+        
+        // Disparamos la función visual para mostrar el campo de precio original si está en true
+        if (typeof togglePreciosOferta === 'function') {
+            togglePreciosOferta();
+        }
+    }
+    
+    // Subcategoría
+    document.getElementById('prod-subcategoria').value = p.subcategoria || "";
+    
+    // Imágenes y Descripción
+    document.getElementById('prod-img-principal').value = p.imagenPrincipal || "";
+    document.getElementById('prod-descripcion').value = p.descripcion || "";
+
+    // Manejo de imagenTarjeta
+    const inputTarjeta = document.getElementById('prod-img-tarjeta');
+    if (Array.isArray(p.imagenTarjeta)) {
+        inputTarjeta.value = p.imagenTarjeta.join(', ');
+    } else {
+        inputTarjeta.value = p.imagenTarjeta || "";
+    }
+    
+    // Limpiamos y cargamos las variantes
+    document.getElementById('contenedor-variantes').innerHTML = "";
+    if (p.variantes) {
+        for(let key in p.variantes) { 
+            agregarBloqueColor(p.variantes[key]); 
+        }
+    }
+    
+    // Cambios visuales en el panel
+    const btnSubir = document.getElementById('btn-subir');
+    if (btnSubir) btnSubir.innerText = "ACTUALIZAR CAMBIOS EN SYRAX";
+    
+    const btnCancel = document.getElementById('btn-cancelar');
+    if (btnCancel) btnCancel.style.display = "block";
+    
+    window.scrollTo(0,0);
+}
+
+
+
+
+    // --- LÓGICA DE LOGÍSTICA (Firestore List) ---
+   async function cargarConfigLogistica() {
+    try {
+        const doc = await db.collection("configuracion").doc("envios").get();
+        if(doc.exists) {
+            const d = doc.data();
+            
+            // Precios (Asegurate que los IDs del HTML sean estos)
+            document.getElementById('env-moto_moron').value = d.moto_moron || 0;
+            document.getElementById('env-moto_zona1').value = d.moto_zona1 || 0;
+            document.getElementById('env-moto_zona2').value = d.moto_zona2 || 0;
+            document.getElementById('env-moto_zona3').value = d.moto_zona3 || 0;
+            document.getElementById('env-nacional_clasica').value = d.nacional_clasica || 0;
+            document.getElementById('env-nacional_prioritaria').value = d.nacional_prioritaria || 0;
+            
+            // Tiempos (Cambiado para que coincida con tu captura de Firestore)
+            // Si querés mostrar solo uno en el campo de texto:
+            document.getElementById('env-tiempo_clasica').value = d.tiempo_clasica || ""; 
+             document.getElementById('env-tiempo_moto').value = d.tiempo_moto || ""; 
+             document.getElementById('env-tiempo_prioritaria').value = d.tiempo_prioritaria || ""; 
+             document.getElementById('env-tiempo_retiro').value = d.tiempo_retiro || ""; 
+            
+            console.log("✅ Datos de Firestore cargados en los inputs");
+        }
+    } catch (e) {
+        console.error("Error al leer Firestore:", e);
+    }
+}
+
+  async function guardarLogisticaFull() {
+    // 1. Mostramos un mensaje de "Guardando..." (opcional pero pro)
+    console.log("Actualizando logística de Syrax...");
+
+    try {
+        const data = {
+            // Precios (Aseguramos que sean números o mantengan el actual si están vacíos)
+            moto_moron: Number(document.getElementById('env-moto_moron').value) || 0,
+            moto_zona1: Number(document.getElementById('env-moto_zona1').value) || 0,
+            moto_zona2: Number(document.getElementById('env-moto_zona2').value) || 0,
+            moto_zona3: Number(document.getElementById('env-moto_zona3').value) || 0,
+            nacional_clasica: Number(document.getElementById('env-nacional_clasica').value) || 0,
+            nacional_prioritaria: Number(document.getElementById('env-nacional_prioritaria').value) || 0,
+            
+            // Textos de tiempo (Tal cual los tenés en la imagen)
+            tiempo_clasica: document.getElementById('env-tiempo_clasica').value.trim(),
+            tiempo_moto: document.getElementById('env-tiempo_moto').value.trim(),
+            tiempo_prioritaria: document.getElementById('env-tiempo_prioritaria').value.trim(),
+            tiempo_retiro: document.getElementById('env-tiempo_retiro').value.trim(),
+            
+            // Agregamos fecha de última actualización para control tuyo
+            ultima_actualizacion: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        // 2. Usamos set con merge: true para no borrar campos extra que existan en el doc
+        await db.collection("configuracion").doc("envios").set(data, { merge: true });
+
+        alert("🚀 ¡Logística de Syrax actualizada con éxito!");
+        
+    } catch (error) {
+        console.error("Error al actualizar logística:", error);
+        alert("❌ Hubo un error al guardar. Revisá la consola.");
+    }
+}
+
+
+
+    // --- LÓGICA DE PEDIDOS Y DEVOLUCIÓN STOCK ---
+ async function cargarListaPedidos() {
+    const snap = await db.collection("pedidos_pendientes").orderBy("fecha", "desc").get();
+    let html = "";
+    if(snap.empty) { html = "<p style='text-align:center; padding:20px;'>No hay pedidos pendientes.</p>"; }
+    
+    snap.forEach(doc => {
+        const ped = doc.data();
+        const id = doc.id;
+        const fecha = ped.fecha ? new Date(ped.fecha.seconds * 1000).toLocaleString('es-AR') : 'S/F';
+        
+        // Estado del Checkbox
+        const estaPagado = ped.pagoConfirmado || false;
+
+        html += `
+        <div class="pedido-card" id="card-${id}" style="border-left: 8px solid ${estaPagado ? '#27ae60' : '#f39c12'}; margin-bottom:15px; padding:15px; background:${estaPagado ? '#f0fff4' : 'white'}; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); transition: 0.3s;">
+            <div class="pedido-header" style="display:flex; justify-content:space-between; align-items:flex-start;">
+                <div style="display:flex; gap:15px; align-items:center;">
+                    <input type="checkbox" 
+                           ${estaPagado ? 'checked' : ''} 
+                           onchange="cambiarEstadoPago('${id}', this.checked)"
+                           style="width:25px; height:25px; cursor:pointer;">
+                    
+                    <div>
+                        <strong style="font-size:1.1em; color:${estaPagado ? '#1a531b' : '#333'}">👤 ${ped.cliente.nombre}</strong><br>
+                        <small>📅 ${fecha}</small><br>
+                        <small>📍 ${ped.cliente.direccionCompleta}, ${ped.cliente.ciudad}</small>
+                    </div>
+                </div>
+                
+                <div style="text-align:right">
+                    <strong style="color:#27ae60; font-size:1.2em;">Total: $${(ped.total || 0).toLocaleString('es-AR')}</strong><br>
+                    <small style="color:#666;">📦 Envío: $${(ped.envio.costo || 0).toLocaleString('es-AR')}</small><br>
+                    <small>🚚 ${ped.envio.servicio}</small>
+                </div>
+            </div>
+
+            <div style="margin:15px 0; padding:10px; background:rgba(0,0,0,0.03); border-radius:5px; border-left: 2px solid #ccc;">
+                ${ped.productos.map(i => `
+                    <div style="font-size:13px; padding:5px 0;">
+                        • ${i.name} | <b>${i.color}</b> | Talle: <b>${i.talle}</b> | Cant: ${i.cantidad}
+                    </div>
+                `).join('')}
+            </div>
+
+            <div style="display:flex; gap:10px; justify-content:flex-end;">
+                <button class="btn-accion btn-stock" onclick="devolverStock('${id}')" style="background:#666; color:white; border:none; padding:8px 15px; border-radius:4px; cursor:pointer; font-size:12px;">DEVOLVER STOCK</button>
+                <button class="btn-accion btn-del" onclick="borrarDoc('pedidos_pendientes','${id}')" style="background:#e74c3c; color:white; border:none; padding:8px 15px; border-radius:4px; cursor:pointer; font-size:12px;">BORRAR / ARCHIVAR</button>
+            </div>
+        </div>`;
+    });
+    document.getElementById('lista-pedidos').innerHTML = html;
+}
+
+
+
+    async function devolverStock(pedidoId) {
+        if(!confirm("¿Estás seguro? Esto sumará las cantidades de vuelta al inventario y eliminará el pedido.")) return;
+        
+        try {
+            const pedDoc = await db.collection("pedidos_pendientes").doc(pedidoId).get();
+            const pedido = pedDoc.data();
+
+            for(const item of pedido.productos) {
+                const prodRef = db.collection("inventario").doc(item.id);
+                const prodDoc = await prodRef.get();
+                
+                if(prodDoc.exists) {
+                    const p = prodDoc.data();
+                    const colorKey = item.color.toLowerCase().trim().replace(/\s+/g, '');
+                    
+                    if(p.variantes[colorKey]) {
+                        const stockActual = p.variantes[colorKey].stock.talles[item.talle];
+                        const nuevoStock = stockActual + item.cantidad;
+                        
+                        // Actualización precisa en el objeto anidado
+                        await prodRef.update({
+                            [`variantes.${colorKey}.stock.talles.${item.talle}`]: nuevoStock
+                        });
+                    }
+                }
+            }
+            await db.collection("pedidos_pendientes").doc(pedidoId).delete();
+            alert("✅ Stock devuelto y pedido archivado.");
+            cargarListaPedidos();
+        } catch(e) { alert("Error: " + e.message); }
+    }
+
+    async function borrarDoc(col, id) {
+        if(confirm("¿Eliminar definitivamente?")) {
+            await db.collection(col).doc(id).delete();
+            verTab('tab-' + (col === 'pedidos_pendientes' ? 'pedidos' : col));
+        }
+    }
+
+
+
+
+async function cambiarEstadoPago(id, nuevoEstado) {
+    try {
+        await db.collection("pedidos_pendientes").doc(id).update({
+            pagoConfirmado: nuevoEstado
+        });
+        
+        // No recargamos toda la lista para que no "salte" la pantalla, 
+        // solo cambiamos el color de la tarjeta visualmente
+        const card = document.getElementById(`card-${id}`);
+        if (nuevoEstado) {
+            card.style.borderLeftColor = "#27ae60";
+            card.style.background = "#f0fff4"; // Fondo verde clarito
+        } else {
+            card.style.borderLeftColor = "#f39c12";
+            card.style.background = "white";
+        }
+
+    } catch (error) {
+        console.error("Error al actualizar:", error);
+        alert("Hubo un error al guardar el estado del pago.");
+    }
+}
+
+
+
+
+
+
+
+// Función para ver cómo queda antes de guardar
+function previsualizarBanner() {
+    const txt = document.getElementById('banner-text-input');
+    const vel = document.getElementById('banner-velocidad');
+    const esp = document.getElementById('banner-espacios');
+    const container = document.getElementById('preview-container');
+    const p = document.getElementById('texto-preview');
+
+    if (!txt || !vel || !esp || !p) return;
+
+    const nbs = "\u00A0";
+    const espacios = nbs.repeat(Number(esp.value) || 40);
+    const lista = txt.value.toUpperCase().split(/\s*;\s*/);
+    
+    p.textContent = lista.join(espacios) + espacios;
+    p.style.animation = `marquee-syrax ${vel.value}s linear infinite`;
+    container.style.display = 'block';
+}
+
+
+
+// Actualizá tu función de guardar para incluir estos datos
+
+async function guardarBanner() {
+    const data = {
+        texto: document.getElementById('banner-texto').value,
+        oferta_banner_link: document.getElementById('oferta_banner_link').value, // Nuevo campo
+        activo: document.getElementById('banner-activo').checked,
+        velocidad: parseInt(document.getElementById('banner-velocidad').value) || 25,
+        espacios: parseInt(document.getElementById('banner-espacios').value) || 40,
+        ultima_actualizacion: new Date()
+    };
+
+    try {
+        await db.collection("configuracion").doc("banner").set(data);
+        alert("✅ Banner actualizado con éxito");
+        // Opcional: llamar a previsualizarBanner() si la tenés
+    } catch (e) {
+        console.error("Error al guardar:", e);
+        alert("❌ Error al guardar");
+    }
+}
+
+
+
+// ESTO VA EN EL ADMIN.JS (O EL SCRIPT DEL ADMIN)
+async function actualizarBannerSyrax() {
+    const btn = document.querySelector('.btn-guardar');
+    btn.innerText = "⏳ Actualizando...";
+
+    // 1. CAPTURAMOS LOS VALORES (Asegurate que estos IDs existan en tu HTML)
+    const inputTexto = document.getElementById('banner-text-input'); 
+    const inputVelocidad = document.getElementById('banner-velocidad');
+    const inputEspacios = document.getElementById('banner-espacios');
+    const inputLink = document.getElementById('oferta_banner_link'); // <--- NUEVO
+
+    const data = {
+        texto: inputTexto.value,
+        velocidad: Number(inputVelocidad.value) || 25,
+        espacios: Number(inputEspacios.value) || 40,
+        oferta_banner_link: inputLink ? inputLink.value : "liquidacion.html", // <--- GUARDAMOS EL LINK
+        activo: true, 
+        ultima_actualizacion: new Date()
+    };
+
+    try {
+        // 2. GUARDAMOS (Usamos merge: true para no borrar otros campos si existieran)
+        await db.collection("configuracion").doc("banner").set(data, { merge: true });
+        
+        alert("✅ Banner de SYRAX actualizado con éxito");
+        btn.innerText = "Actualizar Banner";
+        
+        if(typeof previsualizarBanner === "function") previsualizarBanner();
+        
+    } catch (error) {
+        console.error("Error al guardar:", error);
+        alert("❌ Error al conectar con Firestore");
+        btn.innerText = "Actualizar Banner";
+    }
+}
+
+
+
+
+
+
+ async function cargarListaOpiniones() {
+    const contenedor = document.getElementById('lista-opiniones');
+    if (!contenedor) return;
+
+    try {
+        // OJO: Asegurate de que la colección sea "opiniones" o "reseñas" según uses en el resto de la web
+        const snap = await db.collection("opiniones").orderBy("fecha", "desc").get();
+        
+        let html = `
+            <table>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Calificación</th>
+                    <th>Opinión</th>
+                    <th>Respuesta Oficial 🔥</th>
+                    <th>Acción</th>
+                </tr>`;
+        
+        snap.forEach(doc => {
+            const op = doc.data();
+            const resenaId = doc.id;
+
+            html += `
+                <tr>
+                    <td><b>${op.nombre}</b></td>
+                    <td>${"⭐".repeat(op.estrellas || 5)}</td>
+                    <td><small>${op.texto || op.comentario || ''}</small></td>
+                    
+                    <td>
+                        <textarea 
+                            id="input-respuesta-${resenaId}" 
+                            class="admin-textarea-resena"
+                            placeholder="Escribí tu respuesta..."
+                        >${op.respuestaAdmin || ''}</textarea>
+                        <br>
+                        <button class="btn-accion btn-save" onclick="enviarRespuestaSyrax('${resenaId}')">
+                            Responder
+                        </button>
+                    </td>
+
+                    <td>
+                        <button class="btn-accion btn-del" onclick="borrarDoc('opiniones','${resenaId}')">
+                            Borrar
+                        </button>
+                    </td>
+                </tr>`;
+        });
+        
+        contenedor.innerHTML = html + "</table>";
+    } catch (e) {
+        console.error("Error en opiniones:", e);
+        contenedor.innerHTML = "Error al cargar opiniones.";
+    }
+}
+
+
+
+
+
+
+async function enviarRespuestaSyrax(resenaId) {
+    // 1. Capturamos el texto del textarea usando el ID único que creamos antes
+    const textarea = document.getElementById(`input-respuesta-${resenaId}`);
+    const textoRespuesta = textarea.value.trim();
+
+    // Validamos que no esté vacío (opcional, pero recomendado)
+    if (!textoRespuesta) {
+        alert("Por favor, escribí una respuesta antes de enviar.");
+        return;
+    }
+
+    try {
+        // 2. Actualizamos el documento en Firestore
+        // Asegurate de que la colección sea "opiniones" para que coincida con tu cargarLista
+        await db.collection("opiniones").doc(resenaId).update({
+            respuestaAdmin: textoRespuesta,
+            fechaRespuesta: new Date() // Guardamos la fecha por si querés mostrarla después
+        });
+
+        // 3. Feedback visual para saber que funcionó
+        alert("¡Respuesta guardada con éxito! 🔥");
+        
+        // Opcional: Podés recargar la lista para que se vea reflejado
+        // cargarListaOpiniones(); 
+
+    } catch (error) {
+        console.error("Error al guardar la respuesta en Syrax:", error);
+        alert("Hubo un error al guardar la respuesta. Revisá la consola.");
+    }
+}
+
+
+
+
+
+
+
+// Carga los links y textos del slider desde Firestore
+async function cargarSlider() {
+    try {
+        const doc = await db.collection("configuracion").doc("slider_principal").get();
+        if(doc.exists) {
+            const data = doc.data();
+            
+            // BANNER 1
+            if(document.getElementById('slide1_img')) document.getElementById('slide1_img').value = data.slide1_img || "";
+            if(document.getElementById('slide1_titulo')) document.getElementById('slide1_titulo').value = data.slide1_titulo || "";
+            if(document.getElementById('slide1_btn')) document.getElementById('slide1_btn').value = data.slide1_btn || "";
+            if(document.getElementById('slide1_link')) document.getElementById('slide1_link').value = data.slide1_link || "";
+
+            // BANNER 2
+            if(document.getElementById('slide2_img')) document.getElementById('slide2_img').value = data.slide2_img || "";
+            if(document.getElementById('slide2_titulo')) document.getElementById('slide2_titulo').value = data.slide2_titulo || "";
+            if(document.getElementById('slide2_btn')) document.getElementById('slide2_btn').value = data.slide2_btn || "";
+            if(document.getElementById('slide2_link')) document.getElementById('slide2_link').value = data.slide2_link || "";
+
+            // BANNER 3
+            if(document.getElementById('slide3_img')) document.getElementById('slide3_img').value = data.slide3_img || "";
+            if(document.getElementById('slide3_titulo')) document.getElementById('slide3_titulo').value = data.slide3_titulo || "";
+            if(document.getElementById('slide3_btn')) document.getElementById('slide3_btn').value = data.slide3_btn || "";
+            if(document.getElementById('slide3_link')) document.getElementById('slide3_link').value = data.slide3_link || "";
+
+            // BANNER 4
+            if(document.getElementById('slide4_img')) document.getElementById('slide4_img').value = data.slide4_img || "";
+            if(document.getElementById('slide4_titulo')) document.getElementById('slide4_titulo').value = data.slide4_titulo || "";
+            if(document.getElementById('slide4_btn')) document.getElementById('slide4_btn').value = data.slide4_btn || "";
+            if(document.getElementById('slide4_link')) document.getElementById('slide4_link').value = data.slide4_link || "";
+
+            // BANNER 5
+            if(document.getElementById('slide5_img')) document.getElementById('slide5_img').value = data.slide5_img || "";
+            if(document.getElementById('slide5_titulo')) document.getElementById('slide5_titulo').value = data.slide5_titulo || "";
+            if(document.getElementById('slide5_btn')) document.getElementById('slide5_btn').value = data.slide5_btn || "";
+            if(document.getElementById('slide5_link')) document.getElementById('slide5_link').value = data.slide5_link || "";
+
+            console.log("Datos del slider cargados en el panel");
+        }
+    } catch (e) { 
+        console.error("Error al cargar slider:", e); 
+    }
+}
+
+// Guarda los cambios
+async function guardarSlider() {
+    // Recolectamos los datos de los 5 bloques del Admin
+    const data = {
+        // Banner 1
+        slide1_img: document.getElementById('slide1_img').value,
+        slide1_titulo: document.getElementById('slide1_titulo').value,
+        slide1_btn: document.getElementById('slide1_btn').value,
+        slide1_link: document.getElementById('slide1_link').value,
+
+        // Banner 2
+        slide2_img: document.getElementById('slide2_img').value,
+        slide2_titulo: document.getElementById('slide2_titulo').value,
+        slide2_btn: document.getElementById('slide2_btn').value,
+        slide2_link: document.getElementById('slide2_link').value,
+
+        // Banner 3
+        slide3_img: document.getElementById('slide3_img').value,
+        slide3_titulo: document.getElementById('slide3_titulo').value,
+        slide3_btn: document.getElementById('slide3_btn').value,
+        slide3_link: document.getElementById('slide3_link').value,
+
+        // Banner 4
+        slide4_img: document.getElementById('slide4_img').value,
+        slide4_titulo: document.getElementById('slide4_titulo').value,
+        slide4_btn: document.getElementById('slide4_btn').value,
+        slide4_link: document.getElementById('slide4_link').value,
+
+        // Banner 5
+        slide5_img: document.getElementById('slide5_img').value,
+        slide5_titulo: document.getElementById('slide5_titulo').value,
+        slide5_btn: document.getElementById('slide5_btn').value,
+        slide5_link: document.getElementById('slide5_link').value,
+
+        ultima_actualizacion: new Date()
+    };
+
+    try {
+        // Guardamos todo el objeto en el documento 'slider_principal'
+        await db.collection("configuracion").doc("slider_principal").set(data);
+        alert("✅ ¡Los 5 banners de Syrax se actualizaron correctamente!");
+    } catch (e) { 
+        console.error("Error al guardar:", e);
+        alert("Error al guardar: " + e.message); 
+    }
+}
+
+
+
+
+
+
+
+    // Inicio
+    agregarBloqueColor();
+    cargarListaPedidos();
+</script>
+
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
