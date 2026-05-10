@@ -2331,8 +2331,8 @@ document.addEventListener('DOMContentLoaded', () => {
 ///////////////////////////////////
 
 function toggleMenu() {
-    // Busca tu nav y le pone o saca la clase 'active'
-    document.querySelector('.nav-links').classList.toggle('active');
+    const nav = document.querySelector('.nav-links');
+    nav.classList.toggle('active');
 }
 
 //FIN
