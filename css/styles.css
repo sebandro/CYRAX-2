@@ -2997,9 +2997,11 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 /* Escondemos el botón de menú en PC */
 @media (min-width: 769px) {
-    .menu-mobile-btn {
-        display: none;
-    }
+   .menu-mobile-btn, 
+ .menu-close-mobile,
+.menu-close-mobile {
+    display: none !important;
+}
 }
 
 
@@ -3100,12 +3102,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 }
 
-/* En PC escondemos el botón de cerrar */
-@media (min-width: 769px) {
-    .menu-close-mobile {
-        display: none !important;
-    }
-}
 
 
 
