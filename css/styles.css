@@ -3082,6 +3082,31 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 
 
+.menu-close-mobile {
+        display: block !important; /* Lo despertamos en móvil */
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 28px;
+        color: #000;
+        cursor: pointer;
+        z-index: 10002;
+    }
+
+    /* Ajuste extra para que el logo no se pise con los iconos */
+    .logo {
+        font-size: 18px !important;
+        white-space: nowrap;
+    }
+}
+
+/* En PC escondemos el botón de cerrar */
+@media (min-width: 769px) {
+    .menu-close-mobile {
+        display: none !important;
+    }
+}
+
 
 
     /* 2. El Banner/Slider Principal */
