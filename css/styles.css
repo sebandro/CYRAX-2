@@ -3008,117 +3008,77 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
    ============================================================ */
 
 @media (max-width: 768px) {
-    /*==============================*/
-    /* 1. Ajustes del Header y Logo */
-    /*==============================*/
-
- /* 1. CONTENEDOR PRINCIPAL (3 Columnas: Menú | Logo | Iconos) */
+    /* 1. HEADER: Forzamos 3 columnas (Menú | Logo | Carrito) */
     .navbar-container {
         display: grid !important;
-        grid-template-columns: 1fr auto 1fr !important; 
+        grid-template-columns: 1fr auto 1fr !important;
         align-items: center !important;
-        justify-content: space-between !important;
-        padding: 10px 15px !important;
         height: 70px !important;
-        position: sticky !important;
-        top: 0 !important;
-        background: #fff !important;
-        z-index: 10000 !important;
+        padding: 0 15px !important;
     }
 
-    .menu-mobile-btn {
-        display: flex !important;
-        justify-content: flex-start;
-        font-size: 22px !important;
-        cursor: pointer;
-    }
+    .navbar-main { justify-self: center !important; }
+    .navbar-actions { justify-self: end !important; }
+    .menu-mobile-btn { display: flex !important; justify-self: start !important; }
 
-    .navbar-main {
-        display: flex !important;
-        justify-content: center !important;
-    }
-
-    .logo {
-        font-size: 18px !important;
-        margin: 0 !important;
-        letter-spacing: 1px;
-    }
-
-    .navbar-actions {
-        display: flex !important;
-        justify-content: flex-end !important;
-        gap: 15px !important;
-    }
-
-    .cart-label, #user-text {
-        display: none !important; /* Esconde textos largos */
-    }
-
-    /* 2. MENÚ LATERAL (CAJÓN) */
+    /* 2. MENÚ LATERAL: Forzamos verticalidad total */
     .nav-links {
+        display: block !important; /* IMPORTANTE: Esto rompe el horizontal */
         position: fixed !important;
         top: 0 !important;
-        left: -100% !important; /* Escondido */
+        left: -100% !important;
         width: 80% !important;
         height: 100vh !important;
         background: #ffffff !important;
+        padding-top: 80px !important;
+        transition: 0.4s ease !important;
         z-index: 99999 !important;
-        transition: 0.4s ease all !important;
-        display: block !important; /* Fuerza flujo vertical */
-        padding: 60px 0 !important;
-        overflow-y: auto !important;
-        box-shadow: 5px 0 15px rgba(0,0,0,0.2) !important;
     }
 
-    .nav-links.active {
-        left: 0 !important; /* Aparece */
-    }
+    .nav-links.active { left: 0 !important; }
 
-    /* 3. LISTADO DE CATEGORÍAS */
-    .nav-links ul {
-        display: block !important; /* Items uno abajo del otro */
+    /* Lista de categorías */
+    #menu-categorias {
+        display: flex !important;
+        flex-direction: column !important; /* Fuerza uno abajo del otro */
+        width: 100% !important;
         padding: 0 !important;
-        margin: 0 !important;
     }
 
-    .nav-links li {
-        display: block !important;
+    #menu-categorias li {
         width: 100% !important;
-        border-bottom: 1px solid #f0f0f0;
+        display: block !important;
+        border-bottom: 1px solid #eee !important;
     }
 
-    .nav-links a {
+    #menu-categorias a {
         display: block !important;
-        padding: 15px 25px !important;
-        font-size: 16px !important;
-        color: #000 !important;
+        padding: 15px 20px !important;
         text-align: left !important;
-        text-transform: uppercase;
-        font-weight: 600;
-    }
-
-    /* 4. DROPDOWNS (SUBCATEGORÍAS) */
-    .dropdown-content {
-        position: static !important; /* No flota, empuja lo de abajo */
-        display: none !important; 
-        background: #f9f9f9 !important;
-        padding-left: 20px !important;
-        box-shadow: none !important;
         width: 100% !important;
     }
 
-    /* Se abre al clickear (en móvil el hover es el primer toque) */
-    .dropdown:hover .dropdown-content,
-    .dropdown:active .dropdown-content {
+    /* 3. DROPDOWNS: Cerrados y verticales */
+    .dropdown-content {
+        display: none !important; /* Cerrados por defecto */
+        position: static !important; /* Se despliegan hacia abajo empujando el resto */
+        width: 100% !important;
+        background: #f9f9f9 !important;
+        box-shadow: none !important;
+        padding-left: 20px !important;
+    }
+
+    /* Mostrar dropdown al tocar */
+    .dropdown:active .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
         display: block !important;
     }
 
-    .dropdown-content a {
-        padding: 10px 25px !important;
-        font-size: 14px !important;
-        color: #666 !important;
-        text-transform: capitalize;
+    /* 4. LIMPIEZA DE ICONOS */
+    .cart-label, #user-text {
+        display: none !important; /* Chau textos molestos */
     }
+}
 
 
 
@@ -3134,4 +3094,4 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     /* 6. Página de Producto Individual */
 
-}
+
