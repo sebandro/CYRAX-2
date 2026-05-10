@@ -2335,6 +2335,23 @@ function toggleMenu() {
     nav.classList.toggle('active');
 }
 
+// Manejo de Dropdowns en Móvil
+document.querySelectorAll('.dropdown-toggle').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            e.preventDefault(); // Evita que recargue la página
+            const parent = this.parentElement;
+            
+            // Cerramos los otros que estén abiertos para que no sea un lío
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if(d !== parent) d.classList.remove('open');
+            });
+
+            // Abrimos/cerramos el actual
+            parent.classList.toggle('open');
+        }
+    });
+});
 //FIN
 
 
