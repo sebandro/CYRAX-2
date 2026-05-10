@@ -2995,111 +2995,106 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /*     fin    */
 /*===========*/
 
-/* Escondemos el botón de menú en PC */
-@media (min-width: 769px) {
-   .menu-mobile-btn, 
- .menu-close-mobile,
+/* Bloque de limpieza para PC */
+.menu-mobile-btn, 
 .menu-close-mobile {
     display: none !important;
 }
-}
-
 
 /* ============================================================
    ESTILOS MOBILE - EMPEZANDO DE 0
    ============================================================ */
 
 @media (max-width: 768px) {
-    /* 1. HEADER: Forzamos 3 columnas (Menú | Logo | Carrito) */
+    /* 1. HEADER: 3 Columnas Proporcionales */
     .navbar-container {
         display: grid !important;
-        grid-template-columns: 1fr auto 1fr !important;
+        /* Definimos tamaños fijos a los costados para que el centro sea real */
+        grid-template-columns: 50px 1fr 50px !important; 
         align-items: center !important;
         height: 70px !important;
         padding: 0 15px !important;
+        gap: 0 !important;
     }
 
-    .navbar-main { justify-self: center !important; }
-    .navbar-actions { justify-self: end !important; }
-    .menu-mobile-btn { display: flex !important; justify-self: start !important; }
+    .menu-mobile-btn { 
+        display: flex !important; 
+        justify-content: flex-start !important; 
+        font-size: 24px;
+    }
 
-    /* 2. MENÚ LATERAL: Forzamos verticalidad total */
+    .navbar-main { 
+        display: flex !important;
+        justify-content: center !important; 
+    }
+
+    .logo { 
+        font-size: 18px !important; 
+        margin: 0 !important;
+        text-align: center !important;
+    }
+
+    .navbar-actions { 
+        display: flex !important;
+        justify-content: flex-end !important;
+        gap: 15px !important;
+    }
+
+    /* 2. MENÚ LATERAL: Más angosto para que no sea infinito */
     .nav-links {
-        display: block !important; /* IMPORTANTE: Esto rompe el horizontal */
+        display: block !important;
         position: fixed !important;
         top: 0 !important;
         left: -100% !important;
-        width: 80% !important;
+        width: 280px !important; /* Ancho fijo tipo App */
         height: 100vh !important;
         background: #ffffff !important;
         padding-top: 80px !important;
         transition: 0.4s ease !important;
         z-index: 99999 !important;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.2) !important;
     }
 
     .nav-links.active { left: 0 !important; }
 
-    /* Lista de categorías */
+    /* Botón cerrar (X) dentro del menú móvil */
+    .menu-close-mobile {
+        display: block !important;
+        position: absolute !important;
+        top: 20px !important;
+        right: 20px !important;
+        font-size: 28px !important;
+    }
+
+    /* 3. CATEGORÍAS Y DROPDOWNS */
     #menu-categorias {
         display: flex !important;
-        flex-direction: column !important; /* Fuerza uno abajo del otro */
+        flex-direction: column !important;
         width: 100% !important;
-        padding: 0 !important;
     }
 
     #menu-categorias li {
         width: 100% !important;
-        display: block !important;
         border-bottom: 1px solid #eee !important;
     }
 
-    #menu-categorias a {
-        display: block !important;
-        padding: 15px 20px !important;
-        text-align: left !important;
-        width: 100% !important;
-    }
-
-    /* 3. DROPDOWNS: Cerrados y verticales */
+    /* Estilo para los Dropdowns en móvil */
     .dropdown-content {
-        display: none !important; /* Cerrados por defecto */
-        position: static !important; /* Se despliegan hacia abajo empujando el resto */
+        display: none !important; 
+        position: static !important; /* IMPORTANTE: Para que empuje el menú hacia abajo */
         width: 100% !important;
         background: #f9f9f9 !important;
-        box-shadow: none !important;
         padding-left: 20px !important;
+        box-shadow: none !important;
     }
 
-    /* Mostrar dropdown al tocar */
-    .dropdown:active .dropdown-content,
-    .dropdown:focus-within .dropdown-content {
+    /* Esta clase "open" la usaremos con el JS de abajo */
+    .dropdown.open .dropdown-content {
         display: block !important;
     }
 
-    /* 4. LIMPIEZA DE ICONOS */
-    .cart-label, #user-text {
-        display: none !important; /* Chau textos molestos */
-    }
-}
-
-
-
-.menu-close-mobile {
-        display: block !important; /* Lo despertamos en móvil */
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 28px;
-        color: #000;
-        cursor: pointer;
-        z-index: 10002;
-    }
-
-    /* Ajuste extra para que el logo no se pise con los iconos */
-    .logo {
-        font-size: 18px !important;
-        white-space: nowrap;
-    }
+    /* 4. LIMPIEZA */
+    .cart-label, #user-text { display: none !important; }
 }
 
 
