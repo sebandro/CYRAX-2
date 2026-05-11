@@ -2995,81 +2995,66 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /*     fin    */
 /*===========*/
 
-/* Bloque de limpieza para PC */
-.menu-mobile-btn, 
-.menu-close-mobile {
-    display: none !important;
+/* --- ESTO VA AL FINAL DE TU STYLES.CSS --- */
+
+/* 1. Escondemos la hamburguesa en PC */
+.menu-mobile-btn, .menu-close-mobile {
+    display: none;
 }
 
-/* ============================================================
-   ESTILOS MOBILE - EMPEZANDO DE 0
-   ============================================================ */
-
 @media (max-width: 768px) {
-    /* 1. EL CONTENEDOR (Forzamos 3 columnas reales) */
-    header.navbar-container {
+    /* HEADER EN 3 COLUMNAS */
+    .navbar-container {
         display: grid !important;
-        grid-template-columns: 60px 1fr 80px !important; 
+        grid-template-columns: 1fr auto 1fr !important;
         align-items: center !important;
-        padding: 0 10px !important;
-        height: 60px !important;
-        width: 100% !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        background: #fff !important;
-        z-index: 9999 !important;
+        padding: 0 15px !important;
+        height: 70px !important;
     }
 
-    /* 2. HAMBURGUESA (Izquierda) */
     .menu-mobile-btn {
-        display: flex !important;
-        justify-content: flex-start !important;
-        font-size: 24px !important;
+        display: flex !important; /* Aparece en móvil */
+        justify-content: flex-start;
+        font-size: 24px;
+        cursor: pointer;
     }
 
-    /* 3. LOGO (Centro) */
     .navbar-main {
-        display: flex !important;
         justify-content: center !important;
+        display: flex !important;
     }
 
     .logo {
         font-size: 18px !important;
-        white-space: nowrap !important; /* Evita que el nombre se parta en dos */
     }
 
-    /* 4. ACCIONES (Derecha) */
     .navbar-actions {
-        display: flex !important;
         justify-content: flex-end !important;
-        gap: 15px !important;
+        display: flex !important;
+        gap: 10px !important;
     }
 
     .cart-label, #user-text { display: none !important; }
 
-    /* 5. MENÚ LATERAL (Arreglo de horizontal a vertical) */
+    /* MENÚ LATERAL VERTICAL */
     .nav-links {
-        display: block !important; /* Matamos el flex de PC */
+        display: block !important; /* Matamos el flex horizontal */
         position: fixed !important;
         top: 0 !important;
-        left: -100% !important; /* Empezamos escondidos */
+        left: -100% !important;
         width: 280px !important;
         height: 100vh !important;
         background: #fff !important;
-        padding-top: 70px !important;
         z-index: 10000 !important;
         transition: 0.3s ease-all;
-        overflow-y: auto !important;
+        padding-top: 60px !important;
     }
 
     .nav-links.active { left: 0 !important; }
 
-    /* FORZAMOS LA LISTA VERTICAL */
     #menu-categorias {
-        display: block !important; /* ESTO es lo que arregla el video */
+        display: block !important; /* Forzamos vertical */
         padding: 0 !important;
-        margin: 0 !important;
     }
 
     #menu-categorias li {
@@ -3078,24 +3063,18 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         border-bottom: 1px solid #eee;
     }
 
-    #menu-categorias a {
-        display: block !important;
-        padding: 15px 20px !important;
-        width: 100% !important;
-        text-align: left !important;
-    }
-
     /* DROPDOWNS */
     .dropdown-content {
-        display: none !important;
-        position: static !important; /* Empuja el contenido hacia abajo */
+        display: none !important; /* Cerrado por defecto */
+        position: static !important; /* Empuja hacia abajo */
         width: 100% !important;
-        background: #fdfdfd !important;
+        background: #fafafa !important;
+        box-shadow: none !important;
         padding-left: 20px !important;
     }
 
-    /* Cuando el JS pone la clase "active" */
-    .dropdown.active > .dropdown-content {
+    /* Clase que pondrá el JS */
+    .dropdown.active-mobile .dropdown-content {
         display: block !important;
     }
 }
