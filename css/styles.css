@@ -3003,154 +3003,85 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 }
 
 @media (max-width: 768px) {
-    /* 1. HEADER: 3 Columnas con medidas laterales fijas para centrar el logo */
-    .navbar-container {
+    /* 1. HEADER: Una sola regla de Grid definitiva */
+    .navbar {
         display: grid !important;
-        /* Reservamos 60px a los lados, el centro se lleva el resto */
-        grid-template-columns: 60px 1fr 60px !important; 
+        /* Col 1: 50px (Menú) | Col 2: 1fr (Logo) | Col 3: 100px (Usuario + Carrito) */
+        grid-template-columns: 50px 1fr 100px !important;
         align-items: center !important;
-        padding: 0 10px !important;
         height: 70px !important;
+        padding: 0 15px !important;
         width: 100% !important;
-        position: relative;
+        gap: 0 !important;
     }
 
-
-.navbar {
-        display: grid !important;
-        grid-template-columns: 60px 1fr 100px !important; 
-        align-items: center !important;
-        height: 70px !important;
-    }
-
-    /* Hamburguesa Centrada Verticalmente */
+    /* Hamburguesa: Forzamos que esté a la izquierda y centrada */
     .menu-mobile-btn {
+        grid-column: 1 !important;
         display: flex !important;
+        justify-content: flex-start !important;
         align-items: center !important;
-        height: 100% !important;
-        margin: 0 !important;
+        font-size: 24px !important;
     }
 
-   .navbar-main {
+    /* Logo: Al medio real */
+    .navbar-main {
         grid-column: 2 !important;
         display: flex !important;
         justify-content: center !important;
-    }
-
-    .logo {
-        font-size: 20px !important;
         margin: 0 !important;
-        white-space: nowrap;
     }
 
-.navbar-actions {
-        display: flex !important;
-        flex-direction: row !important; /* Los pone uno al lado del otro */
-        align-items: center !important;
-        justify-content: flex-end !important;
-        gap: 15px !important; /* Espacio entre ellos */
+    /* Acciones: Usuario y Carrito pegados a la derecha */
+    .navbar-actions {
         grid-column: 3 !important;
-    }
-
-    .navbar-actions a {
         display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-end !important;
         align-items: center !important;
-        color: #000 !important;
-    }
-
-    .navbar-actions a, .cart-container {
-        display: flex !important;
-        align-items: center !important;
+        gap: 15px !important; /* Espacio entre el monigote y el carrito */
     }
 
     .cart-label, #user-text { display: none !important; }
 
-    /* 2. MENÚ LATERAL VERTICAL */
+    /* 2. MENÚ LATERAL */
     .nav-links {
         display: block !important;
+        flex-direction: column !important;
         position: fixed !important;
         top: 0 !important;
         left: -100% !important;
-        width: 270px !important; /* Ancho más tipo App */
+        width: 270px !important;
         height: 100vh !important;
         background: #fff !important;
         z-index: 10000 !important;
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        padding: 60px 0 !important;
-        box-shadow: 5px 0 15px rgba(0,0,0,0.1) !important;
-        overflow-y: auto;
+        padding-top: 60px !important;
+        transition: 0.4s ease !important;
     }
 
     .nav-links.active { left: 0 !important; }
 
-    .menu-close-mobile {
-        display: block !important; /* Solo en celu */
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 24px;
-        z-index: 10001;
+    /* 3. DROPDOWNS (Eliminamos el error del hover) */
+    .dropdown:hover .dropdown-content {
+        display: none !important; /* Matamos el hover de PC */
     }
 
-    #menu-categorias {
-        display: block !important;
-        padding: 0 !important;
-        margin-top: 20px;
-    }
-
-    #menu-categorias li {
-        display: block !important;
+    .dropdown-content {
+        display: none !important; 
+        position: static !important; /* Empuja el menú hacia abajo */
         width: 100% !important;
-        border-bottom: 1px solid #f0f0f0;
-    }
-
-    #menu-categorias li a {
-        display: flex !important;
-        justify-content: space-between;
-        padding: 15px 25px !important;
-        font-size: 16px;
-    }
-
-    /* 3. DROPDOWNS (MATAMOS EL HOVER) */
-    /* Evitamos que el hover de PC moleste en el táctil */
-.dropdown:hover .dropdown-content {
-        display: none !important;
-    }
-
- .dropdown-content {
-        display: none !important;
-        position: static !important;
-        padding-left: 20px !important;
         background: #f9f9f9 !important;
+        padding-left: 20px !important;
     }
 
+    /* Esta clase es la que usaremos en el JS */
     .dropdown.open > .dropdown-content {
         display: block !important;
     }
 
-
-    /* Esta es la clase que el JS activará */
-    .dropdown.active-mobile .dropdown-content {
-        display: block !important;
-    }
-    
-    /* Girar la flechita */
-    .dropdown.active-mobile .fa-chevron-down {
+    /* Flechita rotando al abrir */
+    .dropdown.open .fa-chevron-down {
         transform: rotate(180deg);
-    }
-
-    .navbar-actions .user-icon, 
-    .navbar-actions a[href*="login"] {
-        display: flex !important;
-        align-items: center !important;
-    }
-
-   .cart-container {
-        grid-column: 3 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important; /* Separa el monigote del carrito */
-        gap: 15px !important;
     }
 }
 
