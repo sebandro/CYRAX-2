@@ -2329,31 +2329,25 @@ document.addEventListener('DOMContentLoaded', () => {
 /////////////////////////////////////
 /* abrir menu hamburguesa celular */
 ///////////////////////////////////
+// Función para el botón hamburguesa
+function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+}
 
-// Manejo de Dropdowns en Móvil
-document.addEventListener('DOMContentLoaded', () => {
-    // Abrir menú lateral
-    window.toggleMenu = function() {
-        document.querySelector('.nav-links').classList.toggle('active');
-    };
+// Función para los dropdowns en móvil
+document.querySelectorAll('.dropdown-toggle').forEach(item => {
+    item.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+            e.preventDefault(); // IMPORTANTE: evita que el link te lleve a otra página
+            const parent = this.parentElement;
+            
+            // Cerramos otros si querés que sea tipo acordeón
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if (d !== parent) d.classList.remove('active');
+            });
 
-    // Control de Dropdowns
-    const dropdowns = document.querySelectorAll('.dropdown-toggle');
-    dropdowns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault(); // Evita que se recargue la página
-                const parent = this.parentElement;
-                
-                // Cerramos otros para que no se amontonen
-                document.querySelectorAll('.dropdown').forEach(d => {
-                    if (d !== parent) d.classList.remove('active');
-                });
-
-                // Abrimos el que tocamos
-                parent.classList.toggle('active');
-            }
-        });
+            parent.classList.toggle('active');
+        }
     });
 });
 //FIN
