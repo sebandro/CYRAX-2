@@ -3053,7 +3053,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     /* 3. Inicio de sesión y Carrito a la derecha */
     .header-right {
-        flex: 1;
+        flex: 3;
         display: flex;
         justify-content: flex-end;
         align-items: center;
