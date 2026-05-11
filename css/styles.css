@@ -3105,8 +3105,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     cursor: pointer;
     padding: 10px; /* Aumenta el área de contacto */
 }
+    .dropdown-toggle {
+    font-size: 0.9rem !important;
 }
-
+}
 
     /* 2. El Banner/Slider Principal */
 
