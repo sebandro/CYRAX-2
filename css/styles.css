@@ -2998,8 +2998,11 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* --- ESTO VA AL FINAL DE TU STYLES.CSS --- */
 
 /* 1. Escondemos la hamburguesa en PC */
-.menu-mobile-btn,.mobile-only, .menu-close-mobile {
+.menu-mobile-btn,.menu-close-mobile {
     display: none;
+}
+.mobile-only {
+    display: none !important;
 }
 
 @media (max-width: 768px) {
@@ -3152,6 +3155,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
 
+.mobile-only {
+        display: block !important;
+    }
+    
     .navbar-container {
         display: grid !important;
         grid-template-columns: 50px 1fr 50px !important; 
