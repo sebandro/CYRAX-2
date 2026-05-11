@@ -2330,38 +2330,19 @@ document.addEventListener('DOMContentLoaded', () => {
 /* abrir menu hamburguesa celular */
 ///////////////////////////////////
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Abrir/Cerrar menú hamburguesa
-    const btnMenu = document.querySelector('.menu-mobile-btn');
-    const navLinks = document.querySelector('.nav-links');
-    const btnClose = document.querySelector('.menu-close-mobile');
-
-    if (btnMenu) {
-        btnMenu.addEventListener('click', () => navLinks.classList.add('active'));
-    }
-    if (btnClose) {
-        btnClose.addEventListener('click', () => navLinks.classList.remove('active'));
+document.addEventListener('click', function (e) {
+    // Si tocamos el botón de hamburguesa
+    if (e.target.closest('.menu-mobile-btn')) {
+        document.querySelector('.nav-links').classList.toggle('active');
     }
 
-    // 2. Control de Dropdowns en Móvil
-    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-
-    dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-            if (window.innerWidth <= 768) {
-                e.preventDefault(); // IMPORTANTE: frena el link
-                const parent = this.parentElement;
-
-                // Cierra los otros por si hay alguno abierto (estilo acordeón)
-                document.querySelectorAll('.dropdown').forEach(d => {
-                    if (d !== parent) d.classList.remove('open');
-                });
-
-                // Abre o cierra el actual
-                parent.classList.toggle('open');
-            }
-        });
-    });
+    // Si tocamos una categoría con dropdown
+    if (e.target.closest('.dropdown-toggle')) {
+        e.preventDefault();
+        const parent = e.target.closest('.dropdown');
+        parent.classList.toggle('open'); // Esta clase debe tener "display: block" en tu CSS
+        console.log("Dropdown tocado"); // Si ves esto en la consola (F12), el JS funciona
+    }
 });
 //FIN
 
