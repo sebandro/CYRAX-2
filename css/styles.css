@@ -3007,13 +3007,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
      .navbar {
         display: grid !important;
-        /* Col 1: 50px (Menú) | Col 2: 1fr (Logo) | Col 3: 100px (Usuario + Carrito) */
-        grid-template-columns: 50px 1fr 100px !important;
+        grid-template-columns: 50px 1fr auto !important; /* Lado - Centro - Derecha */
         align-items: center !important;
-        height: 70px !important;
-        padding: 0 15px !important;
-        width: 100% !important;
-        gap: 0 !important;
+        padding: 10px 15px !important;
+        gap: 10px;
     }
 
     /* Hamburguesa: Forzamos que esté a la izquierda y centrada */
@@ -3028,22 +3025,16 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     /* Logo: Al medio real */
     .navbar-main {
-        position: relative !important; /* Base para el botón */
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-        height: 70px !important;
+        justify-self: center !important;
+        margin: 0 !important;
     }
 
     /* Acciones: Usuario y Carrito pegados a la derecha */
-    .navbar-actions {
-        grid-column: 3 !important;
+   .navbar-actions {
         display: flex !important;
-        flex-direction: row !important;
-        justify-content: flex-end !important;
         align-items: center !important;
-        gap: 15px !important; /* Espacio entre el monigote y el carrito */
+        gap: 12px !important; /* Espacio entre el texto y el carrito */
+        justify-self: end !important;
     }
 
     .cart-label, #user-text { display: none !important; }
@@ -3071,17 +3062,26 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: none !important; /* Matamos el hover de PC */
     }
 
-    .dropdown-content {
-        display: none !important; 
-        position: static !important; /* Empuja el menú hacia abajo */
-        width: 100% !important;
-        background: #f9f9f9 !important;
-        padding-left: 20px !important;
+   .dropdown-content {
+        display: none;
+        background-color: #ffffff;
+        width: 100vw; /* Que ocupe todo el ancho */
+        position: absolute;
+        left: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        padding: 20px 0;
+        z-index: 1000;
     }
 
-    /* Esta clase es la que usaremos en el JS */
-    .dropdown.open > .dropdown-content {
+    .dropdown.open .dropdown-content {
         display: block !important;
+    }
+
+    .dropdown-content li a {
+        padding: 15px 25px !important; /* Items más grandes para el dedo */
+        font-size: 1.1rem !important;
+        border-bottom: 1px solid #eee;
+        display: block;
     }
 
     /* Flechita rotando al abrir */
@@ -3093,6 +3093,18 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: block !important; /* ¡ESTO quita lo horizontal! */
         padding: 60px 20px !important;
     }
+    
+    .menu-close-mobile {
+    display: flex !important; /* Lo hacemos visible */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 28px; /* Que sea fácil de tocar con el dedo */
+    color: #333;
+    z-index: 10001; /* Un número más alto que el del menú para que esté "arriba" */
+    cursor: pointer;
+    padding: 10px; /* Aumenta el área de contacto */
+}
 }
 
 
