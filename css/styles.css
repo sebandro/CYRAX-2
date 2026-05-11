@@ -3010,9 +3010,27 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
      /* --- CORRECCIÓN EN EL HEADER --- */
 .navbar-container {
         display: grid !important;
-        grid-template-columns: 60px 1fr 60px !important; /* 60px para los extremos */
-        align-items: center ;
+        /* Tres columnas: los lados miden 60px y el centro se queda con el resto */
+        grid-template-columns: 60px 1fr 60px !important;
+        align-items: center !important;
+        height: 70px !important;
         padding: 0 10px !important;
+    }
+
+    /* Alineación de cada bloque */
+    .header-left {
+        display: flex;
+        justify-content: flex-start; /* Pega la hamburguesa al borde izquierdo */
+    }
+
+    .header-center {
+        display: flex;
+        justify-content: center; /* Clava el logo al medio */
+    }
+
+    .header-right {
+        display: flex;
+        justify-content: flex-end; /* Pega el carrito al borde derecho */
     }
 
     /* Menú Hamburguesa: Pegado a la izquierda */
@@ -3162,13 +3180,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 .mobile-only {
         display: block !important;
-    }
-    
-    .navbar-container {
-        display: grid !important;
-        grid-template-columns: 50px 1fr 50px !important; 
-        align-items: center !important;
-        padding: 0 15px !important;
     }
     
     .logo {
