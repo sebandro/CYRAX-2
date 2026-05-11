@@ -2336,35 +2336,27 @@ function toggleMenu() {
     if (nav) nav.classList.toggle('active');
 }
 
-// 2. Manejo de Dropdowns en Móvil
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Abrir/Cerrar menú lateral
-    const hamburguesa = document.querySelector('.menu-mobile-btn');
-    const menuLateral = document.querySelector('.nav-links');
-
-    if (hamburguesa) {
-        hamburguesa.addEventListener('click', () => {
-            menuLateral.classList.toggle('active');
-        });
-    }
-
-    // 2. Control de Dropdowns por CLICK (No por hover)
+    // Control de Dropdowns en Móvil
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener('click', function(e) {
-            // Solo actuamos si estamos en móvil
             if (window.innerWidth <= 768) {
                 e.preventDefault(); // Evita que se recargue la página
                 const parent = this.parentElement;
                 
-                // Cerramos los otros dropdowns para que no se amontonen
+                // Cerramos otros por si hay uno abierto
                 document.querySelectorAll('.dropdown').forEach(d => {
                     if (d !== parent) d.classList.remove('open');
                 });
 
-                // Toggle de la clase 'open' que definimos en el CSS
+                // Abrimos el actual
                 parent.classList.toggle('open');
+                
+                // Opcional: Rotar la flechita si tenés una
+                const icon = this.querySelector('i');
+                if (icon) icon.style.transform = parent.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
             }
         });
     });
