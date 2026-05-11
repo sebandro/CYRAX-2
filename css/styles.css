@@ -3006,18 +3006,17 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
    ============================================================ */
 
 @media (max-width: 768px) {
-    /* 1. EL CONTENEDOR (Forzamos 3 columnas) */
+    /* 1. EL CONTENEDOR (Forzamos 3 columnas reales) */
     header.navbar-container {
         display: grid !important;
-        /* Col 1: 60px (Menu) | Col 2: 1fr (Logo) | Col 3: 80px (Iconos) */
         grid-template-columns: 60px 1fr 80px !important; 
         align-items: center !important;
-        justify-content: space-between !important;
         padding: 0 10px !important;
         height: 60px !important;
         width: 100% !important;
         position: fixed !important;
         top: 0 !important;
+        left: 0 !important;
         background: #fff !important;
         z-index: 9999 !important;
     }
@@ -3027,22 +3026,17 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: flex !important;
         justify-content: flex-start !important;
         font-size: 24px !important;
-        grid-column: 1 !important; /* Forzamos a la columna 1 */
     }
 
     /* 3. LOGO (Centro) */
     .navbar-main {
         display: flex !important;
         justify-content: center !important;
-        grid-column: 2 !important; /* Forzamos a la columna 2 */
     }
 
-    .navbar-main .logo {
+    .logo {
         font-size: 18px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: block !important;
-        text-align: center !important;
+        white-space: nowrap !important; /* Evita que el nombre se parta en dos */
     }
 
     /* 4. ACCIONES (Derecha) */
@@ -3050,39 +3044,58 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: flex !important;
         justify-content: flex-end !important;
         gap: 15px !important;
-        grid-column: 3 !important; /* Forzamos a la columna 3 */
     }
 
-    /* Escondemos textos que molestan en el móvil */
-    .cart-label, #user-text, .nav-links:not(.active) {
-        display: none !important;
-    }
+    .cart-label, #user-text { display: none !important; }
 
-    /* 5. MENÚ LATERAL Y DROPDOWNS */
-    .nav-links.active {
-        display: block !important;
+    /* 5. MENÚ LATERAL (Arreglo de horizontal a vertical) */
+    .nav-links {
+        display: block !important; /* Matamos el flex de PC */
         position: fixed !important;
         top: 0 !important;
-        left: 0 !important;
+        left: -100% !important; /* Empezamos escondidos */
         width: 280px !important;
         height: 100vh !important;
         background: #fff !important;
-        padding-top: 60px !important;
+        padding-top: 70px !important;
         z-index: 10000 !important;
+        transition: 0.3s ease-all;
+        overflow-y: auto !important;
     }
 
-    /* Fix para que los dropdowns empujen el contenido abajo */
+    .nav-links.active { left: 0 !important; }
+
+    /* FORZAMOS LA LISTA VERTICAL */
+    #menu-categorias {
+        display: block !important; /* ESTO es lo que arregla el video */
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    #menu-categorias li {
+        display: block !important;
+        width: 100% !important;
+        border-bottom: 1px solid #eee;
+    }
+
+    #menu-categorias a {
+        display: block !important;
+        padding: 15px 20px !important;
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    /* DROPDOWNS */
     .dropdown-content {
         display: none !important;
-        position: static !important; /* Esto evita que floten sobre otros nombres */
+        position: static !important; /* Empuja el contenido hacia abajo */
         width: 100% !important;
-        background: #f9f9f9 !important;
-        box-shadow: none !important;
+        background: #fdfdfd !important;
         padding-left: 20px !important;
     }
 
-    /* Clase que activaremos con JS */
-    .dropdown.active .dropdown-content {
+    /* Cuando el JS pone la clase "active" */
+    .dropdown.active > .dropdown-content {
         display: block !important;
     }
 }
