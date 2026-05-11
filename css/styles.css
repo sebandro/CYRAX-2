@@ -3021,7 +3021,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: flex !important;
         justify-content: flex-start !important; /* Lo tira al borde izquierdo */
         margin: 0 !important;
-        padding-left: 5px !important;
+        padding-left: 15px !important;
     }
 
     /* Logo SYRAX (Columna 2 - El corazón) */
