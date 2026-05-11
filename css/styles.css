@@ -3006,37 +3006,58 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
      /* --- CORRECCIÓN EN EL HEADER --- */
 .navbar {
-    display: grid !important;
-    /* 3 columnas: la de los lados miden lo mismo (60px) para que el centro sea real */
-    grid-template-columns: 60px 1fr 60px !important; 
-    align-items: center !important;
-    padding: 0 10px !important;
-    height: 70px !important;
-    position: relative; /* Para que la X del menú lateral sepa dónde ubicarse */
-}
+        display: grid !important;
+        /* Col 1 (60px) | Col 2 (1fr - flexible) | Col 3 (60px) */
+        grid-template-columns: 60px 1fr 60px !important;
+        align-items: center !important;
+        height: 75px !important; /* Un poquito más de altura le da elegancia */
+        padding: 0 15px !important;
+        background-color: #fff !important;
+        border-bottom: 1px solid #eee;
+    }
 
-.menu-mobile-btn {
-    /* Quitamos el position absolute para que el grid lo ubique en la Columna 1 */
-    position: static !important; 
-    display: flex !important;
-    justify-content: flex-start !important;
-    font-size: 24px;
-}
+    /* Botón Hamburguesa (Columna 1) */
+    .menu-mobile-btn {
+        grid-column: 1;
+        display: flex !important;
+        justify-content: flex-start !important;
+        font-size: 26px !important; /* Más fácil de ver */
+        color: #000;
+        cursor: pointer;
+    }
 
-.navbar-main {
-    display: flex !important;
-    justify-content: center !important;
-    /* El logo se queda en la Columna 2 automáticamente */
-}
+    /* Logo SYRAX (Columna 2 - El corazón) */
+    .navbar-main {
+        grid-column: 2;
+        display: flex !important;
+        justify-content: center !important;
+        margin: 0 !important;
+    }
 
-.navbar-actions {
-    display: flex !important;
-    justify-content: flex-end !important;
-    gap: 15px !important;
-    /* Se queda en la Columna 3 automáticamente */
-}
+    .navbar-main img {
+        max-height: 22px !important; /* Ajustá este número según tu logo */
+        width: auto;
+    }
 
-    .cart-label, #user-text { display: none !important; }
+    /* Inicio de Sesión y Carrito (Columna 3) */
+    .navbar-actions {
+        grid-column: 3;
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        gap: 15px !important; /* Espacio entre el monigote y el carrito */
+    }
+
+
+.cart-label, #user-text, .navbar-actions span {
+        display: none !important;
+    }
+
+    .navbar-actions i {
+        font-size: 22px !important; /* Iconos con tamaño uniforme */
+        color: #000;
+    }
+    
 
     /* 2. MENÚ LATERAL */
     .nav-links {
