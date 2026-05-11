@@ -3016,22 +3016,19 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
 
- .navbar {
+.navbar {
         display: grid !important;
-        /* Columna 1: Hamburguesa (50px), Col 2: Logo (1fr), Col 3: Acciones (110px) */
-        grid-template-columns: 50px 1fr 110px !important; 
-        align-items: center !important; /* Esto centra la hamburguesa verticalmente */
+        grid-template-columns: 60px 1fr 100px !important; 
+        align-items: center !important;
         height: 70px !important;
-        padding: 0 10px !important;
     }
 
-    /* Menú Hamburguesa: Alineado al centro vertical */
+    /* Hamburguesa Centrada Verticalmente */
     .menu-mobile-btn {
-        grid-column: 1 !important;
         display: flex !important;
         align-items: center !important;
-        justify-content: center !important;
         height: 100% !important;
+        margin: 0 !important;
     }
 
    .navbar-main {
@@ -3046,17 +3043,24 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         white-space: nowrap;
     }
 
-    .navbar-actions {
+.navbar-actions {
         display: flex !important;
+        flex-direction: row !important; /* Los pone uno al lado del otro */
+        align-items: center !important;
         justify-content: flex-end !important;
-        gap: 12px !important;
-        grid-column: 3; /* Columna Derecha */
+        gap: 15px !important; /* Espacio entre ellos */
+        grid-column: 3 !important;
     }
 
     .navbar-actions a {
         display: flex !important;
         align-items: center !important;
         color: #000 !important;
+    }
+
+    .navbar-actions a, .cart-container {
+        display: flex !important;
+        align-items: center !important;
     }
 
     .cart-label, #user-text { display: none !important; }
@@ -3116,11 +3120,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
  .dropdown-content {
         display: none !important;
         position: static !important;
-        background: #fdfdfd !important;
-        padding-left: 15px !important;
+        padding-left: 20px !important;
+        background: #f9f9f9 !important;
     }
 
-    /* La clase mágica que pondrá el JS */
     .dropdown.open > .dropdown-content {
         display: block !important;
     }
