@@ -3020,7 +3020,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         grid-column: 1 !important;
         display: flex !important;
         justify-content: flex-start !important; /* Lo tira al borde izquierdo */
-        margin: 5 !important;
+        margin: 0 !important;
         padding-left: 15px !important;
     }
 
@@ -3028,7 +3028,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .navbar-main {
         grid-column: 2 !important;
         display: flex !important;
-        justify-content: center ;
+        justify-content: flex-start ;
     }
 
     /* Carrito: Pegado a la derecha */
