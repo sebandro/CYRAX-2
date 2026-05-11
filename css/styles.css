@@ -3006,108 +3006,86 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
    ============================================================ */
 
 @media (max-width: 768px) {
-    /* 1. HEADER: 3 Columnas Proporcionales */
-    .navbar-container {
+    /* 1. EL CONTENEDOR (Forzamos 3 columnas) */
+    header.navbar-container {
         display: grid !important;
-        /* Forzamos 3 columnas: la de los lados miden lo mismo (70px) para que el centro sea real */
-        grid-template-columns: 70px 1fr 70px !important; 
+        /* Col 1: 60px (Menu) | Col 2: 1fr (Logo) | Col 3: 80px (Iconos) */
+        grid-template-columns: 60px 1fr 80px !important; 
         align-items: center !important;
-        height: 70px !important;
+        justify-content: space-between !important;
         padding: 0 10px !important;
+        height: 60px !important;
+        width: 100% !important;
+        position: fixed !important;
+        top: 0 !important;
+        background: #fff !important;
+        z-index: 9999 !important;
     }
 
-    /* Hamburguesa a la izquierda */
-    .menu-mobile-btn { 
-        display: flex !important; 
-        justify-content: flex-start !important; 
-        font-size: 24px;
-        order: 1; /* Posición 1 */
+    /* 2. HAMBURGUESA (Izquierda) */
+    .menu-mobile-btn {
+        display: flex !important;
+        justify-content: flex-start !important;
+        font-size: 24px !important;
+        grid-column: 1 !important; /* Forzamos a la columna 1 */
     }
 
-    /* Logo al Centro */
-    .navbar-main { 
+    /* 3. LOGO (Centro) */
+    .navbar-main {
         display: flex !important;
         justify-content: center !important;
-        order: 2; /* Posición 2 */
+        grid-column: 2 !important; /* Forzamos a la columna 2 */
     }
 
-    .logo { 
-        font-size: 19px !important; 
-        font-weight: 800 !important;
+    .navbar-main .logo {
+        font-size: 18px !important;
         margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
         text-align: center !important;
-        letter-spacing: 1px;
     }
 
-    /* Acciones a la derecha (Usuario y Carrito) */
-    .navbar-actions { 
+    /* 4. ACCIONES (Derecha) */
+    .navbar-actions {
         display: flex !important;
         justify-content: flex-end !important;
-        gap: 12px !important;
-        order: 3; /* Posición 3 */
+        gap: 15px !important;
+        grid-column: 3 !important; /* Forzamos a la columna 3 */
     }
 
-    /* 2. MENÚ LATERAL */
-    .nav-links {
+    /* Escondemos textos que molestan en el móvil */
+    .cart-label, #user-text, .nav-links:not(.active) {
+        display: none !important;
+    }
+
+    /* 5. MENÚ LATERAL Y DROPDOWNS */
+    .nav-links.active {
         display: block !important;
         position: fixed !important;
         top: 0 !important;
-        left: -100% !important;
-        width: 270px !important; 
+        left: 0 !important;
+        width: 280px !important;
         height: 100vh !important;
-        background: #ffffff !important;
-        padding: 70px 0 20px 0 !important; /* Espacio para la X */
-        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-        z-index: 99999 !important;
-        box-shadow: 5px 0 15px rgba(0,0,0,0.1) !important;
-        overflow-y: auto; /* Permite scroll si hay muchas categorías */
+        background: #fff !important;
+        padding-top: 60px !important;
+        z-index: 10000 !important;
     }
 
-    .nav-links.active { left: 0 !important; }
-
-    .menu-close-mobile {
-        display: block !important;
-        position: absolute !important;
-        top: 20px !important;
-        right: 20px !important;
-        font-size: 24px !important;
-        color: #333;
-    }
-
-    /* 3. DROPDOWNS (Acordeón) */
-    #menu-categorias {
-        display: flex !important;
-        flex-direction: column !important;
-        padding: 0 !important;
-    }
-
-    #menu-categorias li a {
-        padding: 15px 25px !important;
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
-    }
-
+    /* Fix para que los dropdowns empujen el contenido abajo */
     .dropdown-content {
-        display: none !important; 
-        position: static !important; 
+        display: none !important;
+        position: static !important; /* Esto evita que floten sobre otros nombres */
         width: 100% !important;
-        background: #fcfcfc !important;
-        padding-left: 15px !important;
-        border-left: 3px solid #000; /* Detalle pro para identificar subcategoría */
+        background: #f9f9f9 !important;
+        box-shadow: none !important;
+        padding-left: 20px !important;
     }
 
-    /* Cuando el padre tiene la clase .open (vía JS) */
-    .dropdown.open > .dropdown-content {
+    /* Clase que activaremos con JS */
+    .dropdown.active .dropdown-content {
         display: block !important;
-    }
-
-    /* Rotar la flechita cuando se abre */
-    .dropdown.open > .dropdown-toggle i {
-        transform: rotate(180deg);
     }
 }
-
 
 
 
