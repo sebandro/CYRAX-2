@@ -3020,7 +3020,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         grid-column: 1 !important;
         display: flex !important;
         justify-content: flex-start !important; /* Lo tira al borde izquierdo */
-        margin: 0 !important;
+        margin: 5 !important;
         padding-left: 15px !important;
     }
 
