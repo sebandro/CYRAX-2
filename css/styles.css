@@ -3004,32 +3004,26 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 @media (max-width: 768px) {
     /* 1. HEADER: Una sola regla de Grid definitiva */
-    .navbar {
-        display: grid !important;
-        /* Col 1: 50px (Menú) | Col 2: 1fr (Logo) | Col 3: 100px (Usuario + Carrito) */
-        grid-template-columns: 50px 1fr 100px !important;
-        align-items: center !important;
-        height: 70px !important;
-        padding: 0 15px !important;
-        width: 100% !important;
-        gap: 0 !important;
-    }
+   
 
     /* Hamburguesa: Forzamos que esté a la izquierda y centrada */
-    .menu-mobile-btn {
-        grid-column: 1 !important;
+   .menu-mobile-btn {
+        position: absolute !important;
+        left: 15px !important; /* Distancia del borde izquierdo */
+        top: 50% !important;
+        transform: translateY(-50%) !important; /* Centrado vertical perfecto */
         display: flex !important;
-        justify-content: flex-start !important;
-        align-items: center !important;
-        font-size: 24px !important;
+        margin: 0 !important;
     }
 
     /* Logo: Al medio real */
     .navbar-main {
-        grid-column: 2 !important;
+        position: relative !important; /* Base para el botón */
         display: flex !important;
         justify-content: center !important;
-        margin: 0 !important;
+        align-items: center !important;
+        width: 100% !important;
+        height: 70px !important;
     }
 
     /* Acciones: Usuario y Carrito pegados a la derecha */
@@ -3046,20 +3040,21 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     /* 2. MENÚ LATERAL */
     .nav-links {
-        display: block !important;
-        flex-direction: column !important;
+        display: none !important; /* Lo escondemos por defecto */
+        flex-direction: column !important; /* Forzamos vertical */
         position: fixed !important;
-        top: 0 !important;
         left: -100% !important;
-        width: 270px !important;
+        top: 0 !important;
+        width: 280px !important;
         height: 100vh !important;
         background: #fff !important;
-        z-index: 10000 !important;
-        padding-top: 60px !important;
-        transition: 0.4s ease !important;
+        z-index: 9999 !important;
     }
 
-    .nav-links.active { left: 0 !important; }
+    .nav-links.active {
+        display: block !important; /* Aparece cuando tocas el botón */
+        left: 0 !important;
+    }
 
     /* 3. DROPDOWNS (Eliminamos el error del hover) */
     .dropdown:hover .dropdown-content {
@@ -3082,6 +3077,11 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     /* Flechita rotando al abrir */
     .dropdown.open .fa-chevron-down {
         transform: rotate(180deg);
+    }
+
+    #menu-categorias {
+        display: block !important; /* ¡ESTO quita lo horizontal! */
+        padding: 60px 20px !important;
     }
 }
 
