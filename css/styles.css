@@ -3128,6 +3128,28 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     font-size: 30px !important; /* Bien grande */
     z-index: 10002 !important;
 }
+
+
+
+    .login-mobile-nav {
+        border-bottom: 2px solid #f0f0f0 !important; /* Línea divisoria abajo */
+        margin-bottom: 10px;
+        background-color: #f9f9f9; /* Un tono apenas distinto para resaltar */
+    }
+
+    .login-mobile-nav a {
+        padding: 20px 25px !important;
+        font-weight: 800 !important;
+        color: #000 !important;
+        display: flex !important;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Asegurate de ocultar el del header para que el logo se centre */
+    .user-menu-container {
+        display: none !important;
+    }
 }
 
     /* 2. El Banner/Slider Principal */
