@@ -2333,19 +2333,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Manejo de Dropdowns en Móvil
-document.querySelectorAll('.dropdown-toggle').forEach(btn => {
-    btn.addEventListener('click', function(e) {
+document.querySelectorAll('.dropdown-toggle').forEach(link => {
+    link.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
-            e.preventDefault(); // Evita que recargue la página
+            e.preventDefault(); // No navega, solo abre el menú
             const parent = this.parentElement;
             
-            // Cerramos los otros que estén abiertos para que no sea un lío
+            // Cerramos otros submenús si tocamos uno nuevo
             document.querySelectorAll('.dropdown').forEach(d => {
-                if(d !== parent) d.classList.remove('open');
+                if (d !== parent) d.classList.remove('active');
             });
 
-            // Abrimos/cerramos el actual
-            parent.classList.toggle('open');
+            parent.classList.toggle('active');
         }
     });
 });
