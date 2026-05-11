@@ -3004,7 +3004,17 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 @media (max-width: 768px) {
     /* 1. HEADER: Una sola regla de Grid definitiva */
-   
+
+     .navbar {
+        display: grid !important;
+        /* Col 1: 50px (Menú) | Col 2: 1fr (Logo) | Col 3: 100px (Usuario + Carrito) */
+        grid-template-columns: 50px 1fr 100px !important;
+        align-items: center !important;
+        height: 70px !important;
+        padding: 0 15px !important;
+        width: 100% !important;
+        gap: 0 !important;
+    }
 
     /* Hamburguesa: Forzamos que esté a la izquierda y centrada */
    .menu-mobile-btn {
