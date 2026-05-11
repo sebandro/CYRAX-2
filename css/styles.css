@@ -2996,7 +2996,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /*===========*/
 
 /* --- ESTO VA AL FINAL DE TU STYLES.CSS --- */
-
+ .header-left {
+        display: flex;
+        justify-content: flex-start; /* Pega la hamburguesa al borde izquierdo */
+    }
 /* 1. Escondemos la hamburguesa en PC */
 .menu-mobile-btn,.menu-close-mobile {
     display: none;
