@@ -3028,7 +3028,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .navbar-main {
         grid-column: 2 !important;
         display: flex !important;
-        justify-content: center !important;
+        justify-content: center ;
     }
 
     /* Carrito: Pegado a la derecha */
