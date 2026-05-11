@@ -3011,7 +3011,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 .navbar-container {
         display: grid !important;
         grid-template-columns: 60px 1fr 60px !important; /* 60px para los extremos */
-        align-items: center !important;
+        align-items: center ;
         padding: 0 10px !important;
     }
 
