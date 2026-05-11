@@ -3008,32 +3008,34 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 @media (max-width: 768px) {
 
      /* --- CORRECCIÓN EN EL HEADER --- */
-.navbar {
+.navbar-container {
         display: grid !important;
-        /* Col 1 (60px) | Col 2 (1fr - flexible) | Col 3 (60px) */
-        grid-template-columns: 60px 1fr 60px !important;
+        grid-template-columns: 60px 1fr 60px !important; /* 60px para los extremos */
         align-items: center !important;
-        height: 75px !important; /* Un poquito más de altura le da elegancia */
-        padding: 0 15px !important;
-        background-color: #fff !important;
-        border-bottom: 1px solid #eee;
+        padding: 0 10px !important;
     }
 
-    /* Botón Hamburguesa (Columna 1) */
+    /* Menú Hamburguesa: Pegado a la izquierda */
     .menu-mobile-btn {
-        grid-column: 1;
+        grid-column: 1 !important;
         display: flex !important;
-        justify-content: flex-start !important;
-        font-size: 26px !important; /* Más fácil de ver */
-        color: #000;
-        cursor: pointer;
+        justify-content: flex-start !important; /* Lo tira al borde izquierdo */
+        margin: 0 !important;
+        padding-left: 5px !important;
     }
 
     /* Logo SYRAX (Columna 2 - El corazón) */
     .navbar-main {
-        grid-column: 2;
+        grid-column: 2 !important;
         display: flex !important;
         justify-content: center !important;
+    }
+
+    /* Carrito: Pegado a la derecha */
+    .cart-container {
+        grid-column: 3 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
         margin: 0 !important;
     }
 
@@ -3140,13 +3142,16 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         background-color: #f9f9f9; /* Un tono apenas distinto para resaltar */
     }
 
-    .login-mobile-nav a {
-        padding: 20px 25px !important;
-        font-weight: 800 !important;
-        color: #000 !important;
+.login-mobile-nav a {
         display: flex !important;
-        align-items: center;
-        gap: 12px;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 8px !important; /* Este es el espacio entre el icono y el texto */
+        padding: 20px 25px !important;
+    }
+
+    .login-mobile-nav i {
+        margin: 0 !important; /* Quitamos márgenes viejos que lo separen */
     }
 
     /* Asegurate de ocultar el del header para que el logo se centre */
