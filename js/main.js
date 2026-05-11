@@ -2329,34 +2329,31 @@ document.addEventListener('DOMContentLoaded', () => {
 /////////////////////////////////////
 /* abrir menu hamburguesa celular */
 ///////////////////////////////////
-// Función para el botón hamburguesa
-// 1. Función para abrir/cerrar menú principal
+
 function toggleMenu() {
     const nav = document.querySelector('.nav-links');
     if (nav) nav.classList.toggle('active');
 }
 
+// 2. Control de Dropdowns
 document.addEventListener('DOMContentLoaded', () => {
-    // Control de Dropdowns en Móvil
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener('click', function(e) {
             if (window.innerWidth <= 768) {
-                e.preventDefault(); // Evita que se recargue la página
-                const parent = this.parentElement;
+                e.preventDefault(); 
+                e.stopPropagation(); // Evita que el click se "vaya" a otros lados
                 
-                // Cerramos otros por si hay uno abierto
+                const parent = this.parentElement; // El <li>
+                
+                // Cerramos los otros para que sea un acordeón limpio
                 document.querySelectorAll('.dropdown').forEach(d => {
                     if (d !== parent) d.classList.remove('open');
                 });
 
                 // Abrimos el actual
                 parent.classList.toggle('open');
-                
-                // Opcional: Rotar la flechita si tenés una
-                const icon = this.querySelector('i');
-                if (icon) icon.style.transform = parent.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
             }
         });
     });
