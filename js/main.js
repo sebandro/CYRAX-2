@@ -2330,9 +2330,9 @@ document.addEventListener('DOMContentLoaded', () => {
 /* abrir menu hamburguesa celular */
 ///////////////////////////////////
 
-
-
-
+function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+}
 
 // Manejo de Dropdowns en Móvil
 document.addEventListener('DOMContentLoaded', () => {
