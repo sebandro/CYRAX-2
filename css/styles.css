@@ -3015,12 +3015,23 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         position: relative;
     }
 
-    .menu-mobile-btn {
+
+    .navbar {
+        display: grid !important;
+        /* Col 1: Hamburguesa (50px), Col 2: Logo (1fr), Col 3: Iconos (100px) */
+        grid-template-columns: 50px 1fr 100px !important;
+        align-items: center !important; /* Centra todo verticalmente */
+        height: 70px !important;
+        padding: 0 10px !important;
+    }
+
+.menu-mobile-btn {
+        grid-column: 1 !important;
         display: flex !important;
+        align-items: center !important; /* Centrado vertical */
         justify-content: flex-start !important;
-        font-size: 24px;
-        cursor: pointer;
-        grid-column: 1; /* Columna Izquierda */
+        height: 100% !important;
+        margin-top: 0 !important; /* Por si tenías un margen que lo subía */
     }
 
     .navbar-main {
@@ -3092,18 +3103,24 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     /* 3. DROPDOWNS (MATAMOS EL HOVER) */
     /* Evitamos que el hover de PC moleste en el táctil */
-    .dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content {
         display: none !important;
     }
 
     .dropdown-content {
-        display: none !important; 
-        position: static !important; 
+        display: none !important; /* Cerrado por defecto */
+        position: static !important; /* Empuja el menú hacia abajo */
         width: 100% !important;
         background: #f9f9f9 !important;
-        box-shadow: none !important;
         padding-left: 20px !important;
+        box-shadow: none !important;
     }
+
+    /* Esta clase es la que el JS activará */
+    .dropdown.open > .dropdown-content {
+        display: block !important;
+    }
+
 
     /* Esta es la clase que el JS activará */
     .dropdown.active-mobile .dropdown-content {
@@ -3113,6 +3130,20 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     /* Girar la flechita */
     .dropdown.active-mobile .fa-chevron-down {
         transform: rotate(180deg);
+    }
+
+    .navbar-actions .user-icon, 
+    .navbar-actions a[href*="login"] {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .cart-container {
+        grid-column: 3 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 12px !important; /* Espacio entre el monigote y el carrito */
     }
 }
 
