@@ -3003,82 +3003,118 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 }
 
 @media (max-width: 768px) {
-    /* HEADER EN 3 COLUMNAS */
+    /* 1. HEADER: 3 Columnas con medidas laterales fijas para centrar el logo */
     .navbar-container {
         display: grid !important;
-        grid-template-columns: 1fr auto 1fr !important;
+        /* Reservamos 60px a los lados, el centro se lleva el resto */
+        grid-template-columns: 60px 1fr 60px !important; 
         align-items: center !important;
-        padding: 0 15px !important;
+        padding: 0 10px !important;
         height: 70px !important;
+        width: 100% !important;
+        position: relative;
     }
 
     .menu-mobile-btn {
-        display: flex !important; /* Aparece en móvil */
-        justify-content: flex-start;
+        display: flex !important;
+        justify-content: flex-start !important;
         font-size: 24px;
         cursor: pointer;
+        grid-column: 1; /* Columna Izquierda */
     }
 
     .navbar-main {
-        justify-content: center !important;
         display: flex !important;
+        justify-content: center !important;
+        grid-column: 2; /* Columna Centro */
     }
 
     .logo {
-        font-size: 18px !important;
+        font-size: 20px !important;
+        margin: 0 !important;
+        white-space: nowrap;
     }
 
     .navbar-actions {
-        justify-content: flex-end !important;
         display: flex !important;
-        gap: 10px !important;
+        justify-content: flex-end !important;
+        gap: 12px !important;
+        grid-column: 3; /* Columna Derecha */
     }
 
     .cart-label, #user-text { display: none !important; }
 
-    /* MENÚ LATERAL VERTICAL */
+    /* 2. MENÚ LATERAL VERTICAL */
     .nav-links {
-        display: block !important; /* Matamos el flex horizontal */
+        display: block !important;
         position: fixed !important;
         top: 0 !important;
         left: -100% !important;
-        width: 280px !important;
+        width: 270px !important; /* Ancho más tipo App */
         height: 100vh !important;
         background: #fff !important;
         z-index: 10000 !important;
-        transition: 0.3s ease-all;
-        padding-top: 60px !important;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        padding: 60px 0 !important;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.1) !important;
+        overflow-y: auto;
     }
 
     .nav-links.active { left: 0 !important; }
 
+    .menu-close-mobile {
+        display: block !important; /* Solo en celu */
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        z-index: 10001;
+    }
+
     #menu-categorias {
-        display: block !important; /* Forzamos vertical */
+        display: block !important;
         padding: 0 !important;
+        margin-top: 20px;
     }
 
     #menu-categorias li {
         display: block !important;
         width: 100% !important;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #f0f0f0;
     }
 
-    /* DROPDOWNS */
+    #menu-categorias li a {
+        display: flex !important;
+        justify-content: space-between;
+        padding: 15px 25px !important;
+        font-size: 16px;
+    }
+
+    /* 3. DROPDOWNS (MATAMOS EL HOVER) */
+    /* Evitamos que el hover de PC moleste en el táctil */
+    .dropdown:hover .dropdown-content {
+        display: none !important;
+    }
+
     .dropdown-content {
-        display: none !important; /* Cerrado por defecto */
-        position: static !important; /* Empuja hacia abajo */
+        display: none !important; 
+        position: static !important; 
         width: 100% !important;
-        background: #fafafa !important;
+        background: #f9f9f9 !important;
         box-shadow: none !important;
         padding-left: 20px !important;
     }
 
-    /* Clase que pondrá el JS */
+    /* Esta es la clase que el JS activará */
     .dropdown.active-mobile .dropdown-content {
         display: block !important;
     }
+    
+    /* Girar la flechita */
+    .dropdown.active-mobile .fa-chevron-down {
+        transform: rotate(180deg);
+    }
 }
-
 
 
     /* 2. El Banner/Slider Principal */
