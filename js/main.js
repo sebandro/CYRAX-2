@@ -2331,17 +2331,28 @@ document.addEventListener('DOMContentLoaded', () => {
 ///////////////////////////////////
 
 document.addEventListener('click', function (e) {
-    // Si tocamos el botón de hamburguesa
+    // 1. Si tocamos el botón de hamburguesa (Abrir)
     if (e.target.closest('.menu-mobile-btn')) {
-        document.querySelector('.nav-links').classList.toggle('active');
+        document.querySelector('.nav-links').classList.add('active');
     }
 
-    // Si tocamos una categoría con dropdown
+    // 2. Si tocamos el botón de cerrar (La X)
+    if (e.target.closest('.menu-close-mobile')) {
+        document.querySelector('.nav-links').classList.remove('active');
+    }
+
+    // 3. Si tocamos una categoría con dropdown
     if (e.target.closest('.dropdown-toggle')) {
         e.preventDefault();
         const parent = e.target.closest('.dropdown');
-        parent.classList.toggle('open'); // Esta clase debe tener "display: block" en tu CSS
-        console.log("Dropdown tocado"); // Si ves esto en la consola (F12), el JS funciona
+        
+        // Opcional: Cerrar otros dropdowns al abrir uno nuevo
+        document.querySelectorAll('.dropdown').forEach(d => {
+            if (d !== parent) d.classList.remove('open');
+        });
+
+        parent.classList.toggle('open');
+        console.log("Dropdown tocado");
     }
 });
 //FIN
