@@ -3003,39 +3003,38 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 }
 
 @media (max-width: 768px) {
-    /* 1. HEADER: Una sola regla de Grid definitiva */
 
-     .navbar {
-        display: grid !important;
-        grid-template-columns: 50px 1fr auto !important; /* Lado - Centro - Derecha */
-        align-items: center !important;
-        padding: 10px 15px !important;
-        gap: 10px;
-    }
+     /* --- CORRECCIÓN EN EL HEADER --- */
+.navbar {
+    display: grid !important;
+    /* 3 columnas: la de los lados miden lo mismo (60px) para que el centro sea real */
+    grid-template-columns: 60px 1fr 60px !important; 
+    align-items: center !important;
+    padding: 0 10px !important;
+    height: 70px !important;
+    position: relative; /* Para que la X del menú lateral sepa dónde ubicarse */
+}
 
-    /* Hamburguesa: Forzamos que esté a la izquierda y centrada */
-   .menu-mobile-btn {
-        position: absolute !important;
-        left: 15px !important; /* Distancia del borde izquierdo */
-        top: 50% !important;
-        transform: translateY(-50%) !important; /* Centrado vertical perfecto */
-        display: flex !important;
-        margin: 0 !important;
-    }
+.menu-mobile-btn {
+    /* Quitamos el position absolute para que el grid lo ubique en la Columna 1 */
+    position: static !important; 
+    display: flex !important;
+    justify-content: flex-start !important;
+    font-size: 24px;
+}
 
-    /* Logo: Al medio real */
-    .navbar-main {
-        justify-self: center !important;
-        margin: 0 !important;
-    }
+.navbar-main {
+    display: flex !important;
+    justify-content: center !important;
+    /* El logo se queda en la Columna 2 automáticamente */
+}
 
-    /* Acciones: Usuario y Carrito pegados a la derecha */
-   .navbar-actions {
-        display: flex !important;
-        align-items: center !important;
-        gap: 12px !important; /* Espacio entre el texto y el carrito */
-        justify-self: end !important;
-    }
+.navbar-actions {
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 15px !important;
+    /* Se queda en la Columna 3 automáticamente */
+}
 
     .cart-label, #user-text { display: none !important; }
 
@@ -3063,25 +3062,21 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
    .dropdown-content {
-        display: none;
-        background-color: #ffffff;
-        width: 100vw; /* Que ocupe todo el ancho */
-        position: absolute;
-        left: 0;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        padding: 20px 0;
-        z-index: 1000;
-    }
+    display: none !important; /* Cerrado siempre al inicio */
+    position: static !important; /* Para que empuje el menú hacia abajo al abrir */
+    width: 100% !important;
+    background-color: #f9f9f9 !important;
+    padding: 0 !important;
+}
+
+.dropdown-content li a {
+    padding: 15px 40px !important; /* Sangría para las subcategorías */
+    font-size: 1rem !important;
+    background: #fafafa;
+}
 
     .dropdown.open .dropdown-content {
         display: block !important;
-    }
-
-    .dropdown-content li a {
-        padding: 10px 10px !important; /* Items más grandes para el dedo */
-        font-size: 0.9rem !important;
-        border-bottom: 1px solid #eee;
-        display: block;
     }
 
     /* Flechita rotando al abrir */
@@ -3090,23 +3085,27 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
     #menu-categorias {
-        display: block !important; /* ¡ESTO quita lo horizontal! */
-        padding: 60px 20px !important;
-    }
-    
-    .menu-close-mobile {
-    display: flex !important; /* Lo hacemos visible */
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 28px; /* Que sea fácil de tocar con el dedo */
-    color: #333;
-    z-index: 10001; /* Un número más alto que el del menú para que esté "arriba" */
-    cursor: pointer;
-    padding: 10px; /* Aumenta el área de contacto */
+    display: flex !important;
+    flex-direction: column !important; /* Asegura verticalidad total */
+    padding: 70px 0 20px 0 !important; /* Espacio para la X arriba */
 }
-    .dropdown-toggle {
-    font-size: 0.9 !important;
+
+#menu-categorias li a {
+    padding: 18px 25px !important; /* Aumentamos el área de toque */
+    font-size: 1.1rem !important; /* Texto más grande y legible */
+    border-bottom: 1px solid #eee;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+}
+    
+.menu-close-mobile {
+    display: flex !important;
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    font-size: 30px !important; /* Bien grande */
+    z-index: 10002 !important;
 }
 }
 
