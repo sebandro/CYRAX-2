@@ -2330,29 +2330,34 @@ document.addEventListener('DOMContentLoaded', () => {
 /* abrir menu hamburguesa celular */
 ///////////////////////////////////
 
-function toggleMenu() {
-    const nav = document.querySelector('.nav-links');
-    if (nav) nav.classList.toggle('active');
-}
-
-// 2. Control de Dropdowns
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Abrir/Cerrar menú hamburguesa
+    const btnMenu = document.querySelector('.menu-mobile-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const btnClose = document.querySelector('.menu-close-mobile');
+
+    if (btnMenu) {
+        btnMenu.addEventListener('click', () => navLinks.classList.add('active'));
+    }
+    if (btnClose) {
+        btnClose.addEventListener('click', () => navLinks.classList.remove('active'));
+    }
+
+    // 2. Control de Dropdowns en Móvil
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
 
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener('click', function(e) {
             if (window.innerWidth <= 768) {
-                e.preventDefault(); 
-                e.stopPropagation(); // Evita que el click se "vaya" a otros lados
-                
-                const parent = this.parentElement; // El <li>
-                
-                // Cerramos los otros para que sea un acordeón limpio
+                e.preventDefault(); // IMPORTANTE: frena el link
+                const parent = this.parentElement;
+
+                // Cierra los otros por si hay alguno abierto (estilo acordeón)
                 document.querySelectorAll('.dropdown').forEach(d => {
                     if (d !== parent) d.classList.remove('open');
                 });
 
-                // Abrimos el actual
+                // Abre o cierra el actual
                 parent.classList.toggle('open');
             }
         });
