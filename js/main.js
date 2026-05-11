@@ -2332,26 +2332,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Manejo de Dropdowns en Móvil
-// Manejo de Menú Hamburguesa
-function toggleMenu() {
-    document.querySelector('.nav-links').classList.toggle('active');
-}
+
 
 // Manejo de Dropdowns en Móvil
-document.querySelectorAll('.dropdown-toggle').forEach(dropdown => {
-    dropdown.addEventListener('click', function(e) {
-        if (window.innerWidth <= 768) {
-            e.preventDefault(); // Detiene el link
-            const parent = this.parentElement;
-            
-            // Opcional: Cerrar otros dropdowns al abrir uno nuevo
-            document.querySelectorAll('.dropdown').forEach(item => {
-                if (item !== parent) item.classList.remove('open');
-            });
+document.addEventListener('DOMContentLoaded', () => {
+    // Abrir menú lateral
+    window.toggleMenu = function() {
+        document.querySelector('.nav-links').classList.toggle('active');
+    };
 
-            parent.classList.toggle('open');
-        }
+    // Control de Dropdowns
+    const dropdowns = document.querySelectorAll('.dropdown-toggle');
+    dropdowns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+                e.preventDefault(); // Evita que se recargue la página
+                const parent = this.parentElement;
+                
+                // Cerramos otros para que no se amontonen
+                document.querySelectorAll('.dropdown').forEach(d => {
+                    if (d !== parent) d.classList.remove('active');
+                });
+
+                // Abrimos el que tocamos
+                parent.classList.toggle('active');
+            }
+        });
     });
 });
 //FIN
