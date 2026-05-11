@@ -3078,7 +3078,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
     .dropdown-content li a {
-        padding: 15px 25px !important; /* Items más grandes para el dedo */
+        padding: 15px 18px !important; /* Items más grandes para el dedo */
         font-size: 1.1rem !important;
         border-bottom: 1px solid #eee;
         display: block;
