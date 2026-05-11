@@ -2333,18 +2333,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Manejo de Dropdowns en Móvil
-document.querySelectorAll('.dropdown-toggle').forEach(link => {
-    link.addEventListener('click', function(e) {
+// Manejo de Menú Hamburguesa
+function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+}
+
+// Manejo de Dropdowns en Móvil
+document.querySelectorAll('.dropdown-toggle').forEach(dropdown => {
+    dropdown.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
-            e.preventDefault(); // No navega, solo abre el menú
+            e.preventDefault(); // Detiene el link
             const parent = this.parentElement;
             
-            // Cerramos otros submenús si tocamos uno nuevo
-            document.querySelectorAll('.dropdown').forEach(d => {
-                if (d !== parent) d.classList.remove('active');
+            // Opcional: Cerrar otros dropdowns al abrir uno nuevo
+            document.querySelectorAll('.dropdown').forEach(item => {
+                if (item !== parent) item.classList.remove('open');
             });
 
-            parent.classList.toggle('active');
+            parent.classList.toggle('open');
         }
     });
 });
