@@ -3016,28 +3016,28 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
 
-    .navbar {
+ .navbar {
         display: grid !important;
-        /* Col 1: Hamburguesa (50px), Col 2: Logo (1fr), Col 3: Iconos (100px) */
-        grid-template-columns: 50px 1fr 100px !important;
-        align-items: center !important; /* Centra todo verticalmente */
+        /* Columna 1: Hamburguesa (50px), Col 2: Logo (1fr), Col 3: Acciones (110px) */
+        grid-template-columns: 50px 1fr 110px !important; 
+        align-items: center !important; /* Esto centra la hamburguesa verticalmente */
         height: 70px !important;
         padding: 0 10px !important;
     }
 
-.menu-mobile-btn {
+    /* Menú Hamburguesa: Alineado al centro vertical */
+    .menu-mobile-btn {
         grid-column: 1 !important;
         display: flex !important;
-        align-items: center !important; /* Centrado vertical */
-        justify-content: flex-start !important;
+        align-items: center !important;
+        justify-content: center !important;
         height: 100% !important;
-        margin-top: 0 !important; /* Por si tenías un margen que lo subía */
     }
 
-    .navbar-main {
+   .navbar-main {
+        grid-column: 2 !important;
         display: flex !important;
         justify-content: center !important;
-        grid-column: 2; /* Columna Centro */
     }
 
     .logo {
@@ -3051,6 +3051,12 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         justify-content: flex-end !important;
         gap: 12px !important;
         grid-column: 3; /* Columna Derecha */
+    }
+
+    .navbar-actions a {
+        display: flex !important;
+        align-items: center !important;
+        color: #000 !important;
     }
 
     .cart-label, #user-text { display: none !important; }
@@ -3107,16 +3113,14 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: none !important;
     }
 
-    .dropdown-content {
-        display: none !important; /* Cerrado por defecto */
-        position: static !important; /* Empuja el menú hacia abajo */
-        width: 100% !important;
-        background: #f9f9f9 !important;
-        padding-left: 20px !important;
-        box-shadow: none !important;
+ .dropdown-content {
+        display: none !important;
+        position: static !important;
+        background: #fdfdfd !important;
+        padding-left: 15px !important;
     }
 
-    /* Esta clase es la que el JS activará */
+    /* La clase mágica que pondrá el JS */
     .dropdown.open > .dropdown-content {
         display: block !important;
     }
@@ -3138,12 +3142,12 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         align-items: center !important;
     }
 
-    .cart-container {
+   .cart-container {
         grid-column: 3 !important;
         display: flex !important;
         align-items: center !important;
-        justify-content: flex-end !important;
-        gap: 12px !important; /* Espacio entre el monigote y el carrito */
+        justify-content: space-between !important; /* Separa el monigote del carrito */
+        gap: 15px !important;
     }
 }
 
