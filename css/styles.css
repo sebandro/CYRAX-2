@@ -3116,7 +3116,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: flex !important;
         align-items: center !important;
         height: 100% !important;
-        justify-content: flex-end !important; }
+        
 
     }
 
@@ -3129,7 +3129,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         margin: 0 !important;
         padding: 0 !important;
         cursor: pointer;
-        justify-content: flex-end !important; }
+        
 
     }
 
