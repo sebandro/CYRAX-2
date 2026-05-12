@@ -3061,15 +3061,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
     /* Ajuste específico para "Ingresar" (Icono + Texto juntos) */
-    .user-menu-container a {
-        display: flex;
-        align-items: center;
-        gap: 8px; /* Lo que pediste: icono y texto pegaditos */
-        text-decoration: none;
-        color: #000;
-        font-weight: 700;
-        font-size: 14px;
-    }
+    
     
 .cart-container {
         display: flex;
