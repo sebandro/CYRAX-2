@@ -3094,31 +3094,32 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
      /* --- CORRECCIÓN EN EL HEADER --- */
 .navbar-container {
         display: grid !important;
-        grid-template-columns: 60px 1fr 60px !important; /* Lados fijos, centro flexible */
+        grid-template-columns: 60px 1fr 60px !important; /* Izquierda, Centro, Derecha */
         align-items: center !important;
-        height: 70px !important; /* Altura fija para que nada suba o baje */
+        height: 70px !important;
         padding: 0 10px !important;
-        overflow: hidden; /* Evita que el carrito se desborde */
+        overflow: hidden;
     }
 
-    /* 2. Alineación de los tres pilares */
+    /* 2. CADA PIEZA EN SU COLUMNA */
+    
     .header-left {
+        grid-column: 1 !important; /* Columna de la hamburguesa */
         display: flex !important;
-        justify-content: flex-start;
+        justify-content: flex-start !important;
     }
 
     .header-center {
+        grid-column: 2 !important; /* Columna del logo */
         display: flex !important;
-        justify-content: center;
-        text-align: center;
+        justify-content: center !important;
     }
-    
-.header-right {
-        flex: 0 0 60px !important; /* Le damos un ancho fijo de 60px */
+
+    .header-right {
+        grid-column: 3 !important; /* Columna del carrito */
         display: flex !important;
         justify-content: flex-end !important;
         align-items: center !important;
-        background: transparent !important;
     }
 
     /* El div interno que contiene el carrito */
@@ -3147,8 +3148,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
     .logo {
-        font-size: 20px !important; /* Ajustá el tamaño si el nombre es muy largo */
-        margin: 0 !important;
+        font-size: 18px !important; 
+        text-align: center;
+        width: 100%;
     }
    
 
@@ -3169,6 +3171,14 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 .cart-label, #user-text, .navbar-actions span {
         display: none !important;
+    }
+    
+    .user-menu-container, .navbar-actions #user-link {
+        display: none !important;
+    }
+    
+    .cart-label {
+        display: none !important; /* Matamos la palabra CARRITO */
     }
 
     .navbar-actions i {
