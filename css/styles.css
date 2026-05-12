@@ -3161,7 +3161,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         justify-content: center !important;
         border-radius: 50% !important;
         padding: 0 !important;
-        justify-content: flex-end !important; }
+        }
 
     }
 
@@ -3170,7 +3170,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         height: 40px;
         display: flex;
         align-items: center;
-      
+        justify-content: center;
     }
 
     /* Logo SYRAX (Columna 2 - El corazón) */
