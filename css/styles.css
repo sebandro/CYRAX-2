@@ -3182,9 +3182,11 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
     .cart-badge {
-        display: none !important;
-        }
-
+  position: absolute;
+  top: -8px; /* Ajusta este valor para colocarlo en la esquina */
+  right: -10px; /* Ajusta este valor para colocarlo en la esquina */
+  margin: 0;
+}
     .navbar-actions i {
         font-size: 22px !important; /* Iconos con tamaño uniforme */
         color: #000;
