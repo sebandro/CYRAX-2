@@ -3112,13 +3112,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .header-right { justify-content: flex-end !important; }
 
     /* 3. EL CARRITO Y SUS CONTENEDORES */
-    .navbar-actions {
-        display: flex !important;
-        align-items: center !important;
-        height: 100% !important;
-        
-
-    }
+  
 
     .cart-container {
         display: flex !important;
