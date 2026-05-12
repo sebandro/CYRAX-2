@@ -3091,9 +3091,14 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 @media (max-width: 768px) {
      /* --- CORRECCIÓN EN EL HEADER --- */
-
-
-
+.navbar-container {
+        display: grid !important;
+        grid-template-columns: 60px 1fr 60px !important; /* Izquierda, Centro, Derecha */
+        align-items: center !important;
+        height: 70px !important;
+        padding: 0 10px !important;
+        overflow: hidden;
+    }
     /* 2. ALINEACIÓN DE COLUMNAS: Altura total para que el centrado funcione */
     .header-left, .header-center, .header-right {
         height: 100% !important;
