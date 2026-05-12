@@ -3052,7 +3052,13 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
     /* 3. Inicio de sesión y Carrito a la derecha */
-    
+    .header-right {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 25px; /* Espacio entre Login y Carrito */
+    }
 
     /* Ajuste específico para "Ingresar" (Icono + Texto juntos) */
     .user-menu-container a {
@@ -3064,15 +3070,13 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         font-weight: 700;
         font-size: 14px;
     }
+    
 .cart-container {
         display: flex;
         align-items: center;
         gap: 8px;
         cursor: pointer;
-    }
-    
-
-    
+    } 
 }
 
 /* --- ESTO VA AL FINAL DE TU STYLES.CSS --- */
