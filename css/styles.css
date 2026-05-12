@@ -3114,10 +3114,20 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
     
 .header-right {
+        flex: 0 0 60px !important; /* Le damos un ancho fijo de 60px */
         display: flex !important;
         justify-content: flex-end !important;
         align-items: center !important;
-        height: 100% !important;
+        background: transparent !important;
+    }
+
+    /* El div interno que contiene el carrito */
+    .navbar-actions {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: flex-end !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     /* 3. Limpieza de iconos (para que no ocupen más de lo debido) */
@@ -3145,24 +3155,15 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .navbar-main img {
         max-height: 22px !important; /* Ajustá este número según tu logo */
         width: auto;
-    }
+     }
 
-    /* Inicio de Sesión y Carrito (Columna 3) */
-   .navbar-actions {
+   .cart-container {
         display: flex !important;
         align-items: center !important;
-        justify-content: flex-end !important;
-        width: auto !important; /* Que solo ocupe lo que necesita el carrito */
+        justify-content: center !important;
         margin: 0 !important;
         padding: 0 !important;
-    }
-
-    .cart-container {
-        display: flex !important;
-        align-items: center !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        cursor: pointer;
+        height: 40px !important;
     }
 
 
