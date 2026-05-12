@@ -3096,36 +3096,37 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
      /* --- CORRECCIÓN EN EL HEADER --- */
 .navbar-container {
         display: grid !important;
-        /* Tres columnas: los lados miden 60px y el centro se queda con el resto */
-        grid-template-columns: 60px 1fr 60px !important;
+        grid-template-columns: 60px 1fr 60px !important; /* Lados fijos, centro flexible */
         align-items: center !important;
-        height: 70px !important;
+        height: 70px !important; /* Altura fija para que nada suba o baje */
         padding: 0 10px !important;
+        overflow: hidden; /* Evita que el carrito se desborde */
     }
 
-    /* Alineación de cada bloque */
+    /* 2. Alineación de los tres pilares */
     .header-left {
-        display: flex;
-        justify-content: flex-start; /* Pega la hamburguesa al borde izquierdo */
+        display: flex !important;
+        justify-content: flex-start;
     }
 
     .header-center {
-        display: flex;
-        justify-content: center; /* Clava el logo al medio */
+        display: flex !important;
+        justify-content: center;
+        text-align: center;
     }
 
     .header-right {
-        display: flex;
-        justify-content: flex-end; /* Pega el carrito al borde derecho */
+        display: flex !important;
+        justify-content: flex-end;
     }
 
-    /* Menú Hamburguesa: Pegado a la izquierda */
-    .menu-mobile-btn {
-        grid-column: 1 !important;
-        display: flex !important;
-        justify-content: flex-start !important; /* Lo tira al borde izquierdo */
-        margin: 0 !important;
-        padding-left: 15px !important;
+    /* 3. Limpieza de iconos (para que no ocupen más de lo debido) */
+    .menu-mobile-btn, .cart-container {
+        width: 40px; 
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Logo SYRAX (Columna 2 - El corazón) */
@@ -3135,13 +3136,11 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         justify-content: center !important ;
     }
 
-    /* Carrito: Pegado a la derecha */
-    .cart-container {
-        grid-column: 3 !important;
-        display: flex !important;
-        justify-content: flex-end !important;
+    .logo {
+        font-size: 20px !important; /* Ajustá el tamaño si el nombre es muy largo */
         margin: 0 !important;
     }
+   
 
     .navbar-main img {
         max-height: 22px !important; /* Ajustá este número según tu logo */
@@ -3268,10 +3267,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: block !important;
     }
     
-    .logo {
-        grid-column: 2;
-        justify-self: center;
-    }
 }
 
     /* 2. El Banner/Slider Principal */
