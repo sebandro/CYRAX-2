@@ -3114,10 +3114,12 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         justify-content: center;
         text-align: center;
     }
-
-    .header-right {
+    
+.header-right {
         display: flex !important;
-        justify-content: flex-end;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        height: 100% !important;
     }
 
     /* 3. Limpieza de iconos (para que no ocupen más de lo debido) */
@@ -3148,12 +3150,21 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
     /* Inicio de Sesión y Carrito (Columna 3) */
-    .navbar-actions {
-        grid-column: 3;
+   .navbar-actions {
         display: flex !important;
-        justify-content: flex-end !important;
         align-items: center !important;
-        gap: 15px !important; /* Espacio entre el monigote y el carrito */
+        justify-content: flex-end !important;
+        width: auto !important; /* Que solo ocupe lo que necesita el carrito */
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .cart-container {
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        cursor: pointer;
     }
 
 
