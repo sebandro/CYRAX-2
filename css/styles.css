@@ -2996,7 +2996,88 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /*===========*/
 
 /* Contenedor Principal en PC */
+@media (min-width: 769px) {
+    .navbar-container {
+        display: flex !important;
+        justify-content: space-between; /* Reparte Izquierda, Centro y Derecha */
+        align-items: center;
+        padding: 0 40px !important; /* Espacio a los costados */
+        height: 80px;
+        background-color: #fff;
+        width: 100%;
+        box-sizing: border-box;
+    }
 
+    /* 1. Logo a la izquierda */
+    .header-center {
+        flex: 1; /* Ocupa espacio para ayudar al centrado del resto */
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: 900;
+        text-decoration: none;
+        color: #000;
+        letter-spacing: 2px;
+    }
+
+    /* 2. Menú de Categorías al medio */
+    .header-center-pc {
+        flex: 2; /* Le damos más peso para que sea el centro real */
+        display: flex;
+        justify-content: center;
+    }
+
+    #menu-categorias {
+        display: flex !important;
+        list-style: none;
+        gap: 30px; /* Espacio entre categorías */
+        margin: 0;
+        padding: 0;
+    }
+
+    #menu-categorias li a {
+        text-decoration: none;
+        color: #000;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+    #menu-categorias li a:hover {
+        color: #555; /* Efecto al pasar el mouse */
+    }
+
+    /* 3. Inicio de sesión y Carrito a la derecha */
+    .header-right {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 25px; /* Espacio entre Login y Carrito */
+    }
+
+    /* Ajuste específico para "Ingresar" (Icono + Texto juntos) */
+    .user-menu-container a {
+        display: flex;
+        align-items: center;
+        gap: 8px; /* Lo que pediste: icono y texto pegaditos */
+        text-decoration: none;
+        color: #000;
+        font-weight: 700;
+        font-size: 14px;
+    }
+    
+.cart-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+    } 
+}
 
 /* --- ESTO VA AL FINAL DE TU STYLES.CSS --- */
  
