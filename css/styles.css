@@ -3092,7 +3092,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 @media (max-width: 768px) {
      /* --- CORRECCIÓN EN EL HEADER --- */
 .navbar-container {
-        display: grid !important;
+        display: flex !important;
         grid-template-columns: 60px 1fr 60px !important; /* Izquierda, Centro, Derecha */
         align-items: center !important;
         height: 70px !important;
@@ -3110,6 +3110,13 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .header-center { justify-content: center !important; }
     .header-right { justify-content: flex-end !important; }
 
+     .navbar-actions {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: flex-end !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
    
  
 
