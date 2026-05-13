@@ -3085,6 +3085,11 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         z-index: 9999 !important;
     }
 
+      .user-link {
+        position: relative !important;
+        z-index: 10000 !important;
+    }
+    
     .nav-links, 
     .header-right,
     .menu-close-mobile {
