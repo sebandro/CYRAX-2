@@ -20,7 +20,7 @@ firebase.auth().onAuthStateChanged((user) => {
         if (userDropdown) userDropdown.style.opacity = "1";
 
         if (userTextMobile) userTextMobile.innerText = `Hola, ${nombre}`;
-        
+        if (userDropdownMobile) userDropdownMobile.style.display = "block";
         
         if (loginLink) {
             loginLink.innerHTML = `<i class="fas fa-user"></i> Hola, ${nombre}`;
