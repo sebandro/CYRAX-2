@@ -76,10 +76,15 @@ src="https://www.facebook.com/tr?id=1504209424649289&ev=PageView&noscript=1"
         
         <ul id="menu-categorias">
             <li class="mobile-only login-mobile-nav">
-                <a href="javascript:void(0)" id="user-link">
-                    <i class="fas fa-user"></i> INGRESAR
-                </a>
-            </li>
+    <div class="user-menu-container"> <a href="javascript:void(0)" id="user-link" onclick="abrirTuModalLogin()">
+            <i class="fas fa-user"></i> <span id="user-text">INGRESAR</span>
+        </a>
+        <div id="user-dropdown-mobile" class="user-dropdown-list">
+            <a href="perfil.html"><i class="fas fa-id-card"></i> Mi Perfil</a>
+            <a href="javascript:void(0)" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+        </div>
+    </div>
+</li>
 
             <li><a href="index.html" class="btn-bounce">inicio</a></li>
             
