@@ -3448,15 +3448,62 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
     /*FIN*/
 
+/*==================================================*/
+/* --- ESTILOS DE USUARIO PARA MENÚ MÓVIL ---       */
+/*==================================================*/
 
-    .login-mobile-nav .user-dropdown-list {
-        position: relative; /* En lugar de absoluto, que se abra hacia abajo */
+    .login-mobile-nav .user-menu-container {
         width: 100%;
-        background: #f9f9f9;
+        position: relative;
+        padding: 10px 0;
+    }
+
+    /* El enlace que dice "HOLA, ALEJANDRO" */
+    #user-link-mobile {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        color: #000;
+        text-transform: uppercase;
+        font-size: 1.1rem;
+        padding: 10px 15px;
+        background: #f4f4f4; /* Un gris sutil para diferenciarlo */
+        border-radius: 8px;
+    }
+
+    /* El Dropdown en móvil (se abre hacia abajo) */
+    #user-dropdown-mobile {
+        display: none; /* El JS lo cambia a block cuando hay usuario */
+        position: static; /* Importante: para que no flote */
+        width: 100%;
+        background: #fff;
         box-shadow: none;
-        border-left: 3px solid #000;
-        margin-top: 10px;
-        display: none; /* Se activa con una clase .show que podés manejar con JS */
+        border-left: 4px solid #000; /* Detalle estético Syrax */
+        margin-top: 5px;
+        padding-left: 15px;
+    }
+
+    /* Los links dentro del dropdown (Perfil, Cerrar Sesión) */
+    #user-dropdown-mobile a {
+        display: block;
+        padding: 12px 0;
+        color: #333;
+        font-size: 0.95rem;
+        border-bottom: 1px solid #eee;
+        text-decoration: none;
+    }
+
+    #user-dropdown-mobile a i {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+    }
+
+    /* Quitar el último borde para que quede limpio */
+    #user-dropdown-mobile a:last-child {
+        border-bottom: none;
+        color: #e74c3c; /* Color rojo para cerrar sesión */
     }
  }
 
