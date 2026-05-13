@@ -3452,75 +3452,63 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* --- ESTILOS DE USUARIO PARA MENÚ MÓVIL ---       */
 /*==================================================*/
 
-  li.mobile-only.login-mobile-nav {
-        display: block !important; /* Lo saca del 'none' */
-        visibility: visible !important;
-        height: auto !important;
-        width: 100% !important;
-        padding: 10px 15px;
-        margin-bottom: 10px;
-        background: #fff;
-        border-bottom: 1px solid #eee;
+  .nav-links, #menu-categorias {
+        overflow: visible !important;
+        display: block !important;
     }
 
-    /* 2. EL BOTÓN CON TU NOMBRE */
+    /* EL CONTENEDOR - Con esto le ganamos a cualquier altura de 22px */
+    li.mobile-only.login-mobile-nav {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important; /* Clave para que no mida 22px */
+        min-height: 60px !important; 
+        width: 100% !important;
+        padding: 10px 15px !important;
+        margin: 0 0 15px 0 !important;
+        background: #ffffff !important;
+        border-bottom: 1px solid #eee !important;
+        position: relative !important;
+        z-index: 999 !important;
+    }
+
+    /* BOTÓN NOMBRE */
     #user-link-mobile {
         display: flex !important;
         align-items: center;
         justify-content: space-between;
         color: #000 !important;
-        font-weight: 700;
+        font-weight: 800;
         text-transform: uppercase;
         text-decoration: none;
-        padding: 12px 15px;
-        background: #f1f1f1; /* Gris suave, queda mucho mejor que el amarillo */
-        border-radius: 6px;
+        padding: 15px;
+        background: #f4f4f4 !important;
+        border-radius: 8px;
         font-size: 14px;
+        border: 1px solid #e0e0e0;
     }
 
-    /* Icono de flechita a la derecha */
-    #user-link-mobile::after {
-        content: '\f078'; 
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-        font-size: 10px;
-    }
-
-    /* 3. EL DROPDOWN (Oculto por defecto) */
+    /* DROPDOWN */
     #user-dropdown-mobile {
-        display: none; /* Se activa con la clase .show-menu que pusimos en el JS */
-        padding: 5px 0;
-        margin-top: 5px;
+        display: none; /* Se activa con el click */
+        width: 100%;
         background: #fff;
+        padding: 10px 0;
     }
 
-    /* Clase que dispara el JS al hacer click */
     #user-dropdown-mobile.show-menu {
         display: block !important;
     }
 
-    /* 4. LINKS INTERNOS (Perfil y Salir) */
+    /* LINKS INTERNOS */
     #user-dropdown-mobile a {
-        display: flex;
-        align-items: center;
-        padding: 12px 10px;
-        color: #333;
+        display: flex !important;
+        padding: 15px;
+        color: #333 !important;
         text-decoration: none;
-        font-size: 14px;
-        border-bottom: 1px solid #f9f9f9;
-    }
-
-    #user-dropdown-mobile a i {
-        margin-right: 12px;
-        width: 20px;
-        text-align: center;
-        color: #000;
-    }
-
-    /* El de cerrar sesión con un toque rojo */
-    #user-dropdown-mobile a.btn-logout-action {
-        color: #e74c3c;
-        font-weight: 600;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 15px;
     }
 }
 
