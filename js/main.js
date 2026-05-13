@@ -2258,22 +2258,20 @@ async function toggleFavorito(id, btn) {
 function actualizarVisualFavorito(id, estado, btn = null) {
     const idLimpio = String(id).trim();
     
-    // Si pasamos el botón directamente (clic), lo usamos. Si no, buscamos en el DOM.
-    const botones = btn ? [btn] : document.querySelectorAll(`.fav-btn[data-id="${idLimpio}"]`);
+    // Agregamos .fav-btn-inline que es la que usás en el inicio
+    const botones = btn ? [btn] : document.querySelectorAll(`.fav-btn[data-id="${idLimpio}"], .fav-btn-inline[data-id="${idLimpio}"]`);
 
     botones.forEach(b => {
         const icon = b.querySelector('i');
         if (estado) {
             b.classList.add('active');
             if (icon) {
-                icon.classList.remove('far');
-                icon.classList.add('fas');
+                icon.classList.replace('far', 'fas'); // Más limpio que remove/add
             }
         } else {
             b.classList.remove('active');
             if (icon) {
-                icon.classList.remove('fas');
-                icon.classList.add('far');
+                icon.classList.replace('fas', 'far');
             }
         }
     });
