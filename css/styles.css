@@ -3362,6 +3362,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 .cart-wrapper {
     background: rgba(255,255,0,0.2) !important;
 }
+
+    .navbar-container * {
+    outline: 1px solid red !important;
+}
     .cart-badge {
          background: rgba(255,255,0,0.2) !important;
         }
