@@ -3080,6 +3080,13 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         gap: 8px;
         cursor: pointer;
     } 
+
+
+    .header-right, 
+    .nav-links.active, 
+    .menu-close-mobile {
+        pointer-events: auto !important;
+    }
 }
 
 
