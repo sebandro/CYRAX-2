@@ -3513,6 +3513,46 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         border-bottom: 1px solid #eee;
         padding-bottom: 15px;
     }
+
+
+    li.mobile-only.login-mobile-nav {
+        display: flex !important; /* Cambiamos a flex */
+        flex-direction: column;
+        height: auto !important; /* Quitamos esos 17px que lo bloquean */
+        min-height: 50px; 
+        width: 100% !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        padding: 15px;
+        background: #fdff00; /* Color temporal para que veas dónde está */
+        border-bottom: 2px solid #000;
+        margin-bottom: 10px;
+    }
+
+    /* Aseguramos que el contenedor interno también se vea */
+    .login-mobile-nav .user-menu-container {
+        display: block !important;
+        width: 100%;
+    }
+
+    /* Estilo para el link "HOLA, ALEJANDRO" */
+    #user-link-mobile {
+        display: flex !important;
+        align-items: center;
+        color: #000 !important;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 16px;
+        gap: 10px;
+    }
+
+    /* El dropdown que se abra abajo de todo */
+    #user-dropdown-mobile {
+        display: block !important; /* Solo si estás logueado */
+        position: relative !important; 
+        margin-top: 10px;
+        padding-left: 10px;
+    }
  }
 
 
