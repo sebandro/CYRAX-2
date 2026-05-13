@@ -3028,7 +3028,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         flex: 2; /* Le damos más peso para que sea el centro real */
         display: flex;
         justify-content: center;
-        pointer-events: none !important;
     }
 
     #menu-categorias {
@@ -3078,35 +3077,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         gap: 8px;
         cursor: pointer;
     } 
-
-
-    .header-right {
-        position: relative !important;
-        z-index: 9999 !important;
-    }
-
-      .btn-bounce {
-        position: relative !important;
-        z-index: 10000 !important;
-    }
-    
-    .nav-links, 
-    .header-right,
-    .menu-close-mobile {
-        pointer-events: auto !important;
-    }
-
-    .user-dropdown-list {
-        display: none !important; /* Aseguramos que no exista si no está activo */
-        pointer-events: none !important;
-    }
-
-    /* 4. Cuando el menú de usuario realmente se abra (clase que uses en JS) */
-    .user-dropdown-list.active, 
-    .user-dropdown-list.show {
-        display: block !important;
-        pointer-events: auto !important;
-    }
 }
 
 
