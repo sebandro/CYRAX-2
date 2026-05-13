@@ -3059,8 +3059,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         justify-content: flex-end;
         align-items: center;
         gap: 25px; /* Espacio entre Login y Carrito */
-        position: relative !important;
-        z-index: 9999 !important;
     }
 
     /* Ajuste específico para "Ingresar" (Icono + Texto juntos) */
@@ -3082,8 +3080,12 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     } 
 
 
-    .header-right, 
-    .nav-links.active, 
+    .user-menu-container {
+        position: relative !important;
+        z-index: 9999 !important;
+    }
+
+    .nav-links, 
     .menu-close-mobile {
         pointer-events: auto !important;
     }
