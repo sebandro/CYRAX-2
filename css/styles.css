@@ -3452,10 +3452,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* --- ESTILOS DE USUARIO PARA MENÚ MÓVIL ---       */
 /*==================================================*/
 
-  .nav-links, #menu-categorias {
-        overflow: visible !important;
-        display: block !important;
-    }
+  
 
     /* EL CONTENEDOR - Con esto le ganamos a cualquier altura de 22px */
     li.mobile-only.login-mobile-nav {
@@ -3471,6 +3468,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         border-bottom: 1px solid #eee !important;
         position: relative !important;
         z-index: 999 !important;
+        outline: 5px solid red !important;
     }
 
     /* BOTÓN NOMBRE */
