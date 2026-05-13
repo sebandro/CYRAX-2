@@ -3122,13 +3122,65 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 }
     /* El div interno que contiene el carrito */
 
-   .navbar-actions {
+
+    .cart-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    min-width: 40px !important;
+    gap: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    position: relative !important;
+    top: 0 !important;
+    transform: none !important;
+}
+
+.cart-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 40px !important;
+    height: 40px !important;
+
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    line-height: 1 !important;
+    transform: none !important;
+}
+
+.cart-wrapper i {
+    font-size: 22px !important;
+    line-height: 1 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    position: relative !important;
+    top: 0 !important;
+}
+
+.navbar-actions {
     display: flex !important;
     align-items: center !important;
     justify-content: flex-end !important;
+
+    width: 100% !important;
     height: 100% !important;
+
     margin: 0 !important;
     padding: 0 !important;
+
+    gap: 0 !important;
 }
     /* 3. Limpieza de iconos (para que no ocupen más de lo debido) */
 
@@ -3160,26 +3212,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         max-height: 22px !important; /* Ajustá este número según tu logo */
         width: auto;
      }
-    
-   .cart-container {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 40px !important;
-    height: 40px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    position: relative !important;
-    top: 0 !important;
-}
-
-    .cart-wrapper {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    position: relative !important;
-    line-height: 1 !important;
-}
 
     .navbar-actions i,
 .menu-mobile-btn i {
@@ -3288,6 +3320,12 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 .mobile-only {
         display: block !important;
     }
+
+    .cart-badge {
+    position: absolute !important;
+    top: -5px !important;
+    right: -5px !important;
+}
 }
 
 
