@@ -3446,6 +3446,18 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         font-size: 0.8rem !important;
         padding: 6px 10px !important;
     }
+    /*FIN*/
+
+
+    .login-mobile-nav .user-dropdown-list {
+        position: relative; /* En lugar de absoluto, que se abra hacia abajo */
+        width: 100%;
+        background: #f9f9f9;
+        box-shadow: none;
+        border-left: 3px solid #000;
+        margin-top: 10px;
+        display: none; /* Se activa con una clase .show que podés manejar con JS */
+    }
  }
 
 
