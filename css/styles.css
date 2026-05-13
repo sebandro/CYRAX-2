@@ -3345,6 +3345,23 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     display: flex !important;
     align-items: center !important;
 }
+
+
+    .header-right {
+    background: rgba(255,0,0,0.2) !important;
+}
+
+.navbar-actions {
+    background: rgba(0,255,0,0.2) !important;
+}
+
+.cart-container {
+    background: rgba(0,0,255,0.2) !important;
+}
+
+.cart-wrapper {
+    background: rgba(255,255,0,0.2) !important;
+}
     
 }
 
