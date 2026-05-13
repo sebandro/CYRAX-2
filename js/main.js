@@ -20,7 +20,7 @@ firebase.auth().onAuthStateChanged((user) => {
         if (userDropdown) userDropdown.style.opacity = "1";
 
         if (userTextMobile) userTextMobile.innerText = `Hola, ${nombre}`;
-        if (userDropdownMobile) userDropdownMobile.style.display = "block";
+        
         
         if (loginLink) {
             loginLink.innerHTML = `<i class="fas fa-user"></i> Hola, ${nombre}`;
@@ -2363,6 +2363,22 @@ document.addEventListener('click', function (e) {
 
         parent.classList.toggle('open');
         console.log("Dropdown tocado");
+    }
+});
+
+
+// Función para abrir/cerrar el menú usuario en el celu
+document.addEventListener('click', function(e) {
+    const mobileLink = document.getElementById('user-link-mobile');
+    const mobileDropdown = document.getElementById('user-dropdown-mobile');
+
+    // Si toca el nombre del usuario logueado en móvil
+    if (mobileLink && mobileLink.contains(e.target)) {
+        // Solo si el texto no es "INGRESAR" (es decir, está logueado)
+        if (!mobileLink.innerText.includes("INGRESAR")) {
+            e.preventDefault();
+            mobileDropdown.classList.toggle('show-menu');
+        }
     }
 });
 //FIN
