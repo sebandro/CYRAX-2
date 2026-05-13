@@ -1,30 +1,43 @@
 
 
 // --- OBSERVADOR ÚNICO Y CENTRAL DE AUTENTICACIÓN ---
+// --- OBSERVADOR ÚNICO Y CENTRAL DE AUTENTICACIÓN ---
 firebase.auth().onAuthStateChanged((user) => {
     // 1. VARIABLES GLOBALES Y ELEMENTOS
     window.usuarioActual = user; 
+    
+    // Elementos PC
     const userText = document.getElementById('user-text');
     const userDropdown = document.getElementById('user-dropdown');
+    
+    // Elementos Móvil (LOS NUEVOS)
+    const userTextMobile = document.getElementById('user-text-mobile');
+    const userDropdownMobile = document.getElementById('user-dropdown-mobile');
+    
     const loginLink = document.querySelector('a[href="login.html"]');
-    const campoNombre = document.getElementById('nombre'); // Para detectar Checkout
+    const campoNombre = document.getElementById('nombre');
 
     if (user) {
         // --- A. LÓGICA DE INTERFAZ ---
         const nombre = user.displayName ? user.displayName.split(' ')[0] : 'Mi Cuenta';
+        const textoHola = `Hola, ${nombre}`;
         
-        if (userText) userText.innerText = `Hola, ${nombre}`;
-        if (userDropdown) userDropdown.style.opacity = "1";
+        // Actualizamos PC
+        if (userText) userText.innerText = textoHola;
+        if (userDropdown) userDropdown.style.display = "block"; // Cambié opacity por display para que sea funcional
+        
+        // Actualizamos Móvil
+        if (userTextMobile) userTextMobile.innerText = textoHola.toUpperCase();
+        if (userDropdownMobile) userDropdownMobile.style.display = "block";
         
         if (loginLink) {
-            loginLink.innerHTML = `<i class="fas fa-user"></i> Hola, ${nombre}`;
+            loginLink.innerHTML = `<i class="fas fa-user"></i> ${textoHola}`;
             loginLink.href = "perfil.html";
         }
 
         // --- B. LÓGICA DE CHECKOUT / AUTO-RELLENADO ---
         if (campoNombre) {
-            console.log("Checkout detectado: Iniciando auto-rellenado y Píxel...");
-            
+            // ... (Tu código de Pixel y auto-rellenado se mantiene IGUAL) ...
             const carrito = JSON.parse(localStorage.getItem('cart')) || [];
             const total = carrito.reduce((acc, i) => acc + ((i.price || 0) * (i.cantidad || 1)), 0);
             
@@ -52,12 +65,10 @@ firebase.auth().onAuthStateChanged((user) => {
         }
 
         // --- C. NUEVA LÓGICA: PINTAR FAVORITOS AUTOMÁTICAMENTE ---
-        // Buscamos los favoritos guardados en el array del usuario
         db.collection('usuarios').doc(user.uid).get().then((doc) => {
             if (doc.exists) {
                 const favoritos = doc.data().favoritos || [];
                 favoritos.forEach(id => {
-                    // Llamamos a la función visual que creamos antes
                     if (typeof actualizarVisualFavorito === 'function') {
                         actualizarVisualFavorito(id, true);
                     }
@@ -65,12 +76,16 @@ firebase.auth().onAuthStateChanged((user) => {
             }
         }).catch(err => console.error("Error al cargar favoritos iniciales:", err));
 
-        // --- D. CARGAR PRODUCTOS ---
-
     } else {
         // --- E. LÓGICA MODO INVITADO ---
+        // Reset PC
         if (userText) userText.innerText = "Ingresar";
-        if (userDropdown) userDropdown.style.opacity = "0";
+        if (userDropdown) userDropdown.style.display = "none";
+        
+        // Reset Móvil
+        if (userTextMobile) userTextMobile.innerText = "INGRESAR";
+        if (userDropdownMobile) userDropdownMobile.style.display = "none";
+
         if (loginLink) {
             loginLink.innerHTML = `<i class="fas fa-user"></i> Ingresar`;
             loginLink.href = "login.html";
@@ -84,7 +99,6 @@ firebase.auth().onAuthStateChanged((user) => {
                 }
             }, 5000);
         }
-
     }
 });
 
