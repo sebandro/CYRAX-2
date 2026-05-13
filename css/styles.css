@@ -3086,6 +3086,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
     .nav-links, 
+    .header-right,
     .menu-close-mobile {
         pointer-events: auto !important;
     }
