@@ -3092,9 +3092,14 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     display: none !important;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
      /* --- CORRECCIÓN EN EL HEADER --- */
 
+.header-center-pc {
+        display: contents !important;
+    }
+
+    
 .navbar-container {
     display: grid !important;
     grid-template-columns: 60px 1fr 60px !important;
