@@ -3087,6 +3087,18 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .menu-close-mobile {
         pointer-events: auto !important;
     }
+
+    .user-dropdown-list {
+        display: none !important; /* Aseguramos que no exista si no está activo */
+        pointer-events: none !important;
+    }
+
+    /* 4. Cuando el menú de usuario realmente se abra (clase que uses en JS) */
+    .user-dropdown-list.active, 
+    .user-dropdown-list.show {
+        display: block !important;
+        pointer-events: auto !important;
+    }
 }
 
 
