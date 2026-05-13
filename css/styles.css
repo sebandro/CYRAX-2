@@ -3346,29 +3346,15 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     align-items: center !important;
 }
 
-
-    .header-right {
-    background: rgba(255,0,0,0.2) !important;
-}
-
-.navbar-actions {
-    background: rgba(0,255,0,0.2) !important;
-}
-
-.cart-container {
-    background: rgba(0,0,255,0.2) !important;
-}
-
-.cart-wrapper {
-    background: rgba(255,255,0,0.2) !important;
-}
-
-    .navbar-container * {
+    * {
     outline: 1px solid red !important;
 }
-    .cart-badge {
-         background: rgba(255,255,0,0.2) !important;
-        }
+
+    .header-center-pc {
+    display: none !important;
+}
+
+  
  }
 
 
