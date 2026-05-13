@@ -3535,7 +3535,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* DROPDOWN */
 
 #user-dropdown-mobile {
-    display: block !important;
+    display: none !important;
 
     width: 100% !important;
 
@@ -3552,6 +3552,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     position: relative !important;
 
     z-index: 99999 !important;
+}
+
+    #user-dropdown-mobile.show-menu {
+    display: block !important;
 }
 
 /* LINKS */
@@ -3578,19 +3582,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     font-weight: 600 !important;
 }
 
-/* DEBUG VISUAL */
-
-.login-mobile-nav {
-    outline: 3px solid red !important;
-}
-
-#user-link-mobile {
-    outline: 3px solid blue !important;
-}
-
-#user-dropdown-mobile {
-    outline: 3px solid green !important;
-}
 }
 
    
