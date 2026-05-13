@@ -3093,13 +3093,18 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
      /* --- CORRECCIÓN EN EL HEADER --- */
 
 .navbar-container {
-        display: grid !important;
-        grid-template-columns: 60px 1fr 60px !important; /* Izquierda, Centro, Derecha */
-        align-items: center !important;
-        height: 70px !important;
-        padding: 0 10px !important;
-        overflow: hidden;
-    }
+    display: grid !important;
+    grid-template-columns: 60px 1fr 60px !important;
+
+    align-items: center !important;
+    align-content: center !important;
+
+    height: 70px !important;
+
+    padding: 0 10px !important;
+
+    overflow: hidden !important;
+}
     /* 2. CADA PIEZA EN SU COLUMNA */
     .header-left {
         grid-column: 1 !important; /* Columna de la hamburguesa */
@@ -3156,6 +3161,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     line-height: 1 !important;
     transform: none !important;
+    overflow: visible !important;
 }
 
 .cart-wrapper i {
@@ -3321,11 +3327,22 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: block !important;
     }
 
-    .cart-badge {
+.cart-badge {
     position: absolute !important;
-    top: -5px !important;
+    top: 0px !important;
     right: -5px !important;
 }
+
+
+.header-left,
+.header-center,
+.header-right {
+    height: 100% !important;
+
+    display: flex !important;
+    align-items: center !important;
+}
+    
 }
 
 
