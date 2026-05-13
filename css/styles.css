@@ -3161,6 +3161,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     line-height: 1 !important;
     transform: none !important;
+}
+
+    .cart-wrapper {
     overflow: visible !important;
 }
 
