@@ -3346,13 +3346,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     align-items: center !important;
 }
 
-    * {
-    outline: 1px solid red !important;
-}
-
-    .header-center-pc {
-    display: none !important;
-}
 
   
  }
