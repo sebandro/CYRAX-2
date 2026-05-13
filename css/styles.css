@@ -3027,7 +3027,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .header-center-pc {
         flex: 2; /* Le damos más peso para que sea el centro real */
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     #menu-categorias {
