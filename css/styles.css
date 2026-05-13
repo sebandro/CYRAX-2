@@ -3452,109 +3452,74 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* --- ESTILOS DE USUARIO PARA MENÚ MÓVIL ---       */
 /*==================================================*/
 
-    .login-mobile-nav .user-menu-container {
-        width: 100%;
-        position: relative;
-        padding: 10px 0;
-    }
-
-    /* El enlace que dice "HOLA, ALEJANDRO" */
-    #user-link-mobile {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: 800;
-        color: #000;
-        text-transform: uppercase;
-        font-size: 1.1rem;
-        padding: 10px 15px;
-        background: #f4f4f4; /* Un gris sutil para diferenciarlo */
-        border-radius: 8px;
-    }
-
-    /* El Dropdown en móvil (se abre hacia abajo) */
-    #user-dropdown-mobile {
-        display: none; /* El JS lo cambia a block cuando hay usuario */
-        position: static; /* Importante: para que no flote */
-        width: 100%;
-        background: #fff;
-        box-shadow: none;
-        border-left: 4px solid #000; /* Detalle estético Syrax */
-        margin-top: 5px;
-        padding-left: 15px;
-    }
-
-    /* Los links dentro del dropdown (Perfil, Cerrar Sesión) */
-    #user-dropdown-mobile a {
-        display: block;
-        padding: 12px 0;
-        color: #333;
-        font-size: 0.95rem;
-        border-bottom: 1px solid #eee;
-        text-decoration: none;
-    }
-
-    #user-dropdown-mobile a i {
-        margin-right: 10px;
-        width: 20px;
-        text-align: center;
-    }
-
-    /* Quitar el último borde para que quede limpio */
-    #user-dropdown-mobile a:last-child {
-        border-bottom: none;
-        color: #e74c3c; /* Color rojo para cerrar sesión */
-    }
-
-    .mobile-only.login-mobile-nav {
-        display: block !important; /* Forzamos visibilidad en móvil */
-        width: 100%;
-        margin-bottom: 20px;
-        border-bottom: 1px solid #eee;
-        padding-bottom: 15px;
-    }
-
-
     li.mobile-only.login-mobile-nav {
-        display: flex !important; /* Cambiamos a flex */
-        flex-direction: column;
-        height: auto !important; /* Quitamos esos 17px que lo bloquean */
-        min-height: 50px; 
-        width: 100% !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        padding: 15px;
-        background: #fdff00; /* Color temporal para que veas dónde está */
-        border-bottom: 2px solid #000;
-        margin-bottom: 10px;
-    }
-
-    /* Aseguramos que el contenedor interno también se vea */
-    .login-mobile-nav .user-menu-container {
         display: block !important;
-        width: 100%;
+        height: auto !important;
+        padding: 10px 15px;
+        background: #fff;
+        border-bottom: 1px solid #eee;
     }
 
-    /* Estilo para el link "HOLA, ALEJANDRO" */
+    /* El nombre del usuario: elegante y clickeable */
     #user-link-mobile {
         display: flex !important;
         align-items: center;
+        justify-content: space-between; /* Para poner una flechita al final */
         color: #000 !important;
-        font-weight: bold;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
         text-decoration: none;
-        font-size: 16px;
-        gap: 10px;
+        padding: 12px;
+        background: #f8f8f8;
+        border-radius: 5px;
     }
 
-    /* El dropdown que se abra abajo de todo */
+    /* Flechita indicadora (opcional, le da el toque) */
+    #user-link-mobile::after {
+        content: '\f078'; /* Icono chevron-down de FontAwesome */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 12px;
+    }
+
+    /* El dropdown: ahora empieza oculto */
     #user-dropdown-mobile {
-        display: block !important; /* Solo si estás logueado */
-        position: relative !important; 
-        margin-top: 10px;
-        padding-left: 10px;
+        display: none; /* Se controla con la clase .active */
+        position: relative !important;
+        background: #fff;
+        padding: 5px 10px;
+        border-radius: 0 0 5px 5px;
+    }
+
+    /* Clase que activaremos con JS */
+    #user-dropdown-mobile.show-menu {
+        display: block !important;
+    }
+
+    /* Links internos: Mi Perfil y Cerrar Sesión */
+    #user-dropdown-mobile a {
+        display: flex;
+        align-items: center;
+        padding: 12px;
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    #user-dropdown-mobile a i {
+        margin-right: 12px;
+        color: #000;
+        width: 20px;
+    }
+
+    /* Cerrar sesión en rojo sutil */
+    #user-dropdown-mobile a.btn-logout-action {
+        color: #d32f2f;
+        border-bottom: none;
     }
  }
-
 
     
  
