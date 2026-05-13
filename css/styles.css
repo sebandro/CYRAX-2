@@ -3452,7 +3452,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* --- ESTILOS DE USUARIO PARA MENÚ MÓVIL ---       */
 /*==================================================*/
 
-   li.mobile-only.login-mobile-nav {
+  li.mobile-only.login-mobile-nav {
         display: block !important; /* Lo saca del 'none' */
         visibility: visible !important;
         height: auto !important;
@@ -3463,66 +3463,66 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         border-bottom: 1px solid #eee;
     }
 
-    /* El nombre del usuario: elegante y clickeable */
+    /* 2. EL BOTÓN CON TU NOMBRE */
     #user-link-mobile {
         display: flex !important;
         align-items: center;
-        justify-content: space-between; /* Para poner una flechita al final */
+        justify-content: space-between;
         color: #000 !important;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1px;
         text-decoration: none;
-        padding: 12px;
-        background: #f8f8f8;
-        border-radius: 5px;
+        padding: 12px 15px;
+        background: #f1f1f1; /* Gris suave, queda mucho mejor que el amarillo */
+        border-radius: 6px;
+        font-size: 14px;
     }
 
-    /* Flechita indicadora (opcional, le da el toque) */
+    /* Icono de flechita a la derecha */
     #user-link-mobile::after {
-        content: '\f078'; /* Icono chevron-down de FontAwesome */
+        content: '\f078'; 
         font-family: "Font Awesome 5 Free";
         font-weight: 900;
-        font-size: 12px;
+        font-size: 10px;
     }
 
-    /* El dropdown: ahora empieza oculto */
+    /* 3. EL DROPDOWN (Oculto por defecto) */
     #user-dropdown-mobile {
-        display: none; /* Se controla con la clase .active */
-        position: relative !important;
+        display: none; /* Se activa con la clase .show-menu que pusimos en el JS */
+        padding: 5px 0;
+        margin-top: 5px;
         background: #fff;
-        padding: 5px 10px;
-        border-radius: 0 0 5px 5px;
     }
 
-    /* Clase que activaremos con JS */
+    /* Clase que dispara el JS al hacer click */
     #user-dropdown-mobile.show-menu {
         display: block !important;
     }
 
-    /* Links internos: Mi Perfil y Cerrar Sesión */
+    /* 4. LINKS INTERNOS (Perfil y Salir) */
     #user-dropdown-mobile a {
         display: flex;
         align-items: center;
-        padding: 12px;
+        padding: 12px 10px;
         color: #333;
         text-decoration: none;
         font-size: 14px;
-        border-bottom: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f9f9f9;
     }
 
     #user-dropdown-mobile a i {
         margin-right: 12px;
-        color: #000;
         width: 20px;
+        text-align: center;
+        color: #000;
     }
 
-    /* Cerrar sesión en rojo sutil */
+    /* El de cerrar sesión con un toque rojo */
     #user-dropdown-mobile a.btn-logout-action {
-        color: #d32f2f;
-        border-bottom: none;
+        color: #e74c3c;
+        font-weight: 600;
     }
- }
+}
 
     
  
