@@ -3112,6 +3112,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: flex !important;
         justify-content: center !important;
     }
+    
  .header-right {
     grid-column: 3 !important;
     display: flex !important;
@@ -3121,13 +3122,14 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 }
     /* El div interno que contiene el carrito */
 
-    .navbar-actions {
-        display: flex !important;
-        width: 100% !important;
-        justify-content: flex-end !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
+   .navbar-actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
     /* 3. Limpieza de iconos (para que no ocupen más de lo debido) */
 
     .menu-mobile-btn, .cart-container {
@@ -3158,14 +3160,31 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         max-height: 22px !important; /* Ajustá este número según tu logo */
         width: auto;
      }
+    
    .cart-container {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        height: 40px !important;
-    }
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    top: 0 !important;
+}
+
+    .cart-wrapper {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    line-height: 1 !important;
+}
+
+    .navbar-actions i,
+.menu-mobile-btn i {
+    line-height: 1 !important;
+}
 
 .cart-label, #user-text, .navbar-actions span {
         display: none !important;
