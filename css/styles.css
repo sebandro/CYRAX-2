@@ -3080,7 +3080,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     } 
 
 
-    .user-menu-container {
+    .header-right {
         position: relative !important;
         z-index: 9999 !important;
     }
