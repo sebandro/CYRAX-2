@@ -3352,7 +3352,100 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 * {
     outline: 1px solid red !important;
 }
-  
+
+ /*=================================*/   
+/* TARJETAS DE PRODUCTOS (CARRUSEL)*/
+/*================================*/
+
+       .product-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+
+        gap: 14px !important;
+
+        padding: 15px !important;
+
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+
+        scrollbar-width: none !important;
+    }
+
+    .product-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .product-card {
+        min-width: 78vw !important;
+        max-width: 78vw !important;
+
+        flex: 0 0 auto !important;
+
+        scroll-snap-align: start !important;
+
+        border-radius: 16px !important;
+
+        overflow: hidden !important;
+    }
+
+    .product-slider {
+        border-radius: 16px 16px 0 0 !important;
+    }
+
+    .product-info {
+        flex-direction: column !important;
+        align-items: stretch !important;
+
+        padding: 14px !important;
+    }
+
+    .product-buttons {
+        display: grid !important;
+
+        grid-template-columns: 42px 42px 1fr !important;
+
+        gap: 8px !important;
+
+        width: 100% !important;
+
+        margin-top: 12px !important;
+    }
+
+    .fav-btn-inline,
+    .share-ws-btn {
+        width: 42px !important;
+        height: 42px !important;
+
+        border-radius: 10px !important;
+
+        flex-shrink: 0 !important;
+    }
+
+    .buy-btn {
+        width: 100% !important;
+        height: 42px !important;
+
+        font-size: 0.72rem !important;
+
+        margin-top: 0 !important;
+
+        border-radius: 10px !important;
+    }
+
+    .price {
+        font-size: 1.3rem !important;
+    }
+
+    .product-card h3 {
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+    }
+
+    .badge-off {
+        font-size: 0.8rem !important;
+        padding: 6px 10px !important;
+    }
  }
 
 
