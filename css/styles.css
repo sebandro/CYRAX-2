@@ -3090,7 +3090,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     display: none !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
      /* --- CORRECCIÓN EN EL HEADER --- */
 
 .navbar-container {
