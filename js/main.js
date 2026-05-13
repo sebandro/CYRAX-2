@@ -102,6 +102,7 @@ function abrirTuModalLogin() {
     if (!paginaActual.includes('login.html') && !paginaActual.includes('registro.html')) {
         // --- AQUÍ USAMOS TU ID REAL: user-link ---
         const botonIngresar = document.getElementById('user-link');
+        const botonIngresarpc = document.getElementById('user-link-pc');
 
         if (botonIngresar) {
             console.log("Syrax: Botón 'user-link' encontrado. Abriendo modal de beneficios...");
