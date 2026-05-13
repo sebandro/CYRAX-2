@@ -3079,6 +3079,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     } 
 }
 
+* {
+    outline: 1px solid red !important;
+}
 /* --- ESTO VA AL FINAL DE TU STYLES.CSS --- */
  
 /* 1. Escondemos la hamburguesa en PC */
@@ -3346,7 +3349,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     align-items: center !important;
 }
 
-
+* {
+    outline: 1px solid red !important;
+}
   
  }
 
