@@ -3078,6 +3078,28 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         gap: 8px;
         cursor: pointer;
     } 
+
+    /* 1. Hacemos que la caja roja sea invisible a los clics */
+.header-center-pc {
+    pointer-events: none !important;
+}
+
+/* 2. Le devolvemos la vida al botón y al carrito */
+/* Esto crea un 'agujero' en la caja para que el mouse sí detecte estos elementos */
+.header-right,
+.nav-links,
+.navbar-actions, 
+#user-link, 
+.cart-container {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 1000; /* Asegura que estén 'al frente' */
+}
+
+/* 3. Forzamos que aparezca la manito al pasar por 'Ingresar' */
+#user-link {
+    cursor: pointer !important;
+}
 }
 
 
