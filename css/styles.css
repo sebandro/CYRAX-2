@@ -3452,64 +3452,75 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* --- ESTILOS DE USUARIO PARA MENÚ MÓVIL ---       */
 /*==================================================*/
 
-  
+  .nav-links, #menu-categorias, .navbar-container {
+        overflow: visible !important; 
+    }
 
-    /* EL CONTENEDOR - Con esto le ganamos a cualquier altura de 22px */
+    /* 2. EL CONTENEDOR (LI) */
     li.mobile-only.login-mobile-nav {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
-        height: auto !important; /* Clave para que no mida 22px */
-        min-height: 60px !important; 
+        height: auto !important;
+        min-height: 60px !important;
         width: 100% !important;
         padding: 10px 15px !important;
-        margin: 0 0 15px 0 !important;
+        margin-bottom: 20px !important;
         background: #ffffff !important;
-        border-bottom: 1px solid #eee !important;
         position: relative !important;
-        z-index: 999 !important;
-        outline: 5px solid red !important;
+        z-index: 1000 !important;
+        /* Forzamos renderizado por encima de todo */
+        transform: translateZ(0); 
+        border-bottom: 1px solid #ddd !important;
     }
 
-    /* BOTÓN NOMBRE */
+    /* 3. EL BOTÓN (A) */
     #user-link-mobile {
         display: flex !important;
         align-items: center;
         justify-content: space-between;
+        background: #f8f8f8 !important;
         color: #000 !important;
-        font-weight: 800;
-        text-transform: uppercase;
-        text-decoration: none;
-        padding: 15px;
-        background: #f4f4f4 !important;
-        border-radius: 8px;
-        font-size: 14px;
-        border: 1px solid #e0e0e0;
+        padding: 15px !important;
+        border-radius: 8px !important;
+        font-weight: 800 !important;
+        text-decoration: none !important;
+        font-size: 14px !important;
+        border: 1px solid #eee !important;
     }
 
-    /* DROPDOWN */
+    /* Icono de flecha */
+    #user-link-mobile::after {
+        content: '\f078';
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        font-size: 12px;
+    }
+
+    /* 4. EL DESPLEGABLE */
     #user-dropdown-mobile {
-        display: none; /* Se activa con el click */
-        width: 100%;
-        background: #fff;
-        padding: 10px 0;
+        display: none;
+        background: #fff !important;
+        width: 100% !important;
+        border: 1px solid #eee !important;
+        border-top: none !important;
+        border-radius: 0 0 8px 8px !important;
     }
 
     #user-dropdown-mobile.show-menu {
         display: block !important;
     }
 
-    /* LINKS INTERNOS */
     #user-dropdown-mobile a {
         display: flex !important;
-        padding: 15px;
+        padding: 15px !important;
         color: #333 !important;
-        text-decoration: none;
-        border-bottom: 1px solid #f0f0f0;
-        font-size: 15px;
+        border-bottom: 1px solid #f5f5f5 !important;
+        text-decoration: none !important;
     }
 }
 
+   
     
  
 
