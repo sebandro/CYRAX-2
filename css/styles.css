@@ -3112,12 +3112,13 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: flex !important;
         justify-content: center !important;
     }
-    .header-right {
-        grid-column: 3 !important; /* Columna del carrito */
-        display: flex !important;
-        justify-content: flex-end !important;
-        align-items: center !important;
-    }
+ .header-right {
+    grid-column: 3 !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    height: 100% !important;
+}
     /* El div interno que contiene el carrito */
 
     .navbar-actions {
