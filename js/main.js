@@ -1862,7 +1862,7 @@ async function cargarProductos(categoriaFiltro = null, soloLiquidacion = false, 
                             </div>
                         </div>
                         <div class="product-buttons">
-                            <button class="fav-btn-inline ${botonClase}" onclick="toggleFavorito('${id}', this)">
+                            <button class="fav-btn-inline ${botonClase}"  data-id="${id}" onclick="toggleFavorito('${id}', this)">
                                 <i class="${iconoClase} fa-heart"></i>
                             </button>
                             <a href="https://wa.me/?text=${mensajeWS}" target="_blank" class="share-ws-btn">
