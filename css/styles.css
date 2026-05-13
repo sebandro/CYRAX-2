@@ -3058,6 +3058,8 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         justify-content: flex-end;
         align-items: center;
         gap: 25px; /* Espacio entre Login y Carrito */
+        position: relative !important;
+        z-index: 9999 !important;
     }
 
     /* Ajuste específico para "Ingresar" (Icono + Texto juntos) */
