@@ -3452,10 +3452,13 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* --- ESTILOS DE USUARIO PARA MENÚ MÓVIL ---       */
 /*==================================================*/
 
-    li.mobile-only.login-mobile-nav {
-        display: block !important;
+   li.mobile-only.login-mobile-nav {
+        display: block !important; /* Lo saca del 'none' */
+        visibility: visible !important;
         height: auto !important;
+        width: 100% !important;
         padding: 10px 15px;
+        margin-bottom: 10px;
         background: #fff;
         border-bottom: 1px solid #eee;
     }
