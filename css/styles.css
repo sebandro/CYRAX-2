@@ -3457,72 +3457,140 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* --- ESTILOS DE USUARIO PARA MENÚ MÓVIL ---       */
 /*==================================================*/
 
-  .nav-links, #menu-categorias, .navbar-container {
-        overflow: visible !important; 
-    }
 
-    /* 2. EL CONTENEDOR (LI) */
-    li.mobile-only.login-mobile-nav {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        height: auto !important;
-        min-height: 60px !important;
-        width: 100% !important;
-        padding: 10px 15px !important;
-        margin-bottom: 20px !important;
-        background: #ffffff !important;
-        position: relative !important;
-        z-index: 1000 !important;
-        /* Forzamos renderizado por encima de todo */
-        transform: translateZ(0); 
-        border-bottom: 1px solid #ddd !important;
-    }
+.login-mobile-nav {
+    display: block !important;
 
-    /* 3. EL BOTÓN (A) */
-    #user-link-mobile {
-        display: flex !important;
-        align-items: center;
-        justify-content: space-between;
-        background: #f8f8f8 !important;
-        color: #000 !important;
-        padding: 15px !important;
-        border-radius: 8px !important;
-        font-weight: 800 !important;
-        text-decoration: none !important;
-        font-size: 14px !important;
-        border: 1px solid #eee !important;
-    }
+    width: 100% !important;
 
-    /* Icono de flecha */
-    #user-link-mobile::after {
-        content: '\f078';
-        font-family: "Font Awesome 5 Free";
-        font-weight: 900;
-        font-size: 12px;
-    }
+    padding: 15px !important;
+    margin-bottom: 15px !important;
 
-    /* 4. EL DESPLEGABLE */
-    #user-dropdown-mobile {
-        display: none;
-        background: #fff !important;
-        width: 100% !important;
-        border: 1px solid #eee !important;
-        border-top: none !important;
-        border-radius: 0 0 8px 8px !important;
-    }
+    background: #ffffff !important;
 
-    #user-dropdown-mobile.show-menu {
-        display: block !important;
-    }
+    position: relative !important;
+    z-index: 99999 !important;
 
-    #user-dropdown-mobile a {
-        display: flex !important;
-        padding: 15px !important;
-        color: #333 !important;
-        border-bottom: 1px solid #f5f5f5 !important;
-        text-decoration: none !important;
-    }
+    border-bottom: 1px solid #ececec !important;
+}
+
+/* CONTENEDOR */
+
+.login-mobile-nav .user-menu-container {
+    display: flex !important;
+    flex-direction: column !important;
+
+    width: 100% !important;
+
+    position: relative !important;
+
+    z-index: 99999 !important;
+}
+
+/* BOTON INGRESAR */
+
+#user-link-mobile {
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: space-between !important;
+
+    width: 100% !important;
+
+    padding: 16px !important;
+
+    background: #f7f7f7 !important;
+
+    border-radius: 12px !important;
+
+    border: 1px solid #e5e5e5 !important;
+
+    text-decoration: none !important;
+
+    color: #000 !important;
+
+    font-size: 14px !important;
+    font-weight: 800 !important;
+
+    box-sizing: border-box !important;
+
+    position: relative !important;
+
+    z-index: 99999 !important;
+}
+
+/* TEXTO */
+
+#user-text-mobile {
+    color: #000 !important;
+}
+
+/* ICONO */
+
+#user-link-mobile i {
+    color: #000 !important;
+    font-size: 16px !important;
+}
+
+/* DROPDOWN */
+
+#user-dropdown-mobile {
+    display: block !important;
+
+    width: 100% !important;
+
+    margin-top: 8px !important;
+
+    background: #ffffff !important;
+
+    border-radius: 12px !important;
+
+    border: 1px solid #ececec !important;
+
+    overflow: hidden !important;
+
+    position: relative !important;
+
+    z-index: 99999 !important;
+}
+
+/* LINKS */
+
+#user-dropdown-mobile a {
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 10px !important;
+
+    padding: 15px !important;
+
+    text-decoration: none !important;
+
+    color: #000 !important;
+
+    background: #fff !important;
+
+    border-bottom: 1px solid #f5f5f5 !important;
+
+    font-size: 14px !important;
+
+    font-weight: 600 !important;
+}
+
+/* DEBUG VISUAL */
+
+.login-mobile-nav {
+    outline: 3px solid red !important;
+}
+
+#user-link-mobile {
+    outline: 3px solid blue !important;
+}
+
+#user-dropdown-mobile {
+    outline: 3px solid green !important;
+}
 }
 
    
