@@ -1267,35 +1267,79 @@ function changeMainImage(elemento, rutaImagen) {
 
 
 
-
-
         ////////////////////////////////////////////
         /*ZOOM DE IMAGEN DE PAGINA DE PRODUCTO*/
         ///////////////////////////////////////////
 
-        const imgContainer = document.querySelector('.product-image-card');
+const imgContainer = document.querySelector('.product-image-card');
 const productImg = document.getElementById('product-img');
 
 if (imgContainer && productImg) {
-    imgContainer.addEventListener('mousemove', (e) => {
-        // Calculamos la posición del mouse dentro del cuadro
-        const rect = imgContainer.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
 
-        // Convertimos a porcentaje para mover el origen del zoom
-        const xPercent = (x / rect.width) * 100;
-        const yPercent = (y / rect.height) * 100;
+    // SOLO PC
+    if (window.innerWidth > 768) {
 
-        productImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
-        productImg.style.transform = "scale(2)"; // 2 es el nivel de zoom
-    });
+        imgContainer.addEventListener('mousemove', (e) => {
+            const rect = imgContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-    imgContainer.addEventListener('mouseleave', () => {
-        productImg.style.transform = "scale(1)";
-        productImg.style.transformOrigin = "center center";
-    });
+            const xPercent = (x / rect.width) * 100;
+            const yPercent = (y / rect.height) * 100;
+
+            productImg.style.transformOrigin = `${xPercent}% ${yPercent}%`;
+            productImg.style.transform = "scale(2)";
+        });
+
+        imgContainer.addEventListener('mouseleave', () => {
+            productImg.style.transform = "scale(1)";
+            productImg.style.transformOrigin = "center center";
+        });
+    }
 }
+if (imgContainer && productImg) {
+
+    // SOLO MOBILE
+    if (window.innerWidth <= 768) {
+
+        let zoom = false;
+
+        imgContainer.addEventListener('click', (e) => {
+
+            zoom = !zoom;
+
+            if (!zoom) {
+                productImg.style.transform = "scale(1)";
+                productImg.style.transformOrigin = "center center";
+                return;
+            }
+
+            const rect = imgContainer.getBoundingClientRect();
+
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+            productImg.style.transformOrigin = `${x}% ${y}%`;
+            productImg.style.transform = "scale(2)";
+        });
+
+        imgContainer.addEventListener('touchmove', (e) => {
+            if (!zoom) return;
+
+            const touch = e.touches[0];
+            const rect = imgContainer.getBoundingClientRect();
+
+            const x = ((touch.clientX - rect.left) / rect.width) * 100;
+            const y = ((touch.clientY - rect.top) / rect.height) * 100;
+
+            productImg.style.transformOrigin = `${x}% ${y}%`;
+        });
+    }
+}
+
+
+
+    
 
 
 
