@@ -2996,7 +2996,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /*===========*/
 
 /* Contenedor Principal en PC */
-@media (min-width: 769px) {
+@media (min-width: 768px) {
     .navbar-container {
         display: flex !important;
         justify-content: space-between; /* Reparte Izquierda, Centro y Derecha */
@@ -3219,7 +3219,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
     .logo {
-        font-size: 22px !important; 
+        font-size: 28px !important; 
         text-align: center;
         width: 100%;
     }
