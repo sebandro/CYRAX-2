@@ -3633,6 +3633,22 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         font-size: 0.9rem !important;
         line-height: 1.4 !important;
     }
+
+    .btn-volver-flotante span {
+        display: none !important;
+    }
+
+    .btn-volver-flotante {
+
+        width: 40px !important;
+        height: 40px !important;
+
+        padding: 0 !important;
+
+        justify-content: center !important;
+
+        border-radius: 50% !important;
+    }
 }
     
  
