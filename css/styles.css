@@ -3210,8 +3210,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
 
     .fas.fa-bars {
-        width: 30px; 
-        height: 30px;
+       font-size: 28px !important; 
          }
 
     /* Logo SYRAX (Columna 2 - El corazón) */
