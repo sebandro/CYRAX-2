@@ -3649,6 +3649,98 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
         border-radius: 50% !important;
     }
+
+    /*==============*/
+    /* HERO GENERAL */
+    /*=============*/
+
+    .hero-carousel {
+        height: 65vh !important;
+        min-height: 420px !important;
+        max-height: 600px !important;
+
+        margin-top: 0 !important;
+    }
+
+    /* IMAGEN */
+
+    .slide img {
+
+        object-fit: cover !important;
+
+        object-position: center center !important;
+
+        filter: brightness(0.6) !important;
+    }
+
+    /* CONTENEDOR TEXTO */
+
+    .hero-text {
+
+        width: 90% !important;
+
+        padding: 0 10px !important;
+
+        z-index: 10 !important;
+    }
+
+    /* TITULO */
+
+    .hero-text h2 {
+
+        font-size: clamp(1.5rem, 7vw, 2.2rem) !important;
+
+        line-height: 1.15 !important;
+
+        letter-spacing: -1px !important;
+
+        text-align: center !important;
+
+        margin-bottom: 15px !important;
+
+        text-shadow: 0 3px 10px rgba(0,0,0,0.45) !important;
+    }
+
+    /* BOTON */
+
+    .btn-hero {
+
+        margin-top: 15px !important;
+
+        padding: 12px 22px !important;
+
+        font-size: 12px !important;
+
+        border-radius: 8px !important;
+
+        letter-spacing: 1px !important;
+    }
+
+    /* FLECHAS */
+
+    .slider-arrow {
+
+        width: 38px !important;
+        height: 38px !important;
+
+        font-size: 0.9rem !important;
+
+        background: rgba(0,0,0,0.35) !important;
+
+        backdrop-filter: blur(3px) !important;
+    }
+
+    .slider-arrow.prev {
+        left: 10px !important;
+    }
+
+    .slider-arrow.next {
+        right: 10px !important;
+    }
+
+    /*========*/
+    /*  fin  */
+    /*=======*/
 }
     
  
