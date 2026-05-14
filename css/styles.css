@@ -2058,6 +2058,30 @@ body { font-family: 'Montserrat', sans-serif; background: #fff; overflow-x: hidd
     /*TERMINA SECCION DE RESEÑAS*/
     /*==========================*/
 
+/*==========================*/
+/* estilo titulo liquidacion*/
+/*==========================*/
+.category-header {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.category-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.category-header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+/*===========*/
+/*   fin    */
+/*==========*/
+
+
 
 
 
@@ -2073,6 +2097,11 @@ body { font-family: 'Montserrat', sans-serif; background: #fff; overflow-x: hidd
 .btn-remove-item:active,
 .btn-primary:active,
 .btn-secondary:active,
+.btn-volver-flotante:active,
+.buy-btn:active,.show-form-btn:active,
+.btn-google-modern:active,.fav-btn-inline:active,
+.p-det-fav-btn:active,.p-det-ws-btn:active,
+.share-ws-btn:active,.menu-mobile-btn:active,
 .selector-talle:active {
     transform: scale(0.95) !important;
     transition: transform 0.1s ease !important;
@@ -3591,14 +3620,19 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     /*liquidacion.html*/
     /*================*/
 
-    .btn-volver-flotante {
-    font-size: 14px !important;    
-}
+   .category-header {
+        padding: 25px 15px !important;
+    }
 
     .category-header h1 {
-    font-size: 2.0rem; 
-    color: #333;
-}
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .category-header p {
+        font-size: 0.9rem !important;
+        line-height: 1.4 !important;
+    }
 }
     
  
