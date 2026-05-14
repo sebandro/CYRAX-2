@@ -3018,7 +3018,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     transform: translateX(-3px); /* Efecto hacia la izquierda */
 }
 
-
+/* OCULTAR WHATSAPP MOBILE EN PC */
+.mobile-menu-bottom {
+    display: none;
+}
 
 /*=============*/
 /*     fin    */
@@ -3964,6 +3967,81 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         transform: scale(2); /* nivel de zoom */
         cursor: zoom-out;
     }
+
+
+
+    /*======================================*/
+/*  MENU MOBILE FLEX                    */
+/*======================================*/
+
+.nav-links {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+}
+
+/*======================================*/
+/*  CONTENEDOR WHATSAPP                 */
+/*======================================*/
+
+.mobile-menu-bottom {
+    position: sticky;
+    bottom: 0;
+
+    width: 100%;
+
+    padding: 20px;
+
+    margin-top: auto;
+
+    background: linear-gradient(
+        to top,
+        rgba(255,255,255,1) 70%,
+        rgba(255,255,255,0)
+    );
+
+    z-index: 20;
+}
+
+/*======================================*/
+/*  BOTON WHATSAPP                      */
+/*======================================*/
+
+.mobile-wa-btn {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    background: #25d366;
+    color: white !important;
+
+    padding: 16px;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 15px;
+
+    box-shadow: 0 10px 25px rgba(37,211,102,0.25);
+
+    transition: 0.3s ease;
+}
+
+/* ICONO */
+.mobile-wa-btn i {
+    font-size: 1.4rem;
+}
+
+/* HOVER */
+.mobile-wa-btn:hover {
+    background: #128c7e;
+    transform: translateY(-2px);
+}
 }
     
 
