@@ -3290,22 +3290,36 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     }
     /* 2. MENÚ LATERAL */
 
-    .nav-links {
-        display: none !important; /* Lo escondemos por defecto */
-        flex-direction: column !important; /* Forzamos vertical */
-        position: fixed !important;
-        left: -100% !important;
-        top: 0 !important;
-        width: 280px !important;
-        height: 100vh !important;
-        background: #fff !important;
-        z-index: 9999 !important;
+  .nav-links {
+    display: none !important;
+    flex-direction: column !important;
 
-    }
-    .nav-links.active {
-        display: block !important; /* Aparece cuando tocas el botón */
-        left: 0 !important;
-    }
+    position: fixed !important;
+    left: -100% !important;
+    top: 0 !important;
+
+    width: 280px !important;
+    height: 100vh !important;
+
+    background: #fff !important;
+
+    z-index: 9999 !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+   .nav-links.active {
+    display: flex !important;
+    flex-direction: column !important;
+    left: 0 !important;
+}
+    #menu-categorias {
+    flex: 1 !important;
+}
+
+    .mobile-menu-bottom {
+    margin-top: auto !important;
+}
 
     /* 3. DROPDOWNS (Eliminamos el error del hover) */
     .dropdown:hover .dropdown-content {
@@ -3966,42 +3980,21 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     #product-img.zoom-active {
         transform: scale(2); /* nivel de zoom */
         cursor: zoom-out;
-    }
-
-
-
-    /*======================================*/
-/*  MENU MOBILE FLEX                    */
-/*======================================*/
-
-.nav-links {
-    display: flex !important;
-    flex-direction: column !important;
-    height: 100vh !important;
-    overflow-y: auto !important;
 }
+
 
 /*======================================*/
 /*  CONTENEDOR WHATSAPP                 */
 /*======================================*/
-
 .mobile-menu-bottom {
-    position: sticky;
-    bottom: 0;
-
-    width: 100%;
+    margin-top: auto !important;
 
     padding: 20px;
 
-    margin-top: auto;
+    position: sticky;
+    bottom: 0;
 
-    background: linear-gradient(
-        to top,
-        rgba(255,255,255,1) 70%,
-        rgba(255,255,255,0)
-    );
-
-    z-index: 20;
+    background: white;
 }
 
 /*======================================*/
