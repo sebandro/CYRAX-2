@@ -3998,12 +3998,12 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 .mobile-wa-item {
     margin-top: auto !important;
 
-    padding: 20px !important;
+    padding: 15px !important;
 
     list-style: none !important;
 
     border-bottom: none !important;
-    justify-content: flex-start !important;
+  
 }
 
 /* BOTON */
