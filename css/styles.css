@@ -3143,7 +3143,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     padding: 0 10px !important;
 
-    overflow: hidden !important;
+    overflow: visible !important;
 }
     /* 2. CADA PIEZA EN SU COLUMNA */
     .header-left {
