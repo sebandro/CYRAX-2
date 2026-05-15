@@ -4003,6 +4003,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     list-style: none !important;
 
     border-bottom: none !important;
+    justify-content: flex-start !important;
 }
 
 /* BOTON */
