@@ -3513,28 +3513,40 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 
 .login-mobile-nav {
-    display: block !important;
+    display: flex !important;
+
+    justify-content: center !important;
 
     width: 100% !important;
 
     padding: 15px !important;
+
     margin-bottom: 15px !important;
 
     background: #ffffff !important;
 
     position: relative !important;
+
     z-index: 99999 !important;
 
     border-bottom: 1px solid #ececec !important;
+
+    box-sizing: border-box !important;
 }
 
 /* CONTENEDOR */
 
 .login-mobile-nav .user-menu-container {
     display: flex !important;
+
     flex-direction: column !important;
+
+    align-items: center !important;
+
     width: 100% !important;
+
     position: relative !important;
+
     z-index: 99999 !important;
 }
 
@@ -3542,18 +3554,31 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 #user-link-mobile {
     display: flex !important;
+
     align-items: center !important;
-    justify-content: center !important;
+
     gap: 14px !important;
+
     width: 100% !important;
+
+    max-width: 240px !important;
+
     padding: 16px !important;
+
     background: #f7f7f7 !important;
+
     border-radius: 16px !important;
+
     border: 1px solid #e5e5e5 !important;
+
     text-decoration: none !important;
+
     color: #000 !important;
+
     box-sizing: border-box !important;
+
     position: relative !important;
+
     z-index: 99999 !important;
 }
 
@@ -3575,15 +3600,16 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* FOTO DE PERFIL MOBILE                */
 /*======================================*/
 
+/* FOTO */
+
 #user-photo-mobile {
-    width: 52px !important;
-    height: 52px !important;
+    width: 54px !important;
+
+    height: 54px !important;
 
     border-radius: 50% !important;
 
     object-fit: cover !important;
-
-    display: none;
 
     flex-shrink: 0 !important;
 }
@@ -3591,34 +3617,38 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* ICONO DEFAULT */
 
 .mobile-user-icon {
-    width: 52px;
-    height: 52px;
+    width: 54px !important;
 
-    border-radius: 50%;
+    height: 54px !important;
 
-    background: #000;
+    border-radius: 50% !important;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #ececec !important;
 
-    flex-shrink: 0;
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    flex-shrink: 0 !important;
 }
 
 .mobile-user-icon i {
-    color: white !important;
     font-size: 18px !important;
-}
 
+    color: #000 !important;
+}
 /* CONTENEDOR TEXTO */
 
 .mobile-user-info {
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
 
-    justify-content: center;
+    flex-direction: column !important;
 
-    min-width: 0;
+    justify-content: center !important;
+
+    overflow: hidden !important;
 }
 
 /* TEXTO ARRIBA */
@@ -3634,14 +3664,29 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     margin-bottom: 2px;
 }
 
+
+    .mobile-user-label {
+    font-size: 11px !important;
+
+    font-weight: 700 !important;
+
+    color: #777 !important;
+
+    letter-spacing: 1px !important;
+
+    margin-bottom: 2px !important;
+
+    text-transform: uppercase !important;
+}
+
 /* HOLA ALEJANDRO */
 
 #user-text-mobile {
-    color: #000 !important;
-
-    font-size: 14px !important;
+    font-size: 1rem !important;
 
     font-weight: 900 !important;
+
+    color: #000 !important;
 
     white-space: nowrap !important;
 
@@ -3651,11 +3696,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     line-height: 1.1 !important;
 }
-
-
-
-
-    
+ 
 
 /* DROPDOWN */
 
@@ -4059,35 +4100,54 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 .mobile-wa-item {
     margin-top: auto !important;
-    padding: 15px !important;
+
+    padding: 20px !important;
+
     list-style: none !important;
+
     border-bottom: none !important;
-      display: flex !important;
+
+    display: flex !important;
+
     justify-content: center !important;
 }
 
 /* BOTON */
 
 .mobile-wa-btn {
-    width: 88% !important;
+    width: 100% !important;
+
+    max-width: 240px !important;
+
     display: flex !important;
+
     align-items: center !important;
+
     justify-content: center !important;
-    gap: 35px !important;
+
+    gap: 12px !important;
+
     background: #25d366 !important;
+
     color: white !important;
-    padding: 20px !important;
+
+    padding: 14px !important;
+
     border-radius: 14px !important;
+
     text-decoration: none !important;
+
     font-weight: 800 !important;
+
     font-size: 15px !important;
+
     box-shadow: 0 10px 25px rgba(37,211,102,0.25) !important;
 }
 
 /* ICONO */
 
 .mobile-wa-btn i {
-    font-size: 1.4rem !important;
+    font-size: 1.3rem !important;
 }
 
 /* HOVER */
