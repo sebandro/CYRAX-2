@@ -3625,7 +3625,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     background: #ececec !important;
 
-    display: flex !important;
+    display: flex ;
 
     align-items: center !important;
 
@@ -4115,9 +4115,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* BOTON */
 
 .mobile-wa-btn {
-    width: 100% !important;
+    width: 88% !important;
 
-    max-width: 240px !important;
+    max-width: 200px !important;
 
     display: flex !important;
 
