@@ -3315,14 +3315,16 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     left: 0 !important;
 }
     
- #menu-categorias {
+#menu-categorias {
+    display: flex !important;
+    flex-direction: column !important;
+
     flex: 1 !important;
 
     overflow-y: auto !important;
 
     padding: 70px 0 20px 0 !important;
 }
-
 
 
     /* 3. DROPDOWNS (Eliminamos el error del hover) */
@@ -3350,11 +3352,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .dropdown.open .fa-chevron-down {
         transform: rotate(180deg);
     }
-    #menu-categorias {
-    display: flex !important;
-    flex-direction: column !important; /* Asegura verticalidad total */
-    padding: 70px 0 20px 0 !important; /* Espacio para la X arriba */
-}
+
 #menu-categorias li a {
     padding: 18px 25px !important; /* Aumentamos el área de toque */
     font-size: 1.1rem !important; /* Texto más grande y legible */
@@ -3987,75 +3985,59 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 }
 
 
-/*======================================*/
-/*  CONTENEDOR WHATSAPP                 */
-/*======================================*/
-.mobile-menu-bottom {
-    margin-top: auto !important;
-
-    padding: 20px;
-
-    position: sticky;
-    bottom: 0;
-
-    background: white;
-}
-
-         .mobile-menu-bottom {
-    background: red !important;
-    min-height: 120px !important;
-}
-
-
-    .mobile-menu-bottom {
-    padding: 18px !important;
-
-    border-top: 1px solid #eee !important;
-
-    background: #fff !important;
-
-    flex-shrink: 0 !important;
-}
 
 /*======================================*/
 /*  BOTON WHATSAPP                      */
 /*======================================*/
+/*======================================*/
+/*  ITEM WHATSAPP MENU MOBILE           */
+/*======================================*/
 
-.mobile-wa-btn {
-    width: 100%;
+.mobile-wa-item {
+    margin-top: auto !important;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+    padding: 20px !important;
 
-    background: #25d366;
-    color: white !important;
+    list-style: none !important;
 
-    padding: 16px;
-
-    border-radius: 14px;
-
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 15px;
-
-    box-shadow: 0 10px 25px rgba(37,211,102,0.25);
-
-    transition: 0.3s ease;
+    border-bottom: none !important;
 }
 
+/* BOTON */
 
+.mobile-wa-btn {
+    width: 100% !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+
+    background: #25d366 !important;
+    color: white !important;
+
+    padding: 16px !important;
+
+    border-radius: 14px !important;
+
+    text-decoration: none !important;
+
+    font-weight: 800 !important;
+    font-size: 15px !important;
+
+    box-shadow: 0 10px 25px rgba(37,211,102,0.25) !important;
+}
 
 /* ICONO */
+
 .mobile-wa-btn i {
-    font-size: 1.4rem;
+    font-size: 1.4rem !important;
 }
 
 /* HOVER */
+
 .mobile-wa-btn:hover {
-    background: #128c7e;
-    transform: translateY(-2px);
+    background: #128c7e !important;
 }
 
 
