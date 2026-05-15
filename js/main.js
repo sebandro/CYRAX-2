@@ -20,6 +20,20 @@ firebase.auth().onAuthStateChanged((user) => {
         if (userDropdown) userDropdown.style.opacity = "1";
 
         if (userTextMobile) userTextMobile.innerText = `Hola, ${nombre}`;
+
+        const mobilePhoto = document.getElementById('user-photo-mobile');
+        const mobileIcon = document.querySelector('.mobile-user-icon');
+
+        if (mobilePhoto && user.photoURL) {
+
+        mobilePhoto.src = user.photoURL;
+
+        mobilePhoto.style.display = "block";
+
+        if (mobileIcon) {
+        mobileIcon.style.display = "none";
+    }
+}
         
         if (loginLink) {
             loginLink.innerHTML = `<i class="fas fa-user"></i> Hola, ${nombre}`;
@@ -80,6 +94,17 @@ firebase.auth().onAuthStateChanged((user) => {
         // Reset Móvil
         if (userTextMobile) userTextMobile.innerText = "INGRESAR";
         if (userDropdownMobile) userDropdownMobile.style.display = "none";
+
+        const mobilePhoto = document.getElementById('user-photo-mobile');
+        const mobileIcon = document.querySelector('.mobile-user-icon');
+
+        if (mobilePhoto) {
+        mobilePhoto.style.display = "none";
+}
+
+        if (mobileIcon) {
+        mobileIcon.style.display = "flex";
+}
         
         if (loginLink) {
             loginLink.innerHTML = `<i class="fas fa-user"></i> Ingresar`;
