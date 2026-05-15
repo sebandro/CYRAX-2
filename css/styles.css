@@ -3533,11 +3533,8 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 .login-mobile-nav .user-menu-container {
     display: flex !important;
     flex-direction: column !important;
-
     width: 100% !important;
-
     position: relative !important;
-
     z-index: 99999 !important;
 }
 
@@ -3545,31 +3542,18 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 #user-link-mobile {
     display: flex !important;
-
     align-items: center !important;
-    justify-content: space-between !important;
-
+    justify-content: flex-start !important;
+    gap: 14px !important;
     width: 100% !important;
-
     padding: 16px !important;
-
     background: #f7f7f7 !important;
-
-    border-radius: 12px !important;
-
+    border-radius: 16px !important;
     border: 1px solid #e5e5e5 !important;
-
     text-decoration: none !important;
-
     color: #000 !important;
-
-    font-size: 14px !important;
-    font-weight: 800 !important;
-
     box-sizing: border-box !important;
-
     position: relative !important;
-
     z-index: 99999 !important;
 }
 
@@ -3585,6 +3569,93 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     color: #000 !important;
     font-size: 16px !important;
 }
+
+
+/*======================================*/
+/* FOTO DE PERFIL MOBILE                */
+/*======================================*/
+
+#user-photo-mobile {
+    width: 52px !important;
+    height: 52px !important;
+
+    border-radius: 50% !important;
+
+    object-fit: cover !important;
+
+    display: none;
+
+    flex-shrink: 0 !important;
+}
+
+/* ICONO DEFAULT */
+
+.mobile-user-icon {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    background: #000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.mobile-user-icon i {
+    color: white !important;
+    font-size: 18px !important;
+}
+
+/* CONTENEDOR TEXTO */
+
+.mobile-user-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    min-width: 0;
+}
+
+/* TEXTO ARRIBA */
+
+.mobile-user-title {
+    font-size: 11px;
+    font-weight: 700;
+
+    color: #888;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 2px;
+}
+
+/* HOLA ALEJANDRO */
+
+#user-text-mobile {
+    color: #000 !important;
+
+    font-size: 18px !important;
+
+    font-weight: 900 !important;
+
+    white-space: nowrap !important;
+
+    overflow: hidden !important;
+
+    text-overflow: ellipsis !important;
+
+    line-height: 1.1 !important;
+}
+
+
+
+
+    
 
 /* DROPDOWN */
 
@@ -3616,23 +3687,14 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 #user-dropdown-mobile a {
     display: flex !important;
-
     align-items: center !important;
-
     gap: 10px !important;
-
     padding: 15px !important;
-
     text-decoration: none !important;
-
     color: #000 !important;
-
     background: #fff !important;
-
     border-bottom: 1px solid #f5f5f5 !important;
-
     font-size: 14px !important;
-
     font-weight: 600 !important;
 }
     /*fin*/
@@ -3997,37 +4059,28 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 .mobile-wa-item {
     margin-top: auto !important;
-
     padding: 15px !important;
-
     list-style: none !important;
-
     border-bottom: none !important;
-  
+      display: flex !important;
+    justify-content: center !important;
 }
 
 /* BOTON */
 
 .mobile-wa-btn {
-    width: 100% !important;
-
+    width: 80% !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: flex-start !important;
+    justify-content: center !important;
     gap: 20px !important;
-
     background: #25d366 !important;
     color: white !important;
-
     padding: 10px !important;
-
     border-radius: 14px !important;
-
     text-decoration: none !important;
-
     font-weight: 800 !important;
     font-size: 15px !important;
-
     box-shadow: 0 10px 25px rgba(37,211,102,0.25) !important;
 }
 
