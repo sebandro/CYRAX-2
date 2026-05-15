@@ -3113,7 +3113,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 }
 
-
+.mobile-wa-item {
+    display:none !important;
+    }
 /* --- ESTO VA AL FINAL DE TU STYLES.CSS --- */
  
 /* 1. Escondemos la hamburguesa en PC */
