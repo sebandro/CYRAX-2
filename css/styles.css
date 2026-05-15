@@ -3110,7 +3110,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         cursor: pointer;
     } 
 
-.mobile-wa-item {
+.mobile-wa-wrapper {
     display:none !important;
     }
 }
