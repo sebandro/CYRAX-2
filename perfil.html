@@ -130,29 +130,35 @@
     margin-bottom: 15px;
 }
 
-/* Caja de respuesta del admin */
+
+/* Caja de respuesta del admin perfil (ESTILO OFICIAL SYRAX) */
 .res-admin-box {
-    background: #f9f9f9;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #eee;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #ff0000; /* Rojo Syrax oficial */
+    border-radius: 0 8px 8px 0;
+    animation: slideIn 0.5s ease-out; /* Mantiene la animación sutil */
 }
 
 .res-admin-tag {
+    color: #ff0000;
     font-weight: 700;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    color: #ff5a80; /* El color de Syrax */
+    font-size: 0.8rem; /* Ajustado para que se lea perfecto en las cards */
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .res-admin-box p {
     margin: 0;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: #333;
+    font-family: inherit; /* Sigue la tipografía de tu tienda */
 }
 
+/* El resto de tus estilos del perfil se mantienen igual */
 .res-espera {
     font-size: 0.75rem;
     color: #999;
