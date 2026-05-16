@@ -154,8 +154,10 @@ function abrirTuModalLogin() {
 }
 
 
+
+
 // Las dejamos acá arriba para que sean globales
-let loginModal, userLink, closeModal, authForm, toggleAuth, authTitle, btnAuth, btnLogout, btnGoogle;
+let loginModal, userLink, closeModal, authForm, btnlogoutaction, toggleAuth, authTitle, btnAuth, btnLogout, btnGoogle;
 let isLogin = true;
 
 // Esta función se activa cuando la página CARGÓ COMPLETAMENTE
@@ -171,6 +173,7 @@ window.addEventListener('DOMContentLoaded', () => {
     btnAuth = document.getElementById('btn-auth');
     btnLogout = document.getElementById('btn-logout');
     btnGoogle = document.getElementById('btn-google');
+    btnlogoutaction = document.getElementById('btn-logout-action');
 
     // --- 2. CONTROL DEL MODAL ---
     if (userLink) {
@@ -207,6 +210,24 @@ window.addEventListener('DOMContentLoaded', () => {
             });
         };
     }
+
+/* LOGOUT MOBILE */
+
+if (btnlogoutaction) {
+
+    btnlogoutaction.onclick = (e) => {
+
+        e.preventDefault();
+
+        firebase.auth().signOut().then(() => {
+
+            window.location.reload();
+
+        });
+
+    };
+
+}
 
     // --- 5. AUTENTICACIÓN GOOGLE ---
     if (btnGoogle) {
