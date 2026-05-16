@@ -165,6 +165,68 @@
     color: #666;
 }
 
+/* CARD */
+
+.res-card {
+    position: relative !important;
+}
+
+/* BOTON X */
+
+.res-delete-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+
+    width: 34px;
+    height: 34px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f5f5f5;
+    color: #ff4d4d;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+
+    z-index: 2;
+}
+
+/* ICONO */
+
+.res-delete-btn i {
+    font-size: 14px;
+}
+
+/* HOVER */
+
+.res-delete-btn:hover {
+    background: #ff4d4d;
+    color: #fff;
+
+    transform: scale(1.08);
+}
+
+/* CELULAR */
+
+@media (max-width: 768px) {
+
+    .res-delete-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .res-delete-btn i {
+        font-size: 16px;
+    }
+
+}
 /*=======*/
 /*  FIN  */
 /*=======*/
