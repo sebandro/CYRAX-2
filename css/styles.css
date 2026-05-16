@@ -4257,10 +4257,26 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     font-size: 2.5rem !important;
 }
 
-
-
     .wa-float {
         display: none !important;
+}
+
+
+    /* resumen checkout*/
+
+    .checkout-item-right {
+    display: flex;
+    flex-direction: column-reverse;
+
+    align-items: flex-end;
+
+    gap: 10px;
+
+    min-width: 70px;
+}
+
+    .btn-remove-item {
+    align-self: flex-end;
 }
 }
     
