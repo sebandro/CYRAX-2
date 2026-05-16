@@ -239,8 +239,8 @@ async function cargarMisReseñas(uid) {
     }
 }
 
-function renderizarItemReseña(r, contenedor) {
-    // Cambiado r.calificacion por r.estrellas segun tu captura de Firebase
+function renderizarItemReseña(r, contenedor, idReseña) {
+
     const estrellas = "⭐".repeat(r.estrellas || 0); 
     
     const respuestaHTML = r.respuestaAdmin 
@@ -252,21 +252,41 @@ function renderizarItemReseña(r, contenedor) {
 
     const html = `
         <div class="res-card">
+
+            <!-- BOTON ELIMINAR -->
+            <button class="res-delete-btn"
+                    onclick="eliminarReseña('${idReseña}')"
+                    title="Eliminar reseña">
+
+                <i class="fas fa-times"></i>
+
+            </button>
+
             <div class="res-header">
                 <div class="res-info">
-                    <span class="res-prod-name">${r.nombreProducto || 'Producto'}</span>
-                    <div class="res-stars">${estrellas}</div>
+                    <span class="res-prod-name">
+                        ${r.nombreProducto || 'Producto'}
+                    </span>
+
+                    <div class="res-stars">
+                        ${estrellas}
+                    </div>
                 </div>
             </div>
+
             <div class="res-body">
-                <p class="res-comentario">"${r.comentario}"</p>
+                <p class="res-comentario">
+                    "${r.comentario}"
+                </p>
+
                 ${respuestaHTML}
             </div>
+
         </div>
     `;
     
     contenedor.insertAdjacentHTML('beforeend', html);
-}       
+}     
 
 
 
