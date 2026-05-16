@@ -996,7 +996,7 @@ function actualizarPrecioCorreo(esRegional) {
 function mostrarAviso(mensaje) {
     // 1. Creamos el elemento del aviso
     const aviso = document.createElement('div');
-    aviso.innerHTML = `<strong>SYRAX:</strong> ${mensaje}`;
+    aviso.innerHTML = `<strong>SYRAX: </strong> ${mensaje}`;
     
     // 2. Le damos estilos directos (podes moverlos a tu CSS si preferís)
   Object.assign(aviso.style, {
