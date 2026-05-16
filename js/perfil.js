@@ -308,43 +308,41 @@ function renderizarItemReseña(r, contenedor, idReseña, uid) {
 }
 
 
-function eliminarReseña(idReseña, boton) {
-    // Cambiá el cartel de confirmación si usás uno customizado
+// Agregamos 'uid' a los parámetros recibidos
+function eliminarReseña(idReseña, boton, uid) {
+    // Usamos una alternativa limpia si por alguna razón no viene el uid
+    const IDUsuario = uid && uid !== 'undefined' ? uid : 'invitado';
+
+    // Usá tu cartel customizado si preferís (ej. confirmarSyrax)
     const confirmar = confirm("¿Querés dejar de ver esta reseña en tu perfil?");
     if (!confirmar) return;
 
-    // Conseguimos el UID del usuario actual para que sus ocultas no se mezclen con otro login
-    const uid = window.usuarioActual ? window.usuarioActual.uid : 'invitado';
-
     try {
-        // 1. Obtener la lista actual de ocultas de este usuario
-        let reseñasOcultas = JSON.parse(localStorage.getItem(`ocultas_${uid}`)) || [];
+        // 1. Obtener la lista usando el ID real que vino del botón
+        let reseñasOcultas = JSON.parse(localStorage.getItem(`ocultas_${IDUsuario}`)) || [];
 
-        // 2. Si el ID no estaba guardado, lo agregamos
+        // 2. Guardar el ID de la reseña
         if (!reseñasOcultas.includes(idReseña)) {
             reseñasOcultas.push(idReseña);
         }
 
-        // 3. Guardamos la nueva lista en el LocalStorage
-        localStorage.setItem(`ocultas_${uid}`, JSON.stringify(reseñasOcultas));
+        // 3. Guardar en LocalStorage con la clave correcta
+        localStorage.setItem(`ocultas_${IDUsuario}`, JSON.stringify(reseñasOcultas));
 
-        // 4. ELIMINAR VISUALMENTE DE LA PANTALLA ACTUAL
+        // 4. Eliminar visualmente de la pantalla
         const card = boton.closest('.res-card');
         if (card) {
             card.remove();
         }
 
-        // 5. Check por si era la última que quedaba a la vista
+        // 5. Mensaje si ya no quedan tarjetas
         const container = document.getElementById('reseñas-usuario-container');
         if (container && container.children.length === 0) {
             container.innerHTML = '<p class="status-msg">Aún no escribiste ninguna reseña.</p>';
         }
 
-        // Opcional: Podés usar tu función mostrarAviso aquí
-        console.log("Reseña ocultada de la vista del perfil.");
-
     } catch (error) {
-        console.error("Error al ocultar la reseña:", error);
+        console.error("Error al ocultar la reseña localmente:", error);
     }
 }
 
