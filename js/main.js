@@ -1830,7 +1830,7 @@ function manejarCambioVariante(producto, color, elemento) {
             <p class="review-text" style="font-style: italic; color: #444; margin: 0; line-height: 1.4;">"${res.comentario}"</p>
             ${res.respuestaAdmin ? `
                 <div class="admin-reply-container" style="margin-top: 15px; padding: 12px; background-color: #f9f9f9; border-left: 4px solid #ff0000; border-radius: 0 4px 4px 0;">
-                    <span style="color: #ff0000; font-weight: 900; font-size: 0.7rem; display: block; margin-bottom: 5px; text-transform: uppercase;">Respuesta de Syrax Oficial 🔥</span>
+                    <span style="color: #ff0000; font-weight: 900; font-size: 0.7rem; display: block; margin-bottom: 5px; text-transform: uppercase;">Respuesta de Syrax Oficial ✔️</span>
                     <p style="margin: 0; font-size: 0.9rem; color: #222;">${res.respuestaAdmin}</p>
                 </div>
             ` : ''}
