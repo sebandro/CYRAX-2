@@ -3276,6 +3276,148 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     z-index: 99999 !important;
 }
+
+
+
+    /*====================================*/
+/* RESULTADOS BUSCADOR */
+/*====================================*/
+
+.search-results-box {
+
+    position: absolute !important;
+
+    top: calc(100% + 8px) !important;
+
+    left: 0 !important;
+
+    width: 100% !important;
+
+    background: #fff !important;
+
+    border-radius: 16px !important;
+
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12) !important;
+
+    overflow: hidden !important;
+
+    z-index: 99999 !important;
+
+    display: none;
+}
+
+/* CUANDO HAY RESULTADOS */
+
+.search-results-box.active {
+    display: block !important;
+}
+
+/* ITEM */
+
+.search-result-item {
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 12px !important;
+
+    padding: 12px !important;
+
+    text-decoration: none !important;
+
+    color: #111 !important;
+
+    transition: background 0.2s ease !important;
+
+    border-bottom: 1px solid #f3f3f3 !important;
+}
+
+/* ULTIMO */
+
+.search-result-item:last-child {
+    border-bottom: none !important;
+}
+
+/* HOVER */
+
+.search-result-item:hover {
+
+    background: #fafafa !important;
+}
+
+/* FOTO */
+
+.search-result-item img {
+
+    width: 58px !important;
+
+    height: 58px !important;
+
+    object-fit: cover !important;
+
+    border-radius: 10px !important;
+
+    flex-shrink: 0 !important;
+}
+
+/* INFO */
+
+.search-result-info {
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    gap: 4px !important;
+
+    min-width: 0 !important;
+}
+
+/* NOMBRE */
+
+.search-result-name {
+
+    font-size: 13px !important;
+
+    font-weight: 700 !important;
+
+    text-transform: uppercase !important;
+
+    color: #111 !important;
+
+    white-space: nowrap !important;
+
+    overflow: hidden !important;
+
+    text-overflow: ellipsis !important;
+
+    max-width: 180px !important;
+}
+
+/* PRECIO */
+
+.search-result-price {
+
+    font-size: 14px !important;
+
+    font-weight: 800 !important;
+
+    color: #000 !important;
+}
+
+/* MENSAJE VACIO */
+
+.search-no-results {
+
+    padding: 18px !important;
+
+    text-align: center !important;
+
+    font-size: 13px !important;
+
+    color: #777 !important;
+}
     
 }
 
