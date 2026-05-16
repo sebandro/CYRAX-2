@@ -4149,9 +4149,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* BOTON */
 
 .mobile-wa-btn {
-    width: 100% !important;
+    width: 80% !important;
 
-    max-width: 45px !important;
+    max-width: 80px !important;
 
     display: flex !important;
 
