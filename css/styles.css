@@ -3302,50 +3302,51 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 .search-container-mobile { display: none !important; }
     
 .navbar-container {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important; /* Separa los extremos de forma simétrica */
+        display: grid !important;
+        grid-template-areas: 
+            "banner banner banner"
+            "logo menu acciones" !important;
+        /* Al ser 1fr a los costados y auto al medio, el centro es PERFECTO */
+        grid-template-columns: 1fr auto 1fr !important; 
+        align-items: center;
         width: 100%;
+        padding: 10px 2%;
         box-sizing: border-box;
     }
 
-    /* LOGO: Mantiene su tamaño original a la izquierda */
-    .header-center {
-        flex: 0 0 auto !important;
-    }
-
-    /* BUSCADOR: Pegado al logo con el respiro que elegiste */
-    .search-container-pc {
-        position: relative;
-        flex: 0 0 240px !important; /* Ancho fijo para que no intente estirarse */
-        margin: 0 0 0 40px !important; 
-    }
-    
-    /* EL CAMBIO CLAVE: Quitamos el flex: 1 que lo hacía medir 1122px */
-    .header-center-pc {
-        flex: 1 1 auto !important; /* Deja que ocupe el espacio del centro de forma flexible */
+    /* COLUMNA 1 (IZQUIERDA): Juntamos el Logo y el Buscador en línea */
+    .header-center { 
+        grid-area: logo; 
         display: flex !important;
-        justify-content: center !important; /* Ahora sí centra los links en el espacio libre real */
         align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 35px; /* El espacio exacto que querés entre el Logo y el Buscador */
     }
 
-    /* NAV LINKS: Forzamos a que mida solo lo que miden sus textos de categorías */
+    /* EL BUSCADOR: Ahora mide 220px fijos y no empuja a nadie */
+    .search-container-pc { 
+        position: relative;
+        width: 220px !important;
+        margin: 0 !important;
+    }
+
+    /* COLUMNA 2 (CENTRO): Tus categorías en el eje real de la pantalla */
+    .header-center-pc { 
+        grid-area: menu;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
     .nav-links {
         display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: auto !important; /* Volamos el ancho fijo o el 100% que lo rompía */
-        margin: 0 !important;
-        padding: 0 !important;
+        width: auto !important;
     }
 
-    /* CARRITO / USUARIO: Se quedan firmes contra la derecha de la pantalla */
-    .header-right {
-        flex: 0 0 auto !important;
+    /* COLUMNA 3 (DERECHA): Carrito y usuario a su esquina */
+    .header-right { 
+        grid-area: acciones; 
         display: flex !important;
         justify-content: flex-end !important;
-        align-items: center !important;
     }
     
     /* Hacemos el input un toque más compacto en altura para PC */
