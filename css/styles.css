@@ -3327,7 +3327,14 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         flex-grow: 0 !important;
         flex-shrink: 0 !important;
     }
-
+    
+    
+.navbar-container {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important; /* Alinea los bloques al inicio de izquierda a derecha */
+        gap: 30px; /* Espaciado general controlado entre bloques */
+    }
     
 
     /* ESTE ES EL CAMBIO CLAVE PARA EL BUSCADOR */
