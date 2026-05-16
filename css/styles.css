@@ -2862,6 +2862,79 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 
 
+/*======================================*/
+/* FOTO USUARIO PC                      */
+/*======================================*/
+
+#user-link {
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 10px !important;
+
+    white-space: nowrap !important;
+}
+
+/* FOTO */
+
+#user-photo-pc {
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: none;
+}
+
+/* ICONO DEFAULT */
+
+.pc-user-icon {
+    width: 34px;
+
+    height: 34px;
+
+    border-radius: 50%;
+
+    background: #f2f2f2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+/* ICONO */
+
+.pc-user-icon i {
+    font-size: 14px !important;
+}
+
+/* TEXTO */
+
+.pc-user-info {
+    display: flex;
+
+    align-items: center;
+
+    white-space: nowrap;
+}
+
+#user-text {
+    white-space: nowrap !important;
+}
+
+/* fin */
+
+
+
+
 
 #user-link {
     text-decoration: none;
