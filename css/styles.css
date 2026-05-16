@@ -3301,49 +3301,51 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 .search-container-mobile { display: none !important; }
     
-    /* Obligamos al header a ordenar los elementos en línea */
-    .navbar-container {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 20px;
-    }
-
-  /* Forzamos al bloque del LOGO a mantener su tamaño sin estirarse */
-    .header-center {
-        flex-grow: 0 !important;
-        flex-shrink: 0 !important;
-    }
-
-    /* EL TRUCO PARA EMPUJAR LOS LINKS AL CENTRO */
-    .header-center-pc {
-        flex: 1 !important; /* Este bloque toma todo el espacio sobrante */
-        display: flex !important;
-        justify-content: center !important; /* Clava tus nav-links exactamente en el centro real de la pantalla */
-    }
-
-    /* El bloque derecho de usuario/carrito se queda intacto en su esquina */
-    .header-right {
-        flex-grow: 0 !important;
-        flex-shrink: 0 !important;
-    }
-    
-    
 .navbar-container {
         display: flex !important;
         align-items: center !important;
-        justify-content: flex-start !important; /* Alinea los bloques al inicio de izquierda a derecha */
-        gap: 30px; /* Espaciado general controlado entre bloques */
+        justify-content: space-between !important; /* Separa los extremos de forma simétrica */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* LOGO: Mantiene su tamaño original a la izquierda */
+    .header-center {
+        flex: 0 0 auto !important;
+    }
+
+    /* BUSCADOR: Pegado al logo con el respiro que elegiste */
+    .search-container-pc {
+        position: relative;
+        flex: 0 0 240px !important; /* Ancho fijo para que no intente estirarse */
+        margin: 0 0 0 40px !important; 
     }
     
+    /* EL CAMBIO CLAVE: Quitamos el flex: 1 que lo hacía medir 1122px */
+    .header-center-pc {
+        flex: 1 1 auto !important; /* Deja que ocupe el espacio del centro de forma flexible */
+        display: flex !important;
+        justify-content: center !important; /* Ahora sí centra los links en el espacio libre real */
+        align-items: center !important;
+    }
 
-    /* ESTE ES EL CAMBIO CLAVE PARA EL BUSCADOR */
-.search-container-pc {
-        position: relative;
-        flex: 0 1 240px; /* Mantiene su ancho de 240px */
-        
-        /* EL AJUSTE CLAVE: Empuja el buscador hacia la derecha del logo */
-        margin: 0 0 0 140px !important; 
+    /* NAV LINKS: Forzamos a que mida solo lo que miden sus textos de categorías */
+    .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: auto !important; /* Volamos el ancho fijo o el 100% que lo rompía */
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* CARRITO / USUARIO: Se quedan firmes contra la derecha de la pantalla */
+    .header-right {
+        flex: 0 0 auto !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
     }
     
     /* Hacemos el input un toque más compacto en altura para PC */
