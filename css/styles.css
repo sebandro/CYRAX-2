@@ -4432,14 +4432,19 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         font-size: 11px !important;
     }
 
-    .fav-delete-btn {
-        width: 28px !important;
-        height: 28px !important;
-    }
+ .fav-delete-btn {
+    width: 42px !important;
+    height: 42px !important;
 
-    .fav-delete-btn i {
-        font-size: 12px !important;
-    }
+    top: 8px !important;
+    right: 8px !important;
+
+    border-radius: 50% !important;
+}
+
+.fav-delete-btn i {
+    font-size: 16px !important;
+}
     
     /* favoritos deslizables */
 
