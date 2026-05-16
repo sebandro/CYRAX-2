@@ -289,7 +289,7 @@ function renderizarItemReseña(r, contenedor, idReseña) {
 
 async function eliminarReseña(idReseña, boton) {
 
-    const confirmar = confirm("¿Eliminar esta reseña?");
+    const confirmar = confirmarSyrax("¿Eliminar esta reseña?");
 
     if (!confirmar) return;
 
