@@ -2456,6 +2456,91 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+////////////////////////////////////////////
+// --- LOGICA DEL BUSCADOR CENTRAL SYRAX ---
+///////////////////////////////////////////
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInputs = document.querySelectorAll(".search-input");
+    let debounceTimer;
+
+    searchInputs.forEach(input => {
+        input.addEventListener("input", (e) => {
+            const query = e.target.value.trim().toLowerCase();
+            
+            // Buscamos el contenedor de resultados que está justo al lado de este input
+            const resultsBox = input.closest(".search-input-wrapper").nextElementSibling;
+
+            clearTimeout(debounceTimer);
+
+            if (query.length < 2) {
+                resultsBox.innerHTML = "";
+                resultsBox.style.display = "none";
+                return;
+            }
+
+            // Espera 300ms antes de pegarle a Firebase para cuidar las lecturas
+            debounceTimer = setTimeout(() => {
+                ejecutarBusqueda(query, resultsBox);
+            }, 300);
+        });
+    });
+
+    // Cerrar los buscadores si hacen click afuera de la pantalla
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest(".search-container-pc") && !e.target.closest(".search-container-mobile")) {
+            document.querySelectorAll(".search-results-box").forEach(box => box.style.display = "none");
+        }
+    });
+});
+
+// Función que conecta con tu Firebase
+async function ejecutarBusqueda(textoBuscado, contenedorResultados) {
+    contenedorResultados.innerHTML = '<div class="search-no-results">Buscando...</div>';
+    contenedorResultados.style.display = "block";
+
+    try {
+        // Traemos los productos. Nota: Firestore no tiene buscador de texto completo nativo, 
+        // así que traemos la lista completa (o filtrada por categoría si fuese muy grande) y filtramos localmente.
+        const snapshot = await db.collection("inventario").get();
+        
+        let htmlItems = "";
+        let coincidencias = 0;
+
+        snapshot.forEach(doc => {
+            const p = doc.data();
+            const nombreProd = p.nombre || "";
+            
+            // Filtramos por coincidencia de nombre
+            if (nombreProd.toLowerCase().includes(textoBuscado) && coincidencias < 5) { // Limitamos a 5 sugerencias visuales
+                const precio = p.precio || 0;
+                const imagen = p.imagenes && p.imagenes.length > 0 ? p.imagenes[0] : 'img/placeholder.jpg'; // Ajustá a tu campo de imagen
+                
+                htmlItems += `
+                    <a href="productos.html?cat=${p.categoria || 'todos'}&id=${doc.id}" class="search-item-link">
+                        <img src="${imagen}" alt="${nombreProd}" class="search-item-img">
+                        <div class="search-item-info">
+                            <span class="search-item-name">${nombreProd}</span>
+                            <span class="search-item-price">$${precio.toLocaleString('es-AR')}</span>
+                        </div>
+                    </a>
+                `;
+                coincidencias++;
+            }
+        });
+
+        if (coincidencias === 0) {
+            contenedorResultados.innerHTML = '<div class="search-no-results">No se encontraron productos.</div>';
+        } else {
+            contenedorResultados.innerHTML = htmlItems;
+        }
+
+    } catch (error) {
+        console.error("Error en el buscador: ", error);
+        contenedorResultados.innerHTML = '<div class="search-no-results">Error al buscar.</div>';
+    }
+}
+
+
 
 ////////////////////////////
 // EMPIEZA JS PARA CELULAR
