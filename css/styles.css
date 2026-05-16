@@ -1,4 +1,4 @@
-html {
+    html {
     scroll-behavior: smooth;
 }
 /*==========================================*/
@@ -4263,7 +4263,8 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 
     /* resumen checkout*/
-.checkout-item {
+    
+    .checkout-item {
         align-items: flex-start;
     }
 
@@ -4274,36 +4275,36 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .checkout-item-details {
         display: grid !important;
 
-        grid-template-columns: 1fr auto auto;
+        grid-template-columns: 1fr auto auto !important;
 
-        gap: 8px;
+        gap: 8px !important;
 
-        align-items: center;
+        align-items: center !important;
 
-        width: 100%;
+        width: 100% !important;
     }
 
     .checkout-item-right {
-        display: contents;
+        display: contents !important;
     }
 
     .checkout-item-price {
-        font-size: 16px;
+        font-size: 16px !important;
 
-        font-weight: 800;
+        font-weight: 800 !important;
 
-        justify-self: end;
+        justify-self: end !important;
 
-        margin-left: auto;
+        margin-left: auto !important;
     }
 
     .btn-remove-item {
-        width: 28px;
-        height: 28px;
+        width: 28px !important;
+        height: 28px !important;
 
-        font-size: 14px;
+        font-size: 14px !important;
 
-        margin-left: 5px;
+        margin-left: 5px !important;
     }
 }
     
