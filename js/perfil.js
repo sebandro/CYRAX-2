@@ -232,18 +232,22 @@ async function cargarMisReseñas(uid) {
         container.innerHTML = '';
         let contadorVisibles = 0;
 
+       // ... (dentro de tu querySnapshot.forEach en cargarMisReseñas)
         querySnapshot.forEach((doc) => {
-            const idReseña = doc.id;
+        const idReseña = doc.id;
 
-            // SI ESTÁ EN LA LISTA DE OCULTAS, NO LA RENDERIZAMOS
-            if (reseñasOcultas.includes(idReseña)) {
-                return; // Pasa a la siguiente reseña sin dibujarla
-            }
+        // Usamos el uid que vino por parámetro en la función
+        const reseñasOcultas = JSON.parse(localStorage.getItem(`ocultas_${uid}`)) || [];
 
-            const r = doc.data();
-            renderizarItemReseña(r, container, idReseña);
-            contadorVisibles++;
-        });
+        if (reseñasOcultas.includes(idReseña)) {
+        return; 
+    }
+
+        const r = doc.data();
+    // LE PASAMOS EL UID COMO CUARTO PARÁMETRO
+        renderizarItemReseña(r, container, idReseña, uid);
+        contadorVisibles++;
+});
 
         // Si el usuario ocultó todas sus reseñas manualmente, mostramos el mensaje de vacío
         if (contadorVisibles === 0) {
@@ -258,7 +262,8 @@ async function cargarMisReseñas(uid) {
 
 
 
-function renderizarItemReseña(r, contenedor, idReseña) {
+// Agregamos 'uid' al final de los parámetros
+function renderizarItemReseña(r, contenedor, idReseña, uid) {
 
     const estrellas = "⭐".repeat(r.estrellas || 0); 
     
@@ -272,12 +277,10 @@ function renderizarItemReseña(r, contenedor, idReseña) {
     const html = `
         <div class="res-card">
 
-            <!-- BOTON ELIMINAR -->
             <button class="res-delete-btn"
-        onclick="eliminarReseña('${idReseña}', this)"
-        title="Eliminar reseña">
+                    onclick="eliminarReseña('${idReseña}', this, '${uid}')"
+                    title="Eliminar reseña">
                 <i class="fas fa-times"></i>
-
             </button>
 
             <div class="res-header">
@@ -285,7 +288,6 @@ function renderizarItemReseña(r, contenedor, idReseña) {
                     <span class="res-prod-name">
                         ${r.nombreProducto || 'Producto'}
                     </span>
-
                     <div class="res-stars">
                         ${estrellas}
                     </div>
@@ -296,7 +298,6 @@ function renderizarItemReseña(r, contenedor, idReseña) {
                 <p class="res-comentario">
                     "${r.comentario}"
                 </p>
-
                 ${respuestaHTML}
             </div>
 
@@ -304,7 +305,8 @@ function renderizarItemReseña(r, contenedor, idReseña) {
     `;
     
     contenedor.insertAdjacentHTML('beforeend', html);
-}   
+}
+
 
 function eliminarReseña(idReseña, boton) {
     // Cambiá el cartel de confirmación si usás uno customizado
