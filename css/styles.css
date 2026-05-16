@@ -3343,7 +3343,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         flex: 0 1 240px; /* Mantiene su ancho de 240px */
         
         /* EL AJUSTE CLAVE: Empuja el buscador hacia la derecha del logo */
-        margin: 0 0 0 160px !important; 
+        margin: 0 0 0 140px !important; 
     }
     
     /* Hacemos el input un toque más compacto en altura para PC */
