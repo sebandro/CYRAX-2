@@ -209,15 +209,13 @@ async function eliminarFavorito(id) {
 ////////////////////////
 
 async function cargarMisReseñas(uid) {
-    console.log("Ejecutando cargarMisReseñas para el UID:", uid); // Esto tiene que aparecer en la consola
+    console.log("Ejecutando cargarMisReseñas para el UID:", uid);
     const container = document.getElementById('reseñas-usuario-container');
     if (!container) return;
     
     container.innerHTML = '<p class="status-msg">Buscando tus opiniones...</p>';
 
     try {
-        // IMPORTANTE: Si esto falla, revisa la consola. 
-        // Firestore suele pedir crear un "Índice" para usar .where() y .orderBy() juntos.
         const querySnapshot = await db.collection("opiniones")
             .where("usuarioId", "==", uid)
             .orderBy("fecha", "desc")
@@ -228,17 +226,37 @@ async function cargarMisReseñas(uid) {
             return;
         }
 
+        // --- NUEVO: Traemos la lista de reseñas ocultadas localmente ---
+        const reseñasOcultas = JSON.parse(localStorage.getItem(`ocultas_${uid}`)) || [];
+
         container.innerHTML = '';
+        let contadorVisibles = 0;
+
         querySnapshot.forEach((doc) => {
-            const r = doc.data();
             const idReseña = doc.id;
+
+            // SI ESTÁ EN LA LISTA DE OCULTAS, NO LA RENDERIZAMOS
+            if (reseñasOcultas.includes(idReseña)) {
+                return; // Pasa a la siguiente reseña sin dibujarla
+            }
+
+            const r = doc.data();
             renderizarItemReseña(r, container, idReseña);
+            contadorVisibles++;
         });
+
+        // Si el usuario ocultó todas sus reseñas manualmente, mostramos el mensaje de vacío
+        if (contadorVisibles === 0) {
+            container.innerHTML = '<p class="status-msg">Aún no escribiste ninguna reseña.</p>';
+        }
+
     } catch (error) {
         console.error("Error al obtener reseñas:", error);
         container.innerHTML = '<p class="status-msg">Error al cargar las reseñas.</p>';
     }
 }
+
+
 
 function renderizarItemReseña(r, contenedor, idReseña) {
 
@@ -288,33 +306,43 @@ function renderizarItemReseña(r, contenedor, idReseña) {
     contenedor.insertAdjacentHTML('beforeend', html);
 }   
 
-async function eliminarReseña(idReseña, boton) {
-
-    const confirmar = await confirmarSyrax("¿Eliminar esta reseña?");
-
+function eliminarReseña(idReseña, boton) {
+    // Cambiá el cartel de confirmación si usás uno customizado
+    const confirmar = confirm("¿Querés dejar de ver esta reseña en tu perfil?");
     if (!confirmar) return;
 
+    // Conseguimos el UID del usuario actual para que sus ocultas no se mezclen con otro login
+    const uid = window.usuarioActual ? window.usuarioActual.uid : 'invitado';
+
     try {
+        // 1. Obtener la lista actual de ocultas de este usuario
+        let reseñasOcultas = JSON.parse(localStorage.getItem(`ocultas_${uid}`)) || [];
 
-        await db.collection("opiniones")
-            .doc(idReseña)
-            .delete();
+        // 2. Si el ID no estaba guardado, lo agregamos
+        if (!reseñasOcultas.includes(idReseña)) {
+            reseñasOcultas.push(idReseña);
+        }
 
-        mostrarAviso("Reseña eliminada correctamente");
+        // 3. Guardamos la nueva lista en el LocalStorage
+        localStorage.setItem(`ocultas_${uid}`, JSON.stringify(reseñasOcultas));
 
-        // ELIMINAR VISUALMENTE
+        // 4. ELIMINAR VISUALMENTE DE LA PANTALLA ACTUAL
         const card = boton.closest('.res-card');
-
         if (card) {
             card.remove();
         }
 
+        // 5. Check por si era la última que quedaba a la vista
+        const container = document.getElementById('reseñas-usuario-container');
+        if (container && container.children.length === 0) {
+            container.innerHTML = '<p class="status-msg">Aún no escribiste ninguna reseña.</p>';
+        }
+
+        // Opcional: Podés usar tu función mostrarAviso aquí
+        console.log("Reseña ocultada de la vista del perfil.");
+
     } catch (error) {
-
-        console.error(error);
-
-        mostrarAviso("Error al eliminar la reseña");
-
+        console.error("Error al ocultar la reseña:", error);
     }
 }
 
