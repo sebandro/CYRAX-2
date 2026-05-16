@@ -3213,16 +3213,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 /* Contenedor Principal en PC */
 @media (min-width: 769px) {
-    .navbar-container {
-        display: flex !important;
-        justify-content: space-between; /* Reparte Izquierda, Centro y Derecha */
-        align-items: center;
-        padding: 0 40px !important; /* Espacio a los costados */
-        height: 80px;
-        background-color: #fff;
-        width: 100%;
-        box-sizing: border-box;
-    }
+   
 
     /* 1. Logo a la izquierda */
     .header-center {
