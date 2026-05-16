@@ -231,7 +231,8 @@ async function cargarMisReseñas(uid) {
         container.innerHTML = '';
         querySnapshot.forEach((doc) => {
             const r = doc.data();
-            renderizarItemReseña(r, container);
+            const idReseña = doc.id;
+            renderizarItemReseña(r, container, idReseña);
         });
     } catch (error) {
         console.error("Error al obtener reseñas:", error);
@@ -295,7 +296,7 @@ async function eliminarReseña(idReseña, boton) {
 
     try {
 
-        await db.collection("reseñas")
+        await db.collection("opiniones")
             .doc(idReseña)
             .delete();
 
