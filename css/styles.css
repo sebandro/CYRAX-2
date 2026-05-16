@@ -3338,10 +3338,12 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     
 
     /* ESTE ES EL CAMBIO CLAVE PARA EL BUSCADOR */
-    .search-container-pc {
+.search-container-pc {
         position: relative;
-        flex: 0 1 240px; /* Ancho inicial ideal de 240px, pegado al logo */
-        margin: 0; /* Volamos el '0 auto' para que no flote en el medio */
+        flex: 0 1 240px; /* Mantiene su ancho de 240px */
+        
+        /* EL AJUSTE CLAVE: Empuja el buscador hacia la derecha del logo */
+        margin: 0 0 0 40px !important; 
     }
     
     /* Hacemos el input un toque más compacto en altura para PC */
