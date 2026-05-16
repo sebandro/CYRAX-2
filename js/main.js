@@ -999,21 +999,26 @@ function mostrarAviso(mensaje) {
     aviso.innerHTML = `<strong>SYRAX:</strong> ${mensaje}`;
     
     // 2. Le damos estilos directos (podes moverlos a tu CSS si preferís)
-    Object.assign(aviso.style, {
-        position: 'fixed',
-        top: '20px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        backgroundColor: '#000',
-        color: '#fff',
-        padding: '12px 24px',
-        borderRadius: '4px',
-        zIndex: '10000',
-        fontSize: '14px',
-        boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-        border: '1px solid #ff5a80', // El color rosa de tu marca
-        transition: 'all 0.5s ease'
-    });
+  Object.assign(aviso.style, {
+    position: 'fixed',
+    top: '20px',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    backgroundColor: '#000',
+    color: '#fff',
+    padding: '12px 24px',
+    borderRadius: '4px',
+    zIndex: '10000',
+
+    fontSize: window.innerWidth <= 768 ? '12px' : '14px',
+
+    whiteSpace: 'nowrap',
+    maxWidth: '90vw',
+
+    boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+    border: '1px solid #ff5a80',
+    transition: 'all 0.5s ease'
+});
 
     document.body.appendChild(aviso);
 
