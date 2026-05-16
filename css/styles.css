@@ -4143,6 +4143,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     box-shadow: 0 10px 25px rgba(37,211,102,0.25) !important;
 }
+    .mobile-wa-btn spam {
+        font-size: 1.8rem !important;
+}
 
 /* ICONO */
 
