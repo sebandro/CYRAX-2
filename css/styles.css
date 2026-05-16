@@ -4263,21 +4263,48 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 
     /* resumen checkout*/
+.checkout-item {
+        align-items: flex-start;
+    }
+
+    .checkout-item-info {
+        width: 100%;
+    }
+
+    .checkout-item-details {
+        display: grid !important;
+
+        grid-template-columns: 1fr auto auto;
+
+        gap: 8px;
+
+        align-items: center;
+
+        width: 100%;
+    }
 
     .checkout-item-right {
-    display: flex;
-    flex-direction: column-reverse;
+        display: contents;
+    }
 
-    align-items: flex-end;
+    .checkout-item-price {
+        font-size: 16px;
 
-    gap: 10px;
+        font-weight: 800;
 
-    min-width: 70px;
-}
+        justify-self: end;
+
+        margin-left: auto;
+    }
 
     .btn-remove-item {
-    align-self: flex-end;
-}
+        width: 28px;
+        height: 28px;
+
+        font-size: 14px;
+
+        margin-left: 5px;
+    }
 }
     
 
