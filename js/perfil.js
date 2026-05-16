@@ -286,7 +286,33 @@ function renderizarItemReseña(r, contenedor, idReseña) {
     `;
     
     contenedor.insertAdjacentHTML('beforeend', html);
-}     
+}   
+
+async function eliminarReseña(idReseña) {
+
+    const confirmar = confirm("¿Eliminar esta reseña?");
+
+    if (!confirmar) return;
+
+    try {
+
+        await db.collection("reseñas")
+                .doc(idReseña)
+                .delete();
+
+        mostrarAviso("Reseña eliminada correctamente");
+
+        // BORRAR CARD VISUALMENTE
+        event.target.closest('.res-card').remove();
+
+    } catch (error) {
+
+        console.error(error);
+
+        mostrarAviso("Error al eliminar la reseña");
+
+    }
+}
 
 
 
