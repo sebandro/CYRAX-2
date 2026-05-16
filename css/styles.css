@@ -3100,8 +3100,119 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /*     fin    */
 /*===========*/
 
+/* ================================================== */
+/* --- ESTILOS COMPARTIDOS DEL BUSCADOR               */
+/* ================================================== */
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    background: #f5f5f5;
+    padding: 10px 40px 10px 15px;
+    border: 1px solid transparent;
+    border-radius: 25px; /* Buscador más redondeado y estético */
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    color: #000;
+}
+
+.search-input:focus {
+    border-color: #ff0000;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(254, 0, 0, 0.15);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 14px;
+}
+
+/* CAJA FLOTANTE DE SUGERENCIAS */
+.search-results-box {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    max-height: 350px;
+    overflow-y: auto;
+    z-index: 9999; /* Asegura que flote sobre banners o sliders */
+    display: none;
+}
+
+/* CARDS DE PRODUCTOS DENTRO DE LA BUSQUEDA */
+.search-item-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: #000 !important;
+    border-bottom: 1px solid #f8f8f8;
+    transition: background 0.2s;
+}
+
+.search-item-link:hover {
+    background: #f9f9f9;
+}
+
+.search-item-img {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-right: 12px;
+    border: 1px solid #eee;
+}
+
+.search-item-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-item-name {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+    letter-spacing: 0.3px;
+}
+
+.search-item-price {
+    font-size: 12px;
+    color: #ff0000; /* Precio en Rojo Syrax */
+    font-weight: 800;
+}
+
+.search-no-results {
+    padding: 20px;
+    font-size: 13px;
+    color: #777;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
 /* Contenedor Principal en PC */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .navbar-container {
         display: flex !important;
         justify-content: space-between; /* Reparte Izquierda, Centro y Derecha */
@@ -3186,6 +3297,26 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 .mobile-wa-wrapper {
     display:none !important;
     }
+
+
+.search-container-mobile { display: none !important; }
+    
+    /* Obligamos al header a ordenar los elementos en línea */
+    .navbar-container {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 20px;
+    }
+
+    .search-container-pc {
+        position: relative;
+        flex: 1; /* Toma el espacio disponible entre logo y links */
+        max-width: 400px; /* Evita que se haga gigante en monitores anchos */
+        margin: 0 auto; /* Lo centra perfectamente */
+    }
+
+    
 }
 
 
@@ -4475,7 +4606,34 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
         scroll-snap-align: start !important;
     }
-    
+
+
+    /* buscador */
+
+    .search-container-pc { display: none !important; }
+
+    /* Fila contenedora de la X y el Buscador en el menú móvil */
+    .menu-mobile-header-row {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 15px 15px 5px 15px;
+        gap: 15px;
+        width: 100%;
+    }
+
+    .search-container-mobile {
+        position: relative;
+        flex: 1; /* El buscador empuja a la X a su esquina */
+    }
+
+    /* Ajustamos el botón de cerrar integrado a la fila */
+    .menu-close-mobile {
+        position: static !important; /* Desactivamos el absolute si lo tenía para que se alinee con el flex */
+        font-size: 24px;
+        color: #000;
+        cursor: pointer;
+    }
 }
     
 
