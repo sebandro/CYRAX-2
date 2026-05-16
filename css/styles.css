@@ -3285,7 +3285,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     box-shadow: 0 10px 35px rgba(0,0,0,0.12) !important;
 
-    overflow: hidden !important;
+    overflow: visible !important;
 
     z-index: 999999 !important;
 
@@ -3351,7 +3351,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     white-space: nowrap !important;
 
-    overflow: hidden !important;
+    overflow: visible !important;
 
     text-overflow: ellipsis !important;
 }
