@@ -4312,6 +4312,19 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
         font-size: 14px;
     }
+
+  .checkout-item-details span:nth-child(1) {
+        order: 2;
+    }
+
+    .checkout-item-details span:nth-child(2) {
+        order: 1;
+    }
+
+    .checkout-item-details span:nth-child(3) {
+        order: 3;
+    }
+    
 }
     
 
