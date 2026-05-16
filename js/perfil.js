@@ -255,9 +255,8 @@ function renderizarItemReseña(r, contenedor, idReseña) {
 
             <!-- BOTON ELIMINAR -->
             <button class="res-delete-btn"
-                    onclick="eliminarReseña('${idReseña}')"
-                    title="Eliminar reseña">
-
+        onclick="eliminarReseña('${idReseña}', this)"
+        title="Eliminar reseña">
                 <i class="fas fa-times"></i>
 
             </button>
@@ -288,7 +287,7 @@ function renderizarItemReseña(r, contenedor, idReseña) {
     contenedor.insertAdjacentHTML('beforeend', html);
 }   
 
-async function eliminarReseña(idReseña) {
+async function eliminarReseña(idReseña, boton) {
 
     const confirmar = confirm("¿Eliminar esta reseña?");
 
@@ -297,13 +296,17 @@ async function eliminarReseña(idReseña) {
     try {
 
         await db.collection("reseñas")
-                .doc(idReseña)
-                .delete();
+            .doc(idReseña)
+            .delete();
 
         mostrarAviso("Reseña eliminada correctamente");
 
-        // BORRAR CARD VISUALMENTE
-        event.target.closest('.res-card').remove();
+        // ELIMINAR VISUALMENTE
+        const card = boton.closest('.res-card');
+
+        if (card) {
+            card.remove();
+        }
 
     } catch (error) {
 
@@ -313,7 +316,6 @@ async function eliminarReseña(idReseña) {
 
     }
 }
-
 
 
 
