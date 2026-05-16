@@ -157,7 +157,7 @@ function abrirTuModalLogin() {
 
 
 // Las dejamos acá arriba para que sean globales
-let loginModal, userLink, closeModal, authForm, btnlogoutaction, toggleAuth, authTitle, btnAuth, btnLogout, btnGoogle;
+let loginModal, userLink, closeModal, authForm, btnlogoutmobile, toggleAuth, authTitle, btnAuth, btnLogout, btnGoogle;
 let isLogin = true;
 
 // Esta función se activa cuando la página CARGÓ COMPLETAMENTE
@@ -173,7 +173,7 @@ window.addEventListener('DOMContentLoaded', () => {
     btnAuth = document.getElementById('btn-auth');
     btnLogout = document.getElementById('btn-logout');
     btnGoogle = document.getElementById('btn-google');
-    btnlogoutaction = document.getElementById('btn-logout-action');
+    btnlogoutmobile = document.getElementById('btn-logout-mobile');
 
     // --- 2. CONTROL DEL MODAL ---
     if (userLink) {
@@ -213,9 +213,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 /* LOGOUT MOBILE */
 
-if (btnlogoutaction) {
+if (btnlogoutmobile) {
 
-    btnlogoutaction.onclick = (e) => {
+    btnlogoutmobile.onclick = (e) => {
 
         e.preventDefault();
 
