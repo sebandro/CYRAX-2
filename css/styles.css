@@ -2914,10 +2914,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 /* fin */
 
-
-
-
-
 #user-link {
     text-decoration: none;
     color: #000; /* O el color de tu fuente */
@@ -3022,7 +3018,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     color: #ffffff;
 }
 
-
 /* Mostrar el menú */
 
 .user-menu-container:hover .user-dropdown-list {
@@ -3032,10 +3027,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /*===========*/
  /*   FIN  */
  /*=========*/
-
-
-
-
  /*==================================*/
  /*boton volver a la tienda flotante*/
  /*================================*/
@@ -3082,111 +3073,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /*     fin    */
 /*===========*/
 
-/* ================================================== */
-/* --- ESTILOS COMPARTIDOS DEL BUSCADOR               */
-/* ================================================== */
-.search-input-wrapper {
-    position: relative;
-    width: 100%;
-}
-
-.search-input {
-    width: 100%;
-    background: #f5f5f5;
-    padding: 10px 40px 10px 15px;
-    border: 1px solid transparent;
-    border-radius: 25px; /* Buscador más redondeado y estético */
-    font-size: 14px;
-    outline: none;
-    transition: all 0.3s ease;
-    color: #000;
-}
-
-.search-input:focus {
-    border-color: #ff0000;
-    background: #fff;
-    box-shadow: 0 0 8px rgba(254, 0, 0, 0.15);
-}
-
-.search-icon {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #666;
-    font-size: 14px;
-}
-
-/* CAJA FLOTANTE DE SUGERENCIAS */
-.search-results-box {
-    position: absolute;
-    top: 105%;
-    left: 0;
-    width: 100%;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    max-height: 350px;
-    overflow-y: auto;
-    z-index: 9999; /* Asegura que flote sobre banners o sliders */
-    display: none;
-}
-
-/* CARDS DE PRODUCTOS DENTRO DE LA BUSQUEDA */
-.search-item-link {
-    display: flex;
-    align-items: center;
-    padding: 12px 15px;
-    text-decoration: none;
-    color: #000 !important;
-    border-bottom: 1px solid #f8f8f8;
-    transition: background 0.2s;
-}
-
-.search-item-link:hover {
-    background: #f9f9f9;
-}
-
-.search-item-img {
-    width: 45px;
-    height: 45px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-right: 12px;
-    border: 1px solid #eee;
-}
-
-.search-item-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.search-item-name {
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 2px;
-    letter-spacing: 0.3px;
-}
-
-.search-item-price {
-    font-size: 12px;
-    color: #ff0000; /* Precio en Rojo Syrax */
-    font-weight: 800;
-}
-
-.search-no-results {
-    padding: 20px;
-    font-size: 13px;
-    color: #777;
-    text-align: center;
-}
-
-
-
-
-
 
 
 
@@ -3195,13 +3081,35 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 /* Contenedor Principal en PC */
 @media (min-width: 769px) {
-   
+    /* 1. Eliminamos los display flex/block sueltos para PC */
+    .search-container-mobile { display: none !important; }
+    .mobile-wa-wrapper { display: none !important; }
 
-    /* 1. Logo a la izquierda */
-    .header-center {
-        flex: 1; /* Ocupa espacio para ayudar al centrado del resto */
-        display: flex;
-        justify-content: flex-start;
+    /* 2. Estructura Grid limpia y simétrica */
+    .navbar-container {
+        display: grid !important;
+        grid-template-areas: 
+            "banner banner banner"
+            "logo menu acciones" !important;
+        grid-template-columns: 1fr auto 1fr !important; /* Tres porciones perfectas */
+        align-items: center;
+        width: 100%;
+        padding: 10px 2%;
+        box-sizing: border-box;
+        background: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    /* 3. COLUMNA DE LA IZQUIERDA: Logo + Buscador alineados sin 'flex: 1' molestando */
+    .header-center { 
+        grid-area: logo !important; 
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 35px; /* Separación fija entre el logo SYRAX y el buscador */
     }
 
     .logo {
@@ -3210,19 +3118,33 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         text-decoration: none;
         color: #000;
         letter-spacing: 2px;
+        flex-shrink: 0; /* Evita que el logo se achique */
     }
 
-    /* 2. Menú de Categorías al medio */
-    .header-center-pc {
-        flex: 2; /* Le damos más peso para que sea el centro real */
-        display: flex;
-        justify-content: center;
+    /* EL BUSCADOR EN PC: Caja fija controlada */
+    .search-container-pc { 
+        position: relative !important;
+        width: 220px !important; /* El ancho exacto que querías */
+        margin: 0 !important;
+    }
+    
+    .search-container-pc .search-input {
+        padding: 8px 35px 8px 12px;
+        font-size: 13px;
+    }
+
+    /* 4. COLUMNA DEL MEDIO: Categorías centradas en el eje real */
+    .header-center-pc { 
+        grid-area: menu !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 
     #menu-categorias {
         display: flex !important;
         list-style: none;
-        gap: 30px; /* Espacio entre categorías */
+        gap: 30px;
         margin: 0;
         padding: 0;
     }
@@ -3234,102 +3156,48 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         font-weight: 700;
         font-size: 14px;
         transition: 0.3s;
+        white-space: nowrap; /* Evita que se quiebren los textos */
     }
 
     #menu-categorias li a:hover {
-        color: #555; /* Efecto al pasar el mouse */
+        color: #555;
     }
 
-    /* 3. Inicio de sesión y Carrito a la derecha */
-    .header-right {
-        flex: 1;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 25px; /* Espacio entre Login y Carrito */
+    /* 5. COLUMNA DE LA DERECHA: Usuario y Carrito firmes en su esquina */
+    .header-right { 
+        grid-area: acciones !important; 
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+        gap: 25px;
     }
 
-    /* Ajuste específico para "Ingresar" (Icono + Texto juntos) */
     .user-menu-container a {
         display: flex;
         align-items: center;
-        gap: 8px; /* Lo que pediste: icono y texto pegaditos */
+        gap: 8px;
         text-decoration: none;
         color: #000;
         font-weight: 700;
         font-size: 14px;
     }
     
-.cart-container {
+    .cart-container {
         display: flex;
         align-items: center;
         gap: 8px;
         cursor: pointer;
     } 
-
-.mobile-wa-wrapper {
-    display:none !important;
-    }
-
-
-.search-container-mobile { display: none !important; }
-    
-.navbar-container {
-        display: grid !important;
-        grid-template-areas: 
-            "banner banner banner"
-            "logo menu acciones" !important;
-        /* Al ser 1fr a los costados y auto al medio, el centro es PERFECTO */
-        grid-template-columns: 1fr auto 1fr !important; 
-        align-items: center;
-        width: 100%;
-        padding: 10px 2%;
-        box-sizing: border-box;
-    }
-
-    /* COLUMNA 1 (IZQUIERDA): Juntamos el Logo y el Buscador en línea */
-    .header-center { 
-        grid-area: logo; 
-        display: flex !important;
-        align-items: center !important;
-        justify-content: flex-start !important;
-        gap: 35px; /* El espacio exacto que querés entre el Logo y el Buscador */
-    }
-
-    /* EL BUSCADOR: Ahora mide 220px fijos y no empuja a nadie */
-    .search-container-pc { 
-        position: relative;
-        width: 220px !important;
-        margin: 0 !important;
-    }
-
-    /* COLUMNA 2 (CENTRO): Tus categorías en el eje real de la pantalla */
-    .header-center-pc { 
-        grid-area: menu;
-        display: flex !important;
-        justify-content: center !important;
-    }
-
-    .nav-links {
-        display: flex !important;
-        width: auto !important;
-    }
-
-    /* COLUMNA 3 (DERECHA): Carrito y usuario a su esquina */
-    .header-right { 
-        grid-area: acciones; 
-        display: flex !important;
-        justify-content: flex-end !important;
-    }
-    
-    /* Hacemos el input un toque más compacto en altura para PC */
-    .search-container-pc .search-input {
-        padding: 8px 35px 8px 12px;
-        font-size: 13px;
-    }
-
-    
 }
+
+
+
+
+
+
+
+
+
 
 
 /* --- ESTO VA AL FINAL DE TU STYLES.CSS --- */
