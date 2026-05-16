@@ -3315,6 +3315,21 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         flex-shrink: 0 !important;
     }
 
+    /* EL TRUCO PARA EMPUJAR LOS LINKS AL CENTRO */
+    .header-center-pc {
+        flex: 1 !important; /* Este bloque toma todo el espacio sobrante */
+        display: flex !important;
+        justify-content: center !important; /* Clava tus nav-links exactamente en el centro real de la pantalla */
+    }
+
+    /* El bloque derecho de usuario/carrito se queda intacto en su esquina */
+    .header-right {
+        flex-grow: 0 !important;
+        flex-shrink: 0 !important;
+    }
+
+    
+
     /* ESTE ES EL CAMBIO CLAVE PARA EL BUSCADOR */
     .search-container-pc {
         position: relative;
