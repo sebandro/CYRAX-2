@@ -269,7 +269,7 @@ function renderizarItemReseña(r, contenedor, idReseña, uid) {
     
     const respuestaHTML = r.respuestaAdmin 
         ? `<div class="res-admin-box">
-             <span class="res-admin-tag">Respuesta de Syrax</span>
+             <span class="res-admin-tag">RESPUESTA DE SYRAX OFICIAL 🔥</span>
              <p>${r.respuestaAdmin}</p>
            </div>` 
         : `<p class="res-espera">Esperando respuesta del equipo...</p>`;
