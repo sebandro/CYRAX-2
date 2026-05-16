@@ -3532,6 +3532,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     border-bottom: 1px solid #ececec !important;
 
     box-sizing: border-box !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
 }
 
 /* CONTENEDOR */
@@ -3700,44 +3704,74 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 /* DROPDOWN */
 
+
+/*======================================*/
+/* DROPDOWN USUARIO MOBILE              */
+/*======================================*/
+
 #user-dropdown-mobile {
     display: none !important;
 
     width: 100% !important;
 
-    margin-top: 8px !important;
+    max-width: 240px !important;
+
+    margin-top: 10px !important;
 
     background: #ffffff !important;
 
-    border-radius: 12px !important;
+    border-radius: 14px !important;
 
     border: 1px solid #ececec !important;
 
     overflow: hidden !important;
 
-    position: relative !important;
+    position: static !important;
 
-    z-index: 99999 !important;
+    z-index: 1 !important;
+
+    box-sizing: border-box !important;
 }
 
-    #user-dropdown-mobile.show-menu {
-    display: block !important;
+/* ABIERTO */
+
+#user-dropdown-mobile.show-menu {
+    display: flex !important;
+
+    flex-direction: column !important;
 }
 
 /* LINKS */
 
 #user-dropdown-mobile a {
     display: flex !important;
+
     align-items: center !important;
+
     gap: 10px !important;
-    padding: 15px !important;
+
+    padding: 16px !important;
+
     text-decoration: none !important;
+
     color: #000 !important;
+
     background: #fff !important;
+
     border-bottom: 1px solid #f5f5f5 !important;
+
     font-size: 14px !important;
+
     font-weight: 600 !important;
 }
+
+/* HOVER */
+
+#user-dropdown-mobile a:hover {
+    background: #f7f7f7 !important;
+}
+
+    
     /*fin*/
 
     /*=================*/
@@ -4150,7 +4184,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* ICONO */
 
 .mobile-wa-btn i {
-    font-size: 1.8rem !important;
+    font-size: 2.5rem !important;
 }
 
 /* HOVER */
