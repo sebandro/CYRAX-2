@@ -19,6 +19,23 @@ firebase.auth().onAuthStateChanged((user) => {
         if (userText) userText.innerText = `Hola, ${nombre}`;
         if (userDropdown) userDropdown.style.opacity = "1";
 
+        /* FOTO PC */
+
+        const pcPhoto = document.getElementById('user-photo-pc');
+
+        const pcIcon = document.querySelector('.pc-user-icon');
+
+        if (pcPhoto && user.photoURL) {
+
+        pcPhoto.src = user.photoURL;
+
+        pcPhoto.style.display = "block";
+
+        if (pcIcon) {
+        pcIcon.style.display = "none";
+    }
+}
+        
         if (userTextMobile) userTextMobile.innerText = `Hola, ${nombre}`;
 
         const mobilePhoto = document.getElementById('user-photo-mobile');
@@ -90,6 +107,20 @@ firebase.auth().onAuthStateChanged((user) => {
         // --- E. LÓGICA MODO INVITADO ---
         if (userText) userText.innerText = "Ingresar";
         if (userDropdown) userDropdown.style.opacity = "0";
+
+        /* RESET FOTO PC */
+
+        const pcPhoto = document.getElementById('user-photo-pc');
+
+        const pcIcon = document.querySelector('.pc-user-icon');
+
+        if (pcPhoto) {
+        pcPhoto.style.display = "none";
+}
+
+        if (pcIcon) {
+        pcIcon.style.display = "flex";
+}
 
         // Reset Móvil
         if (userTextMobile) userTextMobile.innerText = "INGRESAR";
