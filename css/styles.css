@@ -3201,7 +3201,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         position: relative !important;
         width: 220px !important;
         display: block !important;
-        margin: 0 0 0 120px !important; /* El respiro con el logo SYRAX */
+        margin: 0 0 0 135px !important; /* El respiro con el logo SYRAX */
     }
 
     /* Envoltura obligatoria relativa para centrar la lupa */
