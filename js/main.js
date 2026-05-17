@@ -2513,10 +2513,34 @@ async function ejecutarBusqueda(textoBuscado, contenedorResultados) {
             // Filtramos por coincidencia de nombre
             if (nombreProd.toLowerCase().includes(textoBuscado) && coincidencias < 5) { // Limitamos a 5 sugerencias visuales
                 const precio = p.precio || 0;
-                const imagen = p.imagenes && p.imagenes.length > 0 ? p.imagenes[0] : 'img/placeholder.jpg'; // Ajustá a tu campo de imagen
+
+            let imagen = 'assets/img/placeholder.jpg';
+
+            if (p.imagenTarjeta && p.imagenTarjeta.length > 0) {
+            imagen = p.imagenTarjeta[0];
+
+            } else if (p.imagenPrincipal) {
+            imagen = p.imagenPrincipal;
+
+            } else if (p.variantes) {
+
+            const colores = Object.keys(p.variantes);
+
+            if (colores.length > 0) {
+
+            const primerColor = colores[0];
+    
+            if (
+            p.variantes[primerColor].fotos &&
+            p.variantes[primerColor].fotos.length > 0
+            ) {
+            imagen = p.variantes[primerColor].fotos[0];
+        }
+    }
+}    
                 
                 htmlItems += `
-    <a href="productos.html?cat=${p.categoria || 'todos'}&id=${doc.id}" class="search-result-item">
+    <a href="producto.html?id=${doc.id}" class="search-result-item">
 
         <img src="${imagen}" alt="${nombreProd}">
 
