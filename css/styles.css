@@ -4673,49 +4673,56 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     /* Fila contenedora de la X y el Buscador en el menú móvil */
    .menu-mobile-header-row {
-        display: flex !important;
-        flex-direction: row-reverse !important; /* Manda la X a la derecha y el buscador a la izquierda */
-        align-items: center !important;
-        justify-content: space-between !important;
-        padding: 15px 15px 10px 15px;
-        gap: 12px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    /* Reducimos el buscador en el celu para que no empuje nada */
-    .search-container-mobile {
-        position: relative;
-        flex: 1; /* Ocupa solo el espacio que sobra al lado de la X */
-        max-width: 75%; /* Limitamos su ancho para darle aire a la cruz */
-    }
-
-    /* Input más compacto para pantallas chicas */
-    .search-container-mobile .search-input {
-        padding: 7px 35px 7px 12px;
-        font-size: 13px;
-        height: 34px; /* Altura controlada */
-        box-sizing: border-box;
-    }
-
-
-    .search-container-mobile .search-input-wrapper {
-    position: relative !important;
-    width: 100% !important;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 12px 8px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+/* BUSCADOR */
+.search-container-mobile {
+    flex: 1;
+    min-width: 0; /* 🔥 clave para que no rompa el layout */
+}
+
+/* WRAPPER */
+.search-container-mobile .search-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* INPUT */
+.search-container-mobile .search-input {
+    width: 100%;
+    height: 36px;
+    padding: 7px 34px 7px 12px;
+    font-size: 13px;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* ICONO LUPA */
 .search-container-mobile .search-icon {
-    position: absolute !important;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 13px;
+    color: #666;
+}
 
-    right: 12px !important;
-
-    top: 50% !important;
-
-    transform: translateY(-50%) !important;
-
-    font-size: 13px !important;
-
-    color: #666 !important;
+/* BOTÓN X */
+.menu-close-mobile {
+    flex: 0 0 40px;   /* 🔥 ancho fijo */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
 }
 
 }
