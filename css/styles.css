@@ -4671,14 +4671,21 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     .search-container-pc { display: none !important; }
 
-    /* Fila contenedora de la X y el Buscador en el menú móvil */
+
+
+/*====================================*/
+/* BUSCADOR MOBILE */
+/*====================================*/
+
+/* FILA SUPERIOR */
 .menu-mobile-header-row {
     display: flex !important;
+
     align-items: center !important;
 
-    gap: 10px !important;
+    gap: 12px !important;
 
-    padding: 12px 12px 5px 12px !important;
+    padding: 14px 14px 6px 14px !important;
 
     width: 100% !important;
 
@@ -4689,7 +4696,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     z-index: 99999 !important;
 }
 
-/* BUSCADOR */
+/* CONTENEDOR BUSCADOR */
 .search-container-mobile {
     position: relative !important;
 
@@ -4709,40 +4716,48 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 .search-container-mobile .search-input {
     width: 100% !important;
 
-    height: 38px !important;
+    height: 40px !important;
 
-    padding: 0 38px 0 12px !important;
+    padding: 0 40px 0 14px !important;
 
     border-radius: 10px !important;
 
-    border: 1px solid #d6d6d6 !important;
+    border: 1px solid #d8d8d8 !important;
+
+    outline: none !important;
 
     font-size: 13px !important;
+
+    background: #fff !important;
 
     box-sizing: border-box !important;
 }
 
+/* INPUT FOCUS */
+.search-container-mobile .search-input:focus {
+    border-color: #000 !important;
+}
 
 /* LUPA */
 .search-container-mobile .search-icon {
     position: absolute !important;
 
     top: 50% !important;
-    right: 12px !important;
+    right: 14px !important;
 
     transform: translateY(-50%) !important;
 
-    font-size: 13px !important;
+    font-size: 14px !important;
 
-    color: #555 !important;
+    color: #666 !important;
 
     pointer-events: none !important;
 }
 
-/* BOTON X */
+/* BOTON CERRAR */
 .menu-close-mobile {
-    width: 36px !important;
-    height: 36px !important;
+    width: 42px !important;
+    height: 42px !important;
 
     flex-shrink: 0 !important;
 
@@ -4751,31 +4766,34 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     align-items: center !important;
     justify-content: center !important;
 
-    font-size: 20px !important;
-
     cursor: pointer !important;
 
     position: relative !important;
 
-    top: 1px !important;
-}
-    /* INPUT */
-.search-container-mobile .search-input {
-    width: 100%;
-    height: 34px;
-    padding: 6px 30px 6px 10px;
-    font-size: 13px;
-    border-radius: 8px;
-    box-sizing: border-box;
+    top: -1px !important;
+
+    margin-right: 2px !important;
 }
 
+/* ICONO X */
+.menu-close-mobile i {
+    font-size: 30px !important;
 
-    /* resultad buscador*/
+    color: #000 !important;
+
+    font-weight: 900 !important;
+
+    line-height: 1 !important;
+}
+
+/*====================================*/
+/* RESULTADOS */
+/*====================================*/
 
 .search-container-mobile .search-results-box {
     position: absolute !important;
 
-    top: 45px !important;
+    top: 48px !important;
 
     left: 0 !important;
 
@@ -4787,7 +4805,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     border: 1px solid #ececec !important;
 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.12) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12) !important;
 
     overflow-y: auto !important;
 
@@ -4795,27 +4813,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     z-index: 999999 !important;
 
-    display: none !important;
+    display: none;
 }
 
 /* ITEM */
-.search-container-mobile .search-result-item {
-    display: flex !important;
-
-    align-items: center !important;
-
-    gap: 10px !important;
-
-    padding: 10px !important;
-
-    text-decoration: none !important;
-
-    color: #000 !important;
-
-    border-bottom: 1px solid #f2f2f2 !important;
-}
-
-
 .search-container-mobile .search-result-item {
     display: flex !important;
 
@@ -4829,34 +4830,21 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     color: #000 !important;
 
-    border-bottom: 1px solid #f2f2f2 !important;
+    border-bottom: 1px solid #f3f3f3 !important;
 
-    flex-wrap: nowrap !important; /* 🔥 evita que baje */
+    flex-wrap: nowrap !important;
 }
 
-/* CONTENEDOR TEXTO */
-.search-container-mobile .search-result-info {
-    display: flex !important;
-
-    flex-direction: column !important;
-
-    justify-content: center !important;
-
-    flex: 1 !important;
-
-    min-width: 0 !important;
-}
-
-    
-
+/* HOVER */
 .search-container-mobile .search-result-item:hover {
-    background: #f7f7f7;
+    background: #f8f8f8 !important;
 }
 
+/* IMAGEN */
 .search-container-mobile .search-result-item img {
-    width: 50px !important;
+    width: 52px !important;
 
-    height: 65px !important;
+    height: 68px !important;
 
     object-fit: cover !important;
 
@@ -4871,11 +4859,16 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     flex-direction: column !important;
 
-    gap: 3px !important;
+    justify-content: center !important;
+
+    gap: 4px !important;
+
+    flex: 1 !important;
 
     min-width: 0 !important;
 }
 
+/* NOMBRE */
 .search-container-mobile .search-result-name {
     font-size: 13px !important;
 
@@ -4892,56 +4885,34 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     text-overflow: ellipsis !important;
 }
 
+/* PRECIO */
 .search-container-mobile .search-result-price {
     font-size: 14px !important;
 
     font-weight: 800 !important;
+
+    color: #000 !important;
 }
 
+/* MENSAJE */
+.search-no-results {
+    padding: 14px !important;
 
+    font-size: 13px !important;
 
-/* CONTENEDOR */
-.search-container-mobile {
-    position: relative !important;
+    text-align: center !important;
 
-    flex: 1 !important;
-
-    min-width: 0 !important;
-
-    z-index: 999999 !important;
+    color: #777 !important;
 }
 
-/* RESULTADOS */
-.search-container-mobile .search-results-box {
-    position: absolute !important;
+/*====================================*/
+/* SACAR ESPACIO VACIO */
+/*====================================*/
 
-    top: calc(100% + 8px) !important;
-
-    left: 0 !important;
-
-    width: 100% !important;
-
-    background: #fff !important;
-
-    border-radius: 12px !important;
-
-    border: 1px solid #eee !important;
-
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12) !important;
-
-    overflow-y: auto !important;
-
-    max-height: 320px !important;
-
-    z-index: 999999 !important;
-
-    display: none;
+#menu-categorias {
+    padding-top: 8px !important;
 }
-
-
-    #menu-categorias {
-    padding-top: 10px !important;
-}
+    
     
 }
     
