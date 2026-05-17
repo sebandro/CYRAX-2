@@ -4815,6 +4815,40 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     border-bottom: 1px solid #f2f2f2 !important;
 }
 
+
+.search-container-mobile .search-result-item {
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 12px !important;
+
+    padding: 10px !important;
+
+    text-decoration: none !important;
+
+    color: #000 !important;
+
+    border-bottom: 1px solid #f2f2f2 !important;
+
+    flex-wrap: nowrap !important; /* 🔥 evita que baje */
+}
+
+/* CONTENEDOR TEXTO */
+.search-container-mobile .search-result-info {
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    justify-content: center !important;
+
+    flex: 1 !important;
+
+    min-width: 0 !important;
+}
+
+    
+
 .search-container-mobile .search-result-item:hover {
     background: #f7f7f7;
 }
@@ -4843,11 +4877,19 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 }
 
 .search-container-mobile .search-result-name {
-    font-size: 12px !important;
+    font-size: 13px !important;
 
     font-weight: 700 !important;
 
     text-transform: uppercase !important;
+
+    line-height: 1.2 !important;
+
+    white-space: nowrap !important;
+
+    overflow: hidden !important;
+
+    text-overflow: ellipsis !important;
 }
 
 .search-container-mobile .search-result-price {
