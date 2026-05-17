@@ -4733,6 +4733,82 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     box-sizing: border-box;
 }
 
+
+    /* resultad buscador*/
+
+    .search-container-mobile .search-results-box {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+
+    width: 100%; /* 🔥 clave: no fijo */
+    max-height: 300px;
+
+    background: #fff;
+
+    border-radius: 12px;
+
+    border: 1px solid #eee;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+
+    overflow-y: auto;
+
+    z-index: 99999;
+
+    display: none;
+}
+
+    .search-container-mobile .search-result-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px;
+
+    text-decoration: none;
+    color: #000;
+
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.search-container-mobile .search-result-item:hover {
+    background: #f7f7f7;
+}
+
+    .search-container-mobile .search-result-item img {
+    width: 45px;
+    height: 60px;
+
+    object-fit: cover;
+    border-radius: 8px;
+
+    flex-shrink: 0;
+}
+
+    .search-container-mobile .search-result-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    min-width: 0;
+}
+
+    .search-container-mobile .search-result-name {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-container-mobile .search-result-price {
+    font-size: 13px;
+    font-weight: 800;
+}
+
 }
     
 
