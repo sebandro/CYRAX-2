@@ -4703,6 +4703,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     flex: 1 !important;
 
     min-width: 0 !important;
+     z-index: 999999 !important;
 }
 
 /* WRAPPER INPUT */
@@ -4793,7 +4794,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 .search-container-mobile .search-results-box {
     position: absolute !important;
 
-    top: 48px !important;
+    top: calc(100% + 6px) !important;
 
     left: 0 !important;
 
@@ -4911,6 +4912,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 #menu-categorias {
     padding-top: 8px !important;
+    position: relative !important;
+
+    z-index: 1 !important;
 }
     
     
