@@ -4672,14 +4672,12 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     .search-container-pc { display: none !important; }
 
     /* Fila contenedora de la X y el Buscador en el menú móvil */
-   .menu-mobile-header-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 12px 12px 8px;
-    width: 100%;
-    box-sizing: border-box;
+.menu-mobile-header-row {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 10;
+    border-bottom: 1px solid #eee;
 }
 
 /* BUSCADOR */
