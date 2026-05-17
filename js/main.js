@@ -2516,14 +2516,24 @@ async function ejecutarBusqueda(textoBuscado, contenedorResultados) {
                 const imagen = p.imagenes && p.imagenes.length > 0 ? p.imagenes[0] : 'img/placeholder.jpg'; // Ajustá a tu campo de imagen
                 
                 htmlItems += `
-                    <a href="productos.html?cat=${p.categoria || 'todos'}&id=${doc.id}" class="search-item-link">
-                        <img src="${imagen}" alt="${nombreProd}" class="search-item-img">
-                        <div class="search-item-info">
-                            <span class="search-item-name">${nombreProd}</span>
-                            <span class="search-item-price">$${precio.toLocaleString('es-AR')}</span>
-                        </div>
-                    </a>
-                `;
+    <a href="productos.html?cat=${p.categoria || 'todos'}&id=${doc.id}" class="search-result-item">
+
+        <img src="${imagen}" alt="${nombreProd}">
+
+        <div class="search-result-info">
+
+            <span class="search-result-name">
+                ${nombreProd}
+            </span>
+
+            <span class="search-result-price">
+                $${precio.toLocaleString('es-AR')}
+            </span>
+
+        </div>
+
+    </a>
+`;
                 coincidencias++;
             }
         });
