@@ -46,7 +46,8 @@ src="https://www.facebook.com/tr?id=1504209424649289&ev=PageView&noscript=1"
 
 
 
-   <header class="navbar-container">
+
+<header class="navbar-container">
     <div class="header-left">
      <div class="menu-mobile-btn" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
@@ -56,22 +57,68 @@ src="https://www.facebook.com/tr?id=1504209424649289&ev=PageView&noscript=1"
     <div class="navbar-main">
         <a href="index.html" class="logo">SYRAX</a>
     </div>
+         <div class="search-container-pc">
+    <div class="search-input-wrapper">
+        <input type="text" class="search-input" placeholder="Buscar productos en Syrax...">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="search-results-box"></div>
+</div>
 </div>
 
     <div class="header-center-pc">
     <nav class="nav-links">
+        <div class="menu-mobile-header-row">
         <div class="menu-close-mobile">
             <i class="fas fa-times"></i>
         </div>
-        
+
+    <div class="search-container-mobile">
+    <div class="search-input-wrapper">
+        <input type="text" class="search-input" placeholder="¿Qué estás buscando?">
+        <i class="fas fa-search search-icon"></i>
+    </div>
+    <div class="search-results-box"></div>
+</div>
+    </div>
         <ul id="menu-categorias">
-            <li class="mobile-only login-mobile-nav">
-    <div class="user-menu-container"> <a href="javascript:void(0)" id="user-link-mobile" onclick="abrirTuModalLogin()">
-            <i class="fas fa-user"></i> <span id="user-text-mobile">INGRESAR</span>
+     <li class="mobile-only login-mobile-nav">
+         
+    <div class="user-menu-container">
+        <a href="javascript:void(0)"
+           id="user-link-mobile"
+           onclick="abrirTuModalLogin()">
+            <!-- FOTO GOOGLE -->
+            <img id="user-photo-mobile"
+                 src=""
+                 alt="Foto de perfil">
+            <!-- ICONO DEFAULT -->
+            <div class="mobile-user-icon">
+                <i class="fas fa-user"></i>
+            </div>
+
+            <!-- TEXTO -->
+            <div class="mobile-user-info">
+                <span class="mobile-user-title">
+                    MI CUENTA
+                </span>
+                <span id="user-text-mobile">
+                    INGRESAR
+                </span>
+            </div>
         </a>
+        <!-- DROPDOWN -->
         <div id="user-dropdown-mobile" class="user-dropdown-list">
-            <a href="perfil.html"><i class="fas fa-id-card"></i> Mi Perfil</a>
-            <a href="javascript:void(0)" class="btn-logout-action"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+            <a href="perfil.html">
+                <i class="fas fa-id-card"></i>
+                Mi Perfil
+            </a>
+            <a href="javascript:void(0)" 
+                id="btn-logout-mobile"
+               class="btn-logout-action">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </a>
         </div>
     </div>
 </li>
@@ -107,15 +154,41 @@ src="https://www.facebook.com/tr?id=1504209424649289&ev=PageView&noscript=1"
                 </ul>
             </li>
         </ul>
-    </nav>
+<div class="mobile-wa-wrapper">
+
+    <a href="https://wa.me/5491112345678"
+       class="mobile-wa-btn"
+       target="_blank">
+
+        <i class="fab fa-whatsapp"></i>
+        <span></span>
+    </a>
+</div>
+        </nav>
      </div>
         
 <div class="header-right">
     <div class="navbar-actions">
         <div class="user-menu-container">
-            <a href="javascript:void(0)" onclick="abrirTuModalLogin()" id="user-link" class="btn-bounce">
-                <i class="fas fa-user"></i> <span id="user-text">Ingresar</span>
-            </a>
+
+    <a href="javascript:void(0)"
+   onclick="abrirTuModalLogin()"
+   id="user-link"
+   class="btn-bounce">
+    <!-- FOTO -->
+    <img id="user-photo-pc"
+         src=""
+         alt="Foto perfil">
+    <!-- ICONO -->
+    <div class="pc-user-icon">
+        <i class="fas fa-user"></i>
+    </div>
+    <!-- TEXTO -->
+    <div class="pc-user-info">
+        <span id="user-text">Ingresar</span>
+    </div>
+
+</a>
             <div id="user-dropdown" class="user-dropdown-list">
                 <a href="perfil.html"><i class="fas fa-id-card"></i> Mi Perfil</a>
                 <a href="javascript:void(0)" id="btn-logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
@@ -132,7 +205,12 @@ src="https://www.facebook.com/tr?id=1504209424649289&ev=PageView&noscript=1"
         </div>
     </div>
        </div>
+
+       
 </header>
+
+
+    
 
 <button onclick="history.back()" class="btn-volver-flotante" title="Volver a la tienda">
     <i class="fas fa-arrow-left"></i>
