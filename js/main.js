@@ -2576,6 +2576,50 @@ async function ejecutarBusqueda(textoBuscado, contenedorResultados) {
 
 
 
+//
+// --- ACCESO MASTER SECRETO A ADMIN SYRAX ---
+//
+(function() {
+    let secuenciaTeclas = "";
+    let temporizadorReset;
+
+    document.addEventListener("keydown", (e) => {
+        // Ignoramos si el usuario justo está escribiendo dentro del buscador
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+            return;
+        }
+
+        // Pasamos la tecla a minúscula para evitar problemas con el Bloq Mayús
+        const tecla = e.key.toLowerCase();
+
+        // Solo sumamos letras individuales de la A a la Z
+        if (tecla.length === 1 && tecla >= 'a' && tecla <= 'z') {
+            secuenciaTeclas += tecla;
+
+            // Cada vez que tocás una tecla válida, estiramos el tiempo de espera
+            clearTimeout(temporizadorReset);
+
+            // Si detecta la palabra exacta... ¡PUERTA TRASERA!
+            if (secuenciaTeclas.includes("admin")) {
+                secuenciaTeclas = ""; // Limpiamos el buffer
+                window.location.href = "admin.html"; // Asegurate que coincida con tu archivo
+                return;
+            }
+
+            // Si pasás más de 1.5 segundos sin tocar otra tecla, se resetea la secuencia
+            temporizadorReset = setTimeout(() => {
+                secuenciaTeclas = "";
+            }, 1500);
+        }
+    });
+})();
+
+
+
+
+
+
+
 ////////////////////////////
 // EMPIEZA JS PARA CELULAR
 //////////////////////////
