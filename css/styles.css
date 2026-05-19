@@ -3680,7 +3680,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /*================================*/
 
 /* =========================
-   GRID GENERAL
+   GRID MOBILE POR FILAS
 ========================= */
 
 .product-grid {
@@ -3690,12 +3690,10 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     gap: 18px !important;
 
-    width: 100% !important;
+    overflow: visible !important;
 }
 
-/* =========================
-   FILAS DESLIZABLES
-========================= */
+/* FILAS */
 
 .product-row {
     display: flex !important;
@@ -3719,11 +3717,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     display: none !important;
 }
 
-/* =========================
-   TARJETAS
-========================= */
+/* TARJETAS */
 
-.product-card {
+.product-row .product-card {
     min-width: 78vw !important;
 
     max-width: 78vw !important;
@@ -3737,9 +3733,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     overflow: hidden !important;
 }
 
-/* =========================
-   RESTO
-========================= */
+/* RESTO */
 
 .product-slider {
     border-radius: 16px 16px 0 0 !important;
@@ -3802,7 +3796,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     padding: 6px 10px !important;
 }
-
 
 
     
