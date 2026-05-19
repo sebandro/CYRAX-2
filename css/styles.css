@@ -3679,27 +3679,50 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 /* TARJETAS DE PRODUCTOS (CARRUSEL)*/
 /*================================*/
 
-       .product-grid {
-        display: flex !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
+/* =========================
+   GRID GENERAL
+========================= */
 
-        gap: 14px !important;
+.product-grid {
+    display: flex !important;
 
-        padding: 15px !important;
+    flex-direction: column !important;
 
-        scroll-snap-type: x mandatory !important;
-        -webkit-overflow-scrolling: touch !important;
+    gap: 18px !important;
 
-        scrollbar-width: none !important;
-    }
+    width: 100% !important;
+}
 
-    .product-grid::-webkit-scrollbar {
-        display: none !important;
-    }
+/* =========================
+   FILAS DESLIZABLES
+========================= */
 
+.product-row {
+    display: flex !important;
 
-/* TARJETA */
+    overflow-x: auto !important;
+
+    overflow-y: hidden !important;
+
+    gap: 14px !important;
+
+    padding: 0 15px !important;
+
+    scroll-snap-type: x mandatory !important;
+
+    -webkit-overflow-scrolling: touch !important;
+
+    scrollbar-width: none !important;
+}
+
+.product-row::-webkit-scrollbar {
+    display: none !important;
+}
+
+/* =========================
+   TARJETAS
+========================= */
+
 .product-card {
     min-width: 78vw !important;
 
@@ -3714,99 +3737,70 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     overflow: hidden !important;
 }
 
+/* =========================
+   RESTO
+========================= */
 
-    .product-slider {
-        border-radius: 16px 16px 0 0 !important;
-    }
-
-    .product-info {
-        flex-direction: column !important;
-        align-items: stretch !important;
-
-        padding: 14px !important;
-    }
-
-    .product-buttons {
-        display: grid !important;
-
-        grid-template-columns: 42px 42px 1fr !important;
-
-        gap: 8px !important;
-
-        width: 100% !important;
-
-        margin-top: 12px !important;
-    }
-
-    .fav-btn-inline,
-    .share-ws-btn {
-        width: 42px !important;
-        height: 42px !important;
-
-        border-radius: 10px !important;
-
-        flex-shrink: 0 !important;
-    }
-
-    .buy-btn {
-        width: 100% !important;
-        height: 42px !important;
-
-        font-size: 0.72rem !important;
-
-        margin-top: 0 !important;
-
-        border-radius: 10px !important;
-    }
-
-    .price {
-        font-size: 1.3rem !important;
-    }
-
-    .product-card h3 {
-        font-size: 13px !important;
-        line-height: 1.4 !important;
-    }
-
-    .badge-off {
-        font-size: 0.8rem !important;
-        padding: 6px 10px !important;
-    }
-
-
-    
-
-
-/* CONTENEDOR GENERAL */
-.products-wrapper {
-    display: flex;
-    flex-direction: column;
-
-    gap: 18px;
+.product-slider {
+    border-radius: 16px 16px 0 0 !important;
 }
 
-/* CADA FILA */
-.products-row {
-    display: flex;
+.product-info {
+    flex-direction: column !important;
 
-    gap: 14px;
+    align-items: stretch !important;
 
-    overflow-x: auto;
-
-    overflow-y: hidden;
-
-    padding: 0 14px 10px 14px;
-
-    scroll-snap-type: x mandatory;
-
-    -webkit-overflow-scrolling: touch;
-
-    scrollbar-width: none;
+    padding: 14px !important;
 }
 
-/* OCULTAR SCROLL */
-.products-row::-webkit-scrollbar {
-    display: none;
+.product-buttons {
+    display: grid !important;
+
+    grid-template-columns: 42px 42px 1fr !important;
+
+    gap: 8px !important;
+
+    width: 100% !important;
+
+    margin-top: 12px !important;
+}
+
+.fav-btn-inline,
+.share-ws-btn {
+    width: 42px !important;
+    height: 42px !important;
+
+    border-radius: 10px !important;
+
+    flex-shrink: 0 !important;
+}
+
+.buy-btn {
+    width: 100% !important;
+
+    height: 42px !important;
+
+    font-size: 0.72rem !important;
+
+    margin-top: 0 !important;
+
+    border-radius: 10px !important;
+}
+
+.price {
+    font-size: 1.3rem !important;
+}
+
+.product-card h3 {
+    font-size: 13px !important;
+
+    line-height: 1.4 !important;
+}
+
+.badge-off {
+    font-size: 0.8rem !important;
+
+    padding: 6px 10px !important;
 }
 
 
