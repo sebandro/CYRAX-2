@@ -3684,11 +3684,9 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 ========================= */
 
 .product-grid {
-    display: flex !important;
+    display: block !important;
 
-    flex-direction: column !important;
-
-    gap: 18px !important;
+    width: 100% !important;
 
     overflow: visible !important;
 }
@@ -3713,6 +3711,12 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     scrollbar-width: none !important;
 }
 
+    .product-row {
+    width: 100% !important;
+
+    box-sizing: border-box !important;
+}
+
 .product-row::-webkit-scrollbar {
     display: none !important;
 }
@@ -3731,6 +3735,12 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     border-radius: 16px !important;
 
     overflow: hidden !important;
+}
+
+    .product-row .product-card {
+    display: flex !important;
+
+    flex-direction: column !important;
 }
 
 /* RESTO */
