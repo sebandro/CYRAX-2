@@ -2602,7 +2602,7 @@ async function ejecutarBusqueda(textoBuscado, contenedorResultados) {
             // Si detecta la palabra exacta... ¡PUERTA TRASERA!
             if (secuenciaTeclas.includes("admin")) {
                 secuenciaTeclas = ""; // Limpiamos el buffer
-                window.location.href = "admin-syrax.html"; // Asegurate que coincida con tu archivo
+                window.open("admin-syrax.html","_blank";) // Asegurate que coincida con tu archivo
                 return;
             }
 
