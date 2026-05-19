@@ -1932,6 +1932,8 @@ async function cargarProductos(categoriaFiltro = null, soloLiquidacion = false, 
         grid.innerHTML = '';
         let retrasoCascarada = 0;
         let productosVisibles = 0;
+        let contadorFila = 0;
+        let filaActual = null;
 
         querySnapshot.forEach((doc) => {
             const p = doc.data();
@@ -1982,7 +1984,19 @@ async function cargarProductos(categoriaFiltro = null, soloLiquidacion = false, 
             const urlProducto = `${window.location.origin}/producto.html?id=${id}`;
             const mensajeWS = encodeURIComponent(`¡Hola! Mirá esto en *Syrax Express* 🚀\n\n*Producto:* ${p.nombre}\n*Precio:* $${precioFinal.toLocaleString('es-AR')}\n\n${urlProducto}`);
 
-            grid.innerHTML += `
+
+            // Crear nueva fila cada 8 productos
+            if (contadorFila % 8 === 0) {
+
+            filaActual = document.createElement("div");
+    
+            filaActual.className = "product-row";
+
+            grid.appendChild(filaActual);
+            }
+
+            filaActual.innerHTML += `
+            
                 <div class="product-card" data-id="${id}" style="animation-delay: ${retrasoCascarada}s">
                     <div class="product-slider">
                         ${badgeHTML}
@@ -2011,6 +2025,7 @@ async function cargarProductos(categoriaFiltro = null, soloLiquidacion = false, 
                         </div>
                     </div>
                 </div>`;
+            contadorFila++;
         });
 
         console.log(`✅ Filtro aplicado. Mostrando ${productosVisibles} productos.`);
