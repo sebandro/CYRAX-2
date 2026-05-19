@@ -3698,18 +3698,22 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         display: none !important;
     }
 
-    .product-card {
-        min-width: 78vw !important;
-        max-width: 78vw !important;
 
-        flex: 0 0 auto !important;
+/* TARJETA */
+.product-card {
+    min-width: 78vw !important;
 
-        scroll-snap-align: start !important;
+    max-width: 78vw !important;
 
-        border-radius: 16px !important;
+    flex: 0 0 auto !important;
 
-        overflow: hidden !important;
-    }
+    scroll-snap-align: start !important;
+
+    border-radius: 16px !important;
+
+    overflow: hidden !important;
+}
+
 
     .product-slider {
         border-radius: 16px 16px 0 0 !important;
@@ -3768,6 +3772,46 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
         font-size: 0.8rem !important;
         padding: 6px 10px !important;
     }
+
+
+    
+
+
+/* CONTENEDOR GENERAL */
+.products-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+/* CADA FILA */
+.products-row {
+    display: flex;
+
+    gap: 14px;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    padding: 0 14px 10px 14px;
+
+    scroll-snap-type: x mandatory;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+}
+
+/* OCULTAR SCROLL */
+.products-row::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+    
     /*FIN*/
 
 /*==================================================*/
