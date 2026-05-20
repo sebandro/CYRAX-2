@@ -1984,10 +1984,7 @@ async function cargarProductos(categoriaFiltro = null, soloLiquidacion = false, 
             ).join('');
 
             retrasoCascarada += 0.05;
-            const urlProducto = `${window.location.origin}/producto.html?id=${id}`;
-            const mensajeWS = encodeURIComponent(`¡Hola! Mirá esto en *Syrax Express* 🚀\n\n*Producto:* ${p.nombre}\n*Precio:* $${precioFinal.toLocaleString('es-AR')}\n\n${urlProducto}`);
-
-
+           
             if (esMobile) {
 
                 // crear fila cada 8
@@ -2021,9 +2018,10 @@ async function cargarProductos(categoriaFiltro = null, soloLiquidacion = false, 
                             <button class="fav-btn-inline ${botonClase}"  data-id="${id}" onclick="toggleFavorito('${id}', this)">
                                 <i class="${iconoClase} fa-heart"></i>
                             </button>
-                            <a href="https://wa.me/?text=${mensajeWS}" target="_blank" class="share-ws-btn">
+                            <button 
+                                class="share-ws-btn share-product-btn" data-id="${id}" data-name="${p.nombre}" data-price="${precioFinal}" data-image="${fotos[0]}" >
                                 <i class="fab fa-whatsapp"></i>
-                            </a>
+                                </button>
                             <a href="producto.html?id=${id}" style="flex-grow: 1;">
                                 <button class="buy-btn">VER PRODUCTO</button>
                             </a>
@@ -2655,6 +2653,102 @@ async function ejecutarBusqueda(textoBuscado, contenedorResultados) {
 ////////////////////////////
 // EMPIEZA JS PARA CELULAR
 ///////////////////////////
+
+
+/* ======================================== */
+/* COMPARTIR PRODUCTO WHATSAPP */
+/* ======================================== */
+
+document.addEventListener("click", (e) => {
+
+    const btn = e.target.closest(".share-product-btn");
+
+    if (!btn) return;
+
+    /* DATOS */
+
+    const id = btn.dataset.id;
+
+    const nombre = btn.dataset.name;
+
+    const precio = Number(btn.dataset.price);
+
+    const imagen = btn.dataset.image;
+
+    /* URL PRODUCTO */
+
+    const urlProducto =
+    `${window.location.origin}/producto.html?id=${id}`;
+
+    /* MENSAJE */
+
+    const mensaje = `
+🔥 Mira este producto de Syrax
+
+🛍 Producto: ${nombre}
+
+💲 Precio: $${precio.toLocaleString('es-AR')}
+
+${urlProducto}
+`;
+
+    /* ======================================== */
+    /* ACTUALIZAR META TAGS */
+    /* ======================================== */
+
+    actualizarMetaTag(
+        "og:title",
+        `${nombre} - Syrax`
+    );
+
+    actualizarMetaTag(
+        "og:description",
+        `🔥 $${precio.toLocaleString('es-AR')} | Comprá esta prenda en Syrax`
+    );
+
+    actualizarMetaTag(
+        "og:image",
+        imagen
+    );
+
+    actualizarMetaTag(
+        "og:url",
+        urlProducto
+    );
+
+    /* WHATSAPP */
+
+    const whatsappURL =
+    `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
+
+    window.open(whatsappURL, "_blank");
+
+});
+
+
+function actualizarMetaTag(property, content) {
+
+    let meta =
+    document.querySelector(`meta[property="${property}"]`);
+
+    if (!meta) {
+
+        meta = document.createElement("meta");
+
+        meta.setAttribute("property", property);
+
+        document.head.appendChild(meta);
+    }
+
+    meta.setAttribute("content", content);
+}
+
+
+
+
+
+
+
 
 /////////////////////////////////////
 /* abrir menu hamburguesa celular */
