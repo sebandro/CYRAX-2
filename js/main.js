@@ -82,7 +82,9 @@ firebase.auth().onAuthStateChanged((user) => {
                     if(document.getElementById('altura')) document.getElementById('altura').value = d.altura || "";
                     if(document.getElementById('entre_calles')) document.getElementById('entre_calles').value = d.entrecalles || "";
                     if(document.getElementById('ciudad')) document.getElementById('ciudad').value = d.ciudad || "";
-                    if(document.getElementById('codigo_postal')) document.getElementById('codigo_postal').value = d.cp || "";
+                   if(document.getElementById('codigo_postal')) {document.getElementById('codigo_postal').value = d.cp || "";
+                    calcularEnvioInteligente();
+                    }
                 }
             });
         }
