@@ -309,7 +309,7 @@ function renderizarItemReseña(r, contenedor, idReseña, uid) {
 
 
 // Agregamos 'uid' a los parámetros recibidos
-function eliminarReseña(idReseña, boton, uid) {
+async function eliminarReseña(idReseña, boton, uid) {
     // Usamos una alternativa limpia si por alguna razón no viene el uid
     const IDUsuario = uid && uid !== 'undefined' ? uid : 'invitado';
 
