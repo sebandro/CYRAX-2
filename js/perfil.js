@@ -314,7 +314,7 @@ function eliminarReseña(idReseña, boton, uid) {
     const IDUsuario = uid && uid !== 'undefined' ? uid : 'invitado';
 
     // Usá tu cartel customizado si preferís (ej. confirmarSyrax)
-    const confirmar = confirmarSyrax("¿Querés dejar de ver esta reseña en tu perfil?");
+    const confirmar = await confirmarSyrax("¿Querés dejar de ver esta reseña en tu perfil?");
     if (!confirmar) return;
 
     try {
