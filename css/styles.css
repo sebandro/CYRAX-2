@@ -3746,6 +3746,14 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     flex-direction: column !important;
 }
 
+    .product-card {
+    background: #fff !important;
+
+    border-radius: 16px !important;
+
+    overflow: hidden !important;
+}
+
 /* RESTO */
 
 .product-slider {
