@@ -3698,12 +3698,13 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     display: flex !important;
 
     overflow-x: auto !important;
-
     overflow-y: hidden !important;
 
     gap: 14px !important;
 
     padding: 0 15px !important;
+
+    margin-bottom: 22px !important; /* ← separación entre filas */
 
     scroll-snap-type: x mandatory !important;
 
