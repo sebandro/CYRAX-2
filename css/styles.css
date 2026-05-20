@@ -3689,7 +3689,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     width: 100% !important;
 
     overflow: visible !important;
-    gap: 28px  !important;
+    gap: 35px  !important;
 }
 
 /* FILAS */
@@ -3701,7 +3701,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     overflow-y: hidden !important;
 
-    gap: 28px !important;
+    gap: 14px !important;
 
     padding: 0 15px !important;
 
