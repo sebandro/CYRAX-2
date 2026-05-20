@@ -2654,45 +2654,7 @@ async function ejecutarBusqueda(textoBuscado, contenedorResultados) {
 
 ////////////////////////////
 // EMPIEZA JS PARA CELULAR
-//////////////////////////
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    // SOLO MOBILE
-    if (window.innerWidth > 768) return;
-
-    const originalGrid = document.querySelector(".product-grid");
-
-    if (!originalGrid) return;
-
-    const products = Array.from(
-        originalGrid.querySelectorAll(".product-card")
-    );
-
-    const wrapper = document.createElement("div");
-
-    wrapper.className = "products-wrapper";
-
-    // 8 productos por fila
-    for (let i = 0; i < products.length; i += 8) {
-
-        const row = document.createElement("div");
-
-        row.className = "products-row";
-
-        products.slice(i, i + 8).forEach(product => {
-            row.appendChild(product);
-        });
-
-        wrapper.appendChild(row);
-    }
-
-    originalGrid.replaceWith(wrapper);
-
-});
-
-
-
+///////////////////////////
 
 /////////////////////////////////////
 /* abrir menu hamburguesa celular */
