@@ -2019,7 +2019,7 @@ async function cargarProductos(categoriaFiltro = null, soloLiquidacion = false, 
                                 <i class="${iconoClase} fa-heart"></i>
                             </button>
                             <button 
-                                class="share-ws-btn share-product-btn" data-id="${id}" data-name="${p.nombre}" data-image="${fotos[0]}" >
+                                class="share-ws-btn share-product-btn" data-id="${id}" data-name="${p.nombre}"  data-price="${precioFinal}" data-image="${fotos[0]}" >
                                 <i class="fab fa-whatsapp"></i>
                                 </button>
                             <a href="producto.html?id=${id}" style="flex-grow: 1;">
@@ -2671,6 +2671,8 @@ document.addEventListener("click", (e) => {
 
     const nombre = btn.dataset.name;
 
+    const precio = Number(btn.dataset.price);
+
     const imagen = btn.dataset.image;
 
     /* URL PRODUCTO */
@@ -2684,6 +2686,8 @@ document.addEventListener("click", (e) => {
 🔥 Mira este producto de Syrax
 
 🛍 Producto: ${nombre}
+
+💲 Precio: $${precio.toLocaleString('es-AR')}
 
 ${urlProducto}
 `;
@@ -2720,6 +2724,7 @@ ${urlProducto}
     window.open(whatsappURL, "_blank");
 
 });
+
 
 
 function actualizarMetaTag(property, content) {
