@@ -3729,6 +3729,8 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     flex: 0 0 auto !important;
 
+     padding: 0 15px 20px 15px !important;
+
     scroll-snap-align: start !important;
 
     border-radius: 16px !important;
