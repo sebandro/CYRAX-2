@@ -3684,15 +3684,13 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 ========================= */
 
 .product-grid {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
 
-    width: 100% !important;
+    gap: 28px !important;
 
-    overflow: visible !important;
-    gap: 35px  !important;
+    padding-bottom: 10px !important;
 }
-
-/* FILAS */
 
 .product-row {
     display: flex !important;
@@ -3702,18 +3700,18 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     gap: 14px !important;
 
-    padding: 0 15px !important;
+    padding: 0 15px 8px 15px !important;
 
-    margin-bottom: 35px !important; /* ← separación entre filas */
+    margin-bottom: 10px !important;
 
     scroll-snap-type: x mandatory !important;
 
     -webkit-overflow-scrolling: touch !important;
 
     scrollbar-width: none !important;
-     background: transparent !important;
-}
 
+    background: transparent !important;
+}
   
 
 .product-row::-webkit-scrollbar {
@@ -3744,12 +3742,14 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     flex-direction: column !important;
 }
 
-    .product-card {
+  .product-card {
     background: #fff !important;
 
     border-radius: 16px !important;
 
     overflow: hidden !important;
+
+    box-shadow: 0 4px 18px rgba(0,0,0,0.08) !important;
 }
 
 /* RESTO */
