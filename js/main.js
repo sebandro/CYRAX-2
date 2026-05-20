@@ -390,7 +390,7 @@ let cart = JSON.parse(localStorage.getItem('cart')) || [];
     "1815": "moto_zona3", "1865": "moto_zona3", "1864": "moto_zona3", "1984": "moto_zona3",
     "1862": "moto_zona3", "1925": "moto_zona3", "1931": "moto_zona3", "1923": "moto_zona3",
     "1896": "moto_zona3", "1897": "moto_zona3", "1900": "moto_zona3", "1903": "moto_zona3",
-    "1901": "moto_zona3", "1599": "moto_zone3",
+    "1901": "moto_zona3", "1599": "moto_zona3",
 };
 
 
@@ -833,8 +833,6 @@ ${listaProductos}
         /*  FUNCION CALCULAR ENVIO*/
         ////////////////////////////
 
-
-
 let tarifasEnVivo = {}; // Variable global para guardar los precios
 
 // 1. EL ESCUCHADOR (Se activa una sola vez al cargar la página)
@@ -853,88 +851,253 @@ function sincronizarLogisticaEnVivo() {
     });
 }
 
-// 2. EL CÁLCULO (Es tu función, pero usando 'tarifasEnVivo')
 function calcularEnvioInteligente() {
-    const inputCP = document.getElementById('codigo_postal');
+
+    const inputCP =
+    document.getElementById("codigo_postal");
+
     if (!inputCP) return;
-    
-    let cpOriginal = inputCP.value.trim().toUpperCase();
 
-    // Validación de formato (Tu lógica de letra + 4 números)
-    const letraEncontrada = cpOriginal.match(/[A-Z]/);
-    const numerosEncontrados = cpOriginal.replace(/[^0-9]/g, '').substring(0, 4);
-    const letra = letraEncontrada ? letraEncontrada[0] : "";
+    /* ============================== */
+    /* NORMALIZAR CP */
+    /* ============================== */
+
+    let cpOriginal =
+    inputCP.value.trim().toUpperCase();
+
+    const letraEncontrada =
+    cpOriginal.match(/[A-Z]/);
+
+    const numerosEncontrados =
+    cpOriginal.replace(/[^0-9]/g, '')
+    .substring(0, 4);
+
+    const letra =
+    letraEncontrada ? letraEncontrada[0] : "";
+
     const numeros = numerosEncontrados;
-    const cpLimpio = letra + numeros;
 
-    if (inputCP.value.toUpperCase() !== cpLimpio) inputCP.value = cpLimpio;
+    const cpLimpio =
+    letra + numeros;
 
-    const selectorServicio = document.getElementById('selector-servicio-envio');
-    const infoTiempo = document.getElementById('info-tiempo-envio');
-    const avisoEnvio = document.getElementById('aviso-cobertura');
-    const selectTipo = document.getElementById('tipo-servicio');
+    if (inputCP.value.toUpperCase() !== cpLimpio) {
+        inputCP.value = cpLimpio;
+    }
 
-    if (cpLimpio.length < 5) {
-        if (selectorServicio) selectorServicio.style.display = "none";
-        if (avisoEnvio) avisoEnvio.innerHTML = `<span style="color: #666; font-size: 11px;">Formato: Una letra y 4 números (Ej: B1755)</span>`;
-        if (infoTiempo) infoTiempo.innerHTML = "";
-        window.envioSeleccionado = 0;
+    /* ============================== */
+    /* ELEMENTOS */
+    /* ============================== */
+
+    const selectTipo =
+    document.getElementById("tipo-servicio");
+
+    const infoTiempo =
+    document.getElementById("info-tiempo-envio");
+
+    const avisoEnvio =
+    document.getElementById("aviso-cobertura");
+
+    if (!selectTipo || !infoTiempo || !avisoEnvio) {
         return;
     }
 
-    // --- LÓGICA DE PRECIOS EN VIVO ---
-    if (coberturaMotoLocal[numeros] || letra === "C") {
-        selectorServicio.style.display = "block";
-        if (!selectTipo.innerHTML.includes('value="moto"')) {
-            selectTipo.innerHTML = `
-                <option value="retiro">RETIRO POR DOMICILIO (GRATIS)</option>
-                <option value="moto">ENVÍO POR MOTOMENSAJERIA EXPRESS </option>
-            `;
-        }
+    /* ============================== */
+    /* VALIDACIÓN */
+    /* ============================== */
 
-        if (selectTipo.value === "retiro") {
-            window.envioSeleccionado = 0;
-            avisoEnvio.innerHTML = `<span style="color: #d4af37; font-weight: bold;">🏠 RETIRO POR DOMICILIO (GRATIS)</span>`;
-            infoTiempo.innerHTML = `<strong>Tiempo:</strong> ${tarifasEnVivo.tiempo_retiro || "Coordinar"}`;
-        } else {
-            const zonaKey = letra === "C" ? "moto_zona2" : coberturaMotoLocal[numeros];
-            window.envioSeleccionado = tarifasEnVivo[zonaKey] || 0;
-            avisoEnvio.innerHTML = `<span style="color: #d4af37; font-weight: bold;">🛵 ENVÍO POR MOTO (SYRAX EXPRESS)</span>`;
-            infoTiempo.innerHTML = `<strong>Llega:</strong> ${tarifasEnVivo.tiempo_moto}<br><strong>Costo:</strong> $${window.envioSeleccionado.toLocaleString('es-AR')}`;
-        }
-    } else {
-        selectorServicio.style.display = "block";
-        if (!selectTipo.innerHTML.includes('value="clasica"')) {
-            selectTipo.innerHTML = `
-                <option value="clasica">CORREO ARGENTINO - CLÁSICA</option>
-                <option value="prioritaria">CORREO ARGENTINO - PRIORITARIA</option>
-            `;
-        }
-        
-        const esRegional = (letra === "B" || letra === "C");
-        avisoEnvio.innerHTML = `<span style="color: #28a745; font-weight: bold;">✓ CORREO ARGENTINO ${esRegional ? 'REGIONAL' : 'NACIONAL'}</span>`;
-        
-        // CORRECCIÓN: Aquí usamos la data de Correo en vivo
-        if (selectTipo.value === "prioritaria") {
-            window.envioSeleccionado = tarifasEnVivo.nacional_prioritaria || 0;
-            infoTiempo.innerHTML = `<strong>Tiempo:</strong> ${tarifasEnVivo.tiempo_prioritaria}<br><strong>Costo:</strong> $${window.envioSeleccionado.toLocaleString('es-AR')}`;
-        } else {
-            window.envioSeleccionado = tarifasEnVivo.nacional_clasica || 0;
-            infoTiempo.innerHTML = `<strong>Tiempo:</strong> ${tarifasEnVivo.tiempo_clasica}<br><strong>Costo:</strong> $${window.envioSeleccionado.toLocaleString('es-AR')}`;
-        }
+    if (cpLimpio.length < 5) {
+
+        avisoEnvio.innerHTML = `
+        <span style="color:#666;font-size:11px;">
+        Formato: B1755
+        </span>
+        `;
+
+        infoTiempo.innerHTML = "";
+
+        window.envioSeleccionado = 0;
+
+        return;
     }
 
-    if (typeof renderCheckoutSummary === "function") renderCheckoutSummary();
+    /* ============================== */
+    /* DETECCIONES */
+    /* ============================== */
+
+    const esRegional =
+    (letra === "B" || letra === "C");
+
+    const zonaMoto =
+    coberturaMotoLocal[numeros] || null;
+
+    const tieneMoto =
+    !!zonaMoto;
+
+    const servicio =
+    selectTipo.value;
+
+    /* ============================== */
+    /* RESETEAR */
+    /* ============================== */
+
+    window.envioSeleccionado = 0;
+
+    /* ============================== */
+    /* RETIRO */
+    /* ============================== */
+
+    if (servicio === "retiro") {
+
+        avisoEnvio.innerHTML = `
+        <span style="color:#d4af37;font-weight:bold;">
+        🏠 Retiro por domicilio
+        </span>
+        `;
+
+        infoTiempo.innerHTML = `
+        <strong>Tiempo:</strong>
+        ${tarifasEnVivo.tiempo_retiro || "Coordinar por WhatsApp"}
+
+        <br>
+
+        <strong>Costo:</strong>
+        Gratis
+        `;
+
+        window.envioSeleccionado = 0;
+    }
+
+    /* ============================== */
+    /* MOTO */
+    /* ============================== */
+
+    else if (servicio === "moto") {
+
+        if (!tieneMoto) {
+
+            avisoEnvio.innerHTML = `
+            <span style="color:#ff4d4d;font-weight:bold;">
+            ❌ Moto mensajería no disponible
+            </span>
+            `;
+
+            infoTiempo.innerHTML = `
+            Probá con Correo Argentino
+            `;
+
+            window.envioSeleccionado = 0;
+
+            return;
+        }
+
+        const precioMoto =
+        tarifasEnVivo[zonaMoto] || 0;
+
+        avisoEnvio.innerHTML = `
+        <span style="color:#d4af37;font-weight:bold;">
+        🛵 Moto mensajería disponible
+        </span>
+        `;
+
+        infoTiempo.innerHTML = `
+        <strong>Llega:</strong>
+        ${tarifasEnVivo.tiempo_moto || "En el día"}
+
+        <br>
+
+        <strong>Costo:</strong>
+        $${precioMoto.toLocaleString('es-AR')}
+        `;
+
+        window.envioSeleccionado = precioMoto;
+    }
+
+    /* ============================== */
+    /* CORREO CLÁSICA */
+    /* ============================== */
+
+    else if (servicio === "clasica") {
+
+        const key =
+        esRegional
+        ? "regional_clasica"
+        : "nacional_clasica";
+
+        const precio =
+        tarifasEnVivo[key] || 0;
+
+        avisoEnvio.innerHTML = `
+        <span style="color:#28a745;font-weight:bold;">
+        📦 Correo Argentino
+        ${esRegional ? "Regional" : "Nacional"}
+        </span>
+        `;
+
+        infoTiempo.innerHTML = `
+        <strong>Tiempo:</strong>
+        ${tarifasEnVivo.tiempo_clasica || "3 a 6 días"}
+
+        <br>
+
+        <strong>Costo:</strong>
+        $${precio.toLocaleString('es-AR')}
+        `;
+
+        window.envioSeleccionado = precio;
+    }
+
+    /* ============================== */
+    /* CORREO PRIORITARIA */
+    /* ============================== */
+
+    else if (servicio === "prioritaria") {
+
+        const key =
+        esRegional
+        ? "regional_prioritaria"
+        : "nacional_prioritaria";
+
+        const precio =
+        tarifasEnVivo[key] || 0;
+
+        avisoEnvio.innerHTML = `
+        <span style="color:#28a745;font-weight:bold;">
+        ⚡ Correo Prioritario
+        ${esRegional ? "Regional" : "Nacional"}
+        </span>
+        `;
+
+        infoTiempo.innerHTML = `
+        <strong>Tiempo:</strong>
+        ${tarifasEnVivo.tiempo_prioritaria || "1 a 3 días"}
+
+        <br>
+
+        <strong>Costo:</strong>
+        $${precio.toLocaleString('es-AR')}
+        `;
+
+        window.envioSeleccionado = precio;
+    }
+
+    /* ============================== */
+    /* ACTUALIZAR CHECKOUT */
+    /* ============================== */
+
+    if (typeof renderCheckoutSummary === "function") {
+        renderCheckoutSummary();
+    }
 }
 
 
 
+document
+.getElementById("tipo-servicio")
+.addEventListener("change", calcularEnvioInteligente);
 
 ////////////////////////
 /*termina la funcnion*/
 /////////////////////////
-
-
         ///////////////////////
         /* tarifa de envios*/
         /////////////////////////
@@ -957,34 +1120,6 @@ async function cargarTarifasEnvio() {
 
 // La llamamos igual que antes
 cargarTarifasEnvio();
-
-
-    /////////////////////////////////
-    /* ACTUALIZAR PRECIO DEL CORREO*/
-    //////////////////////////////////
-
-function actualizarPrecioCorreo(esRegional) {
-    const selectTipo = document.getElementById('tipo-servicio');
-    const infoTiempo = document.getElementById('info-tiempo-envio');
-    
-    // VALIDACIÓN DE SEGURIDAD: Si el select no existe o las tarifas no cargaron, frenamos.
-    if (!selectTipo || !tarifasDesdeFirestore) return;
-
-    const base = esRegional ? "regional" : "nacional";
-    
-    // Verificamos qué eligió el usuario en el selector
-    const velocidad = selectTipo.value === 'prioritaria' ? 'prioritaria' : 'clasica';
-    const keyFinal = `${base}_${velocidad}`;
-    
-    // Asignamos el costo (si no existe en Firestore, ponemos 0)
-    window.envioSeleccionado = tarifasDesdeFirestore[keyFinal] || 0;
-    
-    // Buscamos el tiempo (si no existe, ponemos el texto por defecto)
-    const tiempo = tarifasDesdeFirestore[`tiempo_${velocidad}`] || "3 a 6 días hábiles";
-    
-    // Mostramos en pantalla
-    infoTiempo.innerHTML = `<strong>Llega en:</strong> ${tiempo}<br><strong>Costo:</strong> $${window.envioSeleccionado.toLocaleString('es-AR')}`;
-}
 
 
 
