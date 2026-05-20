@@ -1091,9 +1091,7 @@ function calcularEnvioInteligente() {
 
 
 
-document
-.getElementById("tipo-servicio")
-.addEventListener("change", calcularEnvioInteligente);
+
 
 ////////////////////////
 /*termina la funcnion*/
