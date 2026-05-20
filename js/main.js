@@ -897,6 +897,9 @@ function calcularEnvioInteligente() {
     const avisoEnvio =
     document.getElementById("aviso-cobertura");
 
+    const selectorServicio =
+    document.getElementById("selector-servicio-envio");
+
     if (!selectTipo || !infoTiempo || !avisoEnvio) {
         return;
     }
@@ -906,6 +909,8 @@ function calcularEnvioInteligente() {
     /* ============================== */
 
     if (cpLimpio.length < 5) {
+
+        selectorServicio.style.display = "none";
 
         avisoEnvio.innerHTML = `
         <span style="color:#666;font-size:11px;">
@@ -920,6 +925,7 @@ function calcularEnvioInteligente() {
         return;
     }
 
+    selectorServicio.style.display = "block";
     /* ============================== */
     /* DETECCIONES */
     /* ============================== */
