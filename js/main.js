@@ -1935,6 +1935,9 @@ async function cargarProductos(categoriaFiltro = null, soloLiquidacion = false, 
         let contadorFila = 0;
         let filaActual = null;
 
+         // SOLO MOBILE
+        const esMobile = window.innerWidth <= 768;
+
         querySnapshot.forEach((doc) => {
             const p = doc.data();
             const id = doc.id;
@@ -1985,18 +1988,20 @@ async function cargarProductos(categoriaFiltro = null, soloLiquidacion = false, 
             const mensajeWS = encodeURIComponent(`¡Hola! Mirá esto en *Syrax Express* 🚀\n\n*Producto:* ${p.nombre}\n*Precio:* $${precioFinal.toLocaleString('es-AR')}\n\n${urlProducto}`);
 
 
-            // Crear nueva fila cada 8 productos
-            if (contadorFila % 8 === 0) {
+            if (esMobile) {
 
-            filaActual = document.createElement("div");
-    
-            filaActual.className = "product-row";
+                // crear fila cada 8
+           if (contadorFila % 8 === 0) {
+
+          filaActual = document.createElement("div");
+
+             filaActual.className = "product-row";
 
             grid.appendChild(filaActual);
             }
+            }
 
-            filaActual.innerHTML += `
-            
+              const cardHTML = `
                 <div class="product-card" data-id="${id}" style="animation-delay: ${retrasoCascarada}s">
                     <div class="product-slider">
                         ${badgeHTML}
@@ -2024,8 +2029,20 @@ async function cargarProductos(categoriaFiltro = null, soloLiquidacion = false, 
                             </a>
                         </div>
                     </div>
-                </div>`;
+                </div>
+                `;
+
+            if (esMobile) {
+
+           filaActual.insertAdjacentHTML("beforeend", cardHTML);
+
+            } else {
+
+           grid.insertAdjacentHTML("beforeend", cardHTML);
+            }
+
             contadorFila++;
+  
         });
 
         console.log(`✅ Filtro aplicado. Mostrando ${productosVisibles} productos.`);
