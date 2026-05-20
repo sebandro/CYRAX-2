@@ -275,8 +275,27 @@ src="https://www.facebook.com/tr?id=1504209424649289&ev=PageView&noscript=1"
             <div id="selector-servicio-envio" style="display: none; margin-top: 15px;">
     <label style="font-size: 13px; font-weight: bold; margin-bottom: 5px; display: block;">TIPO DE SERVICIO:</label>
     
-    <select id="tipo-servicio" class="checkout-input-envio" onchange="calcularEnvioInteligente()">
-    </select>
+    <select id="tipo-servicio"
+class="checkout-input-envio"
+onchange="calcularEnvioInteligente()">
+
+    <option value="retiro">
+        🏠 Retiro por domicilio
+    </option>
+
+    <option value="moto">
+        🛵 Moto mensajería
+    </option>
+
+    <option value="clasica">
+        📦 Correo Argentino - Clásica
+    </option>
+
+    <option value="prioritaria">
+        ⚡ Correo Argentino - Prioritaria
+    </option>
+
+</select>
     
     <div id="info-tiempo-envio" style="font-size: 12px; color: #333; margin-top: 5px;"></div>
 </div>
