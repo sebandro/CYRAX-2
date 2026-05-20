@@ -1095,7 +1095,7 @@ function calcularEnvioInteligente() {
     }
 }
 
-
+sincronizarLogisticaEnVivo();
 
 
 
