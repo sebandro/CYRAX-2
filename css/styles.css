@@ -3704,7 +3704,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
     padding: 0 15px !important;
 
-    margin-bottom: 22px !important; /* ← separación entre filas */
+    margin-bottom: 35px !important; /* ← separación entre filas */
 
     scroll-snap-type: x mandatory !important;
 
