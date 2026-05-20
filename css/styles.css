@@ -3711,6 +3711,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     -webkit-overflow-scrolling: touch !important;
 
     scrollbar-width: none !important;
+     background: transparent !important;
 }
 
     .product-row {
