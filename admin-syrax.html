@@ -452,13 +452,79 @@ function cerrarSesionAdmin() {
             <button type="button" class="remove-btn" onclick="this.parentElement.remove()" style="position:absolute; right:10px; top:10px; color:red; border:none; background:none; cursor:pointer; font-weight:bold;">X</button>
             <div class="form-group"><label>Color:</label><input type="text" class="v-color" value="${datos ? datos.colorNombre : ''}" placeholder="Ej: Negro" required></div>
             <div class="form-group"><label>Fotos (URLs x coma):</label><input type="text" class="v-fotos" value="${datos ? datos.fotos.join(',') : ''}" required></div>
-            <div class="stock-grid">
-                <div class="stock-item"><label>S</label><input type="number" class="s-s" value="${datos ? datos.stock.talles.S : 0}"></div>
-                <div class="stock-item"><label>M</label><input type="number" class="s-m" value="${datos ? datos.stock.talles.M : 0}"></div>
-                <div class="stock-item"><label>L</label><input type="number" class="s-l" value="${datos ? datos.stock.talles.L : 0}"></div>
-                <div class="stock-item"><label>XL</label><input type="number" class="s-xl" value="${datos ? datos.stock.talles.XL : 0}"></div>
-                <div class="stock-item"><label>XXL</label><input type="number" class="s-xxl" value="${datos ? datos.stock.talles.XXL : 0}"></div>
-            </div>`;
+             <div class="stock-grid">
+
+<div class="stock-item">
+<label>S</label>
+
+<input type="number"
+class="s-s"
+value="${datos ? datos.stock.talles.S : 0}">
+
+<input type="text"
+class="eq-s"
+placeholder="36-38"
+value="${datos?.equivalencias?.S || ''}">
+</div>
+
+
+<div class="stock-item">
+<label>M</label>
+
+<input type="number"
+class="s-m"
+value="${datos ? datos.stock.talles.M : 0}">
+
+<input type="text"
+class="eq-m"
+placeholder="38-40"
+value="${datos?.equivalencias?.M || ''}">
+</div>
+
+
+<div class="stock-item">
+<label>L</label>
+
+<input type="number"
+class="s-l"
+value="${datos ? datos.stock.talles.L : 0}">
+
+<input type="text"
+class="eq-l"
+placeholder="40-42"
+value="${datos?.equivalencias?.L || ''}">
+</div>
+
+
+<div class="stock-item">
+<label>XL</label>
+
+<input type="number"
+class="s-xl"
+value="${datos ? datos.stock.talles.XL : 0}">
+
+<input type="text"
+class="eq-xl"
+placeholder="42-44"
+value="${datos?.equivalencias?.XL || ''}">
+</div>
+
+
+<div class="stock-item">
+<label>XXL</label>
+
+<input type="number"
+class="s-xxl"
+value="${datos ? datos.stock.talles.XXL : 0}">
+
+<input type="text"
+class="eq-xxl"
+placeholder="44-46"
+value="${datos?.equivalencias?.XXL || ''}">
+</div>
+
+</div>
+         `;
         document.getElementById('contenedor-variantes').appendChild(div);
     }
 
@@ -507,17 +573,39 @@ async function subirProducto() {
                                    .filter(u => u !== "");
 
         variantes[key] = {
-            colorNombre: color,
-            fotos: fotosArray,
-            stock: { talles: {
-                S: parseInt(b.querySelector('.s-s').value) || 0,
-                M: parseInt(b.querySelector('.s-m').value) || 0,
-                L: parseInt(b.querySelector('.s-l').value) || 0,
-                XL: parseInt(b.querySelector('.s-xl').value) || 0,
-             XXL: parseInt(b.querySelector('.s-xxl').value) || 0
-            }}
-        };
-    });
+
+    colorNombre: color,
+
+    fotos: fotosArray,
+
+    stock: {
+        talles: {
+
+            S: parseInt(b.querySelector('.s-s').value) || 0,
+
+            M: parseInt(b.querySelector('.s-m').value) || 0,
+
+            L: parseInt(b.querySelector('.s-l').value) || 0,
+
+            XL: parseInt(b.querySelector('.s-xl').value) || 0,
+
+            XXL: parseInt(b.querySelector('.s-xxl').value) || 0
+        }
+    },
+
+    equivalencias: {
+
+        S: b.querySelector('.eq-s').value.trim(),
+
+        M: b.querySelector('.eq-m').value.trim(),
+
+        L: b.querySelector('.eq-l').value.trim(),
+
+        XL: b.querySelector('.eq-xl').value.trim(),
+
+        XXL: b.querySelector('.eq-xxl').value.trim()
+    }
+};
 
     const data = { 
         nombre, 
