@@ -652,7 +652,43 @@ async function cargarListaProductos() {
         
         for(let key in p.variantes) {
             const v = p.variantes[key];
-            stockInfo += `<div style="font-size:11px; background:#f9f9f9; padding:4px; margin-bottom:2px; border-left:3px solid var(--gold)"><b>${v.colorNombre}:</b> S:${v.stock.talles.S} M:${v.stock.talles.M} L:${v.stock.talles.L} XL:${v.stock.talles.XL} XXL:${v.stock.talles.XXL}</div>`;
+            stockInfo += `
+
+<div style="
+font-size:11px;
+background:#f9f9f9;
+padding:4px;
+margin-bottom:2px;
+border-left:3px solid var(--gold)
+">
+
+<b>${v.colorNombre}:</b><br>
+
+S: ${v.stock.talles.S}
+${v.equivalencias?.S ? `(${v.equivalencias.S})` : ''}
+
+<br>
+
+M: ${v.stock.talles.M}
+${v.equivalencias?.M ? `(${v.equivalencias.M})` : ''}
+
+<br>
+
+L: ${v.stock.talles.L}
+${v.equivalencias?.L ? `(${v.equivalencias.L})` : ''}
+
+<br>
+
+XL: ${v.stock.talles.XL}
+${v.equivalencias?.XL ? `(${v.equivalencias.XL})` : ''}
+
+<br>
+
+XXL: ${v.stock.talles.XXL}
+${v.equivalencias?.XXL ? `(${v.equivalencias.XXL})` : ''}
+
+</div>
+`;
         }
 
         // Etiqueta de Subcategoría
