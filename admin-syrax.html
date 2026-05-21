@@ -563,7 +563,7 @@ async function cargarListaProductos() {
         
         for(let key in p.variantes) {
             const v = p.variantes[key];
-            stockInfo += `<div style="font-size:11px; background:#f9f9f9; padding:4px; margin-bottom:2px; border-left:3px solid var(--gold)"><b>${v.colorNombre}:</b> S:${v.stock.talles.S} M:${v.stock.talles.M} L:${v.stock.talles.L} XL:${v.stock.talles.XL}</div>`;
+            stockInfo += `<div style="font-size:11px; background:#f9f9f9; padding:4px; margin-bottom:2px; border-left:3px solid var(--gold)"><b>${v.colorNombre}:</b> S:${v.stock.talles.S} M:${v.stock.talles.M} L:${v.stock.talles.L} XL:${v.stock.talles.XL} XXL:${v.stock.talles.XXL}</div>`;
         }
 
         // Etiqueta de Subcategoría
