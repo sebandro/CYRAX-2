@@ -1791,16 +1791,29 @@ function manejarCambioVariante(producto, color, elemento) {
         talleSelector.innerHTML = "";
         
         const listaTalles = infoColor.stock?.talles || infoColor.talles || {};
+        const equivalencias = infoColor.equivalencias || {};
         const tallesEnDB = Object.keys(listaTalles);
         const ordenDeseado = ["S", "M", "L", "XL", "XXL"];
         
         const tallesOrdenados = ordenDeseado.filter(t => tallesEnDB.includes(t));
 
-        tallesOrdenados.forEach(t => {
-            const opt = document.createElement('option');
-            opt.value = t; 
-            opt.innerText = t;
-            talleSelector.appendChild(opt);
+       tallesOrdenados.forEach(t => {
+
+        const opt =
+        document.createElement('option');
+
+        opt.value = t;
+
+        const eq =
+        equivalencias[t] || "";
+
+        opt.innerText =
+        eq
+        ? `${t} (${eq})`
+         : t;
+
+        talleSelector.appendChild(opt);
+
         });
 
         // 4. FUNCIÓN INTERNA REVISAR (Para validar stock y configurar precios)
