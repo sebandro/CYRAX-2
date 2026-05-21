@@ -445,7 +445,7 @@ function cerrarSesionAdmin() {
     }
 
     // --- LÓGICA DE VARIANTES ---
-    function agregarBloqueColor(datos = null) {
+   async function agregarBloqueColor(datos = null) {
         const div = document.createElement('div');
         div.className = 'variante-block';
         div.innerHTML = `
