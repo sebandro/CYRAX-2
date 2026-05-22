@@ -6,7 +6,17 @@
     <style>
         :root { --gold: #d4af37; --dark: #1a1a1a; --bg: #f4f4f4; --red: #e74c3c; --green: #27ae60; --blue: #3498db; }
         body { font-family: 'Poppins', sans-serif; background-color: var(--bg); margin: 0; padding: 20px; color: var(--dark); }
-        .admin-container { max-width: 1200px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .admin-container {
+        width: 98%;
+        max-width: 1800px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+    
+        
         h1 { text-align: center; margin-bottom: 30px; }
         
         /* Sistema de Pestañas */
@@ -28,12 +38,57 @@
         .stock-item { text-align: center; }
         .stock-item input { width: 100%; text-align: center; padding: 5px; }
 
-        /* Tablas */
-        .table-container { overflow-x: auto; margin-top: 20px; }
-        table { width: 100%; border-collapse: collapse; background: white; }
-        th, td { padding: 12px; border: 1px solid #eee; text-align: left; font-size: 13px; vertical-align: top; }
-        th { background: #f8f8f8; text-transform: uppercase; font-size: 11px; }
-        
+     /* ========================= */
+/* TABLAS */
+/* ========================= */
+
+.table-container{
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+table{
+    width: 100%;
+    min-width: 1500px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th{
+    background: #f8f8f8;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 16px;
+    border: 1px solid #eee;
+    white-space: nowrap;
+}
+
+td{
+    padding: 16px;
+    border: 1px solid #eee;
+    text-align: left;
+    font-size: 14px;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+tr:hover{
+    background: #fafafa;
+}
+        .stock-box{
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-left: 4px solid var(--gold);
+    border-radius: 8px;
+    font-size: 13px;
+    min-width: 180px;
+}
         /* Pedidos Card */
         .pedido-card { border: 1px solid #eee; padding: 15px; border-radius: 10px; margin-bottom: 15px; background: #fff; border-left: 5px solid var(--blue); }
         .pedido-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
@@ -654,13 +709,7 @@ async function cargarListaProductos() {
             const v = p.variantes[key];
             stockInfo += `
 
-<div style="
-font-size:11px;
-background:#f9f9f9;
-padding:4px;
-margin-bottom:2px;
-border-left:3px solid var(--gold)
-">
+<div class="stock-box">
 
 <b>${v.colorNombre}:</b><br>
 
