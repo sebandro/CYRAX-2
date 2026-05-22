@@ -2266,7 +2266,7 @@ body { font-family: 'Montserrat', sans-serif; background: #fff; overflow-x: hidd
         transform: rotate(180deg);
     }
 
-
+}
 /*==============*/
 /*   FIN   */
 /*============*/
@@ -3069,11 +3069,22 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     display: none;
 }
 
+/*=============*/
+/*     fin    */
+/*===========*/
 
 
 
 
-    
+
+
+
+/* Contenedor Principal en PC */
+@media (min-width: 769px) {
+    /* 1. Eliminamos los display flex/block sueltos para PC */
+
+
+
     .search-container-mobile { display: none !important; }
     .mobile-wa-wrapper { display: none !important; }
 
@@ -3358,20 +3369,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     color: #000 !important;
 }
 
-}
-/*=============*/
-/*     fin    */
-/*===========*/
-
-
-
-
-
-
-
-/* Contenedor Principal en PC */
-@media (min-width: 769px) {
-    /* 1. Eliminamos los display flex/block sueltos para PC */
+    
 }
 
 
