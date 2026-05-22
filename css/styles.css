@@ -3080,7 +3080,7 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
 
 
 /* Contenedor Principal en PC */
-@media (min-width: 769px) {
+
     /* 1. Eliminamos los display flex/block sueltos para PC */
     .search-container-mobile { display: none !important; }
     .mobile-wa-wrapper { display: none !important; }
@@ -3364,9 +3364,6 @@ h2 { color: #fff; letter-spacing: 2px; margin-bottom: 10px; }
     font-weight: 800 !important;
 
     color: #000 !important;
-}
-    
-    
 }
 
 
