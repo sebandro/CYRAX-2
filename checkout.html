@@ -318,6 +318,50 @@ onchange="calcularEnvioInteligente()">
 </main>
 
 
+
+<div id="login-modal" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-modal">&times;</span>
+        
+        <h2 id="auth-title">INICIAR SESIÓN</h2>
+        <!-- Nuevo subtítulo y lista de beneficios -->
+        <p id="auth-subtitle">BENEFICIOS DE LA CUENTA:</p>
+        <ul class="beneficios-lista">
+            <li>🔥 Accedé a Ofertas Exclusivas</li>
+            <li>♥️ Guardá tus favoritos</li>
+            <li>🚚 Guardá tus datos de envío</li>
+            <li>✔️ Opiniones verificadas</li>
+        </ul>
+
+        <form id="auth-form">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Contraseña" required>
+            </div>
+            <button type="submit" id="btn-auth" class="btn-primary">ENTRAR</button>
+        </form>
+
+        <div class="auth-options">
+            <p id="toggle-auth">¿No tenés cuenta? <span>Registrate aquí</span></p>
+            <hr>
+            <!-- Botón de Google con imagen optimizada -->
+            <button id="btn-google" class="btn-google-modern">
+    <div class="google-icon-wrapper">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo">
+    </div>
+    <span class="btn-text">Continuar con Google</span>
+</button>
+        </div>
+    </div>
+</div>
+
+
+
+    
 <a href="https://wa.me/5491128787578" class="wa-float" target="_blank" rel="noopener noreferrer">
     <i class="fab fa-whatsapp"></i>
 </a>
