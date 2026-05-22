@@ -80,37 +80,88 @@ firebase.auth().onAuthStateChanged((user) => {
 
 
 async function ejecutarCargaFavoritos(listaIds) {
+
     const grid = document.getElementById('favoritos-grid');
+
     if (!grid) return;
 
     if (listaIds.length === 0) {
+
         grid.innerHTML = '<p>Aún no tenés productos favoritos. ¡Explorá la tienda!</p>';
+
         return;
+
     }
 
-    grid.innerHTML = ''; // Limpiamos "Cargando..."
-    
-    // Usamos Set para evitar duplicados visuales por error en el array
+    grid.innerHTML = '';
+
+
     const idsUnicos = [...new Set(listaIds)];
 
+    // MOBILE
+
+    const esMobile = window.innerWidth <= 768;
+
+    let contadorFila = 0;
+
+    let filaActual = null;
+
     for (const productoId of idsUnicos) {
+
         try {
+
             const productoDoc = await db.collection("inventario").doc(productoId).get();
+
             if (productoDoc.exists) {
+
                 const p = productoDoc.data();
-                // Aquí llamas a tu función que crea el HTML de la tarjeta
-                if (typeof renderizarTarjetaFavorito === 'function') {
-                    renderizarTarjetaFavorito(productoId, p, grid);
+
+                // CREAR FILA CADA 8 PRODUCTOS
+
+                if (esMobile) {
+
+                    if (contadorFila % 8 === 0) {
+
+                        filaActual = document.createElement("div");
+
+                        filaActual.className = "product-row";
+
+                        grid.appendChild(filaActual);
+
+                    }
+
                 }
+                // RENDER
+
+                if (typeof renderizarTarjetaFavorito === 'function') {
+
+                    if (esMobile) {
+
+                        renderizarTarjetaFavorito(productoId, p, filaActual);
+
+                    } else {
+
+                        renderizarTarjetaFavorito(productoId, p, grid);
+
+                    }
+
+                }
+                contadorFila++;
+
             }
+
         } catch (error) {
+
             console.error("Error al buscar producto favorito:", productoId, error);
+
         }
+
     }
+
 }
 
 // Reutilizamos tu lógica de tarjetas pero simplificada para el perfil
-function renderizarTarjetaFavorito(id, p, contenedor) {
+function renderizarTarjetaFavorito(id, p, contenedor, filaActual = null) {
     const valorLiquidacion = String(p.Liquidacion || p.liquidacion || "").toLowerCase().trim();
     const esLiquidacionDoc = (valorLiquidacion === "true");
 
@@ -163,7 +214,16 @@ function renderizarTarjetaFavorito(id, p, contenedor) {
         </div>
     `;
 
+    const esMobile = window.innerWidth <= 768;
+
+if (esMobile && filaActual) {
+
+    filaActual.insertAdjacentHTML('beforeend', html);
+
+} else {
+
     contenedor.insertAdjacentHTML('beforeend', html);
+}
 }
 
 ////////////////////////////
