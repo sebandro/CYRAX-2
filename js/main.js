@@ -772,7 +772,7 @@ async function enviarWhatsApp() {
             listaProductos += `   Cant: ${item.cantidad} x $${item.price.toLocaleString('es-AR')} = *$${subtotalItem.toLocaleString('es-AR')}*\n\n`;
         });
 
-        const miNumero = "5491128787578";
+        const miNumero = "5491167195114";
 
         const textoWhatsApp = `🛍️ *NUEVO PEDIDO - SYRAX*
 
